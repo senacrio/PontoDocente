@@ -1,0 +1,1 @@
+<input type="text" name="Receita" value="<%=Receita%>" size="40" maxlength="800" tabindex="149" style="position:absolute;z-index:2006;left:5px;top:5px;width:577px;height:21px;font-size:8pt;font-family:Arial;font-weight:normal;font-style:normal;color:#000000;background-color:#FFFFFF;border-color:#000000;border-width:1px;border-style:solid">

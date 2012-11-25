@@ -1,0 +1,168 @@
+<?xml version="1.0" standalone="yes"?>
+<Balancete xmlns="Conselho Fiscal">
+  <Classe>
+    <regional>15</regional>
+    <mes>1</mes>
+    <ano>2010</ano>
+    <caixa>158580.92</caixa>
+    <Banco_conta_movimento_Brasil>229300.23</Banco_conta_movimento_Brasil>
+    <Banco_conta_movimento_CEF>78992.43</Banco_conta_movimento_CEF>
+    <Banco_conta_poupanca_efetiva_bb>0.00</Banco_conta_poupanca_efetiva_bb>
+    <Banco_conta_poupanca_efetiva_cef>73480.87</Banco_conta_poupanca_efetiva_cef>
+    <Descricao1_bb />
+    <Descricao2_bb />
+    <Descricao3_bb />
+    <Descricao4_bb />
+    <Descricao5_bb />
+    <Valor1_bb>0.00</Valor1_bb>
+    <Valor2_bb>0.00</Valor2_bb>
+    <Valor3_bb>0.00</Valor3_bb>
+    <Valor4_bb>0.00</Valor4_bb>
+    <Valor5_bb>0.00</Valor5_bb>
+    <Percentual1_bb>0.0000</Percentual1_bb>
+    <Percentual2_bb>0.0000</Percentual2_bb>
+    <Percentual3_bb>0.0000</Percentual3_bb>
+    <Percentual4_bb>0.0000</Percentual4_bb>
+    <Percentual5_bb>0.0000</Percentual5_bb>
+    <Descricao1_cef>TOTAL APLICAÇÕES CORP CEF</Descricao1_cef>
+    <Descricao2_cef />
+    <Descricao3_cef />
+    <Descricao4_cef />
+    <Valor1_cef>0.00</Valor1_cef>
+    <Valor2_cef>0.00</Valor2_cef>
+    <Valor3_cef>0.00</Valor3_cef>
+    <Valor4_cef>0.00</Valor4_cef>
+    <Percentual1_cef>0.0000</Percentual1_cef>
+    <Percentual2_cef>0.0000</Percentual2_cef>
+    <Percentual3_cef>0.0000</Percentual3_cef>
+    <Percentual4_cef>0.0000</Percentual4_cef>
+    <Banco_conta_movimento_vinculada_bb>0.00</Banco_conta_movimento_vinculada_bb>
+    <Banco_conta_movimento_vinculada_cef>0.00</Banco_conta_movimento_vinculada_cef>
+    <Banco_poupanca_vinculada_bb>0.00</Banco_poupanca_vinculada_bb>
+    <Banco_poupanca_vinculada_cef>0.00</Banco_poupanca_vinculada_cef>
+    <Descricao1_vinculada_bb />
+    <Descricao2_vinculada_bb />
+    <Descricao3_vinculada_bb />
+    <Descricao4_vinculada_bb />
+    <Descricao5_vinculada_bb />
+    <Valor1_vinculada_bb>0.00</Valor1_vinculada_bb>
+    <Valor2_vinculada_bb>0.00</Valor2_vinculada_bb>
+    <Valor3_vinculada_bb>0.00</Valor3_vinculada_bb>
+    <Valor4_vinculada_bb>0.00</Valor4_vinculada_bb>
+    <Valor5_vinculada_bb>0.00</Valor5_vinculada_bb>
+    <Percentual1_vinculada_bb>0.0000</Percentual1_vinculada_bb>
+    <Percentual2_vinculada_bb>0.0000</Percentual2_vinculada_bb>
+    <Percentual3_vinculada_bb>0.0000</Percentual3_vinculada_bb>
+    <Percentual4_vinculada_bb>0.0000</Percentual4_vinculada_bb>
+    <Percentual5_vinculada_bb>0.0000</Percentual5_vinculada_bb>
+    <Descricao1_vinculada_cef />
+    <Descricao2_vinculada_cef />
+    <Descricao3_vinculada_cef />
+    <Descricao4_vinculada_cef />
+    <Valor1_vinculada_cef>0.00</Valor1_vinculada_cef>
+    <Valor2_vinculada_cef>0.00</Valor2_vinculada_cef>
+    <Valor3_vinculada_cef>0.00</Valor3_vinculada_cef>
+    <Valor4_vinculada_cef>0.00</Valor4_vinculada_cef>
+    <Percentual1_vinculada_cef>0.0000</Percentual1_vinculada_cef>
+    <Percentual2_vinculada_cef>0.0000</Percentual2_vinculada_cef>
+    <Percentual3_vinculada_cef>0.0000</Percentual3_vinculada_cef>
+    <Percentual4_vinculada_cef>0.0000</Percentual4_vinculada_cef>
+    <ativo_realizavel>25875068.87</ativo_realizavel>
+    <ativo_transitorio>4313265.58</ativo_transitorio>
+    <ativo_compensado>108540042.78</ativo_compensado>
+    <mes_anterior>127046337.04</mes_anterior>
+    <aquisicao_despesa_de_capital>208806.38</aquisicao_despesa_de_capital>
+    <Outras>42955.41</Outras>
+    <Alienacao>58633.49</Alienacao>
+    <Outros>0.00</Outros>
+    <receitas_de_capital>42955.41</receitas_de_capital>
+    <ativo_passivo_permanente>58633.49</ativo_passivo_permanente>
+    <outras_mutacoes_patrimoniais>0.00</outras_mutacoes_patrimoniais>
+    <vencimentos_vantagens_fixas_previstas>0.00</vencimentos_vantagens_fixas_previstas>
+    <obrigacoes_patrimoniais_previstas>0.00</obrigacoes_patrimoniais_previstas>
+    <despesas_variaveis_civil_previstas>0.00</despesas_variaveis_civil_previstas>
+    <indenizacoes_trabalhistas_previstas>0.00</indenizacoes_trabalhistas_previstas>
+    <outras_despesas_correntes_previstas>0.00</outras_despesas_correntes_previstas>
+    <vencimentos_vantagens_fixas_executadas>3008806.18</vencimentos_vantagens_fixas_executadas>
+    <obrigacoes_patrimoniais_executadas>1056944.26</obrigacoes_patrimoniais_executadas>
+    <despesas_variaveis_civil_executadas>84117.93</despesas_variaveis_civil_executadas>
+    <indenizacoes_trabalhistas_executadas>151007.63</indenizacoes_trabalhistas_executadas>
+    <outras_despesas_correntes_executadas>9306939.24</outras_despesas_correntes_executadas>
+    <Investimentos_executadas>208806.38</Investimentos_executadas>
+    <Inversoes_financeiras_executadas>0.00</Inversoes_financeiras_executadas>
+    <Amortizacoes_executadas>0.00</Amortizacoes_executadas>
+    <Investimentos_previstas>0.00</Investimentos_previstas>
+    <Inversoes_financeiras_previstas>0.00</Inversoes_financeiras_previstas>
+    <Amortizacoes_previstas>0.00</Amortizacoes_previstas>
+    <Outras_despesas_correntes_dp>0.00</Outras_despesas_correntes_dp>
+    <Mes1>Dezembro/2009</Mes1>
+    <Mes2>Novembro/2009</Mes2>
+    <Mes3>Outubro/2009</Mes3>
+    <Mes4>Setembro/2009</Mes4>
+    <Mes5>Agosto/2009</Mes5>
+    <Mes6>Julho/2009</Mes6>
+    <Mes7>Junho/2009</Mes7>
+    <Mes8>Maio/2009</Mes8>
+    <Mes9>Abril/2009</Mes9>
+    <Mes10>Março/2009</Mes10>
+    <Mes11>Fevereiro/2009</Mes11>
+    <Mes12>Janeiro/2010</Mes12>
+    <valor1_media>15311302.11</valor1_media>
+    <valor2_media>11104472.79</valor2_media>
+    <valor3_media>11583679.71</valor3_media>
+    <valor4_media>11467783.93</valor4_media>
+    <valor5_media>12073031.32</valor5_media>
+    <valor6_media>11530738.55</valor6_media>
+    <valor7_media>10830098.88</valor7_media>
+    <valor8_media>11138098.44</valor8_media>
+    <valor9_media>10372565.58</valor9_media>
+    <valor10_media>10475780.90</valor10_media>
+    <valor11_media>10203625.38</valor11_media>
+    <valor12_media>13607815.24</valor12_media>
+    <realizavel_transitorio>36216375.27</realizavel_transitorio>
+    <Passivo_financeiro_transitorio>26019565.62</Passivo_financeiro_transitorio>
+    <saldo_ativo_disponivel>180138789.48</saldo_ativo_disponivel>
+    <Exigivel_imediato>2724190.45</Exigivel_imediato>
+    <Exigivel_mediato>12711519.55</Exigivel_mediato>
+    <Passivo_transitorio>10920283.39</Passivo_transitorio>
+    <Passivo_permanente>258435989.85</Passivo_permanente>
+    <Resultado_periodo>61022523.99</Resultado_periodo>
+    <Passivo_compensado>108540042.78</Passivo_compensado>
+    <Mutacoes_despesa_capital>208806.38</Mutacoes_despesa_capital>
+    <Mutacoes_ativo_passivo_permanente>0.00</Mutacoes_ativo_passivo_permanente>
+    <Mutacoes_outras_mutacoes_patrimoniais>35218.32</Mutacoes_outras_mutacoes_patrimoniais>
+    <Comunicada_inss_arrecadada>7929113.59</Comunicada_inss_arrecadada>
+    <Subvencoes_ordinarias_arrecadada>0.00</Subvencoes_ordinarias_arrecadada>
+    <remessa_fpe_arrecadada>2471769.97</remessa_fpe_arrecadada>
+    <Aplicacao_investimentos_arrecadada>0.00</Aplicacao_investimentos_arrecadada>
+    <Sistema_Sei_Arrecadada>0.00</Sistema_Sei_Arrecadada>
+    <Comunicada_inss_prevista>11218250.00</Comunicada_inss_prevista>
+    <Subvencoes_ordinarias_prevista>0.00</Subvencoes_ordinarias_prevista>
+    <remessa_fpe_prevista>0.00</remessa_fpe_prevista>
+    <Aplicacao_investimentos_prevista>0.00</Aplicacao_investimentos_prevista>
+    <Sistema_Sei_prevista>0.00</Sistema_Sei_prevista>
+    <imobiliarias_arrecadada>16428.82</imobiliarias_arrecadada>
+    <Valores_imobiliarias_arrecadada>1206217.64</Valores_imobiliarias_arrecadada>
+    <outras_rec_patrimoniais_arrecadada>595.14</outras_rec_patrimoniais_arrecadada>
+    <receita_de_servico_arrecadada>4042376.39</receita_de_servico_arrecadada>
+    <outras_receitas_correntes_arrecadada>41306.53</outras_receitas_correntes_arrecadada>
+    <transferencias_correntes_arrecadada>0.00</transferencias_correntes_arrecadada>
+    <imobiliarias_prevista>23250.00</imobiliarias_prevista>
+    <Valores_imobiliarias_prevista>966750.00</Valores_imobiliarias_prevista>
+    <outras_rec_patrimoniais_prevista>0.00</outras_rec_patrimoniais_prevista>
+    <receita_de_servico_prevista>5833500.00</receita_de_servico_prevista>
+    <outras_receitas_correntes_prevista>10000.00</outras_receitas_correntes_prevista>
+    <transferencias_correntes_prevista>0.00</transferencias_correntes_prevista>
+    <operacoes_credito_arrecadada>0.00</operacoes_credito_arrecadada>
+    <alienacao_bens_arrecadada>0.00</alienacao_bens_arrecadada>
+    <amortizacao_emprestimos_arrecadada>42955.41</amortizacao_emprestimos_arrecadada>
+    <transferencia_capital_arrecadada>0.00</transferencia_capital_arrecadada>
+    <saldo_exercicios_anteriores_arrecadada>0.00</saldo_exercicios_anteriores_arrecadada>
+    <operacoes_credito_prevista>0.00</operacoes_credito_prevista>
+    <alienacao_bens_prevista>0.00</alienacao_bens_prevista>
+    <amortizacao_emprestimos_prevista>0.00</amortizacao_emprestimos_prevista>
+    <transferencia_capital_prevista>0.00</transferencia_capital_prevista>
+    <saldo_exercicios_anteriores_prevista>347250.00</saldo_exercicios_anteriores_prevista>
+    <receita_prevista_total>220788000.00</receita_prevista_total>
+  </Classe>
+</Balancete>

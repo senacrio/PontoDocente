@@ -1,0 +1,52 @@
+﻿<html>
+
+<body>
+<form method="GET" action="PesquisaSOS.aspx"> 
+
+<input type="hidden" name="idchamado" value="137">
+<p>Sua SOS foi atendida?</p>
+
+<table>
+<tr>
+<td><p><input type="radio" name="resolvido" value="sim" checked="checked"/>
+Sim
+</p>
+</td>
+<td>
+<p><input type="radio" name="resolvido" value="nao"/>
+Não
+</p>
+</td>
+</tr>
+</table>
+<p>
+Qual o grau de satisfação?</p>
+<table>
+<tr>
+<td>
+<p><input type="radio" name="satisfacao" value="excelente" checked="checked">Excelente</p>
+</td>
+<td>
+<p><input type="radio" name="satisfacao" value="bom">Bom</p>
+</td>
+<td>
+<p><input type="radio" name="satisfacao" value="regular">Regular</p>
+</td>
+<td>
+<p><input type="radio" name="satisfacao" value="ruim">Ruim</p>
+</td>
+<td>
+<p><input type="radio" name="satisfacao" value="pessimo">Péssimo</p>
+</td>
+</tr>
+</table>
+<p>Explique:</p>
+<input type="text" name="justificativa" value="" style="width: 330px; height: 160px"  />
+<br />
+<br />
+<p><input type="submit" value="Enviar"/></p>
+
+</form>
+</body>
+
+</html>

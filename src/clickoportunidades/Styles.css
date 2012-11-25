@@ -1,0 +1,67 @@
+﻿body
+{
+	margin:10px auto 0;
+	padding:0;
+    font-family: tahoma,verdana,sans-serif;
+    font-size:8pt;
+    text-align:left;
+}
+
+.LetraNormal {color:#000000;text-decoration: none;font-size: 8pt;font-style:normal;font-weight:normal}
+
+.grid td, .grid th
+{
+    height:14px;
+    border-right:solid 1px #fff;
+    vertical-align:middle;
+}
+
+.grid th
+{
+	background-color:#EFEFEF;
+	font-weight:normal;
+	border-color:#ccc;
+}
+
+.grid td
+{
+    vertical-align:middle;
+    cursor:default;
+    border-color:#EFEFEF;
+}
+
+.altrowstyle 
+{
+	background-color:#EFEFEF;}
+
+.pagerstyle {font-size:x-small;text-align:right;background:url(../../images/bcktop.gif) repeat-x;
+    background-position: bottom left;}
+
+.irapag{
+    font-size:x-small;
+    width:20px;
+}
+.anterior{
+    background:transparent url(Img/previous.gif) no-repeat scroll center;
+    height:1.3em;
+    width:16px;
+    cursor:pointer;
+}
+.siguiente{
+    background:transparent url(Img/next.gif) no-repeat scroll center;
+    height:1.3em;
+    width:16px;
+    cursor:pointer;
+}
+.primero{
+    background:transparent url(Img/first.gif) no-repeat scroll center;
+    height:1.3em;
+    width:16px;
+    cursor:pointer;
+}
+.ultimo{
+    background:transparent url(Img/last.gif) no-repeat scroll center;
+    height:1.3em;
+    width:16px;
+    cursor:pointer;
+}

@@ -1,0 +1,99 @@
+using System;
+using System.Collections;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Xml.Linq;
+using System;
+using PSLibrary = Microsoft.Office.Project.Server.Library;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.Services.Protocols;
+using System.Net;
+
+namespace EpmWebServices
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                // URL do Webservice do Project Server
+                const string PROJECT_SERVER_URL = "http://epm/pwa/_vti_bin/psi/Project.asmx";
+
+                // Criando um novo objeto webservice
+                epm.Project projectSvc = new epm.Project();
+
+                projectSvc.Url = PROJECT_SERVER_URL;
+
+                // Criando uma instancia de CredentialCache.
+                CredentialCache cache = new CredentialCache();
+
+                // Adicionando uma instancia de NetworkCredential ao objeto cache.
+                // Negotiate for NTLM or Kerberos authentication.
+
+                
+
+                //Assign CredentialCache to the Web service Client Proxy(myProxy) Credetials property.
+                //projectSvc.Credentials = cache;
+                projectSvc.Credentials = CredentialCache.DefaultNetworkCredentials;
+
+                epm.ProjectDataSet projectDs = projectSvc.ReadProjectList();
+
+                GridView1.DataSource = projectDs;
+                GridView1.DataBind();
+
+            }
+            catch (SoapException ex)
+            {
+                //PSLibrary.PSClientError error = new PSLibrary.PSClientError(ex);
+                //PSLibrary.PSErrorInfo[] errors = error.GetAllErrors();
+                //string errMess = "==============================\r\nError: \r\n";
+                //for (int i = 0; i < errors.Length; i++)
+                //{
+                //    errMess += "\n" + ex.Message.ToString() + "\r\n";
+                //    errMess += "".PadRight(30, '=') + "\r\nPSCLientError Output:\r\n \r\n";
+                //    errMess += errors[i].ErrId.ToString() + "\n";
+
+                //    for (int j = 0; j < errors[i].ErrorAttributes.Length; j++)
+                //    {
+                //        errMess += "\r\n\t" + errors[i].ErrorAttributeNames()[j] + ": " + errors[i].ErrorAttributes[j];
+                //    }
+                //    errMess += "\r\n".PadRight(30, '=');
+                //}
+                //Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine(errMess);
+            }
+            catch (WebException ex)
+            {
+                //string errMess = ex.Message.ToString() +
+                //   "\n\nLog on, or check the Project Server Queuing Service";
+                //Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine("Error: " + errMess);
+            }
+            catch (Exception ex)
+            {
+                //Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                //Console.ResetColor();
+                //Console.WriteLine("\r\n\r\nPress any key...");
+                //Console.ReadKey();
+            }
+        }
+    }
+}

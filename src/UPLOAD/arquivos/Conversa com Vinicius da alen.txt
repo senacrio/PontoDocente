@@ -1,0 +1,312 @@
+[CTAllen] Vinicius Chaves diz:
+falae camarada ...
+Rafael diz:
+Fala rapz
+Rafael diz:
+Como estão as coisas ai ????
+Rafael diz:
+Aqui tá brabo
+[CTAllen] Vinicius Chaves diz:
+no projeto com o botao direito clica em add service reference
+Rafael diz:
+hehehe
+Rafael diz:
+ok
+[CTAllen] Vinicius Chaves diz:
+heheh imagino ...
+[CTAllen] Vinicius Chaves diz:
+e adiciona esta linha
+[CTAllen] Vinicius Chaves diz:
+http://epm/pwa/_vti_bin/psi/Project.asmx
+  
+  Você convidou [CTAllen] Vinicius Chaves para iniciar a opção Assistência Remota. Você pode aguardar uma resposta ou Cancelar (Alt+Q) o convite pendente.
+  
+[CTAllen] Vinicius Chaves diz:
+e clica em GO
+  
+  [CTAllen] Vinicius Chaves aceitou seu convite para iniciar a opção Assistência Remota.
+  
+Rafael diz:
+Esse projeto é um web services...correto ?
+[CTAllen] Vinicius Chaves diz:
+minha internet está meio lenta, mas vamos tentar rrsrs
+Rafael diz:
+ok
+[CTAllen] Vinicius Chaves diz:
+o projeto deve ser criado como projeto web
+[CTAllen] Vinicius Chaves diz:
+nao como webservice... ele apenas vai usar um webservice
+Rafael diz:
+ok
+[CTAllen] Vinicius Chaves diz:
+vc tinha criado como webservice ?
+Rafael diz:
+aparceu para vc ?
+Rafael diz:
+Estava tentando acessar somente
+[CTAllen] Vinicius Chaves diz:
+deu pau 
+Rafael diz:
+ach que aqui é bloqueado
+Rafael diz:
+Vou tentar aqui
+Rafael diz:
+Foi..tudo ok até agora
+Rafael diz:
+Adicionei o endereço lá
+Rafael diz:
+Criei um projeto web do zero.
+[CTAllen] Vinicius Chaves diz:
+clica em add reference service
+[CTAllen] Vinicius Chaves diz:
+já fez isso tb?
+Rafael diz:
+ja fiz
+Rafael diz:
+Ele criou uma referencia.
+Rafael diz:
+Tem que ser em C# , certo ?
+[CTAllen] Vinicius Chaves diz:
+isso aí
+[CTAllen] Vinicius Chaves diz:
+agora é a parte mais complicada ...
+Rafael diz:
+puts
+[CTAllen] Vinicius Chaves diz:
+eu estou fazendo um aqui pra listar os projetos ...
+Rafael diz:
+Caracas..deve ser brabo
+[CTAllen] Vinicius Chaves diz:
+o que vc quer fazer?
+[CTAllen] Vinicius Chaves diz:
+nao é simples mesmo nao cara ...
+[CTAllen] Vinicius Chaves diz:
+vc quer adicionar valores a um campo personalizado nao é?
+Rafael diz:
+Estou querendo ver como funciona primeiro. Coisas simples pra depois criar um projeto pela aplicacao
+Rafael diz:
+e adicionar valores a um campo personalizado
+Rafael diz:
+Estou lendo um artigo que diz que vc pode criar um projeto pela web(Via aplicacao)
+[CTAllen] Vinicius Chaves diz:
+pode sim ...
+[CTAllen] Vinicius Chaves diz:
+cara creio que nao seja dificil, mas leva um tempo pra entender como funciona
+Rafael diz:
+hum
+[CTAllen] Vinicius Chaves diz:
+eu por exemplo estou fazendo um codigo para listar todos os projetos publicados na empresa
+[CTAllen] Vinicius Chaves diz:
+usando webservice tb
+[CTAllen] Vinicius Chaves diz:
+mas está complicado rsrs
+Rafael diz:
+Mas está evoluindo em aguma coisa ?
+Rafael diz:
+Vc consegue visualizar os projetos ?
+Rafael diz:
+Estou tentando aqui tb...se eu conseguir algo eu te passo...valeu ?
+[CTAllen] Vinicius Chaves diz:
+blz camarada
+[CTAllen] Vinicius Chaves diz:
+se eu conseguir aqui te passo o codigo tb ...
+[CTAllen] Vinicius Chaves diz:
+um detalhe que falei pra vc errado
+Rafael diz:
+o que
+[CTAllen] Vinicius Chaves diz:
+vc tem que adiocinar um referencia web
+[CTAllen] Vinicius Chaves diz:
+ou seja 
+[CTAllen] Vinicius Chaves diz:
+add web reference
+Rafael diz:
+Alem de services
+[CTAllen] Vinicius Chaves diz:
+exclui aquele referencia que vc fez ...
+[CTAllen] Vinicius Chaves diz:
+e inclue novamente
+Rafael diz:
+ok
+[CTAllen] Vinicius Chaves diz:
+só que em add web reference
+Rafael diz:
+Tenho q escolher os servicos ?
+Rafael diz:
+ou clico em add referencia
+[CTAllen] Vinicius Chaves diz:
+nao, só de vc adicionar ele já te desponibiliza todos os servicos
+Rafael diz:
+beleza
+[CTAllen] Vinicius Chaves diz:
+isso, clica em add referencia
+Rafael diz:
+Agora vou tentar quebrar a cabeça aqui tb.
+Rafael diz:
+Tem algo mais, ou não ?
+Rafael diz:
+Agora é só programação ???
+[CTAllen] Vinicius Chaves diz:
+agora é só cair de código rsrsrs
+Rafael diz:
+Já estou começando...qualquer te falo
+[CTAllen] Vinicius Chaves diz:
+blz. eu tb te aviso..
+[CTAllen] Vinicius Chaves diz:
+falae Rafael ..
+[CTAllen] Vinicius Chaves diz:
+conseguiu desenrolar alguma coisa?
+Rafael diz:
+Meu amigo... já escrevi varias linhas de codigo e nada.
+Rafael diz:
+Mas vai sair... 
+[CTAllen] Vinicius Chaves diz:
+hehehe
+[CTAllen] Vinicius Chaves diz:
+vou te passar um codigo e vc usa ele aí
+[CTAllen] Vinicius Chaves diz:
+esse que eu fiz aqui é pra listar projetos. talvez seja uma luz aí pra vc's
+Rafael diz:
+Não tenho muita pratica com C#
+[CTAllen] Vinicius Chaves envia:
+ 
+    Abrir(Alt+A) 
+[CTAllen] Vinicius Chaves diz:
+nem eu rsrs
+[CTAllen] Vinicius Chaves diz:
+mas é muito parecido com java
+Rafael diz:
+Ops...vou baixar agorinha
+Rafael diz:
+Muito
+Rafael diz:
+Conseguiu listar os projetos ?
+[CTAllen] Vinicius Chaves diz:
+nao tenho permissoes administrativas aqui...
+  
+  Você recebeu C:\Documents and Settings\RAFAEL.VIEIRA\Meus documentos\Meus arquivos recebidos\Default.aspx.cs com êxito de [CTAllen] Vinicius Chaves.
+  
+[CTAllen] Vinicius Chaves diz:
+por isso nao consigo listar, mas acho que pra vc resolve...
+Rafael diz:
+Não tem como ver com a infra ?
+[CTAllen] Vinicius Chaves diz:
+eu tenho q abrir um chamado aqui pra colocar minha senha como administrativa
+Rafael diz:
+ah ta
+[CTAllen] Vinicius Chaves diz:
+vai demorar... eu prefiro nem abrir chamado rsrsr
+[CTAllen] Vinicius Chaves diz:
+eu dei mole e mandei minha senha aqui da rede
+[CTAllen] Vinicius Chaves diz:
+apaga ela por favor rsrsrs
+Rafael diz:
+ok
+Rafael diz:
+vou importar o arquivo para meu projeto
+[CTAllen] Vinicius Chaves diz:
+como o meu notebook nao está no dominio eu tive que criar uma credencial, mas vc nao precisa fazer isso
+Rafael diz:
+pode deixar que eu vou apagar
+[CTAllen] Vinicius Chaves diz:
+pode apagar a linha toda
+[CTAllen] Vinicius Chaves diz:
+e onde está projectSvc.Credentials = cache;
+[CTAllen] Vinicius Chaves diz:
+altere para:
+[CTAllen] Vinicius Chaves diz:
+projectSvc.Credentials = CredentialCache.DefaultNetworkCredentials;
+Rafael diz:
+beleza
+Rafael diz:
+vou alterar... caracas, se funcionar
+[CTAllen] Vinicius Chaves diz:
+repare que projectSvc é o nome da referencia do webservice
+Rafael diz:
+já é um ótimo começo
+[CTAllen] Vinicius Chaves diz:
+se funcionar já estamos listando os projetos rsrs
+Rafael diz:
+ahuahuha
+[CTAllen] Vinicius Chaves diz:
+olha só
+[CTAllen] Vinicius Chaves diz:
+dá uma olhada neste site.
+[CTAllen] Vinicius Chaves diz:
+talvez de ajude
+[CTAllen] Vinicius Chaves diz:
+http://msdn.microsoft.com/en-us/library/websvcproject.project_methods.aspx
+[CTAllen] Vinicius Chaves diz:
+se precisar de mais um cara pra equipe de desenvolvimento me fala rsrsrss
+Rafael diz:
+essa linha faz o que :  projectSvc.Credentials = CredentialCache.DefaultNetworkCredentials;
+Rafael diz:
+Está com erro na meu projeto
+[CTAllen] Vinicius Chaves diz:
+essa linha pega as credenciais do login da maquina atual e usa as informacoes de login e senha no project server
+[CTAllen] Vinicius Chaves diz:
+resumindo
+[CTAllen] Vinicius Chaves diz:
+ela loga no project server com o usuário que está logado localmente
+Rafael diz:
+ach q agora foi
+Rafael diz:
+vou testar agora
+Rafael diz:
+estou até rezando pra rodar
+[CTAllen] Vinicius Chaves diz:
+rsrsrs
+[CTAllen] Vinicius Chaves diz:
+vai funcionar ...
+Rafael diz:
+Vc colocou um grid no aspx ?
+[CTAllen] Vinicius Chaves diz:
+coloquei, apenas para testar
+Rafael diz:
+Caracas...funcionou Vinicius
+[CTAllen] Vinicius Chaves diz:
+show heim ....
+[CTAllen] Vinicius Chaves diz:
+esse método retorna os projetos apenas se o cara for administrador
+[CTAllen] Vinicius Chaves diz:
+só funcionou pq vc é administrador
+[CTAllen] Vinicius Chaves diz:
+entendeu?
+[CTAllen] Vinicius Chaves diz:
+muito bom, agora é um grande passo dado, agora temos apenas que usar os métodos corretos para resolver o problema de vc's
+Rafael diz:
+Agora vou ler todos aqueles metodos.
+Rafael diz:
+Destruir
+[CTAllen] Vinicius Chaves diz:
+show ...
+[CTAllen] Vinicius Chaves diz:
+isso aí..
+[CTAllen] Vinicius Chaves diz:
+no que eu puder ajudar ...
+[CTAllen] Vinicius Chaves diz:
+existem métodos para campos personalizados..
+[CTAllen] Vinicius Chaves diz:
+sao chamados custom fields
+[CTAllen] Vinicius Chaves diz:
+e o campo personalizado que vc quer popular é um campo de projeto
+[CTAllen] Vinicius Chaves diz:
+entao procure um método project.custonfield algo assim
+[CTAllen] Vinicius Chaves diz:
+eu já vi por aqui que existe este método ...
+Rafael diz:
+beleza...brigadao mesmo
+[CTAllen] Vinicius Chaves diz:
+falow cara ...
+Rafael diz:
+Quando eu terminar eu te mando o codigo todo
+Rafael diz:
+Beleza.
+[CTAllen] Vinicius Chaves diz:
+blz ...
+Rafael diz:
+Amanhã vou ralar para descobrir tudo isso
+Rafael diz:
+/mas uma vez brigado Vinicius
+[CTAllen] Vinicius Chaves diz:
+falow cara ...

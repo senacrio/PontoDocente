@@ -1,0 +1,1 @@
+<input type="text" name="Visitante" value="<%=Visitante%>" size="40" maxlength="800" tabindex="148" style="position:absolute; z-index:2006; left:6px; top:6px; width:578px; height:21px; font-size:8pt; font-family:Arial; font-weight:normal; font-style:normal; color:#000000; background-color:#FFFFFF;">

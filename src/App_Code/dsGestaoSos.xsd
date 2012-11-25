@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsGestaoSos" targetNamespace="http://tempuri.org/dsGestaoSos.xsd" xmlns:mstns="http://tempuri.org/dsGestaoSos.xsd" xmlns="http://tempuri.org/dsGestaoSos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SistemaSOS" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SistemaSOS (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SistemaSOS.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtServicosTableAdapter" GeneratorDataComponentClassName="dtServicosTableAdapter" Name="dtServicos" UserDataComponentName="dtServicosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SistemaSOS (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(sosServico.IDServico) AS qtd, sosGrupoServico.Nome + ' - ' + sosServico.Nome AS Servico FROM sosChamado INNER JOIN sosServico ON sosChamado.IDServico = sosServico.IDServico INNER JOIN sosGrupoServico ON sosServico.IDGrupoServico = sosGrupoServico.IDGrupoServico GROUP BY sosGrupoServico.Nome, sosServico.Nome</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="qtd" DataSetColumn="qtd" />
+              <Mapping SourceColumn="Servico" DataSetColumn="Servico" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtDemoraTableAdapter" GeneratorDataComponentClassName="dtDemoraTableAdapter" Name="dtDemora" UserDataComponentName="dtDemoraTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SistemaSOS (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT 
+                      sosChamado.IDChamado, sosChamado.Descricao as descricao, sosServico.Nome AS Servico, sosChamado.IDTecnico, sosAcompanhamento_1.IDStatus, 
+                      sosChamado.IDStatus AS Expr1,
+                          (SELECT     TOP (1) DATEDIFF(Mi, DataHoraRegistro, GETDATE()) AS Expr1
+                            FROM          sosAcompanhamento
+                            WHERE      (IDChamado = sosChamado.IDChamado) AND (IDStatus = 2)) AS Demora, sosChamado.IDChamado AS Expr2, 
+                      sosGrupoServico.Nome AS GrupoServico, viewSGT_RHFuncionario.nom_pessoa_fisic AS tecnico, 
+                      viewSGT_RHFuncionario_1.nom_pessoa_fisic AS solicitante
+FROM         sosChamado INNER JOIN
+                      sosServico ON sosChamado.IDServico = sosServico.IDServico INNER JOIN
+                      sosAcompanhamento AS sosAcompanhamento_1 ON sosChamado.IDChamado = sosAcompanhamento_1.IDChamado INNER JOIN
+                      sosGrupoServico ON sosServico.IDGrupoServico = sosGrupoServico.IDGrupoServico INNER JOIN
+                      viewSGT_RHFuncionario ON sosChamado.IDTecnico = viewSGT_RHFuncionario.cdn_funcionario INNER JOIN
+                      viewSGT_RHFuncionario AS viewSGT_RHFuncionario_1 ON sosChamado.IDSolicitante = viewSGT_RHFuncionario_1.cdn_funcionario
+WHERE     (sosAcompanhamento_1.IDStatus = 2) AND (sosChamado.IDStatus = 2)
+ORDER BY sosChamado.IDChamado</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IDChamado" DataSetColumn="IDChamado" />
+              <Mapping SourceColumn="Servico" DataSetColumn="Servico" />
+              <Mapping SourceColumn="IDTecnico" DataSetColumn="IDTecnico" />
+              <Mapping SourceColumn="IDStatus" DataSetColumn="IDStatus" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Demora" DataSetColumn="Demora" />
+              <Mapping SourceColumn="GrupoServico" DataSetColumn="GrupoServico" />
+              <Mapping SourceColumn="tecnico" DataSetColumn="tecnico" />
+              <Mapping SourceColumn="solicitante" DataSetColumn="solicitante" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsGestaoSos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsGestaoSos" msprop:Generator_DataSetName="dsGestaoSos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtServicos" msprop:Generator_UserTableName="dtServicos" msprop:Generator_RowDeletedName="dtServicosRowDeleted" msprop:Generator_RowChangedName="dtServicosRowChanged" msprop:Generator_RowClassName="dtServicosRow" msprop:Generator_RowChangingName="dtServicosRowChanging" msprop:Generator_RowEvArgName="dtServicosRowChangeEvent" msprop:Generator_RowEvHandlerName="dtServicosRowChangeEventHandler" msprop:Generator_TableClassName="dtServicosDataTable" msprop:Generator_TableVarName="tabledtServicos" msprop:Generator_RowDeletingName="dtServicosRowDeleting" msprop:Generator_TablePropName="dtServicos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="qtd" msdata:ReadOnly="true" msprop:Generator_UserColumnName="qtd" msprop:Generator_ColumnPropNameInRow="qtd" msprop:Generator_ColumnVarNameInTable="columnqtd" msprop:Generator_ColumnPropNameInTable="qtdColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Servico" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Servico" msprop:Generator_ColumnPropNameInRow="Servico" msprop:Generator_ColumnVarNameInTable="columnServico" msprop:Generator_ColumnPropNameInTable="ServicoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="63" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtDemora" msprop:Generator_UserTableName="dtDemora" msprop:Generator_RowDeletedName="dtDemoraRowDeleted" msprop:Generator_RowChangedName="dtDemoraRowChanged" msprop:Generator_RowClassName="dtDemoraRow" msprop:Generator_RowChangingName="dtDemoraRowChanging" msprop:Generator_RowEvArgName="dtDemoraRowChangeEvent" msprop:Generator_RowEvHandlerName="dtDemoraRowChangeEventHandler" msprop:Generator_TableClassName="dtDemoraDataTable" msprop:Generator_TableVarName="tabledtDemora" msprop:Generator_RowDeletingName="dtDemoraRowDeleting" msprop:Generator_TablePropName="dtDemora">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IDChamado" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IDChamado" msprop:Generator_ColumnVarNameInTable="columnIDChamado" msprop:Generator_ColumnPropNameInRow="IDChamado" msprop:Generator_ColumnPropNameInTable="IDChamadoColumn" type="xs:long" />
+              <xs:element name="Servico" msprop:Generator_UserColumnName="Servico" msprop:Generator_ColumnVarNameInTable="columnServico" msprop:Generator_ColumnPropNameInRow="Servico" msprop:Generator_ColumnPropNameInTable="ServicoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IDTecnico" msprop:Generator_UserColumnName="IDTecnico" msprop:Generator_ColumnVarNameInTable="columnIDTecnico" msprop:Generator_ColumnPropNameInRow="IDTecnico" msprop:Generator_ColumnPropNameInTable="IDTecnicoColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IDStatus" msprop:Generator_UserColumnName="IDStatus" msprop:Generator_ColumnVarNameInTable="columnIDStatus" msprop:Generator_ColumnPropNameInRow="IDStatus" msprop:Generator_ColumnPropNameInTable="IDStatusColumn" type="xs:int" />
+              <xs:element name="Expr1" msprop:Generator_UserColumnName="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" type="xs:int" />
+              <xs:element name="Demora" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Demora" msprop:Generator_ColumnVarNameInTable="columnDemora" msprop:Generator_ColumnPropNameInRow="Demora" msprop:Generator_ColumnPropNameInTable="DemoraColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="GrupoServico" msprop:Generator_UserColumnName="GrupoServico" msprop:Generator_ColumnVarNameInTable="columnGrupoServico" msprop:Generator_ColumnPropNameInRow="GrupoServico" msprop:Generator_ColumnPropNameInTable="GrupoServicoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tecnico" msprop:Generator_UserColumnName="tecnico" msprop:Generator_ColumnVarNameInTable="columntecnico" msprop:Generator_ColumnPropNameInRow="tecnico" msprop:Generator_ColumnPropNameInTable="tecnicoColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="solicitante" msprop:Generator_UserColumnName="solicitante" msprop:Generator_ColumnVarNameInTable="columnsolicitante" msprop:Generator_ColumnPropNameInRow="solicitante" msprop:Generator_ColumnPropNameInTable="solicitanteColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="80" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Expr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" type="xs:long" />
+              <xs:element name="descricao" msdata:ReadOnly="true" msprop:Generator_UserColumnName="descricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

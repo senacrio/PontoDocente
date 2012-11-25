@@ -1,0 +1,93 @@
+﻿<%@ Master Language="VB" CodeFile="CDTS.master.vb" Inherits="CDTS" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>CDTS</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="App_Themes/Geral/StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+        <div id="pai">
+       
+            <div id="cabecalho">
+                
+                <div id="cabecalho_brasil">
+                
+	                <div id="cabecalho_brasil_esq">
+	                    <a href="http://www.saude.gov.br" target="_blank" title="Ministério da Saúde">
+                            <img src="Imagens/MS.jpg" title="Ministério da Saúde" alt="Ministério da Saúde" border="0" />
+                        </a>
+	                </div>
+	                
+	                <div id="cabecalho_brasil_mei">
+                        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
+                            style="font-size: x-small;background-color: #FFCC00">
+                            <asp:ListItem Value="/cgi/cgilua.exe/sys/start.htm">Destaques do Governo</asp:ListItem>
+                            <asp:ListItem Value="http://www.brasil.gov.br">Portal do Governo Federal</asp:ListItem>
+                            <asp:ListItem Value="http://www.e.gov.br">Porta de serviços do governo</asp:ListItem>
+                            <asp:ListItem Value="http://www.radiobras.gov.br">Portal da agência de notícias</asp:ListItem>
+                            <asp:ListItem Value="http://www.previdenciasocial.gov.br/reforma">Reforma da 
+                            previdência</asp:ListItem>
+                            <asp:ListItem Value="http://www.fomezero.gov.br">Programa forme zero</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    
+                    <div id="cabecalho_brasil_dir" align="right">
+	                    <a href="http://www.brasil.gov.br" target="_blank" title="Governo Federal" ><img src="Imagens/Brasil.jpg" title="Governo Federal" alt="Governo Federal" border="0" /></a>
+	                </div>
+	                
+	            </div>                
+                
+                <div id="cabecalho_fiocruz">
+                
+                    <table background="Imagens/bg_fiocruz.jpg" height="33px" cellpadding="0px" cellspacing="0px" width="100%">
+                        <tr>
+                            <td><asp:Image ID="Image1" runat="server" ImageUrl="~/Imagens/logo.jpg" /></td>
+                            <td valign="middle">
+                                <asp:HyperLink ID="HyperLink1" runat="server" Font-Bold="True" 
+                                    Font-Names="arial" Font-Overline="False" Font-Size="7.5pt" Font-Underline="False" 
+                                    ForeColor="#030043" 
+                                    NavigateUrl="http://www.fiocruz.br/cgi/cgilua.exe/sys/start.htm?tpl=faleconosco#">Fale 
+                                com a Fiocruz</asp:HyperLink>
+                            </td>
+                            <td align="right"><asp:Image ID="Image2" runat="server" ImageUrl="~/Imagens/titulo_fiocruz.jpg" /></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div id="CDTS">
+                <asp:Image ID="Image3" runat="server" ImageUrl="~/Imagens/CDTS.gif" />
+            </div>
+                
+            <div id="menu_esquerda" dir="ltr">
+                    <asp:TreeView ID="tvMenu" runat="server" ExpandDepth="5" ForeColor="White" 
+                        NodeIndent="10" NodeWrap="True" ShowLines="True">
+                        <HoverNodeStyle ForeColor="#FFFFCC" />
+                        <SelectedNodeStyle ForeColor="#99CCFF" />
+                    </asp:TreeView>
+            </div>             
+
+            <div id="menu_base">
+                <asp:Image ID="Image4" runat="server" ImageUrl="~/Imagens/MenuBase.gif" />
+            </div>
+
+            <div id="conteudo">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+                        
+            <div id="rodape">
+                <span class="FontePequena">Av. Brasil, 4.356 - Rio de Janeiro, RJ, CEP 21040-360. Telefone: (21)3836-1212 - Fax: (21) 3836-1212.
+                </span>
+            </div>
+            
+        </div>  
+    </form>
+</body>
+</html>

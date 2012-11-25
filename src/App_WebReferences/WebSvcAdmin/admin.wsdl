@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s3="http://schemas.microsoft.com/office/project/server/webservices/UnsubmittedTimesheetDataSet/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:s6="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s4="http://schemas.microsoft.com/office/project/server/webservices/TimesheetAuditExportDataSet/" xmlns:tns="http://schemas.microsoft.com/office/project/server/webservices/Admin/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s5="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Admin/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Admin web service for Microsoft Project Server.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/Admin/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetAuditExportDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/UnsubmittedTimesheetDataSet/" />
+      <s:import namespace="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" />
+      <s:element name="GetActiveDirectorySyncEnterpriseResourcePoolSettings">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetActiveDirectorySyncEnterpriseResourcePoolSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveDirectorySyncEnterpriseResourcePoolSettingsResult" type="tns:ADSyncERPSettings" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ADSyncERPSettings">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduledUpdates" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:ADSyncStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ADGroupGuid" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ADGroupFQDN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateFrequency" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateFrequencyUnit" type="tns:ADSyncFrequencyUnit" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartUpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AutoReactivateInactiveUsers" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ADSyncStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="NeverRun" />
+          <s:enumeration value="PartialFail" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="GroupNotFound" />
+          <s:enumeration value="Succeeded" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ADSyncFrequencyUnit">
+        <s:restriction base="s:string">
+          <s:enumeration value="Days" />
+          <s:enumeration value="Weeks" />
+          <s:enumeration value="Months" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="SetActiveDirectorySyncEnterpriseResourcePoolSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="settings" type="tns:ADSyncERPSettings" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetActiveDirectorySyncEnterpriseResourcePoolSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetActiveDirectorySyncGroupSettings">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetActiveDirectorySyncGroupSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveDirectorySyncGroupSettingsResult" type="tns:ADSyncGroupSettings" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ADSyncGroupSettings">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ScheduledUpdates" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:ADSyncStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateFrequency" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateFrequencyUnit" type="tns:ADSyncFrequencyUnit" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartUpdateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="AutoReactivateInactiveUsers" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetActiveDirectorySyncGroupSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="settings" type="tns:ADSyncGroupSettings" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetActiveDirectorySyncGroupSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueADSyncJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="erpSync" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="groupSync" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueADSyncJobResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadLineClasses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="type" type="tns:LineClassType" />
+            <s:element minOccurs="1" maxOccurs="1" name="classState" type="tns:LineClassState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="LineClassType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Regular" />
+          <s:enumeration value="NonWork" />
+          <s:enumeration value="NonProject" />
+          <s:enumeration value="AllNonProject" />
+          <s:enumeration value="All" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LineClassState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Enabled" />
+          <s:enumeration value="Disabled" />
+          <s:enumeration value="All" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadLineClassesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadLineClassesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadPeriods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="p0" type="tns:PeriodState" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="PeriodState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Open" />
+          <s:enumeration value="Closed" />
+          <s:enumeration value="All" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadPeriodsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPeriodsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeTimesheetAuditLog">
+        <s:complexType />
+      </s:element>
+      <s:element name="PurgeTimesheetAuditLogResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadTimesheetAuditLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="auditStart" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="auditFinish" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="periodStart" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="periodFinish" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="auditType" type="tns:AuditType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AuditType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ByResource" />
+          <s:enumeration value="ByAdjuster" />
+          <s:enumeration value="ByBoth" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ReadTimesheetAuditLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadTimesheetAuditLogResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetAuditExportDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateReportingPeriods">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="validationOnly" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateReportingPeriodsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateLineClasses">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLineClassesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadPeriodsWithUnsubmittedTimesheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="periods" type="tns:ArrayOfGuid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadPeriodsWithUnsubmittedTimesheetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadPeriodsWithUnsubmittedTimesheetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/UnsubmittedTimesheetDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetNotificationAdminInfoNoResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WADMIN_ORG_EMAIL_ADDRESS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WADMIN_NTFY_FROM_EMAIL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WADMIN_NTFY_EMAIL_TRAILER" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WADMIN_SMTP_SERVER_NAME" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="WADMIN_SMTP_SERVER_PORT" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="WADMIN_EMAIL_CHARSET" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetNotificationAdminInfoNoResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SetNotificationAdminInfoNoResultResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListInstalledLanguages">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListInstalledLanguagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListInstalledLanguagesResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ReadServerVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadServerVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadServerVersionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSingleCurrencyEnforced">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSingleCurrencyEnforcedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSingleCurrencyEnforcedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSingleCurrencyEnforced">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="bEnforced" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetSingleCurrencyEnforcedResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerCurrency">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetServerCurrencyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServerCurrencyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetServerCurrency">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sCurrency" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetServerCurrencyResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadStatusingSettings">
+        <s:complexType />
+      </s:element>
+      <s:element name="ReadStatusingSettingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadStatusingSettingsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStatusingSettings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDelta">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStatusingSettingsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="QueueApplyResourceCapacityTimeRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobUid" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="forceFullSync" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="QueueApplyResourceCapacityTimeRangeResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+    <xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" xmlns="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/StatusingSettingsDataSet/" id="StatusingSettingsDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="StatusingSettingsDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="StatusingSettings">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WADMIN_UIDFAKE" type="xs:string" />
+                  <xs:element minOccurs="0" name="WADMIN_DEFAULT_TRACKING_METHOD" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_IS_TRACKING_METHOD_LOCKED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WADMIN_PROTECT_ACTUALS" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_STAT_LOOK_AHEAD" type="xs:int" />
+                  <xs:element minOccurs="0" name="WADMIN_STAT_PERIOD_TYPE" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="WADMIN_TS_DEF_ENTRY_MODE_ENUM" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="WADMIN_WEEK_START_ON_ENUM" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_STAT_ENABLE_DOWNLOAD" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="WADMIN_TS_OUTLOOK_DISPLAY_ENUM" type="xs:unsignedByte" />
+                  <xs:element name="WADMIN_STAT_TIMESHEET_TIED" type="xs:boolean" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/UnsubmittedTimesheetDataSet/" xmlns="http://schemas.microsoft.com/office/project/server/webservices/UnsubmittedTimesheetDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/UnsubmittedTimesheetDataSet/" id="UnsubmittedTimesheetDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="UnsubmittedTimesheetDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="TimePeriods">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WPRD_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WPRD_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WPRD_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WPRD_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="RES_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_STATUS_ENUM" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:TimePeriods" />
+          <xs:field xpath="mstns:WPRD_UID" />
+          <xs:field xpath="mstns:RES_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetAuditExportDataSet/" xmlns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetAuditExportDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetAuditExportDataSet/" id="TimesheetAuditExportDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="TimesheetAuditExportDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="AuditExports">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="ASSN_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="TASK_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" minOccurs="0" name="PROJ_UID" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_CLASS_UID" type="xs:string" />
+                  <xs:element name="TS_LINE_VALIDATION_TYPE" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="TS_LINE_CACHED_ASSIGN_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CACHED_PROJ_NAME" type="xs:string" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_ACT_AUD_UID" type="xs:string" />
+                  <xs:element name="TS_ACT_AUD_OPERATION_ENUM" type="xs:unsignedByte" />
+                  <xs:element name="TS_ACT_START_DATE" type="xs:dateTime" />
+                  <xs:element name="TS_ACT_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_SEQUENCE" type="xs:long" />
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="RES_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_OVT_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_NONBILL_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element minOccurs="0" name="TS_ACT_AUD_NONBILL_OVT_DELTA_VALUE" type="xs:decimal" />
+                  <xs:element msdata:ReadOnly="true" minOccurs="0" name="TS_ACT_AUD_CACHED_RES_NAME" type="xs:string" />
+                  <xs:element name="TS_ACT_AUD_RES_ROLE" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" xmlns="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimesheetLineClassDataSet/" id="TimesheetLineClassDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="TimesheetLineClassDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="LineClasses">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="TS_LINE_CLASS_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_IS_EDITABLE" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_DESC" type="xs:string" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_IS_DISABLED" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_ALWAYS_DISPLAY" type="xs:boolean" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_TYPE" type="xs:unsignedByte" />
+                  <xs:element minOccurs="0" name="TS_LINE_CLASS_NEED_APPROVAL" type="xs:boolean" />
+                  <xs:element name="TS_LINE_CLASS_ORGANIZATION" type="xs:string" />
+                  <xs:element minOccurs="0" name="MOD_DATE" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:LineClasses" />
+          <xs:field xpath="mstns:TS_LINE_CLASS_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" xmlns="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/office/project/server/webservices/TimePeriodDataSet/" id="TimePeriodDataSet" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="TimePeriodDataSet">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="TimePeriods">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" name="WPRD_UID" type="xs:string" />
+                  <xs:element minOccurs="0" name="WPRD_START_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WPRD_FINISH_DATE" type="xs:dateTime" />
+                  <xs:element minOccurs="0" name="WPRD_NAME" type="xs:string" />
+                  <xs:element minOccurs="0" name="WPRD_STATE_ENUM" type="xs:unsignedByte" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+          <xs:selector xpath=".//mstns:TimePeriods" />
+          <xs:field xpath="mstns:WPRD_UID" />
+        </xs:unique>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="GetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveDirectorySyncEnterpriseResourcePoolSettings" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveDirectorySyncEnterpriseResourcePoolSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetActiveDirectorySyncEnterpriseResourcePoolSettings" />
+  </wsdl:message>
+  <wsdl:message name="SetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetActiveDirectorySyncEnterpriseResourcePoolSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveDirectorySyncGroupSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveDirectorySyncGroupSettings" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveDirectorySyncGroupSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveDirectorySyncGroupSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetActiveDirectorySyncGroupSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:SetActiveDirectorySyncGroupSettings" />
+  </wsdl:message>
+  <wsdl:message name="SetActiveDirectorySyncGroupSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:SetActiveDirectorySyncGroupSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueADSyncJobSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueADSyncJob" />
+  </wsdl:message>
+  <wsdl:message name="QueueADSyncJobSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueADSyncJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadLineClassesSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadLineClasses" />
+  </wsdl:message>
+  <wsdl:message name="ReadLineClassesSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadLineClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPeriodsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPeriods" />
+  </wsdl:message>
+  <wsdl:message name="ReadPeriodsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeTimesheetAuditLogSoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeTimesheetAuditLog" />
+  </wsdl:message>
+  <wsdl:message name="PurgeTimesheetAuditLogSoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeTimesheetAuditLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetAuditLogSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetAuditLog" />
+  </wsdl:message>
+  <wsdl:message name="ReadTimesheetAuditLogSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadTimesheetAuditLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateReportingPeriodsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateReportingPeriods" />
+  </wsdl:message>
+  <wsdl:message name="UpdateReportingPeriodsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateReportingPeriodsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLineClassesSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLineClasses" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLineClassesSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLineClassesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadPeriodsWithUnsubmittedTimesheetSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadPeriodsWithUnsubmittedTimesheet" />
+  </wsdl:message>
+  <wsdl:message name="ReadPeriodsWithUnsubmittedTimesheetSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadPeriodsWithUnsubmittedTimesheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetNotificationAdminInfoNoResultSoapIn">
+    <wsdl:part name="parameters" element="tns:SetNotificationAdminInfoNoResult" />
+  </wsdl:message>
+  <wsdl:message name="SetNotificationAdminInfoNoResultSoapOut">
+    <wsdl:part name="parameters" element="tns:SetNotificationAdminInfoNoResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListInstalledLanguagesSoapIn">
+    <wsdl:part name="parameters" element="tns:ListInstalledLanguages" />
+  </wsdl:message>
+  <wsdl:message name="ListInstalledLanguagesSoapOut">
+    <wsdl:part name="parameters" element="tns:ListInstalledLanguagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadServerVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadServerVersion" />
+  </wsdl:message>
+  <wsdl:message name="ReadServerVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadServerVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSingleCurrencyEnforcedSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSingleCurrencyEnforced" />
+  </wsdl:message>
+  <wsdl:message name="GetSingleCurrencyEnforcedSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSingleCurrencyEnforcedResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetSingleCurrencyEnforcedSoapIn">
+    <wsdl:part name="parameters" element="tns:SetSingleCurrencyEnforced" />
+  </wsdl:message>
+  <wsdl:message name="SetSingleCurrencyEnforcedSoapOut">
+    <wsdl:part name="parameters" element="tns:SetSingleCurrencyEnforcedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServerCurrencySoapIn">
+    <wsdl:part name="parameters" element="tns:GetServerCurrency" />
+  </wsdl:message>
+  <wsdl:message name="GetServerCurrencySoapOut">
+    <wsdl:part name="parameters" element="tns:GetServerCurrencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetServerCurrencySoapIn">
+    <wsdl:part name="parameters" element="tns:SetServerCurrency" />
+  </wsdl:message>
+  <wsdl:message name="SetServerCurrencySoapOut">
+    <wsdl:part name="parameters" element="tns:SetServerCurrencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadStatusingSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadStatusingSettings" />
+  </wsdl:message>
+  <wsdl:message name="ReadStatusingSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadStatusingSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusingSettingsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateStatusingSettings" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusingSettingsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateStatusingSettingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="QueueApplyResourceCapacityTimeRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:QueueApplyResourceCapacityTimeRange" />
+  </wsdl:message>
+  <wsdl:message name="QueueApplyResourceCapacityTimeRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:QueueApplyResourceCapacityTimeRangeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AdminSoap">
+    <wsdl:operation name="GetActiveDirectorySyncEnterpriseResourcePoolSettings">
+      <wsdl:input message="tns:GetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapIn" />
+      <wsdl:output message="tns:GetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetActiveDirectorySyncEnterpriseResourcePoolSettings">
+      <wsdl:input message="tns:SetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapIn" />
+      <wsdl:output message="tns:SetActiveDirectorySyncEnterpriseResourcePoolSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDirectorySyncGroupSettings">
+      <wsdl:input message="tns:GetActiveDirectorySyncGroupSettingsSoapIn" />
+      <wsdl:output message="tns:GetActiveDirectorySyncGroupSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetActiveDirectorySyncGroupSettings">
+      <wsdl:input message="tns:SetActiveDirectorySyncGroupSettingsSoapIn" />
+      <wsdl:output message="tns:SetActiveDirectorySyncGroupSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueADSyncJob">
+      <wsdl:input message="tns:QueueADSyncJobSoapIn" />
+      <wsdl:output message="tns:QueueADSyncJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadLineClasses">
+      <wsdl:input message="tns:ReadLineClassesSoapIn" />
+      <wsdl:output message="tns:ReadLineClassesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPeriods">
+      <wsdl:input message="tns:ReadPeriodsSoapIn" />
+      <wsdl:output message="tns:ReadPeriodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeTimesheetAuditLog">
+      <wsdl:input message="tns:PurgeTimesheetAuditLogSoapIn" />
+      <wsdl:output message="tns:PurgeTimesheetAuditLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetAuditLog">
+      <wsdl:input message="tns:ReadTimesheetAuditLogSoapIn" />
+      <wsdl:output message="tns:ReadTimesheetAuditLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReportingPeriods">
+      <wsdl:input message="tns:UpdateReportingPeriodsSoapIn" />
+      <wsdl:output message="tns:UpdateReportingPeriodsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLineClasses">
+      <wsdl:input message="tns:UpdateLineClassesSoapIn" />
+      <wsdl:output message="tns:UpdateLineClassesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPeriodsWithUnsubmittedTimesheet">
+      <wsdl:input message="tns:ReadPeriodsWithUnsubmittedTimesheetSoapIn" />
+      <wsdl:output message="tns:ReadPeriodsWithUnsubmittedTimesheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetNotificationAdminInfoNoResult">
+      <wsdl:input message="tns:SetNotificationAdminInfoNoResultSoapIn" />
+      <wsdl:output message="tns:SetNotificationAdminInfoNoResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListInstalledLanguages">
+      <wsdl:input message="tns:ListInstalledLanguagesSoapIn" />
+      <wsdl:output message="tns:ListInstalledLanguagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadServerVersion">
+      <wsdl:input message="tns:ReadServerVersionSoapIn" />
+      <wsdl:output message="tns:ReadServerVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleCurrencyEnforced">
+      <wsdl:input message="tns:GetSingleCurrencyEnforcedSoapIn" />
+      <wsdl:output message="tns:GetSingleCurrencyEnforcedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSingleCurrencyEnforced">
+      <wsdl:input message="tns:SetSingleCurrencyEnforcedSoapIn" />
+      <wsdl:output message="tns:SetSingleCurrencyEnforcedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServerCurrency">
+      <wsdl:input message="tns:GetServerCurrencySoapIn" />
+      <wsdl:output message="tns:GetServerCurrencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetServerCurrency">
+      <wsdl:input message="tns:SetServerCurrencySoapIn" />
+      <wsdl:output message="tns:SetServerCurrencySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadStatusingSettings">
+      <wsdl:input message="tns:ReadStatusingSettingsSoapIn" />
+      <wsdl:output message="tns:ReadStatusingSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusingSettings">
+      <wsdl:input message="tns:UpdateStatusingSettingsSoapIn" />
+      <wsdl:output message="tns:UpdateStatusingSettingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="QueueApplyResourceCapacityTimeRange">
+      <wsdl:input message="tns:QueueApplyResourceCapacityTimeRangeSoapIn" />
+      <wsdl:output message="tns:QueueApplyResourceCapacityTimeRangeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AdminSoap" type="tns:AdminSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActiveDirectorySyncEnterpriseResourcePoolSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetActiveDirectorySyncEnterpriseResourcePoolSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActiveDirectorySyncEnterpriseResourcePoolSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetActiveDirectorySyncEnterpriseResourcePoolSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDirectorySyncGroupSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetActiveDirectorySyncGroupSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActiveDirectorySyncGroupSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetActiveDirectorySyncGroupSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueADSyncJob">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/QueueADSyncJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLineClasses">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadLineClasses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPeriods">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeTimesheetAuditLog">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/PurgeTimesheetAuditLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetAuditLog">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadTimesheetAuditLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReportingPeriods">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/UpdateReportingPeriods" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLineClasses">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/UpdateLineClasses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPeriodsWithUnsubmittedTimesheet">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadPeriodsWithUnsubmittedTimesheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNotificationAdminInfoNoResult">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetNotificationAdminInfoNoResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListInstalledLanguages">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ListInstalledLanguages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadServerVersion">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadServerVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleCurrencyEnforced">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetSingleCurrencyEnforced" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSingleCurrencyEnforced">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetSingleCurrencyEnforced" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerCurrency">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetServerCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetServerCurrency">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetServerCurrency" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadStatusingSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadStatusingSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusingSettings">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/UpdateStatusingSettings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueApplyResourceCapacityTimeRange">
+      <soap:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/QueueApplyResourceCapacityTimeRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AdminSoap12" type="tns:AdminSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActiveDirectorySyncEnterpriseResourcePoolSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetActiveDirectorySyncEnterpriseResourcePoolSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActiveDirectorySyncEnterpriseResourcePoolSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetActiveDirectorySyncEnterpriseResourcePoolSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveDirectorySyncGroupSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetActiveDirectorySyncGroupSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetActiveDirectorySyncGroupSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetActiveDirectorySyncGroupSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueADSyncJob">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/QueueADSyncJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadLineClasses">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadLineClasses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPeriods">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadPeriods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeTimesheetAuditLog">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/PurgeTimesheetAuditLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadTimesheetAuditLog">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadTimesheetAuditLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReportingPeriods">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/UpdateReportingPeriods" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLineClasses">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/UpdateLineClasses" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPeriodsWithUnsubmittedTimesheet">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadPeriodsWithUnsubmittedTimesheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetNotificationAdminInfoNoResult">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetNotificationAdminInfoNoResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListInstalledLanguages">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ListInstalledLanguages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadServerVersion">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadServerVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSingleCurrencyEnforced">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetSingleCurrencyEnforced" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSingleCurrencyEnforced">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetSingleCurrencyEnforced" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServerCurrency">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/GetServerCurrency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetServerCurrency">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/SetServerCurrency" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadStatusingSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/ReadStatusingSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatusingSettings">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/UpdateStatusingSettings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="QueueApplyResourceCapacityTimeRange">
+      <soap12:operation soapAction="http://schemas.microsoft.com/office/project/server/webservices/Admin/QueueApplyResourceCapacityTimeRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Admin">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Contains the Admin web service for Microsoft Project Server.</wsdl:documentation>
+    <wsdl:port name="AdminSoap" binding="tns:AdminSoap">
+      <soap:address location="http://epm/_vti_bin/psi/admin.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AdminSoap12" binding="tns:AdminSoap12">
+      <soap12:address location="http://epm/_vti_bin/psi/admin.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,91 @@
+﻿body {
+}
+#divPrincipal h6
+        {
+            display:block;
+            width:1061px;
+            text-align:left;
+            font-family: Verdana;
+            font-size: 11px;
+            color: #0066CC;
+        }
+        
+        #divPrincipal
+        {
+            width:1061px;
+            margin:0px 0px 0px 5px;
+    height: 4493px;
+}
+        
+  
+        #divPrincipal table
+        {
+            width:64%;
+            
+            font-family:verdana;
+            font-size:11px;
+            color:#336699;
+            text-align:left;
+            margin-right: 0px;
+	margin-bottom: 0px;
+}
+        #divPrincipal .TabelaControlesTopo
+        {
+            width:100%;
+            font-family:verdana;
+            font-size:11px;
+            color:#336699;
+            text-align:left;
+         
+            
+        
+        }
+         #divPrincipal .TabelaControles
+        {
+            width:471px;
+            
+            font-family:verdana;
+            font-size:11px;
+            color:#336699;
+            text-align:center;
+        
+        }
+        #divPrincipal .iteminclusao
+        {
+            width:200px;
+            
+            font-family:verdana;
+            font-size:11px;
+            color:#336699;
+            text-align:left;
+        
+        }
+      
+		 /* HACK PARA CORRIGIR O MARGIN-BOTTOM*/
+        html>body #divPrincipal legend{
+        	margin-bottom: 10px;
+        	color:#336699;
+        }
+        #divPrincipal .botao{
+	       display:inline;
+	       margin:2px 0px 0px 0px;
+	width: 16px;
+}
+        #divPrincipal fieldset
+        {
+                     border:1px solid #336699;
+                     width:760px;
+                     font-size:12px;
+                     padding:0px 0px 10px 10px;
+        
+        }
+         
+        #divPrincipal select{
+	        border: 1px solid #333;
+	        font-size: 13px;
+	        margin-bottom: 2px;
+	        color: #0E0659;
+    margin-left: 0px;
+}
+    
+    

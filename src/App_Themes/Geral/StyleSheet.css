@@ -1,0 +1,114 @@
+﻿body 
+{
+    margin: 0;
+    padding:0;
+}
+
+#pai
+{
+    width:777px;
+    text-align:left;
+    background-color:White;
+}
+
+#cabecalho
+{
+
+    padding:0;
+    margin:0;
+}
+
+#cabecalho_brasil
+{
+    background-color: #FFCC00;
+    height: 20px;
+    padding:0;
+    margin:0 auto;
+}
+
+#cabecalho_brasil_esq
+{
+    float:left;
+    width:33%;
+    padding:0;
+    margin:0 auto;
+}
+#cabecalho_brasil_mei
+{
+    width:33%;
+    float:left;    
+    padding:0;
+    margin:0 auto;
+}
+    
+#cabecalho_brasil_dir
+{
+    width:33%;
+    float:left;    
+    padding:0;
+    margin:0 auto;
+}
+
+#cabecalho_fiocruz
+{
+    height:33px;
+    background-image:"~/Imagens/bg_fiocruz.jpg";
+    padding:0;
+    margin:0 auto;
+}
+#CDTS
+{
+    margin:0;
+    width: 206px;
+    background-color: #285A82;
+
+}    
+
+#menu_esquerda
+{
+    margin: 0;
+    font-family: Verdana;
+    font-size: 8pt;
+    width: 206px;
+    padding: 0;
+    background-color: #285A82;
+}
+
+#menu_base
+{
+    margin:0;
+    padding:0;
+}    
+    
+#conteudo
+{
+    font-family:Verdana, Helvetica, Arial;
+    font-size:10;
+    color: #003399;
+    width: 565px;
+    padding: 0;
+    margin: 0 auto;
+    vertical-align: top;
+    position: absolute;
+    left: 210px;
+    top: 60px;
+}
+
+#rodape
+{
+    color: Gray;
+    text-align:center;
+    padding:0;
+    margin:0;
+}
+
+.FontePequena
+{
+    font-family: Verdana;
+    font-style: italic;
+    font-size: xx-small;
+    background-color: #F3F7FC;
+    width: 100%;
+}
+    
+

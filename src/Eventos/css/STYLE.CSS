@@ -1,0 +1,34 @@
+.FormFont {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; color: #000000}
+.SemLinha {  text-decoration: none}
+.LinhaBrancaTabela {  border-color: black black #FFFFFF; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px}
+.EmVermelho {
+	color: #FFFF00;
+	text-decoration: none;
+	font-size: medium;
+	border: #FFFF00;
+}
+.FixarFundo {
+	background-attachment: fixed;
+	background-image: url(../images/Fundogs.gif);
+	border: 1px solid #CC0000;
+
+}
+.EmAmarelo {  color: #FFFF00; text-decoration: none}
+.BordasLaterais {
+	border: 4px outset #FFFFFF;
+
+}
+.Fidel {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	color: #990033;
+	background-color: #E8E8E8;
+}
+.FormFont1 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; color: #990033; background-color: #FFFFCC}
+.Fonte2 {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9px; font-style: normal; color: #333333; background-color: #FFCC33}
+.FixarFundo1 {
+
+	background-attachment: fixed;
+	background-image: url(../images/Fundogs.gif);
+	border: 1px solid #FF6600;
+}

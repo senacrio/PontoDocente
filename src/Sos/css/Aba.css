@@ -1,0 +1,48 @@
+﻿.tab 
+{
+    margin-left : 15px;
+	font-family: Verdana;
+	font-size: x-small;
+}
+
+ 
+
+.item
+{
+      background: #507CD1;
+      color: white;
+      text-transform: capitalize;
+      padding-left:5px;
+      padding-right:5px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+}
+
+ 
+
+.selectedTab
+{
+      font-style: italic;
+      font-weight: bold;
+      background: #284E98;
+}
+
+ 
+
+.tab a:hover
+{
+      text-decoration: underline; 
+}
+
+ 
+
+ 
+
+.conteudo
+{
+      border-top : 1px solid #507CD1;
+      border-bottom : 1px solid #507CD1;
+      border-left : 1px solid #507CD1;
+      border-right : 1px solid #507CD1;
+      margin-bottom:10px;
+}

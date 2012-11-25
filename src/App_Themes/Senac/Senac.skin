@@ -1,0 +1,66 @@
+<asp:GridView	runat="server"
+				BackColor="White" 
+				BorderColor="#CCCCCC"
+				BorderStyle="None"
+				BorderWidth="1px"
+				CellPadding="3" 
+				Font-Names="Arial,Helvetica,Verdana"
+				Font-Size="Small">
+	<pagersettings position="TopAndBottom" />
+	<pagerstyle backcolor="White" forecolor="#000066" horizontalalign="Left" />
+	<footerstyle backcolor="White" forecolor="#000066" />
+	<rowstyle backcolor="#F7F7F7" forecolor="#000066" />
+	<selectedrowstyle backcolor="#FFFF99" font-bold="True" forecolor="Black" />
+	<headerstyle backcolor="#006699" font-bold="True" forecolor="White" />
+	<AlternatingRowStyle BackColor="White" />
+</asp:GridView>
+
+<asp:DetailsView	runat="server" 
+					Font-Names="Arial, Helvetica, Verdana"
+					Font-Size="Small" />
+
+<asp:Button	runat="server"
+			BackColor=""
+			Font-Bold="False"
+			Font-Italic="False"
+			Font-Names="Arial,Helvetica,Verdana"
+			Font-Size="Small"
+			ForeColor="Black" 
+			onmouseOver="style.color='blue'"
+			onmouseOut="style.color='black'" />
+
+<asp:TextBox	runat="server"
+				Font-Bold="False"
+				Font-Italic="False"
+				Font-Names="Arial,Helvetica,Verdana"
+				Font-Size="Small"
+				ForeColor="Navy" 
+				onclick="style.backgroundColor='#FFFF99'"
+				onBlur="style.backgroundColor='white'"/>
+
+<asp:DropDownList	runat="server"
+					Font-Bold="False"
+					Font-Italic="False"
+					Font-Names="Arial,Helvetica,Verdana"
+					Font-Size="Small"
+					ForeColor="Navy" 
+					/>
+
+<asp:CheckBox	runat="server"
+				Font-Names="Arial,Helvetica,Verdana"
+				Font-Size="Small"
+				ForeColor="Black" />
+
+<asp:Panel	runat="server"
+			Font-Names="Arial,Helvetica,Verdana"
+			Font-Size="Small"
+			ForeColor="Black"
+			backcolor="White" />
+
+<asp:Panel	runat="server" SkinID="PanelSenac"
+			Font-Names="Arial,Helvetica,Verdana"
+			Font-Size="Small"
+			ForeColor="Black"
+			backcolor="White"
+			Style="border-style: solid; border-width: 3px 1px 1px 1px; border-color: #306897; background-color: White;" />
+

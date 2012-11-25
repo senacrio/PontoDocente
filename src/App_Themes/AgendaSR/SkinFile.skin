@@ -1,0 +1,39 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+<asp:RegularExpressionValidator runat="server" style="font-size: 10px; color: #FF3300"></asp:RegularExpressionValidator>
+<asp:RequiredFieldValidator runat="server" style="font-size: 10px; color: #FF3300; margin-bottom:4px;"></asp:RequiredFieldValidator>
+<asp:CompareValidator runat="server" style="font-size: 10px; color: #FF3300"></asp:CompareValidator>
+
+
+<asp:TextBox runat="server" Font-Size="12px" ></asp:TextBox>
+<asp:Label runat="server" style="font-family: Verdana; font-size: 10px; color: #333333; display:block; float: left; margin-top:7px"></asp:Label>
+<asp:Button runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"/>
+<asp:LinkButton runat="server" style="font-family: Verdana; font-size: 12px; color: #333333">LinkButton</asp:LinkButton>
+<asp:ImageButton runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"/>
+<asp:HyperLink  runat="server" style="font-family: Verdana; font-size: 12px; color: #333333">HyperLink</asp:HyperLink>
+    
+<asp:DropDownList runat="server" style="font-family: Verdana; font-size: 12px;height:18px; color: #333333; border-left: 1px solid #000000; border-right:1px solid #000000; border-top:1px solid #000000; border-bottom:1px solid #000000; margin-bottom:2px">
+</asp:DropDownList>
+    
+<asp:ListBox runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"></asp:ListBox>
+<asp:CheckBox runat="server" />
+    
+<asp:Panel runat="server" ></asp:Panel>   
+<asp:RadioButton runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"/>
+<asp:RadioButtonList runat="server" style="font-family: Verdana; font-size: 12px; color: #333333">
+</asp:RadioButtonList>
+    
+

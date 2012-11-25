@@ -1,0 +1,54 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+<asp:RegularExpressionValidator runat="server" style="font-size: 10px; color: #FF3300"></asp:RegularExpressionValidator>
+<asp:RequiredFieldValidator runat="server" style="font-size: 10px; color: #FF3300; margin-bottom:4px;"></asp:RequiredFieldValidator>
+<asp:CompareValidator runat="server" style="font-size: 10px; color: #FF3300"></asp:CompareValidator>
+
+
+<asp:TextBox runat="server" style="font-family: Verdana; font-size: 12px;height:15px; color: #333333; border-left: 1px solid #006699; border-right:1px solid #006699; border-top:1px solid #006699; border-bottom:1px solid #006699; margin-bottom:2px"></asp:TextBox>
+<asp:Label runat="server" style="font-family: Verdana; font-size: 10px; color: #333333; display:block; width: 135px; float: left; margin-top:7px"></asp:Label>
+<asp:Button runat="server" Text="Button" style="font-family: Verdana; font-size: 12px; color: #333333"/>
+<asp:LinkButton runat="server" style="font-family: Verdana; font-size: 12px; color: #333333">LinkButton</asp:LinkButton>
+<asp:ImageButton runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"/>
+<asp:HyperLink  runat="server" style="font-family: Verdana; font-size: 12px; color: #333333">HyperLink</asp:HyperLink>
+    
+<asp:DropDownList runat="server" style="font-family: Verdana; font-size: 12px;height:20px; color: #333333; border-left: 1px solid #006699; border-right:1px solid #006699; border-top:1px solid #006699; border-bottom:1px solid #006699; margin-bottom:2px">
+</asp:DropDownList>
+    
+<asp:ListBox runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"></asp:ListBox>
+<asp:CheckBox runat="server" />
+    
+<asp:Panel runat="server"  Width="780px"></asp:Panel>   
+<asp:RadioButton runat="server" style="font-family: Verdana; font-size: 12px; color: #333333"/>
+<asp:RadioButtonList runat="server" style="font-family: Verdana; font-size: 12px; color: #333333">
+</asp:RadioButtonList>
+    
+<asp:GridView runat="server" CellPadding="2" cellspacing="0"
+    ForeColor="#333333" 
+    ShowFooter="True"
+    GridLines="None" AllowPaging="True" PageSize="15" Font-Names="verdana" 
+    Font-Size="10px" width="100%">
+    <FooterStyle BackColor="#507CD1" height="1px"  ForeColor="White" />
+    <RowStyle BackColor="#EFF3FB" />
+    <EditRowStyle BackColor="#2461BF" />
+    
+    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="left" Height="5px"/>
+     <PagerSettings Mode="NextPrevious" NextPageImageUrl="~/Icones/seta_direita.png" 
+                          PreviousPageImageUrl="~/Icones/seta_esq.png" />
+    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+    <AlternatingRowStyle BackColor="#f1f1f1" />
+</asp:GridView>
