@@ -48,13 +48,13 @@
         <task id="8" name="Desenvolvimento da funcionalidade - Cronograma de Fechamento" color="#8cb6ce" meeting="false" start="2012-11-26" duration="3" complete="0" expand="true">
             <depend id="16" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="16" name="Preparação do ambiente para homologação" color="#8cb6ce" meeting="false" start="2012-11-29" duration="1" complete="0" expand="true">
+        <task id="16" name="Preparação do ambiente para homologação" color="#0000cc" meeting="false" start="2012-11-29" duration="1" complete="0" expand="true">
             <depend id="20" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="20" name="Entrega do cronograma de fechamento" color="#8cb6ce" meeting="false" start="2012-11-30" duration="1" complete="0" expand="true"/>
         <task id="23" name="Criação do método para receber o arquivo" color="#8cb6ce" meeting="false" start="2012-12-03" duration="4" complete="0" expand="true"/>
         <task id="24" name="Preparação do ambiente de homologação" color="#8cb6ce" meeting="false" start="2012-12-06" duration="1" complete="0" expand="true"/>
-        <task id="27" name="Entrega da importação do arquivo" color="#8cb6ce" meeting="false" start="2012-12-07" duration="1" complete="0" expand="true">
+        <task id="27" name="Entrega da importação do arquivo" color="#0000cc" meeting="false" start="2012-12-07" duration="1" complete="0" expand="true">
             <depend id="28" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="28" name="Importação agenda executada" color="#ff0000" meeting="false" start="2012-12-10" duration="4" complete="0" expand="true">
@@ -90,7 +90,7 @@
         <task id="71" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-02-08" duration="1" complete="0" expand="true">
             <depend id="74" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="74" name="Aturiza Lençamentos" color="#8cb6ce" meeting="false" start="2013-02-11" duration="3" complete="0" expand="true">
+        <task id="74" name="Autoriza Lençamentos" color="#8cb6ce" meeting="false" start="2013-02-11" duration="3" complete="0" expand="true">
             <depend id="78" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="78" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-02-14" duration="1" complete="0" expand="true"/>
