@@ -1,0 +1,4 @@
+D:\senac\src\Private Assemblies\Senac.ControleRHDocente\bin\Debug\Senac.ControleRHDocente.dll
+D:\senac\src\Private Assemblies\Senac.ControleRHDocente\bin\Debug\Senac.ControleRHDocente.pdb
+D:\senac\src\Private Assemblies\Senac.ControleRHDocente\obj\Debug\Senac.ControleRHDocente.dll
+D:\senac\src\Private Assemblies\Senac.ControleRHDocente\obj\Debug\Senac.ControleRHDocente.pdb
