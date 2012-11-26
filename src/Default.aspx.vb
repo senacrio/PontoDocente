@@ -12,115 +12,115 @@ Partial Class _Default
 
 	Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         
-        If Context.Session("c_Nome") Is Nothing Then
-            Response.Redirect("Seguranca.htm")
-        End If
+        'If Context.Session("c_Nome") Is Nothing Then
+        '    Response.Redirect("Seguranca.htm")
+        'End If
 
-        If Not Me.IsPostBack Then
-            'Coloca o menu compatível com safari,ópera e Chrome
-            If Request.UserAgent.IndexOf("AppleWebKit") > 0 Or Request.UserAgent.IndexOf("Unknown") > 0 Or Request.UserAgent.IndexOf("Chrome") > 0 Then
-                Request.Browser.Adapters.Clear()
-            End If
-            
-            Try
-                lblUsuario.Text = "<b>Usuário:</b>&nbsp;" & Context.Session("c_Nome")
-                Using oConexao As SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("ServidorBD").ToString())
-                    Using oCmd As SqlCommand = New SqlCommand
+        'If Not Me.IsPostBack Then
+        '    'Coloca o menu compatível com safari,ópera e Chrome
+        '    If Request.UserAgent.IndexOf("AppleWebKit") > 0 Or Request.UserAgent.IndexOf("Unknown") > 0 Or Request.UserAgent.IndexOf("Chrome") > 0 Then
+        '        Request.Browser.Adapters.Clear()
+        '    End If
 
-                        'LÊ DADOS DO USUÁRIO
-                        oCmd.Connection = oConexao
-                        oCmd.CommandText = "SELECT A.MenuTreeView, A.IdiomaPadrao, (SELECT TOP 1 A.DataHora " + _
-                                            "FROM (SELECT TOP 2 B.DataHora FROM admPortalAcesso B WHERE B.LoginDigitado='" + User.Identity.Name + "' " + _
-                                            "AND B.IDAcessoTipo=1 ORDER BY B.DataHora DESC ) A ORDER BY A.DataHora) AS UltimoAcesso " + _
-                                            "FROM admPortalUsuario A " + _
-                                            "WHERE A.Login='" + User.Identity.Name + "'"
+        '    Try
+        '        lblUsuario.Text = "<b>Usuário:</b>&nbsp;" & Context.Session("c_Nome")
+        '        Using oConexao As SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("ServidorBD").ToString())
+        '            Using oCmd As SqlCommand = New SqlCommand
 
-                        oConexao.Open()
-                        Dim oDr As SqlDataReader = oCmd.ExecuteReader
-                        If oDr.Read Then
-                            lblUsuario.Text += "&nbsp;&nbsp;&nbsp;<b>Último acesso:</b>&nbsp;" + String.Format("{0:dd/MM/yyyy HH:mm}", oDr("UltimoAcesso")).ToString()
-                            If oDr("MenuTreeView") = True Then
-                                menu.Visible = False
-                                tvwMenu.Visible = True
-                                Celula1.Width = 95
-                            Else
-                                menu.Visible = True
-                                tvwMenu.Visible = False
-                                Celula1.Width = 0
-                            End If
-                        End If
+        '                'LÊ DADOS DO USUÁRIO
+        '                oCmd.Connection = oConexao
+        '                oCmd.CommandText = "SELECT A.MenuTreeView, A.IdiomaPadrao, (SELECT TOP 1 A.DataHora " + _
+        '                                    "FROM (SELECT TOP 2 B.DataHora FROM admPortalAcesso B WHERE B.LoginDigitado='" + User.Identity.Name + "' " + _
+        '                                    "AND B.IDAcessoTipo=1 ORDER BY B.DataHora DESC ) A ORDER BY A.DataHora) AS UltimoAcesso " + _
+        '                                    "FROM admPortalUsuario A " + _
+        '                                    "WHERE A.Login='" + User.Identity.Name + "'"
 
-                        'DEFINE IDIOMA ESCOLHIDO OU PEGA ÚLTIMA PADRÃO DO USUÁRIO
-                        If Session("c_Idioma") Is Nothing Then
-                            Session("c_Idioma") = oDr("IdiomaPadrao").ToString()
-                        Else
-                            If Session("c_Idioma") <> oDr("IdiomaPadrao").ToString() Then
-                                GravaIdioma()
-                            End If
-                        End If
-                        menIdioma.Items(0).ImageUrl = "~/Imagens/Idioma" + Session("c_Idioma") + ".gif"
-                        If Session("c_Idioma") = "POR" Then
-                            menIdioma.Items(0).ChildItems(0).Selected = True
-                        ElseIf Session("c_Idioma") = "ENG" Then
-                            menIdioma.Items(0).ChildItems(1).Selected = True
-                        ElseIf Session("c_Idioma") = "ESP" Then
-                            menIdioma.Items(0).ChildItems(2).Selected = True
-                        End If
-                        oDr.Close()
-                        oConexao.Close()
-                    End Using
-                End Using
-            Finally
-            End Try
-            MontaGuias(-2007, 0)
-        Else
-            MontaGuias(-2007, 1)
-        End If
+        '                oConexao.Open()
+        '                Dim oDr As SqlDataReader = oCmd.ExecuteReader
+        '                If oDr.Read Then
+        '                    lblUsuario.Text += "&nbsp;&nbsp;&nbsp;<b>Último acesso:</b>&nbsp;" + String.Format("{0:dd/MM/yyyy HH:mm}", oDr("UltimoAcesso")).ToString()
+        '                    If oDr("MenuTreeView") = True Then
+        '                        menu.Visible = False
+        '                        tvwMenu.Visible = True
+        '                        Celula1.Width = 95
+        '                    Else
+        '                        menu.Visible = True
+        '                        tvwMenu.Visible = False
+        '                        Celula1.Width = 0
+        '                    End If
+        '                End If
+
+        '                'DEFINE IDIOMA ESCOLHIDO OU PEGA ÚLTIMA PADRÃO DO USUÁRIO
+        '                If Session("c_Idioma") Is Nothing Then
+        '                    Session("c_Idioma") = oDr("IdiomaPadrao").ToString()
+        '                Else
+        '                    If Session("c_Idioma") <> oDr("IdiomaPadrao").ToString() Then
+        '                        GravaIdioma()
+        '                    End If
+        '                End If
+        '                menIdioma.Items(0).ImageUrl = "~/Imagens/Idioma" + Session("c_Idioma") + ".gif"
+        '                If Session("c_Idioma") = "POR" Then
+        '                    menIdioma.Items(0).ChildItems(0).Selected = True
+        '                ElseIf Session("c_Idioma") = "ENG" Then
+        '                    menIdioma.Items(0).ChildItems(1).Selected = True
+        '                ElseIf Session("c_Idioma") = "ESP" Then
+        '                    menIdioma.Items(0).ChildItems(2).Selected = True
+        '                End If
+        '                oDr.Close()
+        '                oConexao.Close()
+        '            End Using
+        '        End Using
+        '    Finally
+        '    End Try
+        '    MontaGuias(-2007, 0)
+        'Else
+        '    MontaGuias(-2007, 1)
+        'End If
     End Sub
     Protected Sub imbTrocaMenu_Click(ByVal sender As Object, ByVal e As System.Web.UI.ImageClickEventArgs) Handles imbTrocaMenu.Click
-        Try
-            Using oConexao As SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("ServidorBD").ToString())
-                Using oCmd As SqlCommand = New SqlCommand
-                    oCmd.Connection = oConexao
-                    oConexao.Open()
-                    If menu.Visible Then
-                        menu.Visible = False
-                        tvwMenu.Visible = True
-                        Celula1.Width = 95
-                        oCmd.CommandText = "UPDATE admPortalUsuario SET MenuTreeView=1 WHERE Login='" + User.Identity.Name + "'"
-                    Else
-                        menu.Visible = True
-                        tvwMenu.Visible = False
-                        Celula1.Width = 0
-                        oCmd.CommandText = "UPDATE admPortalUsuario SET MenuTreeView=0 WHERE Login='" + User.Identity.Name + "'"
-                    End If
-                    oCmd.ExecuteNonQuery()
-                    oCmd.Dispose()
-                End Using
-            End Using
-        Finally
-        End Try
-        MontaGuias(-2007, 1)
+        'Try
+        '    Using oConexao As SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("ServidorBD").ToString())
+        '        Using oCmd As SqlCommand = New SqlCommand
+        '            oCmd.Connection = oConexao
+        '            oConexao.Open()
+        '            If menu.Visible Then
+        '                menu.Visible = False
+        '                tvwMenu.Visible = True
+        '                Celula1.Width = 95
+        '                oCmd.CommandText = "UPDATE admPortalUsuario SET MenuTreeView=1 WHERE Login='" + User.Identity.Name + "'"
+        '            Else
+        '                menu.Visible = True
+        '                tvwMenu.Visible = False
+        '                Celula1.Width = 0
+        '                oCmd.CommandText = "UPDATE admPortalUsuario SET MenuTreeView=0 WHERE Login='" + User.Identity.Name + "'"
+        '            End If
+        '            oCmd.ExecuteNonQuery()
+        '            oCmd.Dispose()
+        '        End Using
+        '    End Using
+        'Finally
+        'End Try
+        'MontaGuias(-2007, 1)
     End Sub
     Protected Sub menIdioma_MenuItemClick(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.MenuEventArgs) Handles menIdioma.MenuItemClick
-        Context.Session("c_Idioma") = menIdioma.SelectedValue
-        menIdioma.Items(0).ImageUrl = menIdioma.SelectedItem.ImageUrl
-        GravaIdioma()
-        MontaGuias(-2007, 1)
+        'Context.Session("c_Idioma") = menIdioma.SelectedValue
+        'menIdioma.Items(0).ImageUrl = menIdioma.SelectedItem.ImageUrl
+        'GravaIdioma()
+        'MontaGuias(-2007, 1)
     End Sub
     Protected Sub GravaIdioma()
-        Try
-            Using oConexao As SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("ServidorBD").ToString())
-                Using oCmd As SqlCommand = New SqlCommand
-                    oCmd.Connection = oConexao
-                    oConexao.Open()
-                    oCmd.CommandText = "UPDATE admPortalUsuario SET IdiomaPadrao='" + Session("c_Idioma") + "' WHERE Login='" + User.Identity.Name + "'"
-                    oCmd.ExecuteNonQuery()
-                    oCmd.Dispose()
-                End Using
-            End Using
-        Finally
-        End Try
+        'Try
+        '    Using oConexao As SqlConnection = New SqlConnection(ConfigurationManager.ConnectionStrings("ServidorBD").ToString())
+        '        Using oCmd As SqlCommand = New SqlCommand
+        '            oCmd.Connection = oConexao
+        '            oConexao.Open()
+        '            oCmd.CommandText = "UPDATE admPortalUsuario SET IdiomaPadrao='" + Session("c_Idioma") + "' WHERE Login='" + User.Identity.Name + "'"
+        '            oCmd.ExecuteNonQuery()
+        '            oCmd.Dispose()
+        '        End Using
+        '    End Using
+        'Finally
+        'End Try
     End Sub
     Protected Sub NovoBotao_Click(ByVal sender As Object, ByVal e As System.EventArgs)
         Dim Botao As LinkButton = sender
