@@ -15,8 +15,8 @@
             </td>
         <td>Até:</td>
         <td valign="top">
-            <asp:TextBox ID="txtDeHora0" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
-            :<asp:TextBox ID="txtDeMinuto0" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
+            <asp:TextBox ID="txtAteHora" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
+            :<asp:TextBox ID="txtAteMinuto" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
             </td>
     </tr>
 </table>
