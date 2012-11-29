@@ -10,13 +10,13 @@
     <tr>
         <td>De:</td>
         <td valign="top">
-            <asp:TextBox ID="txtDeHora" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
-            :<asp:TextBox ID="txtDeMinuto" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
+            <asp:TextBox ID="txtDeHora" validacao="horas" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
+            :<asp:TextBox ID="txtDeMinuto" validacao="minutos" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
             </td>
         <td>Até:</td>
         <td valign="top">
-            <asp:TextBox ID="txtAteHora" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
-            :<asp:TextBox ID="txtAteMinuto" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
+            <asp:TextBox ID="txtAteHora" validacao="horas" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
+            :<asp:TextBox ID="txtAteMinuto" validacao="minutos" runat="server" Width="30px" CssClass="sonumero" MaxLength="2"></asp:TextBox>
             </td>
     </tr>
 </table>
