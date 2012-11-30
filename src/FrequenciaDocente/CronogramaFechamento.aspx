@@ -34,24 +34,12 @@
         .auto-style11
         {
             height: 31px;
+            text-align: left;
         }
 
         .auto-style12
         {
             height: 23px;
-        }
-
-        .auto-style14
-        {
-            width: 170px;
-            text-align: right;
-            height: 31px;
-        }
-
-        .auto-style15
-        {
-            width: 170px;
-            text-align: right;
         }
 
         .auto-style17
@@ -98,6 +86,28 @@
             font-size: small;
             height: 19px;
         }
+        .auto-style26
+        {
+            width: 137px;
+            text-align: right;
+            height: 31px;
+        }
+        .auto-style27
+        {
+            width: 137px;
+            text-align: right;
+        }
+        .auto-style28
+        {
+            width: 141px;
+            text-align: right;
+        }
+        .auto-style29
+        {
+            width: 141px;
+            text-align: right;
+            height: 31px;
+        }
     </style>
 </head>
 <body>
@@ -120,91 +130,88 @@
 
             <table class="auto-style1">
                 <tr>
-                    <td valign="top" align="right">
+                    <td valign="top" align="right" rowspan="4">
+                        <div style="border: 2px solid black; width: 428px; height: auto;">
+                        <table style="width: 428px">
+                            <tr>
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apotamento Instrutores
+                                    <br />
+                                    Atividades Acadêmicas e de Coordenação EAD</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style17">De:</td>
+                                <td style="text-align: left">
+                                    <asp:TextBox ID="txtDeDiaCoord" data-required="true" runat="server" validacao="dia" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtDeMesCoord" runat="server" data-required="true" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtDeAnoCoord" data-required="true" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        </span></strong></td>
+                            </tr>
+                            <tr>
+                                <td class="auto-style17">Até:</td>
+                                <td style="text-align: left">
+                                    <asp:TextBox ID="txtAteDiaCoord" runat="server" data-required="true" validacao="dia" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtAteMesCoord" data-required="true" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtAteAnoCoord" data-required="true" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        </span></strong></td>
+                             
+                            </tr>
+                        </table>
+                             </div>
                         <div style="border: 2px solid black; width: 430px; height: 91px;">
                             <table style="width: 430px"  align="right">
                                 <tr>
-                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apotamento Instrutores - VT</strong></td>
+                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apotamento Instrutores - VT (docente)</strong></td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style14">De:</td>
+                                    <td class="auto-style26">De:</td>
                                     <td class="auto-style11">
                                         <asp:TextBox ID="txtDeDia" data-required="true" CssClass="sonumero" validacao="dia" runat="server" MaxLength="2" Width="40px"></asp:TextBox>
-                                        &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtDeMes" validacao="mes" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                            /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtDeAno" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtDeMes" data-required="true" validacao="mes" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                            /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtDeAno" data-required="true" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
                                             </span></strong></td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style15">Até:</td>
-                                    <td>
-                                        <asp:TextBox ID="txtAteDia" runat="server" MaxLength="2" validacao="dia" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtAteMes" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                            /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtAteAno" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                    <td class="auto-style27">Até:</td>
+                                    <td style="text-align: left">
+                                        <asp:TextBox ID="txtAteDia" runat="server" data-required="true" MaxLength="2" validacao="dia" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtAteMes" data-required="true" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                            /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtAteAno" data-required="true" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
                                             </span></strong></td>
                                 </tr>
                             </table>
                             
                             </div>
                        
-                    </td>
-                    <td valign="top" align="left">
-                        <div style="border: 2px solid black; width: 428px; height: auto;">
-                        <table style="width: 428px">
-                            <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apotamento Instrutores
-                                    <br />
-                                    Atividades Acadêmicas e de Coordenação</strong></td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style17">De:</td>
-                                <td>
-                                    <asp:TextBox ID="txtDeDiaCoord" runat="server" validacao="dia" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtDeMesCoord" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtDeAnoCoord" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        </span></strong></td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style17">Até:</td>
-                                <td>
-                                    <asp:TextBox ID="txtAteDiaCoord" runat="server" validacao="dia" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtAteMesCoord" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtAteAnoCoord" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        </span></strong></td>
-                             
-                            </tr>
-                        </table>
-                            
-                            </div>
+                           
                        
-                    </td>
-                </tr>
-                <tr>
-                    <td valign="top" align="right">
-                         <div style="border: 2px solid black; width: 431px; height: 91px;">
+                        <div style="border: 2px solid black; width: 431px; height: 91px;">
                         <table style="width: 431px" align="right">
                             <tr>
                                 <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Aprovação Apotamento </strong></td>
                             </tr>
                             <tr>
-                                <td class="auto-style15">De:</td>
-                                <td>
-                                    <asp:TextBox ID="txtDeDiaApt" runat="server" validacao="dia" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtDeMesApt" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtDeAnoApt" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                <td class="auto-style28">De:</td>
+                                <td style="text-align: left">
+                                    <asp:TextBox ID="txtDeDiaApt" runat="server" validacao="dia" data-required="true" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtDeMesApt" runat="server" data-required="true" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtDeAnoApt" data-required="true" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
                                         </span></strong></td>
                             </tr>
                             <tr>
-                                <td class="auto-style14">Até:</td>
+                                <td class="auto-style29">Até:</td>
                                 <td class="auto-style11">
-                                    <asp:TextBox ID="txtAteDiaApt" runat="server" validacao="dia" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtAteMesApt" runat="server" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
-                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtAteAnoApt" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                    <asp:TextBox ID="txtAteDiaApt" runat="server" validacao="dia" MaxLength="2" data-required="true" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                    &nbsp;<strong><span class="auto-style4">/<asp:TextBox ID="txtAteMesApt" runat="server"  data-required="true" validacao="mes" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
+                                        /</span><span class="auto-style5">20</span><span class="auto-style4"><asp:TextBox ID="txtAteAnoApt" data-required="true" runat="server" MaxLength="2" Width="40px" CssClass="sonumero"></asp:TextBox>
                                         </span></strong></td>
                             </tr>
                         </table>
                              </div>
+                       
+                           
+                       
                     </td>
-                    <td>
+                    <td valign="top" align="left">
                          <div style="border: 2px solid black; width: 430px; height: 224px;">
                         <table style="width: 430px">
                             <tr>
@@ -229,26 +236,33 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" valign="top"><span class="auto-style22">Jornada Mínima para VA (Horas)....................................:</span>&nbsp;<asp:TextBox  ID="txtValorVa" runat="server" Width="50px"></asp:TextBox>
+                                <td colspan="2" valign="top"><span class="auto-style22">Jornada Mínima para VA (Horas)....................................:</span>&nbsp;<asp:TextBox  ID="txtValorVa" data-required="true" runat="server" Width="50px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style19" colspan="2">Valor Unitário Auxílio Alimentação.............................: R$
-                                    <asp:TextBox CssClass="moeda" ID="txtValorAA" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:TextBox CssClass="moeda" ID="txtValorAA" runat="server" data-required="true" Width="50px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="auto-style19" colspan="2">Valor de Corte para Requisição diária VT...................: R$
-                                    <asp:TextBox CssClass="moeda" ID="txtValorVT" runat="server" Width="50px"></asp:TextBox>
+                                    <asp:TextBox CssClass="moeda" ID="txtValorVT" runat="server" data-required="true" Width="50px"></asp:TextBox>
                                 </td>
                             </tr>
                         </table>
                              </div>
+                       
                     </td>
                 </tr>
                 <tr>
-                    <td valign="top" align="right">
+                    <td valign="top" align="left">
+                        &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
                          &nbsp;</td>
+                </tr>
+                <tr>
                     <td style="text-align: center">
                          <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
