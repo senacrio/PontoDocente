@@ -22,7 +22,7 @@ namespace Senac.ControleRHDocente
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="FrequenciaDocente")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Senac")]
 	public partial class FrequenciaDocenteDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -36,7 +36,7 @@ namespace Senac.ControleRHDocente
     #endregion
 		
 		public FrequenciaDocenteDataContext() : 
-				base(global::Senac.ControleRHDocente.Properties.Settings.Default.FrequenciaDocenteConnectionString, mappingSource)
+				base(global::Senac.ControleRHDocente.Properties.Settings.Default.SenacConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -80,26 +80,98 @@ namespace Senac.ControleRHDocente
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _ParametroField;
+		private string _Id;
 		
-		private string _Value;
+		private System.Nullable<int> _Mes;
 		
-		private string _UsuarioRegistro;
+		private System.Nullable<int> _Ano;
 		
-		private System.Nullable<System.DateTime> _DataHora;
+		private System.Nullable<int> _Versao;
+		
+		private System.Nullable<bool> _Ativo;
+		
+		private string _JN_MI_VA;
+		
+		private string _PAA_ATE;
+		
+		private string _PAA_DE;
+		
+		private string _PAI_VT_ATE;
+		
+		private string _PAI_VT_DE;
+		
+		private string _PCO_ATE;
+		
+		private string _PCO_DE;
+		
+		private string _TN_MN_ATE;
+		
+		private string _TN_MN_DE;
+		
+		private string _TN_NT_ATE;
+		
+		private string _TN_NT_DE;
+		
+		private string _TN_TD_ATE;
+		
+		private string _TN_TD_DE;
+		
+		private string _VL_CT_VT;
+		
+		private string _VL_UN_AA;
+		
+		private string _Usuario;
+		
+		private System.Nullable<System.DateTime> _DataHoraRegistro;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnParametroFieldChanging(string value);
-    partial void OnParametroFieldChanged();
-    partial void OnValueChanging(string value);
-    partial void OnValueChanged();
-    partial void OnUsuarioRegistroChanging(string value);
-    partial void OnUsuarioRegistroChanged();
-    partial void OnDataHoraChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraChanged();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnMesChanging(System.Nullable<int> value);
+    partial void OnMesChanged();
+    partial void OnAnoChanging(System.Nullable<int> value);
+    partial void OnAnoChanged();
+    partial void OnVersaoChanging(System.Nullable<int> value);
+    partial void OnVersaoChanged();
+    partial void OnAtivoChanging(System.Nullable<bool> value);
+    partial void OnAtivoChanged();
+    partial void OnJN_MI_VAChanging(string value);
+    partial void OnJN_MI_VAChanged();
+    partial void OnPAA_ATEChanging(string value);
+    partial void OnPAA_ATEChanged();
+    partial void OnPAA_DEChanging(string value);
+    partial void OnPAA_DEChanged();
+    partial void OnPAI_VT_ATEChanging(string value);
+    partial void OnPAI_VT_ATEChanged();
+    partial void OnPAI_VT_DEChanging(string value);
+    partial void OnPAI_VT_DEChanged();
+    partial void OnPCO_ATEChanging(string value);
+    partial void OnPCO_ATEChanged();
+    partial void OnPCO_DEChanging(string value);
+    partial void OnPCO_DEChanged();
+    partial void OnTN_MN_ATEChanging(string value);
+    partial void OnTN_MN_ATEChanged();
+    partial void OnTN_MN_DEChanging(string value);
+    partial void OnTN_MN_DEChanged();
+    partial void OnTN_NT_ATEChanging(string value);
+    partial void OnTN_NT_ATEChanged();
+    partial void OnTN_NT_DEChanging(string value);
+    partial void OnTN_NT_DEChanged();
+    partial void OnTN_TD_ATEChanging(string value);
+    partial void OnTN_TD_ATEChanged();
+    partial void OnTN_TD_DEChanging(string value);
+    partial void OnTN_TD_DEChanged();
+    partial void OnVL_CT_VTChanging(string value);
+    partial void OnVL_CT_VTChanged();
+    partial void OnVL_UN_AAChanging(string value);
+    partial void OnVL_UN_AAChanged();
+    partial void OnUsuarioChanging(string value);
+    partial void OnUsuarioChanged();
+    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraRegistroChanged();
     #endregion
 		
 		public Parametro()
@@ -107,82 +179,442 @@ namespace Senac.ControleRHDocente
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Parametro", Storage="_ParametroField", DbType="VarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string ParametroField
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
 		{
 			get
 			{
-				return this._ParametroField;
+				return this._Id;
 			}
 			set
 			{
-				if ((this._ParametroField != value))
+				if ((this._Id != value))
 				{
-					this.OnParametroFieldChanging(value);
+					this.OnIdChanging(value);
 					this.SendPropertyChanging();
-					this._ParametroField = value;
-					this.SendPropertyChanged("ParametroField");
-					this.OnParametroFieldChanged();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Value", DbType="VarChar(50)")]
-		public string Value
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mes", DbType="Int")]
+		public System.Nullable<int> Mes
 		{
 			get
 			{
-				return this._Value;
+				return this._Mes;
 			}
 			set
 			{
-				if ((this._Value != value))
+				if ((this._Mes != value))
 				{
-					this.OnValueChanging(value);
+					this.OnMesChanging(value);
 					this.SendPropertyChanging();
-					this._Value = value;
-					this.SendPropertyChanged("Value");
-					this.OnValueChanged();
+					this._Mes = value;
+					this.SendPropertyChanged("Mes");
+					this.OnMesChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioRegistro", DbType="VarChar(10)")]
-		public string UsuarioRegistro
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ano", DbType="Int")]
+		public System.Nullable<int> Ano
 		{
 			get
 			{
-				return this._UsuarioRegistro;
+				return this._Ano;
 			}
 			set
 			{
-				if ((this._UsuarioRegistro != value))
+				if ((this._Ano != value))
 				{
-					this.OnUsuarioRegistroChanging(value);
+					this.OnAnoChanging(value);
 					this.SendPropertyChanging();
-					this._UsuarioRegistro = value;
-					this.SendPropertyChanged("UsuarioRegistro");
-					this.OnUsuarioRegistroChanged();
+					this._Ano = value;
+					this.SendPropertyChanged("Ano");
+					this.OnAnoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHora", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHora
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Versao", DbType="Int")]
+		public System.Nullable<int> Versao
 		{
 			get
 			{
-				return this._DataHora;
+				return this._Versao;
 			}
 			set
 			{
-				if ((this._DataHora != value))
+				if ((this._Versao != value))
 				{
-					this.OnDataHoraChanging(value);
+					this.OnVersaoChanging(value);
 					this.SendPropertyChanging();
-					this._DataHora = value;
-					this.SendPropertyChanged("DataHora");
-					this.OnDataHoraChanged();
+					this._Versao = value;
+					this.SendPropertyChanged("Versao");
+					this.OnVersaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ativo", DbType="Bit")]
+		public System.Nullable<bool> Ativo
+		{
+			get
+			{
+				return this._Ativo;
+			}
+			set
+			{
+				if ((this._Ativo != value))
+				{
+					this.OnAtivoChanging(value);
+					this.SendPropertyChanging();
+					this._Ativo = value;
+					this.SendPropertyChanged("Ativo");
+					this.OnAtivoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JN_MI_VA", DbType="VarChar(50)")]
+		public string JN_MI_VA
+		{
+			get
+			{
+				return this._JN_MI_VA;
+			}
+			set
+			{
+				if ((this._JN_MI_VA != value))
+				{
+					this.OnJN_MI_VAChanging(value);
+					this.SendPropertyChanging();
+					this._JN_MI_VA = value;
+					this.SendPropertyChanged("JN_MI_VA");
+					this.OnJN_MI_VAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PAA_ATE", DbType="VarChar(50)")]
+		public string PAA_ATE
+		{
+			get
+			{
+				return this._PAA_ATE;
+			}
+			set
+			{
+				if ((this._PAA_ATE != value))
+				{
+					this.OnPAA_ATEChanging(value);
+					this.SendPropertyChanging();
+					this._PAA_ATE = value;
+					this.SendPropertyChanged("PAA_ATE");
+					this.OnPAA_ATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PAA_DE", DbType="VarChar(50)")]
+		public string PAA_DE
+		{
+			get
+			{
+				return this._PAA_DE;
+			}
+			set
+			{
+				if ((this._PAA_DE != value))
+				{
+					this.OnPAA_DEChanging(value);
+					this.SendPropertyChanging();
+					this._PAA_DE = value;
+					this.SendPropertyChanged("PAA_DE");
+					this.OnPAA_DEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PAI_VT_ATE", DbType="VarChar(50)")]
+		public string PAI_VT_ATE
+		{
+			get
+			{
+				return this._PAI_VT_ATE;
+			}
+			set
+			{
+				if ((this._PAI_VT_ATE != value))
+				{
+					this.OnPAI_VT_ATEChanging(value);
+					this.SendPropertyChanging();
+					this._PAI_VT_ATE = value;
+					this.SendPropertyChanged("PAI_VT_ATE");
+					this.OnPAI_VT_ATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PAI_VT_DE", DbType="VarChar(50)")]
+		public string PAI_VT_DE
+		{
+			get
+			{
+				return this._PAI_VT_DE;
+			}
+			set
+			{
+				if ((this._PAI_VT_DE != value))
+				{
+					this.OnPAI_VT_DEChanging(value);
+					this.SendPropertyChanging();
+					this._PAI_VT_DE = value;
+					this.SendPropertyChanged("PAI_VT_DE");
+					this.OnPAI_VT_DEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PCO_ATE", DbType="VarChar(50)")]
+		public string PCO_ATE
+		{
+			get
+			{
+				return this._PCO_ATE;
+			}
+			set
+			{
+				if ((this._PCO_ATE != value))
+				{
+					this.OnPCO_ATEChanging(value);
+					this.SendPropertyChanging();
+					this._PCO_ATE = value;
+					this.SendPropertyChanged("PCO_ATE");
+					this.OnPCO_ATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PCO_DE", DbType="VarChar(50)")]
+		public string PCO_DE
+		{
+			get
+			{
+				return this._PCO_DE;
+			}
+			set
+			{
+				if ((this._PCO_DE != value))
+				{
+					this.OnPCO_DEChanging(value);
+					this.SendPropertyChanging();
+					this._PCO_DE = value;
+					this.SendPropertyChanged("PCO_DE");
+					this.OnPCO_DEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN_MN_ATE", DbType="VarChar(50)")]
+		public string TN_MN_ATE
+		{
+			get
+			{
+				return this._TN_MN_ATE;
+			}
+			set
+			{
+				if ((this._TN_MN_ATE != value))
+				{
+					this.OnTN_MN_ATEChanging(value);
+					this.SendPropertyChanging();
+					this._TN_MN_ATE = value;
+					this.SendPropertyChanged("TN_MN_ATE");
+					this.OnTN_MN_ATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN_MN_DE", DbType="VarChar(50)")]
+		public string TN_MN_DE
+		{
+			get
+			{
+				return this._TN_MN_DE;
+			}
+			set
+			{
+				if ((this._TN_MN_DE != value))
+				{
+					this.OnTN_MN_DEChanging(value);
+					this.SendPropertyChanging();
+					this._TN_MN_DE = value;
+					this.SendPropertyChanged("TN_MN_DE");
+					this.OnTN_MN_DEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN_NT_ATE", DbType="VarChar(50)")]
+		public string TN_NT_ATE
+		{
+			get
+			{
+				return this._TN_NT_ATE;
+			}
+			set
+			{
+				if ((this._TN_NT_ATE != value))
+				{
+					this.OnTN_NT_ATEChanging(value);
+					this.SendPropertyChanging();
+					this._TN_NT_ATE = value;
+					this.SendPropertyChanged("TN_NT_ATE");
+					this.OnTN_NT_ATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN_NT_DE", DbType="VarChar(50)")]
+		public string TN_NT_DE
+		{
+			get
+			{
+				return this._TN_NT_DE;
+			}
+			set
+			{
+				if ((this._TN_NT_DE != value))
+				{
+					this.OnTN_NT_DEChanging(value);
+					this.SendPropertyChanging();
+					this._TN_NT_DE = value;
+					this.SendPropertyChanged("TN_NT_DE");
+					this.OnTN_NT_DEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN_TD_ATE", DbType="VarChar(50)")]
+		public string TN_TD_ATE
+		{
+			get
+			{
+				return this._TN_TD_ATE;
+			}
+			set
+			{
+				if ((this._TN_TD_ATE != value))
+				{
+					this.OnTN_TD_ATEChanging(value);
+					this.SendPropertyChanging();
+					this._TN_TD_ATE = value;
+					this.SendPropertyChanged("TN_TD_ATE");
+					this.OnTN_TD_ATEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TN_TD_DE", DbType="VarChar(50)")]
+		public string TN_TD_DE
+		{
+			get
+			{
+				return this._TN_TD_DE;
+			}
+			set
+			{
+				if ((this._TN_TD_DE != value))
+				{
+					this.OnTN_TD_DEChanging(value);
+					this.SendPropertyChanging();
+					this._TN_TD_DE = value;
+					this.SendPropertyChanged("TN_TD_DE");
+					this.OnTN_TD_DEChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VL_CT_VT", DbType="VarChar(50)")]
+		public string VL_CT_VT
+		{
+			get
+			{
+				return this._VL_CT_VT;
+			}
+			set
+			{
+				if ((this._VL_CT_VT != value))
+				{
+					this.OnVL_CT_VTChanging(value);
+					this.SendPropertyChanging();
+					this._VL_CT_VT = value;
+					this.SendPropertyChanged("VL_CT_VT");
+					this.OnVL_CT_VTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VL_UN_AA", DbType="VarChar(50)")]
+		public string VL_UN_AA
+		{
+			get
+			{
+				return this._VL_UN_AA;
+			}
+			set
+			{
+				if ((this._VL_UN_AA != value))
+				{
+					this.OnVL_UN_AAChanging(value);
+					this.SendPropertyChanging();
+					this._VL_UN_AA = value;
+					this.SendPropertyChanged("VL_UN_AA");
+					this.OnVL_UN_AAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Usuario", DbType="VarChar(50)")]
+		public string Usuario
+		{
+			get
+			{
+				return this._Usuario;
+			}
+			set
+			{
+				if ((this._Usuario != value))
+				{
+					this.OnUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._Usuario = value;
+					this.SendPropertyChanged("Usuario");
+					this.OnUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraRegistro
+		{
+			get
+			{
+				return this._DataHoraRegistro;
+			}
+			set
+			{
+				if ((this._DataHoraRegistro != value))
+				{
+					this.OnDataHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraRegistro = value;
+					this.SendPropertyChanged("DataHoraRegistro");
+					this.OnDataHoraRegistroChanged();
 				}
 			}
 		}

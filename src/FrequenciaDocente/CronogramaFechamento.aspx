@@ -108,6 +108,20 @@
             text-align: right;
             height: 31px;
         }
+          .botao{
+        font-size:10px;
+        font-family:Verdana,Helvetica;
+        font-weight:bold;
+        color:white;
+        background:#638cb5;
+        border:0px;
+        width:80px;
+        height:19px;
+       }
+        #conteudo
+        {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -125,16 +139,15 @@
             </table>
 
             <br />
-            <br />
+            <asp:Panel ID="pnlGeral" runat="server">
 
-
-            <table class="auto-style1">
+            <table id="tblGeral" runat="server"  class="auto-style1">
                 <tr>
                     <td valign="top" align="right" rowspan="4">
                         <div style="border: 2px solid black; width: 428px; height: auto;">
-                        <table style="width: 428px">
+                        <table id="tblPai" runat="server"  style="width: 428px">
                             <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apotamento Instrutores
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apontamento Instrutores
                                     <br />
                                     Atividades Acadêmicas e de Coordenação EAD</strong></td>
                             </tr>
@@ -158,9 +171,9 @@
                         </table>
                              </div>
                         <div style="border: 2px solid black; width: 430px; height: 91px;">
-                            <table style="width: 430px"  align="right">
+                            <table id="tblPaiVT" runat="server"  style="width: 430px"  align="right">
                                 <tr>
-                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apotamento Instrutores - VT (docente)</strong></td>
+                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apontamento Instrutores - VT (docente)</strong></td>
                                 </tr>
                                 <tr>
                                     <td class="auto-style26">De:</td>
@@ -185,9 +198,9 @@
                            
                        
                         <div style="border: 2px solid black; width: 431px; height: 91px;">
-                        <table style="width: 431px" align="right">
+                        <table id="tblPaa" runat="server"  style="width: 431px" align="right">
                             <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Aprovação Apotamento </strong></td>
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Aprovação Apontamento </strong></td>
                             </tr>
                             <tr>
                                 <td class="auto-style28">De:</td>
@@ -213,7 +226,7 @@
                     </td>
                     <td valign="top" align="left">
                          <div style="border: 2px solid black; width: 430px; height: 224px;">
-                        <table style="width: 430px">
+                        <table id="tblPar" runat="server"  style="width: 430px">
                             <tr>
                                 <td colspan="2" style="text-align: center; background-color: #95B3D7" class="auto-style12"><strong>Parâmetros</strong></td>
                             </tr>
@@ -265,12 +278,12 @@
                 <tr>
                     <td style="text-align: center">
                          <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <asp:Button ID="btnSalvar" runat="server" Text="Salvar" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <asp:Button ID="btnSalvar" runat="server" Text="Salvar" CssClass="botao" />
                     </td>
                 </tr>
             </table>
-
+</asp:Panel>
         </div>
     </form>
 </body>

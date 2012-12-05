@@ -1,11 +1,29 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FrequenciaDocente" Class="FrequenciaDocenteDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=PC;Initial Catalog=FrequenciaDocente;Persist Security Info=True;User ID=sa" SettingsObjectName="Senac.ControleRHDocente.Properties.Settings" SettingsPropertyName="FrequenciaDocenteConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Senac" Class="FrequenciaDocenteDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=Senac;Persist Security Info=True;User ID=sa" SettingsObjectName="Senac.ControleRHDocente.Properties.Settings" SettingsPropertyName="SenacConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Parametros" Member="Parametros">
     <Type Name="Parametro">
-      <Column Name="Parametro" Member="ParametroField" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Value" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="UsuarioRegistro" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="DataHora" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Mes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ano" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Versao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ativo" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="JN_MI_VA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PAA_ATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PAA_DE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PAI_VT_ATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PAI_VT_DE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PCO_ATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PCO_DE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TN_MN_ATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TN_MN_DE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TN_NT_ATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TN_NT_DE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TN_TD_ATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TN_TD_DE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VL_CT_VT" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="VL_UN_AA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

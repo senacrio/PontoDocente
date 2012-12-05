@@ -33,5 +33,16 @@ namespace Senac.ControleRHDocente.Properties {
                 return ((string)(this["FrequenciaDocenteConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=Senac;Persist Security Info=True;User ID=sa" +
+            ";Password=senha")]
+        public string SenacConnectionString {
+            get {
+                return ((string)(this["SenacConnectionString"]));
+            }
+        }
     }
 }
