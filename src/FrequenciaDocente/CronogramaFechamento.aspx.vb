@@ -6,8 +6,11 @@ Partial Class FrequenciaDocente_CronogramaFechamento
     Dim mesAnoInsert As String
     Dim ativoInsert As Boolean
     Dim id As String
-    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+
     Dim db As FrequenciaDocenteDataContext
+
+    'Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
 
     Private Sub InsertParametro(parametro As Parametro)
         db = New FrequenciaDocenteDataContext(conn)
@@ -32,6 +35,16 @@ Partial Class FrequenciaDocente_CronogramaFechamento
     Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
 
         Try
+            Dim data As DateTime
+
+            DateTime.TryParse("20" + txtDeAnoCoord.Text + "-" + txtDeMesCoord.Text + "-01", data)
+
+            If (data < Convert.ToDateTime(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01")) Then
+                lblMsg.Text = "A data de início é invalida"
+                lblMsg.ForeColor = Drawing.Color.Red
+                Return
+            End If
+
             Dim erro As Boolean = False
             'quadro 1
             Dim dataPAI_VTde As String = txtDeAno.Text + "-" + txtDeMes.Text + "-" + txtDeDia.Text
@@ -102,11 +115,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
                 Return
             End If
 
-
-            Dim data As Date = Convert.ToDateTime("20" + txtDeAnoCoord.Text + "-" + txtDeMesCoord.Text + "-" + txtDeDiaCoord.Text)
-
-           
-
             Dim parametros As New Parametro
             parametros.JN_MI_VA = valorVA
             parametros.PAA_ATE = dataPAAate
@@ -127,11 +135,10 @@ Partial Class FrequenciaDocente_CronogramaFechamento
             parametros.Ano = data.Year
             parametros.Mes = data.Month
             parametros.Versao = GetVersao(data.Month, data.Year)
-            parametros.Ativo = GetAtivo(parametros)
+            parametros.Ativo = True
 
-            If parametros.Ativo Then
-                DisableAllParametros()
-            End If
+            VerifyAndDisableParametros(parametros)
+
 
 
             InsertParametro(parametros)
@@ -254,21 +261,25 @@ Partial Class FrequenciaDocente_CronogramaFechamento
 
     End Function
 
-    Private Function GetAtivo(parametros As Parametro) As Nullable(Of Boolean)
-
-        If (parametros.Ano < Date.Now.Year) Or ((parametros.Ano = Date.Now.Year) And (parametros.Mes < Date.Now.Month)) Then
-            Return False
-        Else
-            Return True
-        End If
-
-
-
-    End Function
-
-
-
     Protected Sub ImageButton1_Click(sender As Object, e As ImageClickEventArgs) Handles ImageButton1.Click
         Response.Redirect("CronogramaFechamentoList.aspx")
     End Sub
+
+    Private Sub VerifyAndDisableParametros(param As Parametro)
+        Try
+            db = New FrequenciaDocenteDataContext(conn)
+            Dim parametros = (From p In db.Parametros _
+                              Where p.Ano = param.Ano And p.Mes = param.Mes _
+                              Where p.Ativo)
+
+            For Each Parametro As Parametro In parametros
+                Parametro.Ativo = False
+            Next
+
+            db.SubmitChanges()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 End Class

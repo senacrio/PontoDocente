@@ -47,8 +47,8 @@
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Image ID="imgAtivo" runat="server" ImageUrl="~/Icones/grid_semaforo_verde.jpg" Visible='<%# Eval("Ativo") %>' />
-                                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Icones/grid_semaforo_vermelho.jpg" Visible='<%# Not Eval("Ativo") %>' />
+                                    <asp:Image ID="imgAtivo" runat="server" ImageUrl="~/Icones/grid_semaforo_verde.jpg" Visible='<%# Eval("AtivoSinal") %>' />
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Icones/grid_semaforo_amarelo.jpg" Visible='<%# Not Eval("AtivoSinal")%>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="mes" HeaderText="Mês" />
