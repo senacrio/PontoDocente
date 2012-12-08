@@ -33,6 +33,9 @@ namespace Senac.ControleRHDocente
     partial void InsertParametro(Parametro instance);
     partial void UpdateParametro(Parametro instance);
     partial void DeleteParametro(Parametro instance);
+    partial void InsertAgendaExecutada(AgendaExecutada instance);
+    partial void UpdateAgendaExecutada(AgendaExecutada instance);
+    partial void DeleteAgendaExecutada(AgendaExecutada instance);
     #endregion
 		
 		public FrequenciaDocenteDataContext() : 
@@ -70,6 +73,14 @@ namespace Senac.ControleRHDocente
 			get
 			{
 				return this.GetTable<Parametro>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AgendaExecutada> AgendaExecutadas
+		{
+			get
+			{
+				return this.GetTable<AgendaExecutada>();
 			}
 		}
 	}
@@ -615,6 +626,92 @@ namespace Senac.ControleRHDocente
 					this._DataHoraRegistro = value;
 					this.SendPropertyChanged("DataHoraRegistro");
 					this.OnDataHoraRegistroChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AgendaExecutada")]
+	public partial class AgendaExecutada : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _Valor;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnValorChanging(string value);
+    partial void OnValorChanged();
+    #endregion
+		
+		public AgendaExecutada()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="VarChar(300)")]
+		public string Valor
+		{
+			get
+			{
+				return this._Valor;
+			}
+			set
+			{
+				if ((this._Valor != value))
+				{
+					this.OnValorChanging(value);
+					this.SendPropertyChanging();
+					this._Valor = value;
+					this.SendPropertyChanged("Valor");
+					this.OnValorChanged();
 				}
 			}
 		}

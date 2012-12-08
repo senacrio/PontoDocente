@@ -2,7 +2,7 @@
     $('.moeda').maskMoney({ thousands: '', decimal: ',' });
 
 
-    $('form').submit(function () {
+    $('#btnSalvar').click(function () {
         var faults = $('input').filter(function () {
             return $(this).data('required') && $(this).val() === "";
         }).css("background-color", "red");

@@ -36,25 +36,40 @@
     </table>
         <p style="text-align: left">
                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                         <asp:Button ID="btnNovo" runat="server" Text="Novo Cronograma" CssClass="botao" Width="117px" />
+                         <asp:Button ID="btnNovo" runat="server" Text="Novo Cronograma" CssClass="botao" Width="117px" ForeColor="White" />
         <br />
     </p>
         <table class="auto-style1">
             <tr>
                 <td align="center">
-                    <asp:GridView ID="grdCronogramaFechamento" runat="server" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" DataKeyNames="Id">
+                    <asp:GridView ID="grdCronogramaFechamento" runat="server" AutoGenerateColumns="False" CellPadding="4" EnableModelValidation="True" ForeColor="#333333" GridLines="None" DataKeyNames="Id" AllowPaging="True" AllowSorting="True" PageSize="5">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Image ID="imgAtivo" runat="server" ImageUrl="~/Icones/grid_semaforo_verde.jpg" Visible='<%# Eval("Ativo") %>' />
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Icones/grid_semaforo_vermelho.jpg" Visible='<%# Not Eval("Ativo") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="mes" HeaderText="Mês" />
                             <asp:BoundField DataField="ano" HeaderText="Ano" />
                             <asp:BoundField DataField="versao" HeaderText="Versão" />
-                            <asp:BoundField DataField="PCO_DE" HeaderText="Data Início do Cronograma" />
-                            <asp:BoundField DataField="PAA_ATE" HeaderText="Data Final do Cronograma" />
+                            <asp:TemplateField HeaderText="Data Início do Cronograma">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("PCO_DE") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Convert.ToDateTime("20" & Eval("PCO_DE")).ToShortDateString()  %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Data Final do Cronograma">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox2" runat="server" Text='<%# Convert.ToDateTime("20" & Eval("PAA_ATE")).ToShortDateString() %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Convert.ToDateTime("20" & Eval("PAA_ATE")).ToShortDateString() %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ImageButton1" runat="server" CommandName="select" ImageUrl="~/Icones/editar.jpg" CommandArgument='<%# Eval("Id") %>' OnClick="ImageButton1_Click" />
@@ -62,6 +77,9 @@
                             </asp:TemplateField>
                         </Columns>
                         <EditRowStyle BackColor="#2461BF" />
+                        <EmptyDataTemplate>
+                            Nenhum cronograma cadastrado
+                        </EmptyDataTemplate>
                         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />

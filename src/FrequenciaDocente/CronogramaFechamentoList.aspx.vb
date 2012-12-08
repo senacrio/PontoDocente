@@ -4,6 +4,8 @@ Imports System.Linq
 Partial Class FrequenciaDocente_CronogramaFechamentoList
     Inherits System.Web.UI.Page
 
+    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+
     Protected Sub grdCronogramaFechamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdCronogramaFechamento.SelectedIndexChanged
 
     End Sub
@@ -23,7 +25,7 @@ Partial Class FrequenciaDocente_CronogramaFechamentoList
     End Sub
 
     Private Sub LoadGrid()
-        Dim db = New FrequenciaDocenteDataContext()
+        Dim db = New FrequenciaDocenteDataContext(conn)
 
         Dim parametros = From p In db.Parametros _
                           Order By p.Ano Descending _
@@ -42,5 +44,19 @@ Partial Class FrequenciaDocente_CronogramaFechamentoList
 
     Protected Sub btnNovo_Click(sender As Object, e As EventArgs) Handles btnNovo.Click
         Response.Redirect("CronogramaFechamento.aspx")
+    End Sub
+
+    Protected Sub grdCronogramaFechamento_PageIndexChanged(sender As Object, e As EventArgs) Handles grdCronogramaFechamento.PageIndexChanged
+        
+    End Sub
+
+    Protected Sub grdCronogramaFechamento_SelectedIndexChanging(sender As Object, e As GridViewSelectEventArgs) Handles grdCronogramaFechamento.SelectedIndexChanging
+   
+    End Sub
+
+    Protected Sub grdCronogramaFechamento_PageIndexChanging(sender As Object, e As GridViewPageEventArgs) Handles grdCronogramaFechamento.PageIndexChanging
+
+        grdCronogramaFechamento.PageIndex = e.NewPageIndex
+        LoadGrid()
     End Sub
 End Class

@@ -122,6 +122,10 @@
         {
             text-align: center;
         }
+        .auto-style30
+        {
+            width: 37px;
+        }
     </style>
 </head>
 <body>
@@ -130,6 +134,9 @@
 
             <table class="auto-style1">
                 <tr>
+                    <td style="text-align: center" class="auto-style30">
+                        <asp:ImageButton ID="ImageButton1" runat="server" CssClass="cancel" ImageUrl="~/Imagens/voltar.jpg" />
+                    </td>
                     <td style="text-align: center"><strong>CRONOGRAMA DE FECHAMENTO<br />
                         <br />
                         </strong>
@@ -147,7 +154,7 @@
                         <div style="border: 2px solid black; width: 428px; height: auto;">
                         <table id="tblPai" runat="server"  style="width: 428px">
                             <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apontamento Instrutores
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>P.A.I.A.A.C - Período Apontamento Instrutores
                                     <br />
                                     Atividades Acadêmicas e de Coordenação EAD</strong></td>
                             </tr>
@@ -170,10 +177,12 @@
                             </tr>
                         </table>
                              </div>
-                        <div style="border: 2px solid black; width: 430px; height: 91px;">
+                        <div style="border: 2px solid black; width: 430px; height: 108px;">
                             <table id="tblPaiVT" runat="server"  style="width: 430px"  align="right">
                                 <tr>
-                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apontamento Instrutores - VT (docente)</strong></td>
+                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>P.A.I - VT - Período Apontamento
+                                        <br />
+                                        Instrutores - VT (docente)</strong></td>
                                 </tr>
                                 <tr>
                                     <td class="auto-style26">De:</td>
@@ -195,12 +204,11 @@
                             
                             </div>
                        
-                           
                        
                         <div style="border: 2px solid black; width: 431px; height: 91px;">
                         <table id="tblPaa" runat="server"  style="width: 431px" align="right">
                             <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Aprovação Apontamento </strong></td>
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>P.A.A - Período Aprovação Apontamento </strong></td>
                             </tr>
                             <tr>
                                 <td class="auto-style28">De:</td>
