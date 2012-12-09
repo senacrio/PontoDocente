@@ -20,7 +20,6 @@ Partial Class FrequenciaDocente_CronogramaFechamentoList
         If Not Request("Mensagem") Is Nothing Then
             lblMsg.Text = Request("Mensagem").ToString()
             lblMsg.ForeColor = Drawing.Color.Green
-
         End If
 
     End Sub
@@ -41,7 +40,6 @@ Partial Class FrequenciaDocente_CronogramaFechamentoList
 
     Protected Sub ImageButton1_Click(sender As Object, e As ImageClickEventArgs)
         Dim id = CType(sender, ImageButton)
-
         Response.Redirect("CronogramaFechamento.aspx?Id=" + id.CommandArgument)
     End Sub
 
