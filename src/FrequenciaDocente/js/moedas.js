@@ -9,6 +9,8 @@
         if (faults.length) return false;
     });
 
+
+
     $('input[validacao|="dia"]').numeric({ max: 31 });
     $('input[validacao|="mes"]').numeric({ max: 12 });
     $('input[validacao|="horas"]').numeric({ max: 23 });

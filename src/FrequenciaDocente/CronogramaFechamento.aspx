@@ -151,12 +151,12 @@
             <table id="tblGeral" runat="server"  class="auto-style1">
                 <tr>
                     <td valign="top" align="right" rowspan="4">
-                        <div style="border: 2px solid black; width: 428px; height: auto;">
+                        <div id="divPAI" runat="server" style="border: 2px solid black; width: 428px; height: auto;">
                         <table id="tblPai" runat="server"  style="width: 428px">
                             <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>P.A.I.A.A.C - Período Apontamento Instrutores
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apontamento Instrutores
                                     <br />
-                                    Atividades Acadêmicas e de Coordenação EAD</strong></td>
+                                    Atividades Acadêmicas de Coordenação e EAD</strong></td>
                             </tr>
                             <tr>
                                 <td class="auto-style17">De:</td>
@@ -177,10 +177,10 @@
                             </tr>
                         </table>
                              </div>
-                        <div style="border: 2px solid black; width: 430px; height: 108px;">
+                        <div  id="divPAVT" runat="server" style="border: 2px solid black; width: 430px; height: 108px;">
                             <table id="tblPaiVT" runat="server"  style="width: 430px"  align="right">
                                 <tr>
-                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>P.A.I - VT - Período Apontamento
+                                    <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Apontamento
                                         <br />
                                         Instrutores - VT (docente)</strong></td>
                                 </tr>
@@ -205,10 +205,10 @@
                             </div>
                        
                        
-                        <div style="border: 2px solid black; width: 431px; height: 91px;">
+                        <div id="divPAA" runat="server" style="border: 2px solid black; width: 431px; height: 91px;">
                         <table id="tblPaa" runat="server"  style="width: 431px" align="right">
                             <tr>
-                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>P.A.A - Período Aprovação Apontamento </strong></td>
+                                <td colspan="2" style="text-align: center; background-color: #95B3D7"><strong>Período Aprovação Apontamento </strong></td>
                             </tr>
                             <tr>
                                 <td class="auto-style28">De:</td>

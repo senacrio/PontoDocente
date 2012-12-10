@@ -14,7 +14,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
 
     Private Sub InsertParametro(parametro As Parametro)
         db = New FrequenciaDocenteDataContext(conn)
-
         db.Parametros.InsertOnSubmit(parametro)
         db.SubmitChanges()
         db.Dispose()
@@ -29,7 +28,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
                      ).FirstOrDefault()
 
         LoadControls(parametros)
-
     End Sub
 
     Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
@@ -46,24 +44,22 @@ Partial Class FrequenciaDocente_CronogramaFechamento
             End If
 
             Dim erro As Boolean = False
+
             'quadro 1
             Dim dataPAI_VTde As String = txtDeAno.Text + "-" + txtDeMes.Text + "-" + txtDeDia.Text
             Dim dataPAI_VTate As String = txtAteAno.Text + "-" + txtAteMes.Text + "-" + txtAteDia.Text
 
             If Not Util.ValidaData("20" + dataPAI_VTde, "20" + dataPAI_VTate) Then
-                lblMsg.Text = "* P.A.I - VT (docente) está com a data inválida"
-                lblMsg.ForeColor = Drawing.Color.Red
+                divPAVT.Style.Add("border", "2px solid red")
                 erro = True
             End If
-
 
             'quadro 2
             Dim dataPAAde As String = txtDeAnoApt.Text + "-" + txtDeMesApt.Text + "-" + txtDeDiaApt.Text
             Dim dataPAAate As String = txtAteAnoApt.Text + "-" + txtAteMesApt.Text + "-" + txtAteDiaApt.Text
 
             If Not Util.ValidaData("20" + dataPAAde, "20" + dataPAAate) Then
-                lblMsg.Text += "<br />" + "* P.A.A está com a data inválida"
-                lblMsg.ForeColor = Drawing.Color.Red
+                divPAA.Style.Add("border", "2px solid red")
                 erro = True
             End If
 
@@ -72,30 +68,29 @@ Partial Class FrequenciaDocente_CronogramaFechamento
             Dim dataCoordate As String = txtAteAnoCoord.Text + "-" + txtAteMesCoord.Text + "-" + txtAteDiaCoord.Text
 
             If Not Util.ValidaData("20" + dataCoordde, "20" + dataCoordate) Then
-                lblMsg.Text += "<br />" + "* P.A.I.A.A.C - EAD está com a data inválida"
-                lblMsg.ForeColor = Drawing.Color.Red
+                divPAI.Style.Add("border", "2px solid red")
                 erro = True
             End If
 
 
             If Not Util.ValidaDataRange("20" + dataPAI_VTde, "20" + dataCoordde, "20" + dataCoordate) Then
-                lblMsg.Text += "<br />" + "* A data inicial de P.A.I - VT deve estar entre as datas de P.A.I.A.A.C - EAD"
-                lblMsg.ForeColor = Drawing.Color.Red
+                divPAVT.Style.Add("border", "2px solid red")
                 erro = True
             End If
 
             If Not Util.ValidaDataRange("20" + dataPAI_VTate, "20" + dataCoordde, "20" + dataCoordate) Then
-                lblMsg.Text += "<br />" + "* A data final de P.A.I - VT deve estar entre as datas de P.A.I.A.A.C - EAD"
-                lblMsg.ForeColor = Drawing.Color.Red
+                divPAVT.Style.Add("border", "2px solid red")
                 erro = True
             End If
 
             If Not Util.ValidaDataDiff("20" + dataPAAde, "20" + dataCoordde, "20" + dataCoordate) Then
-                lblMsg.Text += "<br />" + "* A data inicial de P.A.A deve ser maior que a data final de P.A.I.A.A.C - EAD"
-                lblMsg.ForeColor = Drawing.Color.Red
+                divPAA.Style.Add("border", "2px solid red")
                 erro = True
             End If
 
+            If (Not dataCoordate = dataPAI_VTate) Then
+                divPAVT.Style.Add("border", "2px solid red")
+            End If
 
             'quadro 4
             Dim turnoManhaDe As String = turnomanha.De
@@ -112,6 +107,8 @@ Partial Class FrequenciaDocente_CronogramaFechamento
             Dim valorAA As String = txtValorAA.Text
 
             If (erro) Then
+                lblMsg.Text = "O(s) quadro(s) em vermelho apresentam inconsistências nas datas"
+                lblMsg.ForeColor = Drawing.Color.Red
                 Return
             End If
 
@@ -139,8 +136,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
 
             VerifyAndDisableParametros(parametros)
 
-
-
             InsertParametro(parametros)
             Response.Redirect("CronogramaFechamentoList.aspx?Mensagem=" + "Cronograma salvo com sucesso!")
 
@@ -149,8 +144,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
             lblMsg.ForeColor = Drawing.Color.Red
 
         End Try
-
-
     End Sub
 
     Protected Sub btnSalvar_Load(sender As Object, e As EventArgs) Handles btnSalvar.Load
@@ -177,8 +170,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
         turnotarde.Ate = "17:00"
         turnonoite.De = "18:00"
         turnonoite.Ate = "22:00"
-
-
     End Sub
 
     Private Sub LoadControls(parametro As Parametro)
@@ -196,7 +187,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
         txtAteMes.Text = parametro.PAI_VT_ATE.Split("-")(1)
         txtAteDia.Text = parametro.PAI_VT_ATE.Split("-")(2)
 
-
         txtDeAno.Text = parametro.PAI_VT_DE.Split("-")(0)
         txtDeMes.Text = parametro.PAI_VT_DE.Split("-")(1)
         txtDeDia.Text = parametro.PAI_VT_DE.Split("-")(2)
@@ -204,7 +194,6 @@ Partial Class FrequenciaDocente_CronogramaFechamento
         txtAteAnoCoord.Text = parametro.PCO_ATE.Split("-")(0)
         txtAteMesCoord.Text = parametro.PCO_ATE.Split("-")(1)
         txtAteDiaCoord.Text = parametro.PCO_ATE.Split("-")(2)
-
 
         txtDeAnoCoord.Text = parametro.PCO_DE.Split("-")(0)
         txtDeMesCoord.Text = parametro.PCO_DE.Split("-")(1)
@@ -218,9 +207,7 @@ Partial Class FrequenciaDocente_CronogramaFechamento
         turnotarde.De = parametro.TN_TD_DE
         txtValorVT.Text = parametro.VL_CT_VT
         txtValorAA.Text = parametro.VL_UN_AA
-
     End Sub
-
     Private Sub CommitData()
         Try
             db.SubmitChanges()
