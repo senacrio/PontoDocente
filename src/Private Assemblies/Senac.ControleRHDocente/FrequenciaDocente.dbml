@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Senac" Class="FrequenciaDocenteDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=Senac;Persist Security Info=True;User ID=sa" SettingsObjectName="Senac.ControleRHDocente.Properties.Settings" SettingsPropertyName="SenacConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=Senac;Persist Security Info=True;User ID=sa" SettingsObjectName="Settings" SettingsPropertyName="SenacConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Parametros" Member="Parametros">
     <Type Name="Parametro">
       <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -24,12 +24,27 @@
       <Column Name="VL_UN_AA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="DataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Parametro_AgendaExecutada" Member="AgendaExecutadas" ThisKey="Id" OtherKey="IdParametro" Type="AgendaExecutada" />
     </Type>
   </Table>
   <Table Name="dbo.AgendaExecutada" Member="AgendaExecutadas">
     <Type Name="AgendaExecutada">
       <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Valor" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Unidade" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="Data" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="HoraInicial" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="HoraFinal" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Disciplina" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Turma" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SalarioHora" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Matricula" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="UsuarioRegistro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IdParametro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ArquivoDownload" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="Parametro_AgendaExecutada" Member="Parametro" ThisKey="IdParametro" OtherKey="Id" Type="Parametro" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -1,0 +1,22 @@
+Layout Version: 1.00.00.000                                                                                                         
++----------------------------------------------------------------------------------------------------------------------------------+
+|                                 Lay-out do Arquivo de Importação de  Movimento Apontamento Horas Aula                            |
+|----------------------------------------------------------------------------------------------------------------------------------|
+|                                                             Formato: Texto                                                       |
+|                                                 Tamanho do Registro: 63                                                          |
+|----------------------------------------------------------------------------------------------------------------------------------|
+| Ordem |                         Descrição                       | Tamanho | Início | Término | Conteúdo | Decimais | Obrigatório |
+|-------+---------------------------------------------------------+---------+--------+---------+----------+----------+-------------|
+|       | *****     Registro Detalhe     *****                    |         |        |         |          |          |             |
+|    1  | Código do Estabelecimento Disciplina                    |     3   |     1  |     3   | Inteiro  |          |     Sim     |
+|    2  | Data da Aula                                            |     8   |     4  |    11   | DDMMAAAA |          |     Sim     |
+|    3  | Hora Início da Aula                                     |     8   |    12  |    19   | HH:MM:SS |          |     Sim     |
+|    4  | Hora Fim da Aula                                        |     8   |    20  |    27   | HH:MM:SS |          |     Sim     |
+|    5  | Código da Disciplina                                    |     10  |    28  |    37   | Caracter |          |     Sim     |
+|    6  | Código da Turma                                         |     10  |    38  |    47   | Caracter |          |     Sim     |
+|    7  | Valor da Hora                                           |     8   |    48  |    55   | Decimal  |          |     Sim     |
+|    8  | Matrícula do Funcionário                                |     8   |    56  |    63   | Inteiro  |          |     Sim     |
+|    9  | Situação da Agenda: "Executada" ou "Afastado"           |     9   |    64  |    72   | Caracter |          |     Sim     |
+|   10  | Categoria Especificação. Níveis(*)                      |     2   |    73  |    74   | Inteiro  |          |     Sim     |
++----------------------------------------------------------------------------------------------------------------------------------+
+(*) - 1=FIC ; 2 = Graduação ; 3 = Pós-Graduação ; 4 = EAD ; 5 = Contrato(Outros) ; 6 = Casos Especiais                              
