@@ -44,7 +44,18 @@
       <Column Name="DataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="IdParametro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ArquivoDownload" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Association Name="AgendaExecutada_RegistroVT" Member="RegistroVTs" ThisKey="Id" OtherKey="IdAgendaExecutada" Type="RegistroVT" />
       <Association Name="Parametro_AgendaExecutada" Member="Parametro" ThisKey="IdParametro" OtherKey="Id" Type="Parametro" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RegistroVT" Member="RegistroVTs">
+    <Type Name="RegistroVT">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdAgendaExecutada" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdaVolta" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="ValorVT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="DataHora" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="AgendaExecutada_RegistroVT" Member="AgendaExecutada" ThisKey="IdAgendaExecutada" OtherKey="Id" Type="AgendaExecutada" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

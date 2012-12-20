@@ -36,6 +36,9 @@ namespace Senac.ControleRHDocente
     partial void InsertAgendaExecutada(AgendaExecutada instance);
     partial void UpdateAgendaExecutada(AgendaExecutada instance);
     partial void DeleteAgendaExecutada(AgendaExecutada instance);
+    partial void InsertRegistroVT(RegistroVT instance);
+    partial void UpdateRegistroVT(RegistroVT instance);
+    partial void DeleteRegistroVT(RegistroVT instance);
     #endregion
 		
 		public FrequenciaDocenteDataContext() : 
@@ -81,6 +84,14 @@ namespace Senac.ControleRHDocente
 			get
 			{
 				return this.GetTable<AgendaExecutada>();
+			}
+		}
+		
+		public System.Data.Linq.Table<RegistroVT> RegistroVTs
+		{
+			get
+			{
+				return this.GetTable<RegistroVT>();
 			}
 		}
 	}
@@ -715,6 +726,8 @@ namespace Senac.ControleRHDocente
 		
 		private string _ArquivoDownload;
 		
+		private EntitySet<RegistroVT> _RegistroVTs;
+		
 		private EntityRef<Parametro> _Parametro;
 		
     #region Extensibility Method Definitions
@@ -755,6 +768,7 @@ namespace Senac.ControleRHDocente
 		
 		public AgendaExecutada()
 		{
+			this._RegistroVTs = new EntitySet<RegistroVT>(new Action<RegistroVT>(this.attach_RegistroVTs), new Action<RegistroVT>(this.detach_RegistroVTs));
 			this._Parametro = default(EntityRef<Parametro>);
 			OnCreated();
 		}
@@ -1063,6 +1077,19 @@ namespace Senac.ControleRHDocente
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgendaExecutada_RegistroVT", Storage="_RegistroVTs", ThisKey="Id", OtherKey="IdAgendaExecutada")]
+		public EntitySet<RegistroVT> RegistroVTs
+		{
+			get
+			{
+				return this._RegistroVTs;
+			}
+			set
+			{
+				this._RegistroVTs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AgendaExecutada", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
 		public Parametro Parametro
 		{
@@ -1093,6 +1120,217 @@ namespace Senac.ControleRHDocente
 						this._IdParametro = default(string);
 					}
 					this.SendPropertyChanged("Parametro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_RegistroVTs(RegistroVT entity)
+		{
+			this.SendPropertyChanging();
+			entity.AgendaExecutada = this;
+		}
+		
+		private void detach_RegistroVTs(RegistroVT entity)
+		{
+			this.SendPropertyChanging();
+			entity.AgendaExecutada = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RegistroVT")]
+	public partial class RegistroVT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _IdAgendaExecutada;
+		
+		private string _IdaVolta;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private System.DateTime _DataHora;
+		
+		private EntityRef<AgendaExecutada> _AgendaExecutada;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnIdAgendaExecutadaChanging(string value);
+    partial void OnIdAgendaExecutadaChanged();
+    partial void OnIdaVoltaChanging(string value);
+    partial void OnIdaVoltaChanged();
+    partial void OnValorVTChanging(System.Nullable<decimal> value);
+    partial void OnValorVTChanged();
+    partial void OnDataHoraChanging(System.DateTime value);
+    partial void OnDataHoraChanged();
+    #endregion
+		
+		public RegistroVT()
+		{
+			this._AgendaExecutada = default(EntityRef<AgendaExecutada>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdAgendaExecutada", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string IdAgendaExecutada
+		{
+			get
+			{
+				return this._IdAgendaExecutada;
+			}
+			set
+			{
+				if ((this._IdAgendaExecutada != value))
+				{
+					if (this._AgendaExecutada.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdAgendaExecutadaChanging(value);
+					this.SendPropertyChanging();
+					this._IdAgendaExecutada = value;
+					this.SendPropertyChanged("IdAgendaExecutada");
+					this.OnIdAgendaExecutadaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdaVolta", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+		public string IdaVolta
+		{
+			get
+			{
+				return this._IdaVolta;
+			}
+			set
+			{
+				if ((this._IdaVolta != value))
+				{
+					this.OnIdaVoltaChanging(value);
+					this.SendPropertyChanging();
+					this._IdaVolta = value;
+					this.SendPropertyChanged("IdaVolta");
+					this.OnIdaVoltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this.OnValorVTChanging(value);
+					this.SendPropertyChanging();
+					this._ValorVT = value;
+					this.SendPropertyChanged("ValorVT");
+					this.OnValorVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHora", DbType="DateTime NOT NULL")]
+		public System.DateTime DataHora
+		{
+			get
+			{
+				return this._DataHora;
+			}
+			set
+			{
+				if ((this._DataHora != value))
+				{
+					this.OnDataHoraChanging(value);
+					this.SendPropertyChanging();
+					this._DataHora = value;
+					this.SendPropertyChanged("DataHora");
+					this.OnDataHoraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgendaExecutada_RegistroVT", Storage="_AgendaExecutada", ThisKey="IdAgendaExecutada", OtherKey="Id", IsForeignKey=true)]
+		public AgendaExecutada AgendaExecutada
+		{
+			get
+			{
+				return this._AgendaExecutada.Entity;
+			}
+			set
+			{
+				AgendaExecutada previousValue = this._AgendaExecutada.Entity;
+				if (((previousValue != value) 
+							|| (this._AgendaExecutada.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AgendaExecutada.Entity = null;
+						previousValue.RegistroVTs.Remove(this);
+					}
+					this._AgendaExecutada.Entity = value;
+					if ((value != null))
+					{
+						value.RegistroVTs.Add(this);
+						this._IdAgendaExecutada = value.Id;
+					}
+					else
+					{
+						this._IdAgendaExecutada = default(string);
+					}
+					this.SendPropertyChanged("AgendaExecutada");
 				}
 			}
 		}

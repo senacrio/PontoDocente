@@ -5,9 +5,9 @@ Imports System.Collections.Generic
 
 Partial Class FrequenciaDocente_AgendaExecutada
     Inherits System.Web.UI.Page
-    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    ' Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
 
-    'Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
+    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
     Dim listaAgendaExecutada As List(Of AgendaExecutada)
     Dim parametroAtivo As Parametro
     Dim guidArquivo As String

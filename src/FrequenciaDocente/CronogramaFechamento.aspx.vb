@@ -9,8 +9,8 @@ Partial Class FrequenciaDocente_CronogramaFechamento
 
     Dim db As FrequenciaDocenteDataContext
 
-    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
-    'Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
+    'Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
 
     Private Sub InsertParametro(parametro As Parametro)
         db = New FrequenciaDocenteDataContext(conn)

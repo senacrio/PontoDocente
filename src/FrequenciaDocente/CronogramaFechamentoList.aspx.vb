@@ -4,8 +4,8 @@ Imports System.Linq
 Partial Class FrequenciaDocente_CronogramaFechamentoList
     Inherits System.Web.UI.Page
 
-    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
-    'Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
+    ' Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
 
     Protected Sub grdCronogramaFechamento_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdCronogramaFechamento.SelectedIndexChanged
 
