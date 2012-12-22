@@ -9,13 +9,14 @@ Partial Class FrequenciaDocente_AgendaExecutada
 
     Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
     Dim listaAgendaExecutada As List(Of AgendaExecutada)
+    Dim listaAgendaExecutadaVT As List(Of AgendaExecutadaVT)
     Dim parametroAtivo As Parametro
     Dim guidArquivo As String
 
     Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
         guidArquivo = Guid.NewGuid().ToString()
         Me.listaAgendaExecutada = New List(Of AgendaExecutada)
-
+        Me.listaAgendaExecutadaVT = New List(Of AgendaExecutadaVT)
         If (FileUpload1.PostedFile.ContentLength.Equals(0)) Then
             lblMsg.Text = "Selecione um arquivo"
             lblMsg.ForeColor = Drawing.Color.Red
@@ -31,14 +32,15 @@ Partial Class FrequenciaDocente_AgendaExecutada
                     linha = str.ReadLine()
 
                     Dim ae As New AgendaExecutada()
+                    Dim aeVT As New AgendaExecutadaVT()
                     ae.Id = Guid.NewGuid().ToString()
                     ae.DataHoraRegistro = DateTime.Now
 
                     If (Not String.IsNullOrEmpty(linha)) Then
-                        LoadAgendaExecutada(ae, linha)
+                        LoadAgendaExecutada(ae, aeVT, linha)
                         ValidaAgendaExecutada(linha.Split(";")(1))
                         Me.listaAgendaExecutada.Add(ae)
-
+                        Me.listaAgendaExecutadaVT.Add(aeVT)
                     End If
 
 
@@ -47,6 +49,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
 
                 If (Not Me.listaAgendaExecutada Is Nothing) And (Me.listaAgendaExecutada.Count > 0) Then
                     db.AgendaExecutadas.InsertAllOnSubmit(Me.listaAgendaExecutada)
+                    db.AgendaExecutadaVTs.InsertAllOnSubmit(Me.listaAgendaExecutadaVT)
                     db.SubmitChanges()
                 End If
 
@@ -70,7 +73,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
         End If
     End Sub
 
-    Private Sub LoadAgendaExecutada(ae As AgendaExecutada, linha As String)
+    Private Sub LoadAgendaExecutada(ae As AgendaExecutada, aeVT As AgendaExecutadaVT, linha As String)
         'ae.Unidade = linha.Substring(0, 3)
         'ae.Data = linha.Substring(3, 8)
         'ae.HoraInicial = linha.Substring(11, 5)
@@ -94,6 +97,23 @@ Partial Class FrequenciaDocente_AgendaExecutada
         ae.Categoria = linha.Split(";")(0)
         ae.IdParametro = Me.parametroAtivo.Id
         ae.ArquivoDownload = "ArquivoAgendaExecutada/" & parametroAtivo.Ano.ToString() + "_" + parametroAtivo.Mes.ToString() + "_" + parametroAtivo.Versao.ToString() + "-" + guidArquivo + ".TXT"
+
+        aeVT.Id = ae.Id
+        aeVT.DataHoraRegistro = ae.DataHoraRegistro
+        aeVT.Unidade = linha.Split(";")(10)
+        aeVT.Data = Convert.ToDateTime(linha.Split(";")(1)).ToString("ddMMyyyy")
+        aeVT.HoraInicial = linha.Split(";")(2).Substring(0, 5)
+        aeVT.HoraFinal = linha.Split(";")(2).Substring(8, 5)
+        aeVT.Disciplina = linha.Split(";")(4)
+        aeVT.Turma = linha.Split(";")(5)
+        aeVT.SalarioHora = linha.Split(";")(6)
+        aeVT.Matricula = linha.Split(";")(7)
+        aeVT.Status = linha.Split(";")(8)
+        aeVT.Categoria = linha.Split(";")(0)
+        aeVT.IdParametro = Me.parametroAtivo.Id
+        aeVT.ArquivoDownload = "ArquivoAgendaExecutada/" & parametroAtivo.Ano.ToString() + "_" + parametroAtivo.Mes.ToString() + "_" + parametroAtivo.Versao.ToString() + "-" + guidArquivo + ".TXT"
+
+
     End Sub
 
     Private Sub Download()

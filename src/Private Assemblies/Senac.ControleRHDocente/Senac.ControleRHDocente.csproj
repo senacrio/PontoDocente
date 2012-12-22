@@ -52,7 +52,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RegistroVT.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>

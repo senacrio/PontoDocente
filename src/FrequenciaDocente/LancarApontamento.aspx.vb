@@ -5,7 +5,7 @@ Partial Class FrequenciaDocente_LancarApontamento
     Inherits System.Web.UI.Page
     ' Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
     Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
-
+    Dim btnSalvarI As Button
     Dim parametroAtivo As Parametro
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
@@ -34,7 +34,7 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private Sub LoadGridVT()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
-        Dim listaVT = From r In db.AgendaExecutadas _
+        Dim listaVT = From r In db.AgendaExecutadaVTs _
                       Where r.Matricula.Equals("00014134") _
                       And r.IdParametro = Me.parametroAtivo.Id _
                       Select r
@@ -48,42 +48,75 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     Protected Sub grdVT_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles grdVT.RowDataBound
 
-        If (e.Row.RowType = DataControlRowType.DataRow) Then
-            Dim idAgendaExecutada = CType(e.Row.DataItem, AgendaExecutada).Id
+        'If (e.Row.RowType = DataControlRowType.DataRow) Then
+        '    Dim idAgendaExecutada = CType(e.Row.DataItem, AgendaExecutada).Id
 
-            Dim registroVT As RegistroVT = GetRegistroVT(idAgendaExecutada)
+        '    Dim registroVT As RegistroVT = GetRegistroVT(idAgendaExecutada)
 
-            If Not (registroVT.Id Is Nothing) Then
-                CType(e.Row.FindControl("txtIdaVolta"), TextBox).Text = registroVT.IdaVolta
-                CType(e.Row.FindControl("txtValorVT"), TextBox).Text = registroVT.ValorVT
-            End If
+        '    If Not (registroVT.Id Is Nothing) Then
+        '        CType(e.Row.FindControl("txtIdaVolta"), TextBox).Text = registroVT.IdaVolta
+        '        CType(e.Row.FindControl("txtValorVT"), TextBox).Text = registroVT.ValorVT
+        '    End If
 
-        End If
+        'End If
 
 
     End Sub
 
-    Private Function GetRegistroVT(idAgendaExecutada As String) As RegistroVT
-        Dim db = New FrequenciaDocenteDataContext(conn)
-        Dim registroVT As RegistroVT = (From r In db.RegistroVTs _
-                                       Where r.IdAgendaExecutada = idAgendaExecutada _
-                                       Select r).FirstOrDefault()
-
-        If (registroVT Is Nothing) Then
-            Return New RegistroVT()
-        Else
-            Return registroVT
-        End If
-
-    End Function
+  
 
     Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
         For Each row As GridViewRow In grdVT.Rows
             If (row.RowType = DataControlRowType.DataRow) Then
 
+                Dim txtValorIdaVolta As TextBox = CType(row.FindControl("txtIdaVolta"), TextBox)
+                Dim txtValorVT As TextBox = CType(row.FindControl("txtValorVT"), TextBox)
+
+                Dim id As String = txtValorIdaVolta.Attributes("idagenda")
+
+                SaveAgendaVT(id, txtValorVT.Text, txtValorIdaVolta.Text)
+
+
             End If
 
 
         Next
+    End Sub
+
+    Private Sub SaveAgendaVT(id As String, valorVT As String, valorIdaVolta As String)
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        Dim agendaVT = (From aevt In db.AgendaExecutadaVTs _
+                       Where aevt.Id.Equals(id) _
+                       Select aevt).FirstOrDefault()
+        agendaVT.IdaVolta = valorIdaVolta
+        agendaVT.ValorVT = Convert.ToDecimal(valorVT)
+
+        db.SubmitChanges()
+    End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As EventArgs)
+        Try
+            btnSalvarI = sender
+
+        Catch ex As Exception
+            Response.Write(ex.Message)
+
+        End Try
+    End Sub
+
+    Protected Sub grdVT_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grdVT.RowCommand
+      
+    End Sub
+
+    Protected Sub grdVT_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdVT.SelectedIndexChanged
+        Dim row = grdVT.Rows(grdVT.SelectedIndex)
+
+        Dim txtValorIdaVolta As TextBox = CType(row.FindControl("txtIdaVolta"), TextBox)
+        Dim txtValorVT As TextBox = CType(row.FindControl("txtValorVT"), TextBox)
+
+        Dim id As String = txtValorIdaVolta.Attributes("idagenda")
+
+        SaveAgendaVT(id, txtValorVT.Text, txtValorIdaVolta.Text)
     End Sub
 End Class

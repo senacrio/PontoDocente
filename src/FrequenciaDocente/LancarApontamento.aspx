@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="LancarApontamento.aspx.vb" Inherits="FrequenciaDocente_LancarApontamento" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="LancarApontamento.aspx.vb" Inherits="FrequenciaDocente_LancarApontamento" EnableEventValidation="false"  %>
 
 <!DOCTYPE html>
 
@@ -40,8 +40,8 @@
                         </td>
                 </tr>
             </table>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
+         <%--   <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>--%>
                     <asp:Panel ID="pnlVT" runat="server" BorderColor="#6666FF" BorderStyle="Solid" BorderWidth="2px" Height="523px" ScrollBars="Vertical">
                         <table class="auto-style1">
                             <tr>
@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td align="center">
-                                    <asp:GridView ID="grdVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None">
+                                    <asp:GridView ID="grdVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" style="font-size: small">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:BoundField DataField="Unidade" HeaderText="Unidade" />
@@ -69,7 +69,7 @@
                                                     <asp:TextBox ID="TextBox2" runat="server" Text=""></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="txtIdaVolta" runat="server" Height="50px" TextMode="MultiLine" ToolTip='<%# Eval("Id") %>' Width="300px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtIdaVolta" runat="server" Height="50px" TextMode="MultiLine" Text='<%# Eval("IdaVolta") %>' idagenda='<%# Eval("Id") %>' Width="300px"></asp:TextBox>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Valor VT">
@@ -77,7 +77,12 @@
                                                     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
-                                                    <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda"></asp:TextBox>
+                                                    <asp:TextBox ID="txtValorVT" runat="server" Text='<%# Eval("ValorVT") %>' CssClass="moeda"></asp:TextBox>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:Button ID="btnSalvar" runat="server" CommandArgument="salvar" onclick="Button1_Click" style="font-family: Verdana; font-size: x-small;" Text="Salvar" CommandName="select" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -101,8 +106,8 @@
                         </tr>
                     </table>
                     <br />
-                </ContentTemplate>
-            </asp:UpdatePanel>
+<%--                </ContentTemplate>
+            </asp:UpdatePanel>--%>
             <br />
 
         </div>
