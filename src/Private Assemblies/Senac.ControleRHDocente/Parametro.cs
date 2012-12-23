@@ -27,17 +27,18 @@ namespace Senac.ControleRHDocente
                 return Convert.ToDateTime(this.Ano.ToString() + "-" + this.Mes.ToString() + "-01");
             }
         }
-        
+
         public bool AtivoSinal
         {
-            get {
+            get
+            {
 
                 bool b = false;
 
                 if (this.Ano == DateTime.Now.Year && this.Mes == DateTime.Now.Month)
                 {
                     b = true;
-                    
+
                 }
                 else if (this.Ano > DateTime.Now.Year && this.Mes > DateTime.Now.Month)
                 {
@@ -46,10 +47,10 @@ namespace Senac.ControleRHDocente
 
                 return b;
             }
-            
+
         }
 
-        public static  Parametro GetParametroAtivo()
+        public static Parametro GetParametroAtivo()
         {
 
 

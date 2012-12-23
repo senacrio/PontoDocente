@@ -15,8 +15,11 @@ Partial Class FrequenciaDocente_LancarApontamento
             pnlVT.Enabled = False
         Else
             '    lblDataVT.Text = Me.parametroAtivo.
-            LoadGridVT()
+            If Not (Page.IsPostBack) Then
+                LoadGridVT()
 
+            End If
+           
         End If
     End Sub
 
@@ -65,24 +68,6 @@ Partial Class FrequenciaDocente_LancarApontamento
 
   
 
-    Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
-        For Each row As GridViewRow In grdVT.Rows
-            If (row.RowType = DataControlRowType.DataRow) Then
-
-                Dim txtValorIdaVolta As TextBox = CType(row.FindControl("txtIdaVolta"), TextBox)
-                Dim txtValorVT As TextBox = CType(row.FindControl("txtValorVT"), TextBox)
-
-                Dim id As String = txtValorIdaVolta.Attributes("idagenda")
-
-                SaveAgendaVT(id, txtValorVT.Text, txtValorIdaVolta.Text)
-
-
-            End If
-
-
-        Next
-    End Sub
-
     Private Sub SaveAgendaVT(id As String, valorVT As String, valorIdaVolta As String)
         Dim db = New FrequenciaDocenteDataContext(conn)
 
@@ -118,5 +103,11 @@ Partial Class FrequenciaDocente_LancarApontamento
         Dim id As String = txtValorIdaVolta.Attributes("idagenda")
 
         SaveAgendaVT(id, txtValorVT.Text, txtValorIdaVolta.Text)
+
+        grdVT.SelectedIndex = -1
+    End Sub
+
+    Protected Sub grdVT_SelectedIndexChanging(sender As Object, e As GridViewSelectEventArgs) Handles grdVT.SelectedIndexChanging
+
     End Sub
 End Class
