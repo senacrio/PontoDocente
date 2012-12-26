@@ -19,8 +19,9 @@ Partial Class FrequenciaDocente_LancarApontamento
                 LoadGridVT()
 
             End If
-           
+
         End If
+
     End Sub
 
     Private Function GetParametroAtivo() As Parametro
@@ -66,7 +67,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     End Sub
 
-  
+
 
     Private Sub SaveAgendaVT(id As String, valorVT As String, valorIdaVolta As String)
         Dim db = New FrequenciaDocenteDataContext(conn)
@@ -91,7 +92,7 @@ Partial Class FrequenciaDocente_LancarApontamento
     End Sub
 
     Protected Sub grdVT_RowCommand(sender As Object, e As GridViewCommandEventArgs) Handles grdVT.RowCommand
-      
+
     End Sub
 
     Protected Sub grdVT_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdVT.SelectedIndexChanged

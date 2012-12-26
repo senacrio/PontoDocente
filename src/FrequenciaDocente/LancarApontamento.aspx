@@ -114,11 +114,27 @@
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Unidade") %>'></asp:TextBox>
                                                     </EditItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtUnidade" runat="server" Text='<%# Eval("Unidade") %>' Width="50px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:TextBox ID="txtUnidade" runat="server" Text='<%# Eval("Unidade") %>' Width="50px"></asp:TextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Área">
+                                                    <FooterTemplate>
+                                                        <asp:DropDownList ID="ddlArea" runat="server">
+                                                            <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
+                                                            <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
+                                                            <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
+                                                            <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
+                                                            <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
+                                                            <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
+                                                            <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
+                                                            <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
+                                                            <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:DropDownList ID="ddlArea" runat="server">
                                                             <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
@@ -134,24 +150,41 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Data">
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtArea" runat="server" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
-                                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtArea" runat="server" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Entrada">
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtEntrada" runat="server" Text='<%# Bind("Entrada") %>' Width="60px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Entrada") %>' Width="60px"></asp:TextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Saída">
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtSaida" runat="server" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
-                                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtSaida" runat="server" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Categoria">
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("Categoria") %>'></asp:TextBox>
                                                     </EditItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:DropDownList ID="ddlCategoria" runat="server">
+                                                            <asp:ListItem Value="1">Fic/Tec</asp:ListItem>
+                                                            <asp:ListItem Value="2">Graduação</asp:ListItem>
+                                                            <asp:ListItem Value="3">Pós-Graduação</asp:ListItem>
+                                                            <asp:ListItem Value="4">EAD</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:DropDownList ID="ddlCategoria" runat="server">
                                                             <asp:ListItem Value="1">Fic/Tec</asp:ListItem>
@@ -162,11 +195,17 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Justificativa">
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtJustificativa" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:TextBox ID="txtJustificativa" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField HeaderText="Valor VT">
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtValorVT" runat="server" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:TextBox ID="txtValorVT" runat="server" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
                                                     </ItemTemplate>
@@ -175,11 +214,18 @@
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("IdaVolta") %>'></asp:TextBox>
                                                     </EditItemTemplate>
+                                                    <FooterTemplate>
+                                                        <asp:TextBox ID="txtIdaVolta" runat="server" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
+                                                    </FooterTemplate>
                                                     <ItemTemplate>
                                                         <asp:TextBox ID="txtIdaVolta" runat="server" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:TemplateField></asp:TemplateField>
+                                                <asp:TemplateField>
+                                                    <FooterTemplate>
+                                                        <asp:Button ID="btnSalvar" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" />
+                                                    </FooterTemplate>
+                                                </asp:TemplateField>
                                             </Columns>
                                             <EditRowStyle BackColor="#2461BF" />
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

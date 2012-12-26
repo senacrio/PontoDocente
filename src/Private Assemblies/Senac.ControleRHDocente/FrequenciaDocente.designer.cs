@@ -39,6 +39,9 @@ namespace Senac.ControleRHDocente
     partial void InsertAgendaExecutadaVT(AgendaExecutadaVT instance);
     partial void UpdateAgendaExecutadaVT(AgendaExecutadaVT instance);
     partial void DeleteAgendaExecutadaVT(AgendaExecutadaVT instance);
+    partial void InsertAtividadeAcademica(AtividadeAcademica instance);
+    partial void UpdateAtividadeAcademica(AtividadeAcademica instance);
+    partial void DeleteAtividadeAcademica(AtividadeAcademica instance);
     #endregion
 		
 		public FrequenciaDocenteDataContext() : 
@@ -92,6 +95,14 @@ namespace Senac.ControleRHDocente
 			get
 			{
 				return this.GetTable<AgendaExecutadaVT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AtividadeAcademica> AtividadeAcademicas
+		{
+			get
+			{
+				return this.GetTable<AtividadeAcademica>();
 			}
 		}
 	}
@@ -150,6 +161,8 @@ namespace Senac.ControleRHDocente
 		
 		private EntitySet<AgendaExecutadaVT> _AgendaExecutadaVTs;
 		
+		private EntitySet<AtividadeAcademica> _AtividadeAcademicas;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -204,6 +217,7 @@ namespace Senac.ControleRHDocente
 		{
 			this._AgendaExecutadas = new EntitySet<AgendaExecutada>(new Action<AgendaExecutada>(this.attach_AgendaExecutadas), new Action<AgendaExecutada>(this.detach_AgendaExecutadas));
 			this._AgendaExecutadaVTs = new EntitySet<AgendaExecutadaVT>(new Action<AgendaExecutadaVT>(this.attach_AgendaExecutadaVTs), new Action<AgendaExecutadaVT>(this.detach_AgendaExecutadaVTs));
+			this._AtividadeAcademicas = new EntitySet<AtividadeAcademica>(new Action<AtividadeAcademica>(this.attach_AtividadeAcademicas), new Action<AtividadeAcademica>(this.detach_AtividadeAcademicas));
 			OnCreated();
 		}
 		
@@ -673,6 +687,19 @@ namespace Senac.ControleRHDocente
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AtividadeAcademica", Storage="_AtividadeAcademicas", ThisKey="Id", OtherKey="IdParametro")]
+		public EntitySet<AtividadeAcademica> AtividadeAcademicas
+		{
+			get
+			{
+				return this._AtividadeAcademicas;
+			}
+			set
+			{
+				this._AtividadeAcademicas.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -712,6 +739,18 @@ namespace Senac.ControleRHDocente
 		}
 		
 		private void detach_AgendaExecutadaVTs(AgendaExecutadaVT entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parametro = null;
+		}
+		
+		private void attach_AtividadeAcademicas(AtividadeAcademica entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parametro = this;
+		}
+		
+		private void detach_AtividadeAcademicas(AtividadeAcademica entity)
 		{
 			this.SendPropertyChanging();
 			entity.Parametro = null;
@@ -1636,6 +1675,445 @@ namespace Senac.ControleRHDocente
 					if ((value != null))
 					{
 						value.AgendaExecutadaVTs.Add(this);
+						this._IdParametro = value.Id;
+					}
+					else
+					{
+						this._IdParametro = default(string);
+					}
+					this.SendPropertyChanged("Parametro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AtividadeAcademica")]
+	public partial class AtividadeAcademica : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _IdUnidade;
+		
+		private string _Area;
+		
+		private System.DateTime _Data;
+		
+		private string _Entrada;
+		
+		private string _Saida;
+		
+		private string _Categoria;
+		
+		private string _Justificativas;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private string _TrajetoIdaVolta;
+		
+		private System.Nullable<bool> _Validacao;
+		
+		private string _UsuarioValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraRegistro;
+		
+		private string _IdParametro;
+		
+		private EntityRef<Parametro> _Parametro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnIdUnidadeChanging(string value);
+    partial void OnIdUnidadeChanged();
+    partial void OnAreaChanging(string value);
+    partial void OnAreaChanged();
+    partial void OnDataChanging(System.DateTime value);
+    partial void OnDataChanged();
+    partial void OnEntradaChanging(string value);
+    partial void OnEntradaChanged();
+    partial void OnSaidaChanging(string value);
+    partial void OnSaidaChanged();
+    partial void OnCategoriaChanging(string value);
+    partial void OnCategoriaChanged();
+    partial void OnJustificativasChanging(string value);
+    partial void OnJustificativasChanged();
+    partial void OnValorVTChanging(System.Nullable<decimal> value);
+    partial void OnValorVTChanged();
+    partial void OnTrajetoIdaVoltaChanging(string value);
+    partial void OnTrajetoIdaVoltaChanged();
+    partial void OnValidacaoChanging(System.Nullable<bool> value);
+    partial void OnValidacaoChanged();
+    partial void OnUsuarioValidacaoChanging(string value);
+    partial void OnUsuarioValidacaoChanged();
+    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraValidacaoChanged();
+    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraRegistroChanged();
+    partial void OnIdParametroChanging(string value);
+    partial void OnIdParametroChanged();
+    #endregion
+		
+		public AtividadeAcademica()
+		{
+			this._Parametro = default(EntityRef<Parametro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string IdUnidade
+		{
+			get
+			{
+				return this._IdUnidade;
+			}
+			set
+			{
+				if ((this._IdUnidade != value))
+				{
+					this.OnIdUnidadeChanging(value);
+					this.SendPropertyChanging();
+					this._IdUnidade = value;
+					this.SendPropertyChanged("IdUnidade");
+					this.OnIdUnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Area
+		{
+			get
+			{
+				return this._Area;
+			}
+			set
+			{
+				if ((this._Area != value))
+				{
+					this.OnAreaChanging(value);
+					this.SendPropertyChanging();
+					this._Area = value;
+					this.SendPropertyChanged("Area");
+					this.OnAreaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime NOT NULL", IsPrimaryKey=true)]
+		public System.DateTime Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Entrada
+		{
+			get
+			{
+				return this._Entrada;
+			}
+			set
+			{
+				if ((this._Entrada != value))
+				{
+					this.OnEntradaChanging(value);
+					this.SendPropertyChanging();
+					this._Entrada = value;
+					this.SendPropertyChanged("Entrada");
+					this.OnEntradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Saida
+		{
+			get
+			{
+				return this._Saida;
+			}
+			set
+			{
+				if ((this._Saida != value))
+				{
+					this.OnSaidaChanging(value);
+					this.SendPropertyChanging();
+					this._Saida = value;
+					this.SendPropertyChanged("Saida");
+					this.OnSaidaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this.OnCategoriaChanging(value);
+					this.SendPropertyChanging();
+					this._Categoria = value;
+					this.SendPropertyChanged("Categoria");
+					this.OnCategoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Justificativas", DbType="VarChar(500)")]
+		public string Justificativas
+		{
+			get
+			{
+				return this._Justificativas;
+			}
+			set
+			{
+				if ((this._Justificativas != value))
+				{
+					this.OnJustificativasChanging(value);
+					this.SendPropertyChanging();
+					this._Justificativas = value;
+					this.SendPropertyChanged("Justificativas");
+					this.OnJustificativasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this.OnValorVTChanging(value);
+					this.SendPropertyChanging();
+					this._ValorVT = value;
+					this.SendPropertyChanged("ValorVT");
+					this.OnValorVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
+		public string TrajetoIdaVolta
+		{
+			get
+			{
+				return this._TrajetoIdaVolta;
+			}
+			set
+			{
+				if ((this._TrajetoIdaVolta != value))
+				{
+					this.OnTrajetoIdaVoltaChanging(value);
+					this.SendPropertyChanging();
+					this._TrajetoIdaVolta = value;
+					this.SendPropertyChanged("TrajetoIdaVolta");
+					this.OnTrajetoIdaVoltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
+		public System.Nullable<bool> Validacao
+		{
+			get
+			{
+				return this._Validacao;
+			}
+			set
+			{
+				if ((this._Validacao != value))
+				{
+					this.OnValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Validacao = value;
+					this.SendPropertyChanged("Validacao");
+					this.OnValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
+		public string UsuarioValidacao
+		{
+			get
+			{
+				return this._UsuarioValidacao;
+			}
+			set
+			{
+				if ((this._UsuarioValidacao != value))
+				{
+					this.OnUsuarioValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioValidacao = value;
+					this.SendPropertyChanged("UsuarioValidacao");
+					this.OnUsuarioValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraValidacao
+		{
+			get
+			{
+				return this._DataHoraValidacao;
+			}
+			set
+			{
+				if ((this._DataHoraValidacao != value))
+				{
+					this.OnDataHoraValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraValidacao = value;
+					this.SendPropertyChanged("DataHoraValidacao");
+					this.OnDataHoraValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraRegistro
+		{
+			get
+			{
+				return this._DataHoraRegistro;
+			}
+			set
+			{
+				if ((this._DataHoraRegistro != value))
+				{
+					this.OnDataHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraRegistro = value;
+					this.SendPropertyChanged("DataHoraRegistro");
+					this.OnDataHoraRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
+		public string IdParametro
+		{
+			get
+			{
+				return this._IdParametro;
+			}
+			set
+			{
+				if ((this._IdParametro != value))
+				{
+					if (this._Parametro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdParametroChanging(value);
+					this.SendPropertyChanging();
+					this._IdParametro = value;
+					this.SendPropertyChanged("IdParametro");
+					this.OnIdParametroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AtividadeAcademica", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
+		public Parametro Parametro
+		{
+			get
+			{
+				return this._Parametro.Entity;
+			}
+			set
+			{
+				Parametro previousValue = this._Parametro.Entity;
+				if (((previousValue != value) 
+							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parametro.Entity = null;
+						previousValue.AtividadeAcademicas.Remove(this);
+					}
+					this._Parametro.Entity = value;
+					if ((value != null))
+					{
+						value.AtividadeAcademicas.Add(this);
 						this._IdParametro = value.Id;
 					}
 					else
