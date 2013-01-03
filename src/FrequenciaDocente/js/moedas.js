@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
     $('.moeda').maskMoney({ thousands: '', decimal: ',' });
 
+    $(".horario").mask("99:99");
+
+    $(".data").mask("99/99/9999");
 
     $('#btnSalvar').click(function () {
         var faults = $('input').filter(function () {

@@ -27,6 +27,7 @@
       <Association Name="Parametro_AgendaExecutada" Member="AgendaExecutadas" ThisKey="Id" OtherKey="IdParametro" Type="AgendaExecutada" />
       <Association Name="Parametro_AgendaExecutadaVT" Member="AgendaExecutadaVTs" ThisKey="Id" OtherKey="IdParametro" Type="AgendaExecutadaVT" />
       <Association Name="Parametro_AtividadeAcademica" Member="AtividadeAcademicas" ThisKey="Id" OtherKey="IdParametro" Type="AtividadeAcademica" />
+      <Association Name="Parametro_Coordenacao" Member="Coordenacaos" ThisKey="Id" OtherKey="IdParametro" Type="Coordenacao" />
     </Type>
   </Table>
   <Table Name="dbo.AgendaExecutada" Member="AgendaExecutadas">
@@ -75,12 +76,12 @@
   <Table Name="dbo.AtividadeAcademica" Member="AtividadeAcademicas">
     <Type Name="AtividadeAcademica">
       <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="IdUnidade" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Area" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Entrada" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Saida" Type="System.String" DbType="VarChar(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Categoria" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdUnidade" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Entrada" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Saida" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="Justificativas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="ValorVT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
       <Column Name="TrajetoIdaVolta" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
@@ -90,6 +91,26 @@
       <Column Name="DataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="IdParametro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="Parametro_AtividadeAcademica" Member="Parametro" ThisKey="IdParametro" OtherKey="Id" Type="Parametro" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Coordenacao" Member="Coordenacaos">
+    <Type Name="Coordenacao">
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IdUnidade" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Entrada" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Saida" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Justificativas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ValorVT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TrajetoIdaVolta" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Validacao" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UsuarioValidacao" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DataHoraValidacao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DataHoraRegistro" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IdParametro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Parametro_Coordenacao" Member="Parametro" ThisKey="IdParametro" OtherKey="Id" Type="Parametro" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
