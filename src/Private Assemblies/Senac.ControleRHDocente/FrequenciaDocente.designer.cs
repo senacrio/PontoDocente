@@ -1756,6 +1756,8 @@ namespace Senac.ControleRHDocente
 		
 		private string _IdUnidade;
 		
+		private string _Matricula;
+		
 		private string _Area;
 		
 		private System.DateTime _Data;
@@ -1792,6 +1794,8 @@ namespace Senac.ControleRHDocente
     partial void OnIdChanged();
     partial void OnIdUnidadeChanging(string value);
     partial void OnIdUnidadeChanged();
+    partial void OnMatriculaChanging(string value);
+    partial void OnMatriculaChanged();
     partial void OnAreaChanging(string value);
     partial void OnAreaChanged();
     partial void OnDataChanging(System.DateTime value);
@@ -1862,6 +1866,26 @@ namespace Senac.ControleRHDocente
 					this._IdUnidade = value;
 					this.SendPropertyChanged("IdUnidade");
 					this.OnIdUnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this.OnMatriculaChanging(value);
+					this.SendPropertyChanging();
+					this._Matricula = value;
+					this.SendPropertyChanged("Matricula");
+					this.OnMatriculaChanged();
 				}
 			}
 		}
@@ -2193,6 +2217,8 @@ namespace Senac.ControleRHDocente
 		
 		private string _Id;
 		
+		private string _Matricula;
+		
 		private string _IdUnidade;
 		
 		private string _Area;
@@ -2229,6 +2255,8 @@ namespace Senac.ControleRHDocente
     partial void OnCreated();
     partial void OnIdChanging(string value);
     partial void OnIdChanged();
+    partial void OnMatriculaChanging(string value);
+    partial void OnMatriculaChanged();
     partial void OnIdUnidadeChanging(string value);
     partial void OnIdUnidadeChanged();
     partial void OnAreaChanging(string value);
@@ -2281,6 +2309,26 @@ namespace Senac.ControleRHDocente
 					this._Id = value;
 					this.SendPropertyChanged("Id");
 					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this.OnMatriculaChanging(value);
+					this.SendPropertyChanging();
+					this._Matricula = value;
+					this.SendPropertyChanged("Matricula");
+					this.OnMatriculaChanged();
 				}
 			}
 		}

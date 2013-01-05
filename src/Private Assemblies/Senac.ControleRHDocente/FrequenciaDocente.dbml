@@ -77,6 +77,7 @@
     <Type Name="AtividadeAcademica">
       <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="IdUnidade" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="Area" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="Entrada" Type="System.String" DbType="VarChar(5) NOT NULL" CanBeNull="false" />
@@ -96,6 +97,7 @@
   <Table Name="dbo.Coordenacao" Member="Coordenacaos">
     <Type Name="Coordenacao">
       <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Matricula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="IdUnidade" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="Area" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Data" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />

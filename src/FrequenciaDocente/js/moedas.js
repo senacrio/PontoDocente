@@ -12,6 +12,19 @@
         if (faults.length) return false;
     });
 
+    $('#btnSalvarAtv').click(function () {
+        var faults = $('input').filter(function () {
+            return $(this).data('required-atv') && $(this).val() === "";
+        }).css("background-color", "red");
+        if (faults.length) return false;
+    });
+
+    $('#btnSalvarCoord').click(function () {
+        var faults = $('input').filter(function () {
+            return $(this).data('required-coord') && $(this).val() === "";
+        }).css("background-color", "red");
+        if (faults.length) return false;
+    });
 
 
     $('input[validacao|="dia"]').numeric({ max: 31 });

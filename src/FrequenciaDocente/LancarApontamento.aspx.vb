@@ -44,7 +44,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-
+        Session("c_Matricula") = "00014134"
         Me.parametroAtivo = GetParametroAtivo()
 
         If (Me.parametroAtivo Is Nothing) Then
@@ -71,7 +71,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         rvData.ErrorMessage = "A data deve estar entre: " + dataInicioAtv.ToString("dd/MM/yyyy") + " e " + dataFinalAtv.ToString("dd/MM/yyyy")
         rvData.MinimumValue = dataInicioAtv.ToString("dd-MM-yy")
         rvData.MaximumValue = dataFinalAtv.ToString("dd-MM-yy")
-
+        rvData.ControlToValidate = "txtData"
     End Sub
 
     Private Function GetParametroAtivo() As Parametro
@@ -88,8 +88,10 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private Sub LoadGridVT()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
+        ' r.Matricula.Equals("00014134") _
+
         Dim listaVT = From r In db.AgendaExecutadaVTs _
-                      Where r.Matricula.Equals("00014134") _
+                      Where r.Matricula.Equals(Session("c_Matricula")) _
                       And r.IdParametro = Me.parametroAtivo.Id _
                       Select r
 
@@ -162,7 +164,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     End Sub
 
-    Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvar.Click
+    Protected Sub btnSalvar_Click(sender As Object, e As EventArgs) Handles btnSalvarAtv.Click
         Try
             SaveAtividadeAcademica()
             LoadGridAtividadesAcademicas()
@@ -197,9 +199,7 @@ Partial Class FrequenciaDocente_LancarApontamento
             Me.CurrentAtividadeAcademica = (From a In db.AtividadeAcademicas Where a.Id.Equals(Me.CurrentAtividadeAcademica.Id)).FirstOrDefault()
 
         End If
-
-
-
+        Me.CurrentAtividadeAcademica.Matricula = Session("c_Matricula")
         Me.CurrentAtividadeAcademica.Area = ddlArea.SelectedValue
         Me.CurrentAtividadeAcademica.Categoria = ddlCategoria.SelectedValue
         Me.CurrentAtividadeAcademica.Data = DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", Nothing)
@@ -222,6 +222,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.listaAtividades = (From a In db.AtividadeAcademicas _
                              Where a.Validacao = False _
+                             And a.Matricula.Equals(Session("c_Matricula")) _
                              Select a _
                              Order By a.Data Descending).ToList()
 
@@ -313,6 +314,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.listaCoordenacao = (From a In db.Coordenacaos _
                              Where a.Validacao = False _
+                              And a.Matricula.Equals(Session("c_Matricula")) _
                              Select a _
                              Order By a.Data Descending).ToList()
 
@@ -346,7 +348,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         End If
 
 
-
+        Me.CurrentCoordenacao.Matricula = Session("c_Matricula")
         Me.CurrentCoordenacao.Area = ddlAreaCoord.SelectedValue
         Me.CurrentCoordenacao.Categoria = ddlCategoriaCoord.SelectedValue
         Me.CurrentCoordenacao.Data = DateTime.ParseExact(txtDataCoord.Text, "dd/MM/yyyy", Nothing)
