@@ -6,4 +6,10 @@
 
 $(document).ready(function () {
     $('.sonumero').keypress(verificaNumero);
- });
+});
+
+var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+prm.add_endRequest(function () {
+    $('.sonumero').keypress(verificaNumero);
+});

@@ -112,7 +112,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
         aeVT.Categoria = linha.Split(";")(0)
         aeVT.IdParametro = Me.parametroAtivo.Id
         aeVT.ArquivoDownload = "ArquivoAgendaExecutada/" & parametroAtivo.Ano.ToString() + "_" + parametroAtivo.Mes.ToString() + "_" + parametroAtivo.Versao.ToString() + "-" + guidArquivo + ".TXT"
-
+        aeVT.Validacao = False
 
     End Sub
 

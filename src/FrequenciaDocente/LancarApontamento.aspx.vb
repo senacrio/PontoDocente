@@ -44,11 +44,11 @@ Partial Class FrequenciaDocente_LancarApontamento
 
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Session("c_Matricula") = "00014134"
+        Session("c_Matricula") = "14134"
         Me.parametroAtivo = GetParametroAtivo()
 
         If (Me.parametroAtivo Is Nothing) Then
-            grdVT.Enabled = False
+            pnl.Enabled = False
         Else
             '    lblDataVT.Text = Me.parametroAtivo.
             If Not (Page.IsPostBack) Then
@@ -68,10 +68,19 @@ Partial Class FrequenciaDocente_LancarApontamento
         Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
         Dim dataFinalAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_ATE, "yy-MM-dd", Nothing)
 
+        Dim dataInicioCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_DE, "yy-MM-dd", Nothing)
+        Dim dataFinalCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_ATE, "yy-MM-dd", Nothing)
+
+
         rvData.ErrorMessage = "A data deve estar entre: " + dataInicioAtv.ToString("dd/MM/yyyy") + " e " + dataFinalAtv.ToString("dd/MM/yyyy")
-        rvData.MinimumValue = dataInicioAtv.ToString("dd-MM-yy")
-        rvData.MaximumValue = dataFinalAtv.ToString("dd-MM-yy")
+        rvData.MinimumValue = dataInicioAtv.ToString("dd-MM-yyyy")
+        rvData.MaximumValue = dataFinalAtv.ToString("dd-MM-yyyy")
         rvData.ControlToValidate = "txtData"
+
+        rvDataCoord.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
+        rvDataCoord.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
+        rvDataCoord.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
+        rvDataCoord.ControlToValidate = "txtDataCoord"
     End Sub
 
     Private Function GetParametroAtivo() As Parametro
@@ -91,8 +100,9 @@ Partial Class FrequenciaDocente_LancarApontamento
         ' r.Matricula.Equals("00014134") _
 
         Dim listaVT = From r In db.AgendaExecutadaVTs _
-                      Where r.Matricula.Equals(Session("c_Matricula")) _
+                      Where r.Matricula.Equals(Session("c_Matricula").ToString().PadLeft(8, "0")) _
                       And r.IdParametro = Me.parametroAtivo.Id _
+                      And Not r.Validacao _
                       Select r
 
 
@@ -222,7 +232,8 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.listaAtividades = (From a In db.AtividadeAcademicas _
                              Where a.Validacao = False _
-                             And a.Matricula.Equals(Session("c_Matricula")) _
+                             And a.Matricula.Equals(Session("c_Matricula").ToString().PadLeft(8, "0")) _
+                             And Not a.Validacao _
                              Select a _
                              Order By a.Data Descending).ToList()
 
@@ -314,7 +325,8 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.listaCoordenacao = (From a In db.Coordenacaos _
                              Where a.Validacao = False _
-                              And a.Matricula.Equals(Session("c_Matricula")) _
+                              And a.Matricula.Equals(Session("c_Matricula").ToString().PadLeft(8, "0")) _
+                              And Not a.Validacao _
                              Select a _
                              Order By a.Data Descending).ToList()
 
