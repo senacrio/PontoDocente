@@ -5,7 +5,7 @@ Partial Class FrequenciaDocente_CronogramaFechamento
     Inherits System.Web.UI.Page
     Dim mesAnoInsert As String
     Dim ativoInsert As Boolean
-    Dim id As String
+
 
     Dim db As FrequenciaDocenteDataContext
 

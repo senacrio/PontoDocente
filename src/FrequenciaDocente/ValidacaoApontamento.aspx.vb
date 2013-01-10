@@ -94,6 +94,20 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                                a.Categoria.Equals(categoria) _
                                Select a
 
+                    Dim listaEAD = From a In db.LancamentoEADs _
+                              Where _
+                              a.IdUnidade.Equals(idUnidade) And _
+                              a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                              a.Categoria.Equals(categoria) _
+                              Select a
+
+                    Dim listaLancamentoVT = From a In db.LancamentoVTs _
+                             Where _
+                             a.IdUnidade.Equals(idUnidade) And _
+                             a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                             a.Categoria.Equals(categoria) _
+                             Select a
+
                     For Each atividade In listaAA
                         atividade.Validacao = True
                         atividade.DataHoraValidacao = DateTime.Now
@@ -108,6 +122,20 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                     Next
 
                     For Each atividade In listaCoord
+                        atividade.Validacao = True
+                        atividade.DataHoraValidacao = DateTime.Now
+                        atividade.UsuarioValidacao = Session("c_Matricula")
+                        db.SubmitChanges()
+                    Next
+
+                    For Each atividade In listaEAD
+                        atividade.Validacao = True
+                        atividade.DataHoraValidacao = DateTime.Now
+                        atividade.UsuarioValidacao = Session("c_Matricula")
+                        db.SubmitChanges()
+                    Next
+
+                    For Each atividade In listaLancamentoVT
                         atividade.Validacao = True
                         atividade.DataHoraValidacao = DateTime.Now
                         atividade.UsuarioValidacao = Session("c_Matricula")
@@ -151,27 +179,41 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
         Dim tipo = btn.Attributes("tipo").ToString()
 
-        If (tipo.Equals("AtividadeAcademica")) Then
+        If (tipo.Equals("Atividade Acadêmica")) Then
             Dim atv = (From a In db.AtividadeAcademicas _
                       Where a.Id.Equals(id) _
                       Select a).FirstOrDefault()
             atv.Validacao = True
             atv.DataHoraValidacao = DateTime.Now
             atv.UsuarioValidacao = Session("c_Matricula")
-        ElseIf tipo.Equals("Coordenacao") Then
+        ElseIf tipo.Equals("Coordenação") Then
             Dim coord = (From c In db.Coordenacaos _
                       Where c.Id.Equals(id) _
                       Select c).FirstOrDefault()
             coord.Validacao = True
             coord.DataHoraValidacao = DateTime.Now
             coord.UsuarioValidacao = Session("c_Matricula")
-        ElseIf tipo.Equals("AgendaExecutadaVT") Then
+        ElseIf tipo.Equals("Agenda Executada VT") Then
             Dim ae = (From a In db.AgendaExecutadaVTs _
                     Where a.Id.Equals(id) _
                     Select a).FirstOrDefault()
 
             ae.Validacao = True
             ae.DataHoraValidacao = DateTime.Now
+        ElseIf tipo.Equals("EAD") Then
+            Dim ead = (From c In db.LancamentoEADs _
+                      Where c.Id.Equals(id) _
+                      Select c).FirstOrDefault()
+            ead.Validacao = True
+            ead.DataHoraValidacao = DateTime.Now
+            ead.UsuarioValidacao = Session("c_Matricula")
+        ElseIf tipo.Equals("Lancamento VT") Then
+            Dim vt = (From c In db.LancamentoVTs _
+                      Where c.Id.Equals(id) _
+                      Select c).FirstOrDefault()
+            vt.Validacao = True
+            vt.DataHoraValidacao = DateTime.Now
+            vt.UsuarioValidacao = Session("c_Matricula")
         End If
 
         db.SubmitChanges()

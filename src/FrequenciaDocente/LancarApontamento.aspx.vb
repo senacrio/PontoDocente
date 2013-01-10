@@ -5,14 +5,18 @@ Imports System.Collections.Generic
 
 Partial Class FrequenciaDocente_LancarApontamento
     Inherits System.Web.UI.Page
-    ' Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    'Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
     Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
     Dim btnSalvarI As Button
     Dim parametroAtivo As Parametro
 
     Dim listaAtividades As New List(Of AtividadeAcademica)
+    Dim listaEad As New List(Of LancamentoEAD)
     Private _listaCoordenacao As List(Of Coordenacao)
     Private _currentCoordenacao As Coordenacao
+    Private _currentEAD As Object
+    Private _listaVT As List(Of LancamentoVT)
+    Private _currentVT As LancamentoVT
 
 
     Public Property CurrentAtividadeAcademica() As AtividadeAcademica
@@ -42,28 +46,68 @@ Partial Class FrequenciaDocente_LancarApontamento
         End Set
     End Property
 
+    Private Property CurrentEAD As LancamentoEAD
+        Get
+            Return CType(Session("_EAD"), LancamentoEAD)
+        End Get
+        Set(value As LancamentoEAD)
+            Session("_EAD") = value
+        End Set
+    End Property
+
+    Private Property listaVT As List(Of LancamentoVT)
+        Get
+            Return _listaVT
+        End Get
+        Set(value As List(Of LancamentoVT))
+            _listaVT = value
+        End Set
+    End Property
+
+    Private Property CurrentVT As LancamentoVT
+        Get
+            Return CType(Session("_VT"), LancamentoVT)
+        End Get
+        Set(value As LancamentoVT)
+            Session("_VT") = value
+        End Set
+    End Property
+
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Session("c_Matricula") = "14134"
+
         Me.parametroAtivo = GetParametroAtivo()
 
         If (Me.parametroAtivo Is Nothing) Then
             pnl.Enabled = False
         Else
+
+            Menu1.Items(mvLancamento.ActiveViewIndex).Selected = True
             '    lblDataVT.Text = Me.parametroAtivo.
             If Not (Page.IsPostBack) Then
                 LoadGridVT()
                 LoadGridAtividadesAcademicas()
                 LoadGridCoordenacao()
+                LoadGridEAD()
+                LoadGridLancamentoVT()
             End If
 
         End If
 
-        rvValorVT.ErrorMessage = "O valor do VT deve ser maior ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+        rvValorVT.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
         rvValorVT.MaximumValue = Me.parametroAtivo.VL_CT_VT
 
-        rvValorVTCoord.ErrorMessage = "O valor do VT deve ser maior ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+        rvValorVTCoord.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
         rvValorVTCoord.MaximumValue = Me.parametroAtivo.VL_CT_VT
+
+
+        rvValorVTEAD.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+        rvValorVTEAD.MaximumValue = Me.parametroAtivo.VL_CT_VT
+
+        rvValorVTVT.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+        rvValorVTVT.MaximumValue = Me.parametroAtivo.VL_CT_VT
+
 
         Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
         Dim dataFinalAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_ATE, "yy-MM-dd", Nothing)
@@ -81,6 +125,17 @@ Partial Class FrequenciaDocente_LancarApontamento
         rvDataCoord.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
         rvDataCoord.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
         rvDataCoord.ControlToValidate = "txtDataCoord"
+
+        rvDataEAD.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
+        rvDataEAD.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
+        rvDataEAD.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
+        rvDataEAD.ControlToValidate = "txtDataEAD"
+
+        rvDataVT.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
+        rvDataVT.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
+        rvDataVT.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
+        rvDataVT.ControlToValidate = "txtDataVT"
+
     End Sub
 
     Private Function GetParametroAtivo() As Parametro
@@ -202,6 +257,92 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     End Sub
 
+
+    Private Sub SaveEAD()
+        Dim db As New FrequenciaDocenteDataContext(conn)
+
+        Dim lancamentoEAD As LancamentoEAD = GetEAD(db)
+
+        If (lancamentoEAD.Id Is Nothing) Then
+            Me.CurrentEAD.Id = Guid.NewGuid().ToString()
+            db.LancamentoEADs.InsertOnSubmit(Me.CurrentEAD)
+        Else
+
+        End If
+
+        db.SubmitChanges()
+        Me.CurrentEAD = Nothing
+
+    End Sub
+
+    Private Sub SaveVT()
+        Dim db As New FrequenciaDocenteDataContext(conn)
+
+        Dim lancamentoVT As LancamentoVT = GetVT(db)
+
+        If (lancamentoVT.Id Is Nothing) Then
+            Me.CurrentVT.Id = Guid.NewGuid().ToString()
+            db.LancamentoVTs.InsertOnSubmit(Me.CurrentVT)
+        Else
+
+        End If
+
+        db.SubmitChanges()
+        Me.CurrentVT = Nothing
+
+    End Sub
+
+    Private Function GetEAD(db As FrequenciaDocenteDataContext) As LancamentoEAD
+        If (Me.CurrentEAD Is Nothing) Then
+            Me.CurrentEAD = New LancamentoEAD()
+        Else
+            Me.CurrentEAD = (From a In db.LancamentoEADs Where a.Id.Equals(Me.CurrentEAD.Id)).FirstOrDefault()
+
+        End If
+        Me.CurrentEAD.Matricula = Session("c_Matricula")
+        Me.CurrentEAD.Area = ddlAreaEAD.SelectedValue
+        Me.CurrentEAD.Categoria = ddlCategoriaEAD.SelectedValue
+        Me.CurrentEAD.Data = DateTime.ParseExact(txtDataEAD.Text, "dd/MM/yyyy", Nothing)
+        Me.CurrentEAD.DataHoraRegistro = Date.Now
+        Me.CurrentEAD.Entrada = txtEntradaEAD.Text
+        Me.CurrentEAD.IdParametro = Me.parametroAtivo.Id
+        Me.CurrentEAD.IdUnidade = txtUnidadeEAD.Text
+
+        Me.CurrentEAD.Saida = txtSaidaEAD.Text
+        Me.CurrentEAD.TrajetoIdaVolta = txtIdaVoltaEAD.Text
+        Me.CurrentEAD.Validacao = False
+        Me.CurrentEAD.ValorVT = Convert.ToDecimal(txtValorVTEAD.Text)
+
+
+        Return Me.CurrentEAD
+    End Function
+
+    Private Function GetVT(db As FrequenciaDocenteDataContext) As LancamentoVT
+        If (Me.CurrentVT Is Nothing) Then
+            Me.CurrentVT = New LancamentoVT()
+        Else
+            Me.CurrentVT = (From a In db.LancamentoVTs Where a.Id.Equals(Me.CurrentVT.Id)).FirstOrDefault()
+
+        End If
+        Me.CurrentVT.Atividade = ddlAtividade.SelectedValue
+        Me.CurrentVT.Matricula = Session("c_Matricula")
+        Me.CurrentVT.Area = ddlAreaVT.SelectedValue
+        Me.CurrentVT.Categoria = ddlCategoriaVT.SelectedValue
+        Me.CurrentVT.Data = DateTime.ParseExact(txtDataVT.Text, "dd/MM/yyyy", Nothing)
+        Me.CurrentVT.DataHoraRegistro = Date.Now
+        Me.CurrentVT.Entrada = txtEntradaVT.Text
+        Me.CurrentVT.IdParametro = Me.parametroAtivo.Id
+        Me.CurrentVT.IdUnidade = txtUnidadeVT.Text
+        Me.CurrentVT.Justificativas = txtJustificativaVT.Text
+        Me.CurrentVT.Saida = txtSaidaVT.Text
+        Me.CurrentVT.TrajetoIdaVolta = txtIdaVoltaVT.Text
+        Me.CurrentVT.Validacao = False
+        Me.CurrentVT.ValorVT = Convert.ToDecimal(txtValorVTVT.Text)
+
+
+        Return Me.CurrentVT
+    End Function
+
     Private Function GetAtividadeAcademica(db As FrequenciaDocenteDataContext) As AtividadeAcademica
         If (Me.CurrentAtividadeAcademica Is Nothing) Then
             Me.CurrentAtividadeAcademica = New AtividadeAcademica()
@@ -232,13 +373,43 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.listaAtividades = (From a In db.AtividadeAcademicas _
                              Where a.Validacao = False _
-                             And a.Matricula.Equals(Session("c_Matricula").ToString().PadLeft(8, "0")) _
+                             And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                              And Not a.Validacao _
                              Select a _
                              Order By a.Data Descending).ToList()
 
         grdAtividadesAcademicas.DataSource = Me.listaAtividades
         grdAtividadesAcademicas.DataBind()
+
+    End Sub
+
+    Private Sub LoadGridLancamentoVT()
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        Me.listaVT = (From a In db.LancamentoVTs _
+                             Where a.Validacao = False _
+                             And a.Matricula.Equals(Session("c_Matricula")) _
+                             And Not a.Validacao _
+                             Select a _
+                             Order By a.Data Descending).ToList()
+
+        grdLancamentoVT.DataSource = Me.listaVT
+        grdLancamentoVT.DataBind()
+
+    End Sub
+
+    Private Sub LoadGridEAD()
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        Me.listaEad = (From a In db.LancamentoEADs _
+                             Where a.Validacao = False _
+                             And a.Matricula.Equals(Session("c_Matricula")) _
+                             And Not a.Validacao _
+                             Select a _
+                             Order By a.Data Descending).ToList()
+
+        grdEAD.DataSource = Me.listaEad
+        grdEAD.DataBind()
 
     End Sub
 
@@ -266,6 +437,31 @@ Partial Class FrequenciaDocente_LancarApontamento
         txtValorVTCoord.Text = ""
     End Sub
 
+    Private Sub LimparCamposEAD()
+        ddlAreaEAD.SelectedIndex = 0
+        ddlCategoriaEAD.SelectedIndex = 0
+        txtDataEAD.Text = ""
+        txtEntradaEAD.Text = ""
+        txtUnidadeEAD.Text = ""
+
+        txtSaidaEAD.Text = ""
+        txtIdaVoltaEAD.Text = ""
+        txtValorVTEAD.Text = ""
+    End Sub
+
+    Private Sub LimparCamposVT()
+        ddlAreaVT.SelectedIndex = 0
+        ddlCategoriaVT.SelectedIndex = 0
+        txtDataVT.Text = ""
+        txtEntradaVT.Text = ""
+        txtUnidadeVT.Text = ""
+        txtJustificativaVT.Text = ""
+        txtSaidaVT.Text = ""
+        txtIdaVoltaVT.Text = ""
+        txtValorVTVT.Text = ""
+    End Sub
+
+
     Protected Sub grdAtividadesAcademicas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdAtividadesAcademicas.SelectedIndexChanged
         LoadAtividadeAcademica()
         LoadCampos()
@@ -276,6 +472,22 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.CurrentAtividadeAcademica = (From a In db.AtividadeAcademicas _
                                        Where a.Id.Equals(grdAtividadesAcademicas.SelectedValue)).FirstOrDefault()
+
+    End Sub
+
+    Private Sub LoadEAD()
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        Me.CurrentEAD = (From a In db.LancamentoEADs _
+                                       Where a.Id.Equals(grdEAD.SelectedValue)).FirstOrDefault()
+
+    End Sub
+
+    Private Sub LoadVT()
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        Me.CurrentVT = (From a In db.LancamentoVTs _
+                                       Where a.Id.Equals(grdVT.SelectedValue)).FirstOrDefault()
 
     End Sub
 
@@ -297,6 +509,33 @@ Partial Class FrequenciaDocente_LancarApontamento
         txtSaida.Text = Me.CurrentAtividadeAcademica.Saida
         txtIdaVolta.Text = Me.CurrentAtividadeAcademica.TrajetoIdaVolta
         txtValorVT.Text = Me.CurrentAtividadeAcademica.ValorVT
+
+    End Sub
+
+    Private Sub LoadCamposVT()
+        ddlAreaVT.SelectedValue = Me.CurrentVT.Area
+        ddlCategoriaVT.SelectedValue = Me.CurrentVT.Categoria
+        txtDataVT.Text = Me.CurrentVT.Data.ToString("dd/MM/yyyy")
+        txtEntradaVT.Text = Me.CurrentVT.Entrada
+        txtUnidadeVT.Text = Me.CurrentVT.IdUnidade
+        txtJustificativaVT.Text = Me.CurrentVT.Justificativas
+        txtSaidaVT.Text = Me.CurrentVT.Saida
+        txtIdaVoltaVT.Text = Me.CurrentVT.TrajetoIdaVolta
+        txtValorVTVT.Text = Me.CurrentVT.ValorVT
+        ddlAtividade.SelectedValue = Me.CurrentVT.Atividade
+    End Sub
+
+   
+    Private Sub LoadCamposEAD()
+        ddlAreaEAD.SelectedValue = Me.CurrentEAD.Area
+        ddlCategoriaEAD.SelectedValue = Me.CurrentEAD.Categoria
+        txtDataEAD.Text = Me.CurrentEAD.Data.Value.ToString("dd/MM/yyyy")
+        txtEntradaEAD.Text = Me.CurrentEAD.Entrada
+        txtUnidadeEAD.Text = Me.CurrentEAD.IdUnidade
+
+        txtSaidaEAD.Text = Me.CurrentEAD.Saida
+        txtIdaVoltaEAD.Text = Me.CurrentEAD.TrajetoIdaVolta
+        txtValorVTEAD.Text = Me.CurrentEAD.ValorVT
 
     End Sub
 
@@ -325,7 +564,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.listaCoordenacao = (From a In db.Coordenacaos _
                              Where a.Validacao = False _
-                              And a.Matricula.Equals(Session("c_Matricula").ToString().PadLeft(8, "0")) _
+                              And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                               And Not a.Validacao _
                              Select a _
                              Order By a.Data Descending).ToList()
@@ -381,5 +620,35 @@ Partial Class FrequenciaDocente_LancarApontamento
     Protected Sub grdCoordenacao_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdCoordenacao.SelectedIndexChanged
         LoadCoordenacao()
         LoadCamposCoord()
+    End Sub
+
+    Protected Sub Menu1_MenuItemClick(sender As Object, e As MenuEventArgs) Handles Menu1.MenuItemClick
+        mvLancamento.ActiveViewIndex = Menu1.SelectedValue
+    End Sub
+
+    Protected Sub btnSalvarEAD_Click(sender As Object, e As EventArgs) Handles btnSalvarEAD.Click
+        SaveEAD()
+        LoadGridEAD()
+        LimparCamposEAD()
+        grdEAD.SelectedIndex = -1
+    End Sub
+
+    Protected Sub grdEAD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdEAD.SelectedIndexChanged
+        LoadEAD()
+        LoadCamposEAD()
+    End Sub
+
+    Protected Sub btnSalvarVT_Click(sender As Object, e As EventArgs) Handles btnSalvarVT.Click
+        SaveVT()
+        LoadGridLancamentoVT()
+        LimparCamposVT()
+        grdLancamentoVT.SelectedIndex = -1
+    End Sub
+
+
+
+    Protected Sub grdLancamentoVT_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdLancamentoVT.SelectedIndexChanged
+        LoadVT()
+        LoadCamposVT()
     End Sub
 End Class

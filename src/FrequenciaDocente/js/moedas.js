@@ -26,6 +26,13 @@
         if (faults.length) return false;
     });
 
+    $('#btnSalvarEAD').click(function () {
+        var faults = $('input').filter(function () {
+            return $(this).data('required-ead') && $(this).val() === "";
+        }).css("background-color", "red");
+        if (faults.length) return false;
+    });
+
 
     $('input[validacao|="dia"]').numeric({ max: 31 });
     $('input[validacao|="mes"]').numeric({ max: 12 });
