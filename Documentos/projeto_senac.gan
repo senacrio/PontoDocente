@@ -75,25 +75,8 @@
         <task id="53" name="Desenvolvimento da tela de cadastro de VT" color="#8cb6ce" meeting="false" start="2013-01-07" duration="4" complete="0" expand="true">
             <depend id="57" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="57" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-01-11" duration="1" complete="0" expand="true">
-            <depend id="60" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="60" name="Lançar atividades" color="#8cb6ce" meeting="false" start="2013-01-14" duration="14" complete="0" expand="true">
-            <depend id="64" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="64" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-02-01" duration="1" complete="0" expand="true">
-            <depend id="68" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="68" name="Importação de atividades" color="#8cb6ce" meeting="false" start="2013-02-04" duration="4" complete="0" expand="true">
-            <depend id="71" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="71" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-02-08" duration="1" complete="0" expand="true">
-            <depend id="74" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="74" name="Autoriza Lençamentos" color="#8cb6ce" meeting="false" start="2013-02-11" duration="3" complete="0" expand="true">
-            <depend id="78" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="78" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-02-14" duration="1" complete="0" expand="true"/>
+        <task id="57" name="Entrega no ambiente de homologação" color="#8cb6ce" meeting="false" start="2013-01-11" duration="1" complete="0" expand="true"/>
+        <task id="74" name="Autoriza Lançamentos" color="#8cb6ce" meeting="false" start="2013-01-11" duration="2" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
