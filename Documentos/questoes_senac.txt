@@ -1,0 +1,21 @@
+Valor VT - nao bloquear, apenas informar
+Unidade virar combo
+Verificar validação da data baseada em turnos
+Validação da categoria
+criticar se ja existe solicitação de vt como atividade acad. coord. ead
+validar turno - validar jornada
+relatorio com colaboradores com mais de 220 h mes / interjornada
+Incluir a data na vadilçao - detalhes
+
+
+
+
+Lançamento de EAD remover VT - so pode cadastrar VT 
+Valor de corte VT exibir um alerta e não impede de salvar
+A data de inclusão deve ser do dia atual e antes
+Bloqueia se colcoar mais de 6 horas no laçamento de apontamento
+Sugestão dos turnos
+Justificativa obrigatória - apenas atividade academica
+PDD = atividade academica - vt - va
+
+
