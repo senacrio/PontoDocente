@@ -95,18 +95,18 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         End If
 
-        rvValorVT.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
-        rvValorVT.MaximumValue = Me.parametroAtivo.VL_CT_VT
-
-        rvValorVTCoord.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
-        rvValorVTCoord.MaximumValue = Me.parametroAtivo.VL_CT_VT
+        rvValorVT.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
 
 
-        rvValorVTEAD.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
-        rvValorVTEAD.MaximumValue = Me.parametroAtivo.VL_CT_VT
+        rvValorVTCoord.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
 
-        rvValorVTVT.ErrorMessage = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
-        rvValorVTVT.MaximumValue = Me.parametroAtivo.VL_CT_VT
+
+
+        rvValorVTEAD.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+
+
+        rvValorVTVT.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+
 
 
         Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)

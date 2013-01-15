@@ -117,14 +117,14 @@
                                                     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
-                                                    <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtValorVT" MaximumValue='<%# Eval("MaxValueVT") %>' MinimumValue="0" Text='<%# "Valor corte: " + Eval("MaxValueVT") %>' Type="Currency"></asp:RangeValidator>
+                                                    <asp:Label ID="lblValorCorte" runat="server" ForeColor="Red" Text='<%# "Valor corte: " + Eval("MaxValueVT") %>'></asp:Label>
                                                     <br />
                                                     <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda" Text='<%# Eval("ValorVT") %>'></asp:TextBox>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
-                                                    <asp:Button ID="btnSalvar" runat="server" CommandArgument="salvar" CommandName="Select" OnClick="Button1_Click" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" />
+                                                    <asp:Button ID="btnSalvar" runat="server" CommandArgument="salvar" CommandName="Select" OnClick="Button1_Click" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="agendaExecutada" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -220,7 +220,7 @@
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td align="left" colspan="2" style="margin-left: 40px">
-                                                <asp:RangeValidator ID="rvValorVT" runat="server" ControlToValidate="txtValorVT" MaximumValue="20" MinimumValue="0" Type="Currency" ValidationGroup="salvarAtvAcd"></asp:RangeValidator>
+                                                <asp:Label ID="rvValorVT" ForeColor="Red" runat="server"></asp:Label>
                                             </td>
                                             <td>&nbsp;</td>
                                         </tr>
@@ -360,7 +360,8 @@
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                <asp:RangeValidator ID="rvValorVTCoord" runat="server" ControlToValidate="txtValorVTCoord" MaximumValue="20" MinimumValue="0" Type="Currency" ValidationGroup="salvarAtvAcd"></asp:RangeValidator>
+                                                <asp:Label ID="rvValorVTCoord" ForeColor="Red" runat="server"></asp:Label>
+                                                
                                             </td>
                                             <td class="auto-style3"></td>
                                         </tr>
@@ -499,7 +500,8 @@
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                <asp:RangeValidator ID="rvValorVTEAD" runat="server" ControlToValidate="txtValorVTEAD" MaximumValue="20" MinimumValue="0" Type="Currency" ValidationGroup="salvarAtvEAD"></asp:RangeValidator>
+                                                <asp:Label ID="rvValorVTEAD" ForeColor="Red" runat="server"></asp:Label>
+                                                
                                             </td>
                                             <td class="auto-style3"></td>
                                         </tr>
@@ -648,7 +650,8 @@
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                <asp:RangeValidator ID="rvValorVTVT" runat="server" ControlToValidate="txtValorVTVT" MaximumValue="20" MinimumValue="0" Type="Currency" ValidationGroup="salvarAtvAcd"></asp:RangeValidator>
+                                                <asp:Label ID="rvValorVTVT" ForeColor="Red" runat="server"></asp:Label>
+                                                
                                             </td>
                                             <td class="auto-style3"></td>
                                         </tr>
