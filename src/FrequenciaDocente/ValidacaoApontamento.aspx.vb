@@ -80,14 +80,14 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                     Dim listaAA = From a In db.AtividadeAcademicas _
                                 Where _
                                 a.IdUnidade.Equals(idUnidade) And _
-                                a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                                a.Matricula.Equals(matricula) And _
                                 a.Categoria.Equals(categoria) _
                                 Select a
 
                     Dim listaVT = From a In db.AgendaExecutadaVTs _
                                Where _
                                a.Unidade.Equals(idUnidade) And _
-                               a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                               a.Matricula.Equals(matricula) And _
                                a.Categoria.Equals(categoria) And _
                                a.ValorVT.HasValue _
                                Select a
@@ -95,21 +95,21 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                     Dim listaCoord = From a In db.Coordenacaos _
                                Where _
                                a.IdUnidade.Equals(idUnidade) And _
-                               a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                               a.Matricula.Equals(matricula) And _
                                a.Categoria.Equals(categoria) _
                                Select a
 
                     Dim listaEAD = From a In db.LancamentoEADs _
                               Where _
                               a.IdUnidade.Equals(idUnidade) And _
-                              a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                              a.Matricula.Equals(matricula) And _
                               a.Categoria.Equals(categoria) _
                               Select a
 
                     Dim listaLancamentoVT = From a In db.LancamentoVTs _
                              Where _
                              a.IdUnidade.Equals(idUnidade) And _
-                             a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                             a.Matricula.Equals(matricula) And _
                              a.Categoria.Equals(categoria) _
                              Select a
 
@@ -165,7 +165,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
             Dim categoria = chkValidacao.Attributes("IdCategoria").ToString()
 
             Dim detalhes = From a In db.vwApontamentos _
-                           Where a.Matricula.Equals(matricula.PadLeft("8", "0")) And _
+                           Where a.Matricula.Equals(matricula) And _
                            a.IdUnidade.Equals(idUnidade) And _
                            a.Categoria.Equals(categoria) _
                            Select a

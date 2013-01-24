@@ -18,6 +18,17 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private _listaVT As List(Of LancamentoVT)
     Private _currentVT As LancamentoVT
 
+    Public Function ExisteLancamento(id As String, matricula As String, entrada As String, saida As String, data As DateTime) As Boolean
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        Dim retorno As Boolean = (From a In db.vwApontamentos _
+                        Where a.Matricula.Equals(matricula) And _
+                        Not a.Id.Equals(id) And _
+                        a.Data.Equals(data) And _
+                        a.Entrada.Equals(entrada) And _
+                        a.Saida.Equals(saida)).Any()
+        Return retorno
+    End Function
 
     Public Property CurrentAtividadeAcademica() As AtividadeAcademica
         Get
@@ -245,6 +256,9 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim atividadeAcademica As AtividadeAcademica = GetAtividadeAcademica(db)
 
+       
+
+
         If (atividadeAcademica.Id Is Nothing) Then
             Me.CurrentAtividadeAcademica.Id = Guid.NewGuid().ToString()
             db.AtividadeAcademicas.InsertOnSubmit(Me.CurrentAtividadeAcademica)
@@ -252,8 +266,19 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         End If
 
+        If (ExisteLancamento(atividadeAcademica.Id, atividadeAcademica.Matricula, atividadeAcademica.Entrada, atividadeAcademica.Saida, atividadeAcademica.Data)) Then
+            lblMsgAA.Text = "Já existe um lançamento nesse horário para esse dia."
+            lblMsgAA.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentAtividadeAcademica = Nothing
+            Return
+        End If
+
         db.SubmitChanges()
         Me.CurrentAtividadeAcademica = Nothing
+
+        lblMsgAA.Text = "Lançamento salvo com sucesso."
+        lblMsgAA.ForeColor = Drawing.Color.Green
 
     End Sub
 
@@ -263,16 +288,27 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim lancamentoEAD As LancamentoEAD = GetEAD(db)
 
+     
+
+
         If (lancamentoEAD.Id Is Nothing) Then
             Me.CurrentEAD.Id = Guid.NewGuid().ToString()
             db.LancamentoEADs.InsertOnSubmit(Me.CurrentEAD)
         Else
 
         End If
+        If (ExisteLancamento(lancamentoEAD.Id, lancamentoEAD.Matricula, lancamentoEAD.Entrada, lancamentoEAD.Saida, lancamentoEAD.Data)) Then
+            lblMsgEAD.Text = "Já existe um lançamento nesse horário para esse dia."
+            lblMsgEAD.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentEAD = Nothing
+            Return
+        End If
 
         db.SubmitChanges()
         Me.CurrentEAD = Nothing
-
+        lblMsgEAD.Text = "Lançamento salvo com sucesso."
+        lblMsgEAD.ForeColor = Drawing.Color.Green
     End Sub
 
     Private Sub SaveVT()
@@ -280,15 +316,27 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim lancamentoVT As LancamentoVT = GetVT(db)
 
+       
+
+
         If (lancamentoVT.Id Is Nothing) Then
             Me.CurrentVT.Id = Guid.NewGuid().ToString()
             db.LancamentoVTs.InsertOnSubmit(Me.CurrentVT)
         Else
 
         End If
-
+        If (ExisteLancamento(lancamentoVT.Id, lancamentoVT.Matricula, lancamentoVT.Entrada, lancamentoVT.Saida, lancamentoVT.Data)) Then
+            lblMsgVT.Text = "Já existe um lançamento nesse horário para esse dia."
+            lblMsgVT.ForeColor = Drawing.Color.Red
+            Me.CurrentVT = Nothing
+            db.Dispose()
+            Return
+        End If
         db.SubmitChanges()
         Me.CurrentVT = Nothing
+
+        lblMsgVT.Text = "Lançamento salvo com sucesso."
+        lblMsgVT.ForeColor = Drawing.Color.Green
 
     End Sub
 
@@ -577,15 +625,30 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim coordenacao As Coordenacao = GetCoordenacao(db)
 
+
+
         If (coordenacao.Id Is Nothing) Then
+
+
             Me.CurrentCoordenacao.Id = Guid.NewGuid().ToString()
             db.Coordenacaos.InsertOnSubmit(Me.CurrentCoordenacao)
         Else
 
         End If
 
+        If (ExisteLancamento(coordenacao.Id, coordenacao.Matricula, coordenacao.Entrada, coordenacao.Saida, coordenacao.Data)) Then
+            lblMsgCoord.Text = "Já existe um lançamento nesse horário para esse dia."
+            lblMsgCoord.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentCoordenacao = Nothing
+            Return
+        End If
+
         db.SubmitChanges()
         Me.CurrentCoordenacao = Nothing
+
+        lblMsgCoord.Text = "Lançamento salvo com sucesso."
+        lblMsgCoord.ForeColor = Drawing.Color.Green
     End Sub
 
     Private Function GetCoordenacao(db As FrequenciaDocenteDataContext) As Coordenacao

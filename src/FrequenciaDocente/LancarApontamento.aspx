@@ -276,6 +276,7 @@
                                             <td>&nbsp;</td>
                                         </tr>
                                     </table>
+                                    <asp:Label ID="lblMsgAA" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdAtividadesAcademicas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
                                         <AlternatingRowStyle BackColor="White" />
@@ -414,6 +415,7 @@
                                             <td class="auto-style15"></td>
                                         </tr>
                                     </table>
+                                    <asp:Label ID="lblMsgCoord" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdCoordenacao" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
                                         <AlternatingRowStyle BackColor="White" />
@@ -551,6 +553,7 @@
                                             <td class="auto-style3"></td>
                                         </tr>
                                     </table>
+                                    <asp:Label ID="lblMsgEAD" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdEAD" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
                                         <AlternatingRowStyle BackColor="White" />
@@ -698,6 +701,7 @@
                                             <td class="auto-style3"></td>
                                         </tr>
                                     </table>
+                                    <asp:Label ID="lblMsgVT" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdLancamentoVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
                                         <AlternatingRowStyle BackColor="White" />
