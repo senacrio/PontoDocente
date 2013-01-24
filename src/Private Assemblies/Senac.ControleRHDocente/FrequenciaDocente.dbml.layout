@@ -53,7 +53,7 @@
         <elementListCompartment Id="9826da15-e1b0-4a07-b780-e655cabe30d0" absoluteBounds="5.015, 2.085, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 3.86375807942709); (5 : 3.86375807942709)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.7420043359375); (5 : 4.7420043359375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutadaVT" />
       <nodes>
         <classShapeMoniker Id="509907e8-2c96-4e5b-b665-53a87b62a730" />
@@ -110,5 +110,11 @@
         <classShapeMoniker Id="45032654-9992-4a15-8300-9e339801585d" />
       </nodes>
     </associationConnector>
+    <classShape Id="1b268515-ae76-48a2-87a5-cce01d8ca6ea" absoluteBounds="3.75, 2.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/ptnInterino" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50df5278-608d-425a-b109-14386fb8a8d1" absoluteBounds="3.765, 2.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

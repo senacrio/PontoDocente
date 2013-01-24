@@ -208,4 +208,10 @@
       <Association Name="Parametro_LancamentoVT" Member="Parametro" ThisKey="IdParametro" OtherKey="Id" Type="Parametro" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.ptnInterino" Member="ptnInterinos">
+    <Type Name="ptnInterino">
+      <Column Name="Matricula" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Lotacao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
 </Database>

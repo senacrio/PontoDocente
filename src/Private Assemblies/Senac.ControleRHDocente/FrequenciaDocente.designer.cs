@@ -170,6 +170,14 @@ namespace Senac.ControleRHDocente
 				return this.GetTable<LancamentoVT>();
 			}
 		}
+		
+		public System.Data.Linq.Table<ptnInterino> ptnInterinos
+		{
+			get
+			{
+				return this.GetTable<ptnInterino>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Parametros")]
@@ -4346,6 +4354,51 @@ namespace Senac.ControleRHDocente
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ptnInterino")]
+	public partial class ptnInterino
+	{
+		
+		private int _Matricula;
+		
+		private int _Lotacao;
+		
+		public ptnInterino()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="Int NOT NULL")]
+		public int Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this._Matricula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Lotacao", DbType="Int NOT NULL")]
+		public int Lotacao
+		{
+			get
+			{
+				return this._Lotacao;
+			}
+			set
+			{
+				if ((this._Lotacao != value))
+				{
+					this._Lotacao = value;
+				}
 			}
 		}
 	}

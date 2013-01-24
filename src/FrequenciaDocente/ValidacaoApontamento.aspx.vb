@@ -10,6 +10,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
     Dim parametroAtivo As Parametro
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.parametroAtivo = GetParametroAtivo()
+        Context.Session("c_Cod_Lotac") = "61"
 
         If (Me.parametroAtivo Is Nothing) Then
             pnl.Enabled = False
@@ -22,8 +23,12 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
     Private Sub LoadGridValidacao()
         Dim db As New FrequenciaDocenteDataContext(conn)
+        Dim lotacaoInterino = GetInterino()
+
         Dim listaValidacao = From v In db.vwValidacaos _
-                             Where v.idparametro.Equals(Me.parametroAtivo.Id.ToString())
+                             Where v.idparametro.Equals(Me.parametroAtivo.Id.ToString()) _
+        And v.IdUnidade.Equals(Context.Session("c_Cod_Lotac")) _
+          Or v.IdUnidade.Equals(lotacaoInterino)
 
         grdValidacao.DataSource = listaValidacao
         grdValidacao.DataBind()
@@ -220,4 +225,19 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
         LoadGridValidacao()
     End Sub
+
+    Private Function GetInterino() As String
+        Dim db As New FrequenciaDocenteDataContext(conn)
+
+        Dim interino = (From i In db.ptnInterinos _
+                       Where i.Matricula.Equals(Session("c_Matricula"))).FirstOrDefault()
+
+        If (Not interino Is Nothing) Then
+            Return interino.Lotacao
+        Else
+            Return ""
+        End If
+
+    End Function
+
 End Class

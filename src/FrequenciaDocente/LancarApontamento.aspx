@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="LancarApontamento.aspx.vb" Inherits="FrequenciaDocente_LancarApontamento" EnableEventValidation="false" %>
 
+<%@ Register src="controls/ddlUnidade.ascx" tagname="ddlUnidade" tagprefix="uc1" %>
+<%@ Register src="controls/EntradaSaida.ascx" tagname="EntradaSaida" tagprefix="uc2" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -50,6 +53,57 @@
         .auto-style3
         {
             height: 23px;
+        }
+        .auto-style4
+        {
+            width: 5%;
+        }
+        .auto-style5
+        {
+            width: 23%;
+        }
+        .auto-style6
+        {}
+        .auto-style7
+        {
+            width: 2%;
+        }
+        .auto-style8
+        {
+            width: 15%;
+        }
+        .auto-style9
+        {
+            width: 16%;
+        }
+        .auto-style10
+        {
+            width: 3%;
+        }
+        .auto-style11
+        {
+            height: 23px;
+            width: 5%;
+        }
+        .auto-style12
+        {
+            height: 23px;
+            width: 23%;
+        }
+        .auto-style13
+        {
+            height: 23px;
+            width: 8%;
+        }
+        .auto-style14
+        {
+            height: 23px;
+            width: 15%;
+        }
+        .auto-style15
+        {
+            height: 23px;
+            width: 3%;
         }
     </style>
 </head>
@@ -154,8 +208,8 @@
                                             <td>Unidade</td>
                                             <td>Área</td>
                                             <td>Data</td>
-                                            <td>Entrada</td>
-                                            <td>Saída</td>
+                                            <td>Entrada - Saída</td>
+                                            <td>&nbsp;</td>
                                             <td>Categoria</td>
                                             <td>Justificativas</td>
                                             <td>
@@ -166,7 +220,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:TextBox ID="txtUnidade" runat="server" CssClass="sonumero" data-required-atv="true" Text='<%# Eval("Unidade") %>' Width="50px"></asp:TextBox>
+                                                <uc1:ddlUnidade ID="ddlUnidadeAA" runat="server" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlArea" runat="server">
@@ -184,11 +238,8 @@
                                             <td>
                                                 <asp:TextBox ID="txtData" runat="server" CssClass="data" data-required-atv="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                <asp:TextBox ID="txtEntrada" runat="server" CssClass="horario" data-required-atv="true" Text='<%# Bind("Entrada") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtSaida" runat="server" CssClass="horario" data-required-atv="true" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
+                                            <td colspan="2">
+                                                <uc2:EntradaSaida ID="EntradaSaidaAA" runat="server" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlCategoria" runat="server">
@@ -291,24 +342,24 @@
                                 <td align="center">
                                     <table class="auto-style2">
                                         <tr>
-                                            <td>Unidade</td>
-                                            <td>Área</td>
-                                            <td>Data</td>
-                                            <td>Entrada</td>
-                                            <td>Saída</td>
-                                            <td>Categoria</td>
-                                            <td>Justificativas</td>
-                                            <td>
+                                            <td class="auto-style4">Unidade</td>
+                                            <td class="auto-style5">Área</td>
+                                            <td class="auto-style6">Data</td>
+                                            <td class="auto-style6">Entrada - Saída</td>
+                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style6">Categoria</td>
+                                            <td class="auto-style8">Justificativas</td>
+                                            <td class="auto-style4">
                                                 <asp:Label ID="Label3" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
-                                            <td>Trajeto Ida e Volta</td>
-                                            <td>&nbsp;</td>
+                                            <td class="auto-style9">Trajeto Ida e Volta</td>
+                                            <td class="auto-style10">&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td>
-                                                <asp:TextBox ID="txtUnidadeCoord" runat="server" CssClass="sonumero" data-required-coord="true" Text='<%# Eval("Unidade") %>' Width="50px"></asp:TextBox>
+                                            <td class="auto-style4">
+                                                <uc1:ddlUnidade ID="ddlUnidadeCoord" runat="server" />
                                             </td>
-                                            <td>
+                                            <td class="auto-style5">
                                                 <asp:DropDownList ID="ddlAreaCoord" runat="server">
                                                     <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
                                                     <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
@@ -321,16 +372,13 @@
                                                     <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
+                                            <td class="auto-style6">
                                                 <asp:TextBox ID="txtDataCoord" runat="server" CssClass="data" data-required-coord="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                <asp:TextBox ID="txtEntradaCoord" runat="server" CssClass="horario" data-required-coord="true" Text='<%# Bind("Entrada") %>' Width="60px"></asp:TextBox>
+                                            <td class="auto-style6" colspan="2">
+                                                <uc2:EntradaSaida ID="EntradaSaidaCoord" runat="server" />
                                             </td>
-                                            <td>
-                                                <asp:TextBox ID="txtSaidaCoord" runat="server" CssClass="horario" data-required-coord="true" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td>
+                                            <td class="auto-style6">
                                                 <asp:DropDownList ID="ddlCategoriaCoord" runat="server">
                                                     <asp:ListItem Value="1">Fic/Tec</asp:ListItem>
                                                     <asp:ListItem Value="2">Graduação</asp:ListItem>
@@ -338,32 +386,32 @@
                                                     <asp:ListItem Value="4">EAD</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
+                                            <td class="auto-style8">
                                                 <asp:TextBox ID="txtJustificativaCoord" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
                                             </td>
-                                            <td style="margin-left: 40px">
+                                            <td style="margin-left: 40px" class="auto-style4">
                                                 <asp:TextBox ID="txtValorVTCoord" runat="server" CssClass="moeda" data-required-coord="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
                                             </td>
-                                            <td>
+                                            <td class="auto-style9">
                                                 <asp:TextBox ID="txtIdaVoltaCoord" runat="server" data-required-coord="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
-                                            <td>
+                                            <td class="auto-style10">
                                                 <asp:Button ID="btnSalvarCoord" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvCoord" />
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="auto-style3"></td>
-                                            <td class="auto-style3"></td>
+                                            <td class="auto-style11"></td>
+                                            <td class="auto-style12"></td>
                                             <td align="left" class="auto-style3" colspan="3">
                                                 <asp:RangeValidator ID="rvDataCoord" runat="server" ControlToValidate="txtDataCoord" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvCoord"></asp:RangeValidator>
                                             </td>
-                                            <td class="auto-style3"></td>
-                                            <td class="auto-style3"></td>
+                                            <td class="auto-style13"></td>
+                                            <td class="auto-style14"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
                                                 <asp:Label ID="rvValorVTCoord" ForeColor="Red" runat="server"></asp:Label>
                                                 
                                             </td>
-                                            <td class="auto-style3"></td>
+                                            <td class="auto-style15"></td>
                                         </tr>
                                     </table>
                                     <br />
@@ -436,8 +484,8 @@
                                             <td>Unidade</td>
                                             <td>Área</td>
                                             <td>Data</td>
-                                            <td>Entrada</td>
-                                            <td>Saída</td>
+                                            <td>Entrada - Saída</td>
+                                            <td>&nbsp;</td>
                                             <td>Categoria</td>
                                             <td>&nbsp;</td>
                                             <td>
@@ -448,7 +496,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <asp:TextBox ID="txtUnidadeEAD" runat="server" CssClass="sonumero" data-required-ead="true" Text='<%# Eval("Unidade") %>' Width="50px"></asp:TextBox>
+                                                <uc1:ddlUnidade ID="ddlUnidadeEAD" runat="server" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlAreaEAD" runat="server">
@@ -466,11 +514,8 @@
                                             <td>
                                                 <asp:TextBox ID="txtDataEAD" runat="server" CssClass="data" data-required-ead="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                <asp:TextBox ID="txtEntradaEAD" runat="server" CssClass="horario" data-required-ead="true" Text='<%# Bind("Entrada") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtSaidaEAD" runat="server" CssClass="horario" data-required-ead="true" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
+                                            <td colspan="2">
+                                                <uc2:EntradaSaida ID="EntradaSaidaEAD" runat="server" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlCategoriaEAD" runat="server">
@@ -577,8 +622,8 @@
                                             <td>Unidade</td>
                                             <td>Área</td>
                                             <td>Data</td>
-                                            <td>Entrada</td>
-                                            <td>Saída</td>
+                                            <td>Entrada - Saída</td>
+                                            <td>&nbsp;</td>
                                             <td>Categoria</td>
                                             <td>Justificativas</td>
                                             <td>
@@ -613,11 +658,8 @@
                                             <td>
                                                 <asp:TextBox ID="txtDataVT" runat="server" CssClass="data" data-required-coord="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
                                             </td>
-                                            <td>
-                                                <asp:TextBox ID="txtEntradaVT" runat="server" CssClass="horario" data-required-coord="true" Text='<%# Bind("Entrada") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtSaidaVT" runat="server" CssClass="horario" data-required-coord="true" Text='<%# Bind("Saida") %>' Width="60px"></asp:TextBox>
+                                            <td colspan="2">
+                                                <uc2:EntradaSaida ID="EntradaSaidaVT" runat="server" />
                                             </td>
                                             <td>
                                                 <asp:DropDownList ID="ddlCategoriaVT" runat="server">
