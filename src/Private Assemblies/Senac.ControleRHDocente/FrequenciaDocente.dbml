@@ -214,4 +214,11 @@
       <Column Name="Lotacao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Function Name="dbo.GetHorasDocente" Method="GetHorasDocente">
+    <Parameter Name="matricula" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetHorasDocenteResult">
+      <Column Name="tipo" Type="System.String" DbType="VarChar(19) NOT NULL" CanBeNull="false" />
+      <Column Name="horas" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

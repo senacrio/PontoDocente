@@ -112,9 +112,13 @@
         <div>
 
             <br />
+            <asp:GridView ID="grdHoras" runat="server" ShowHeader="False">
+            </asp:GridView>
+
+            <br />
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px">
+            <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px" PathSeparator="|">
                 <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
                 <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                 <DynamicMenuStyle BackColor="#B5C7DE" />
@@ -123,8 +127,7 @@
                     <asp:MenuItem Text="Disponível para Lançamentos de VT" Value="0"></asp:MenuItem>
                     <asp:MenuItem Text="Atividades Acadêmicas" Value="1"></asp:MenuItem>
                     <asp:MenuItem Text="Coordenação" Value="2"></asp:MenuItem>
-                    <asp:MenuItem Text="EAD" Value="3"></asp:MenuItem>
-                    <asp:MenuItem Text="Inclusão VT" Value="4"></asp:MenuItem>
+                    <asp:MenuItem Text="Tutoria EAD" Value="3"></asp:MenuItem>
                 </Items>
                 <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
                 <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
@@ -143,6 +146,8 @@
                         <table class="auto-style1">
                             <tr>
                                 <td align="center">
+                                    <asp:Label ID="lblMsg" runat="server" EnableViewState="False"></asp:Label>
+                                    <br />
                                     <asp:GridView ID="grdVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Style="font-size: small">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
@@ -171,7 +176,6 @@
                                                     <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
-                                                    <asp:Label ID="lblValorCorte" runat="server" ForeColor="Red" Text='<%# "Valor corte: " + Eval("MaxValueVT") %>'></asp:Label>
                                                     <br />
                                                     <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda" Text='<%# Eval("ValorVT") %>'></asp:TextBox>
                                                 </ItemTemplate>
@@ -206,12 +210,12 @@
                                     <table class="auto-style2">
                                         <tr>
                                             <td>Unidade</td>
-                                            <td>Área</td>
+                                            <td>Área de Prestação de Serviço</td>
                                             <td>Data</td>
                                             <td>Entrada - Saída</td>
                                             <td>&nbsp;</td>
                                             <td>Categoria</td>
-                                            <td>Justificativas</td>
+                                            <td>Justificativa da Atividade</td>
                                             <td>
                                                 <asp:Label ID="Label2" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
@@ -271,8 +275,7 @@
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td align="left" colspan="2" style="margin-left: 40px">
-                                                <asp:Label ID="rvValorVT" ForeColor="Red" runat="server"></asp:Label>
-                                            </td>
+                                                &nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                     </table>
@@ -344,12 +347,12 @@
                                     <table class="auto-style2">
                                         <tr>
                                             <td class="auto-style4">Unidade</td>
-                                            <td class="auto-style5">Área</td>
+                                            <td class="auto-style5">Área de Prestação de Serviço</td>
                                             <td class="auto-style6">Data</td>
                                             <td class="auto-style6">Entrada - Saída</td>
                                             <td class="auto-style7">&nbsp;</td>
                                             <td class="auto-style6">Categoria</td>
-                                            <td class="auto-style8">Justificativas</td>
+                                            <td class="auto-style8">Justificativa da Atividade</td>
                                             <td class="auto-style4">
                                                 <asp:Label ID="Label3" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
@@ -409,9 +412,7 @@
                                             <td class="auto-style13"></td>
                                             <td class="auto-style14"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                <asp:Label ID="rvValorVTCoord" ForeColor="Red" runat="server"></asp:Label>
-                                                
-                                            </td>
+                                                &nbsp;</td>
                                             <td class="auto-style15"></td>
                                         </tr>
                                     </table>
@@ -484,15 +485,15 @@
                                     <table class="auto-style2">
                                         <tr>
                                             <td>Unidade</td>
-                                            <td>Área</td>
+                                            <td>Área de Prestação de Serviço</td>
                                             <td>Data</td>
                                             <td>Entrada - Saída</td>
                                             <td>&nbsp;</td>
-                                            <td>Categoria</td>
+                                            <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>
                                                 <asp:Label ID="Label4" runat="server" Text="Valor VT"></asp:Label>
-                                            </td>
+                                                &nbsp;(Apenas para os Encontros Presenciais)</td>
                                             <td>Trajeto Ida e Volta</td>
                                             <td>&nbsp;</td>
                                         </tr>
@@ -520,13 +521,7 @@
                                                 <uc2:EntradaSaida ID="EntradaSaidaEAD" runat="server" />
                                             </td>
                                             <td>
-                                                <asp:DropDownList ID="ddlCategoriaEAD" runat="server">
-                                                    <asp:ListItem Value="1">Fic/Tec</asp:ListItem>
-                                                    <asp:ListItem Value="2">Graduação</asp:ListItem>
-                                                    <asp:ListItem Value="3">Pós-Graduação</asp:ListItem>
-                                                    <asp:ListItem Value="4">EAD</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </td>
+                                                &nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td style="margin-left: 40px">
                                                 <asp:TextBox ID="txtValorVTEAD" runat="server" CssClass="moeda" data-required-ead="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
@@ -547,9 +542,7 @@
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                <asp:Label ID="rvValorVTEAD" ForeColor="Red" runat="server"></asp:Label>
-                                                
-                                            </td>
+                                                &nbsp;</td>
                                             <td class="auto-style3"></td>
                                         </tr>
                                     </table>
@@ -628,7 +621,7 @@
                                             <td>Entrada - Saída</td>
                                             <td>&nbsp;</td>
                                             <td>Categoria</td>
-                                            <td>Justificativas</td>
+                                            <td>Justificativa da Atividade</td>
                                             <td>
                                                 <asp:Label ID="Label5" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
@@ -695,9 +688,7 @@
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                <asp:Label ID="rvValorVTVT" ForeColor="Red" runat="server"></asp:Label>
-                                                
-                                            </td>
+                                                &nbsp;</td>
                                             <td class="auto-style3"></td>
                                         </tr>
                                     </table>

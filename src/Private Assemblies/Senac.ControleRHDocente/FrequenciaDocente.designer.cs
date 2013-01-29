@@ -178,6 +178,13 @@ namespace Senac.ControleRHDocente
 				return this.GetTable<ptnInterino>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetHorasDocente")]
+		public ISingleResult<GetHorasDocenteResult> GetHorasDocente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matricula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matricula);
+			return ((ISingleResult<GetHorasDocenteResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Parametros")]
@@ -4398,6 +4405,50 @@ namespace Senac.ControleRHDocente
 				if ((this._Lotacao != value))
 				{
 					this._Lotacao = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetHorasDocenteResult
+	{
+		
+		private string _tipo;
+		
+		private string _horas;
+		
+		public GetHorasDocenteResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(19) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_horas", DbType="VarChar(MAX)")]
+		public string horas
+		{
+			get
+			{
+				return this._horas;
+			}
+			set
+			{
+				if ((this._horas != value))
+				{
+					this._horas = value;
 				}
 			}
 		}

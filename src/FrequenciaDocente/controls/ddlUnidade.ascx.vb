@@ -23,17 +23,20 @@ Partial Class FrequenciaDocente_controls_ddlUnidade
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Dim db As New FrequenciaDocenteDataContext(conn)
 
-        If (Session("_unidades") Is Nothing) Then
-            Session("_unidades") = From u In db.vwUnidadePontoDocentes _
-                                   Select u
+        If (Not Page.IsPostBack) Then
+
+            If (Session("_unidades") Is Nothing) Then
+                Session("_unidades") = From u In db.vwUnidadePontoDocentes _
+                                       Select u
+            End If
+
+            DropDownList1.DataSource = Session("_unidades")
+            DropDownList1.DataValueField = "IdUnidade"
+            DropDownList1.DataTextField = "Unidade"
+            DropDownList1.DataBind()
+
+
         End If
-
-        DropDownList1.DataSource = Session("_unidades")
-        DropDownList1.DataValueField = "IdUnidade"
-        DropDownList1.DataTextField = "Unidade"
-        DropDownList1.DataBind()
-
         db.Dispose()
-
     End Sub
 End Class

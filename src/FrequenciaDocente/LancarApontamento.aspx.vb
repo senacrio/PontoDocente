@@ -102,22 +102,23 @@ Partial Class FrequenciaDocente_LancarApontamento
                 LoadGridCoordenacao()
                 LoadGridEAD()
                 LoadGridLancamentoVT()
+
             End If
 
         End If
-
-        rvValorVT.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
-
-
-        rvValorVTCoord.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+        LoadHoras()
+        'rvValorVT.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
 
 
+        'rvValorVTCoord.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
 
-        rvValorVTEAD.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
 
 
-        rvValorVTVT.Text = "O valor do VT deve ser menor ou igual a: R$ " + Me.parametroAtivo.VL_CT_VT
+        'rvValorVTEAD.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
 
+
+        'rvValorVTVT.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
+        'lblValorCorte.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
 
 
         Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
@@ -149,6 +150,13 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     End Sub
 
+    Private Sub LoadHoras()
+        Dim db = New FrequenciaDocenteDataContext(conn)
+
+        grdHoras.DataSource = db.GetHorasDocente(Convert.ToInt32(Session("c_Matricula")))
+        grdHoras.DataBind()
+    End Sub
+
     Private Function GetParametroAtivo() As Parametro
         Dim db As New FrequenciaDocenteDataContext(conn)
         Dim par = (From p In db.Parametros _
@@ -170,10 +178,13 @@ Partial Class FrequenciaDocente_LancarApontamento
                       And r.IdParametro = Me.parametroAtivo.Id _
                       And Not r.Validacao _
                       Select r
-
-
-        grdVT.DataSource = listaVT
-        grdVT.DataBind()
+        If listaVT Is Nothing Or listaVT.Count = 0 Then
+            Menu1.Enabled = False
+        Else
+            Menu1.Enabled = True
+            grdVT.DataSource = listaVT
+            grdVT.DataBind()
+        End If
 
 
     End Sub
@@ -207,6 +218,9 @@ Partial Class FrequenciaDocente_LancarApontamento
         agendaVT.ValorVT = Convert.ToDecimal(valorVT)
 
         db.SubmitChanges()
+
+        lblMsg.Text = "Registro salvo com sucesso."
+        lblMsg.ForeColor = Drawing.Color.Green
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As EventArgs)
@@ -256,7 +270,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim atividadeAcademica As AtividadeAcademica = GetAtividadeAcademica(db)
 
-       
+
 
 
         If (atividadeAcademica.Id Is Nothing) Then
@@ -288,7 +302,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim lancamentoEAD As LancamentoEAD = GetEAD(db)
 
-     
+
 
 
         If (lancamentoEAD.Id Is Nothing) Then
@@ -316,7 +330,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim lancamentoVT As LancamentoVT = GetVT(db)
 
-       
+
 
 
         If (lancamentoVT.Id Is Nothing) Then
@@ -349,7 +363,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         End If
         Me.CurrentEAD.Matricula = Session("c_Matricula")
         Me.CurrentEAD.Area = ddlAreaEAD.SelectedValue
-        Me.CurrentEAD.Categoria = ddlCategoriaEAD.SelectedValue
+        Me.CurrentEAD.Categoria = "4" 'ddlCategoriaEAD.SelectedValue
         Me.CurrentEAD.Data = DateTime.ParseExact(txtDataEAD.Text, "dd/MM/yyyy", Nothing)
         Me.CurrentEAD.DataHoraRegistro = Date.Now
         Me.CurrentEAD.Entrada = EntradaSaidaEAD.SelectedValue.Split(";")(0)
@@ -487,7 +501,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     Private Sub LimparCamposEAD()
         ddlAreaEAD.SelectedIndex = 0
-        ddlCategoriaEAD.SelectedIndex = 0
+        'ddlCategoriaEAD.SelectedIndex = 0
         txtDataEAD.Text = ""
         'txtEntradaEAD.Text = ""
         ' txtUnidadeEAD.Text = ""
@@ -576,7 +590,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     Private Sub LoadCamposEAD()
         ddlAreaEAD.SelectedValue = Me.CurrentEAD.Area
-        ddlCategoriaEAD.SelectedValue = Me.CurrentEAD.Categoria
+        'ddlCategoriaEAD.SelectedValue = Me.CurrentEAD.Categoria
         txtDataEAD.Text = Me.CurrentEAD.Data.Value.ToString("dd/MM/yyyy")
         EntradaSaidaEAD.SelectedValue = Me.CurrentEAD.Entrada + ";" + Me.CurrentEAD.Saida
         ddlUnidadeEAD.SelectedValue = Me.CurrentEAD.IdUnidade
