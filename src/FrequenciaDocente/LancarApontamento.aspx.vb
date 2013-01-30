@@ -21,12 +21,8 @@ Partial Class FrequenciaDocente_LancarApontamento
     Public Function ExisteLancamento(id As String, matricula As String, entrada As String, saida As String, data As DateTime) As Boolean
         Dim db = New FrequenciaDocenteDataContext(conn)
 
-        Dim retorno As Boolean = (From a In db.vwApontamentos _
-                        Where a.Matricula.Equals(matricula) And _
-                        Not a.Id.Equals(id) And _
-                        a.Data.Equals(data) And _
-                        a.Entrada.Equals(entrada) And _
-                        a.Saida.Equals(saida)).Any()
+        Dim retorno As Boolean = db.ValidarHoraDocente(matricula, entrada, saida, data, id).Any()
+
         Return retorno
     End Function
 
@@ -366,11 +362,11 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentEAD.Categoria = "4" 'ddlCategoriaEAD.SelectedValue
         Me.CurrentEAD.Data = DateTime.ParseExact(txtDataEAD.Text, "dd/MM/yyyy", Nothing)
         Me.CurrentEAD.DataHoraRegistro = Date.Now
-        Me.CurrentEAD.Entrada = EntradaSaidaEAD.SelectedValue.Split(";")(0)
+        Me.CurrentEAD.Entrada = EntradaSaidaEAD.SelectedValueDe
         Me.CurrentEAD.IdParametro = Me.parametroAtivo.Id
         Me.CurrentEAD.IdUnidade = ddlUnidadeEAD.SelectedValue
 
-        Me.CurrentEAD.Saida = EntradaSaidaEAD.SelectedValue.Split(";")(1)
+        Me.CurrentEAD.Saida = EntradaSaidaEAD.SelectedValueAte
         Me.CurrentEAD.TrajetoIdaVolta = txtIdaVoltaEAD.Text
         Me.CurrentEAD.Validacao = False
         Me.CurrentEAD.ValorVT = Convert.ToDecimal(txtValorVTEAD.Text)
@@ -392,11 +388,11 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentVT.Categoria = ddlCategoriaVT.SelectedValue
         Me.CurrentVT.Data = DateTime.ParseExact(txtDataVT.Text, "dd/MM/yyyy", Nothing)
         Me.CurrentVT.DataHoraRegistro = Date.Now
-        Me.CurrentVT.Entrada = EntradaSaidaVT.SelectedValue.Split(";")(0)
+        Me.CurrentVT.Entrada = EntradaSaidaVT.SelectedValueDe
         Me.CurrentVT.IdParametro = Me.parametroAtivo.Id
         Me.CurrentVT.IdUnidade = txtUnidadeVT.Text
         Me.CurrentVT.Justificativas = txtJustificativaVT.Text
-        Me.CurrentVT.Saida = EntradaSaidaVT.SelectedValue.Split(";")(1)
+        Me.CurrentVT.Saida = EntradaSaidaVT.SelectedValueAte
         Me.CurrentVT.TrajetoIdaVolta = txtIdaVoltaVT.Text
         Me.CurrentVT.Validacao = False
         Me.CurrentVT.ValorVT = Convert.ToDecimal(txtValorVTVT.Text)
@@ -417,11 +413,11 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentAtividadeAcademica.Categoria = ddlCategoria.SelectedValue
         Me.CurrentAtividadeAcademica.Data = DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", Nothing)
         Me.CurrentAtividadeAcademica.DataHoraRegistro = Date.Now
-        Me.CurrentAtividadeAcademica.Entrada = EntradaSaidaAA.SelectedValue.Split(";")(0)
+        Me.CurrentAtividadeAcademica.Entrada = EntradaSaidaAA.SelectedValueDe
         Me.CurrentAtividadeAcademica.IdParametro = Me.parametroAtivo.Id
         Me.CurrentAtividadeAcademica.IdUnidade = ddlUnidadeAA.SelectedValue
         Me.CurrentAtividadeAcademica.Justificativas = txtJustificativa.Text
-        Me.CurrentAtividadeAcademica.Saida = EntradaSaidaAA.SelectedValue.Split(";")(1)
+        Me.CurrentAtividadeAcademica.Saida = EntradaSaidaAA.SelectedValueAte
         Me.CurrentAtividadeAcademica.TrajetoIdaVolta = txtIdaVolta.Text
         Me.CurrentAtividadeAcademica.Validacao = False
         Me.CurrentAtividadeAcademica.ValorVT = Convert.ToDecimal(txtValorVT.Text)
@@ -565,7 +561,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         ddlArea.SelectedValue = Me.CurrentAtividadeAcademica.Area
         ddlCategoria.SelectedValue = Me.CurrentAtividadeAcademica.Categoria
         txtData.Text = Me.CurrentAtividadeAcademica.Data.ToString("dd/MM/yyyy")
-        EntradaSaidaAA.SelectedValue = Me.CurrentAtividadeAcademica.Entrada + ";" + Me.CurrentAtividadeAcademica.Saida
+        EntradaSaidaAA.SelectedValueDe = Me.CurrentAtividadeAcademica.Entrada
+        EntradaSaidaAA.SelectedValueAte = Me.CurrentAtividadeAcademica.Saida
         ddlUnidadeAA.SelectedValue = Me.CurrentAtividadeAcademica.IdUnidade
         txtJustificativa.Text = Me.CurrentAtividadeAcademica.Justificativas
 
@@ -578,7 +575,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         ddlAreaVT.SelectedValue = Me.CurrentVT.Area
         ddlCategoriaVT.SelectedValue = Me.CurrentVT.Categoria
         txtDataVT.Text = Me.CurrentVT.Data.ToString("dd/MM/yyyy")
-        EntradaSaidaVT.SelectedValue = Me.CurrentVT.Entrada + ";" + Me.CurrentVT.Saida
+        EntradaSaidaVT.SelectedValueDe = Me.CurrentVT.Entrada
+        EntradaSaidaVT.SelectedValueAte = Me.CurrentVT.Saida
         txtUnidadeVT.Text = Me.CurrentVT.IdUnidade
         txtJustificativaVT.Text = Me.CurrentVT.Justificativas
 
@@ -592,7 +590,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         ddlAreaEAD.SelectedValue = Me.CurrentEAD.Area
         'ddlCategoriaEAD.SelectedValue = Me.CurrentEAD.Categoria
         txtDataEAD.Text = Me.CurrentEAD.Data.Value.ToString("dd/MM/yyyy")
-        EntradaSaidaEAD.SelectedValue = Me.CurrentEAD.Entrada + ";" + Me.CurrentEAD.Saida
+        EntradaSaidaEAD.SelectedValueDe = Me.CurrentEAD.Entrada
+        EntradaSaidaEAD.SelectedValueAte = Me.CurrentEAD.Saida
         ddlUnidadeEAD.SelectedValue = Me.CurrentEAD.IdUnidade
 
         txtIdaVoltaEAD.Text = Me.CurrentEAD.TrajetoIdaVolta
@@ -604,7 +603,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         ddlAreaCoord.SelectedValue = Me.CurrentCoordenacao.Area
         ddlCategoriaCoord.SelectedValue = Me.CurrentCoordenacao.Categoria
         txtDataCoord.Text = Me.CurrentCoordenacao.Data.ToString("dd/MM/yyyy")
-        EntradaSaidaCoord.SelectedValue = Me.CurrentCoordenacao.Entrada + ";" + Me.CurrentCoordenacao.Saida
+        EntradaSaidaCoord.SelectedValueDe = Me.CurrentCoordenacao.Entrada
+        EntradaSaidaCoord.SelectedValueAte = Me.CurrentCoordenacao.Saida
         ddlUnidadeCoord.SelectedValue = Me.CurrentCoordenacao.IdUnidade
         txtJustificativaCoord.Text = Me.CurrentCoordenacao.Justificativas
         txtIdaVoltaCoord.Text = Me.CurrentCoordenacao.TrajetoIdaVolta
@@ -679,11 +679,11 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentCoordenacao.Categoria = ddlCategoriaCoord.SelectedValue
         Me.CurrentCoordenacao.Data = DateTime.ParseExact(txtDataCoord.Text, "dd/MM/yyyy", Nothing)
         Me.CurrentCoordenacao.DataHoraRegistro = Date.Now
-        Me.CurrentCoordenacao.Entrada = EntradaSaidaCoord.SelectedValue.Split(";")(0)
+        Me.CurrentCoordenacao.Entrada = EntradaSaidaCoord.SelectedValueDe
         Me.CurrentCoordenacao.IdParametro = Me.parametroAtivo.Id
         Me.CurrentCoordenacao.IdUnidade = ddlUnidadeCoord.SelectedValue
         Me.CurrentCoordenacao.Justificativas = txtJustificativaCoord.Text
-        Me.CurrentCoordenacao.Saida = EntradaSaidaCoord.SelectedValue.Split(";")(1)
+        Me.CurrentCoordenacao.Saida = EntradaSaidaCoord.SelectedValueAte
         Me.CurrentCoordenacao.TrajetoIdaVolta = txtIdaVoltaCoord.Text
         Me.CurrentCoordenacao.Validacao = False
         Me.CurrentCoordenacao.ValorVT = Convert.ToDecimal(txtValorVTCoord.Text)

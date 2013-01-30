@@ -64,10 +64,6 @@
         }
         .auto-style6
         {}
-        .auto-style7
-        {
-            width: 2%;
-        }
         .auto-style8
         {
             width: 15%;
@@ -104,6 +100,34 @@
         {
             height: 23px;
             width: 3%;
+        }
+        .auto-style16
+        {
+            width: 320px;
+        }
+        .auto-style17
+        {
+            width: 221px;
+        }
+        .auto-style18
+        {
+            width: 201px;
+        }
+        .auto-style19
+        {
+            width: 24px;
+        }
+        .auto-style20
+        {
+            width: 34%;
+        }
+        .auto-style21
+        {
+            width: 254px;
+        }
+        .auto-style22
+        {
+            width: 200px;
         }
     </style>
 </head>
@@ -206,27 +230,26 @@
                         <strong>Horas Docentes: Atividades Acadêmicas</strong><br />
                         <table class="auto-style2">
                             <tr>
-                                <td align="center">
+                                <td align="center" style="text-align: left">
                                     <table class="auto-style2">
                                         <tr>
-                                            <td>Unidade</td>
-                                            <td>Área de Prestação de Serviço</td>
-                                            <td>Data</td>
+                                            <td class="auto-style17">Unidade</td>
+                                            <td class="auto-style16">Área de Prestação de Serviço</td>
+                                            <td class="auto-style18">Data</td>
                                             <td>Entrada - Saída</td>
                                             <td>&nbsp;</td>
-                                            <td>Categoria</td>
-                                            <td>Justificativa da Atividade</td>
+                                            <td class="auto-style19">Categoria</td>
+                                            <td>&nbsp;</td>
                                             <td>
-                                                <asp:Label ID="Label2" runat="server" Text="Valor VT"></asp:Label>
-                                            </td>
-                                            <td>Trajeto Ida e Volta</td>
+                                                &nbsp;</td>
+                                            <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td>
+                                            <td class="auto-style17">
                                                 <uc1:ddlUnidade ID="ddlUnidadeAA" runat="server" />
                                             </td>
-                                            <td>
+                                            <td class="auto-style16">
                                                 <asp:DropDownList ID="ddlArea" runat="server">
                                                     <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
                                                     <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
@@ -239,13 +262,14 @@
                                                     <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
+                                            <td class="auto-style18">
                                                 <asp:TextBox ID="txtData" runat="server" CssClass="data" data-required-atv="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
+                                                <asp:RangeValidator ID="rvData" runat="server" ControlToValidate="txtData" Display="None" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvAcd"></asp:RangeValidator>
                                             </td>
                                             <td colspan="2">
                                                 <uc2:EntradaSaida ID="EntradaSaidaAA" runat="server" />
                                             </td>
-                                            <td>
+                                            <td class="auto-style19">
                                                 <asp:DropDownList ID="ddlCategoria" runat="server">
                                                     <asp:ListItem Value="1">Fic/Tec</asp:ListItem>
                                                     <asp:ListItem Value="2">Graduação</asp:ListItem>
@@ -254,31 +278,48 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="txtJustificativa" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
-                                            </td>
-                                            <td style="margin-left: 40px">
-                                                <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda" data-required-atv="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtIdaVolta" runat="server" data-required-atv="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
-                                            </td>
-                                            <td>
                                                 <asp:Button ID="btnSalvarAtv" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvAcd" />
                                             </td>
+                                            <td style="margin-left: 40px">
+                                                &nbsp;</td>
+                                            <td>
+                                                &nbsp;</td>
+                                            <td>
+                                                &nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td>&nbsp;</td>
-                                            <td>&nbsp;</td>
+                                            <td class="auto-style17">Justificativa da Atividade</td>
+                                            <td class="auto-style16">Trajeto Ida e Volta</td>
                                             <td align="left" colspan="3">
-                                                <asp:RangeValidator ID="rvData" runat="server" ControlToValidate="txtData" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvAcd"></asp:RangeValidator>
+                                                <asp:Label ID="Label2" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
-                                            <td>&nbsp;</td>
+                                            <td class="auto-style19">&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td align="left" colspan="2" style="margin-left: 40px">
                                                 &nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
+                                        <tr>
+                                            <td class="auto-style17">
+                                                <asp:TextBox ID="txtJustificativa" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtJustificativa" ErrorMessage="*" ValidationGroup="salvarAtvAcd"></asp:RequiredFieldValidator>
+                                            </td>
+                                            <td class="auto-style16">
+                                                <asp:TextBox ID="txtIdaVolta" runat="server" data-required-atv="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
+                                            </td>
+                                            <td align="left" colspan="3">
+                                                <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda" data-required-atv="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
+                                            </td>
+                                            <td class="auto-style19">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td align="left" colspan="2" style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
                                     </table>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
                                     <asp:Label ID="lblMsgAA" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdAtividadesAcademicas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
@@ -343,20 +384,19 @@
                     <asp:View ID="vwCoord" runat="server">
                         <strong>Horas Docentes: Coordenação</strong><table class="auto-style2">
                             <tr>
-                                <td align="center">
+                                <td align="center" style="text-align: left">
                                     <table class="auto-style2">
                                         <tr>
                                             <td class="auto-style4">Unidade</td>
                                             <td class="auto-style5">Área de Prestação de Serviço</td>
                                             <td class="auto-style6">Data</td>
-                                            <td class="auto-style6">Entrada - Saída</td>
-                                            <td class="auto-style7">&nbsp;</td>
+                                            <td class="auto-style21">&nbsp;</td>
+                                            <td class="auto-style20">Entrada - Saída</td>
                                             <td class="auto-style6">Categoria</td>
-                                            <td class="auto-style8">Justificativa da Atividade</td>
+                                            <td class="auto-style8">&nbsp;</td>
                                             <td class="auto-style4">
-                                                <asp:Label ID="Label3" runat="server" Text="Valor VT"></asp:Label>
-                                            </td>
-                                            <td class="auto-style9">Trajeto Ida e Volta</td>
+                                                &nbsp;</td>
+                                            <td class="auto-style9">&nbsp;</td>
                                             <td class="auto-style10">&nbsp;</td>
                                         </tr>
                                         <tr>
@@ -378,6 +418,7 @@
                                             </td>
                                             <td class="auto-style6">
                                                 <asp:TextBox ID="txtDataCoord" runat="server" CssClass="data" data-required-coord="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
+                                                <asp:RangeValidator ID="rvDataCoord" runat="server" ControlToValidate="txtDataCoord" Display="None" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvCoord"></asp:RangeValidator>
                                             </td>
                                             <td class="auto-style6" colspan="2">
                                                 <uc2:EntradaSaida ID="EntradaSaidaCoord" runat="server" />
@@ -391,23 +432,20 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td class="auto-style8">
-                                                <asp:TextBox ID="txtJustificativaCoord" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
-                                            </td>
-                                            <td style="margin-left: 40px" class="auto-style4">
-                                                <asp:TextBox ID="txtValorVTCoord" runat="server" CssClass="moeda" data-required-coord="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td class="auto-style9">
-                                                <asp:TextBox ID="txtIdaVoltaCoord" runat="server" data-required-coord="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
-                                            </td>
-                                            <td class="auto-style10">
                                                 <asp:Button ID="btnSalvarCoord" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvCoord" />
                                             </td>
+                                            <td style="margin-left: 40px" class="auto-style4">
+                                                &nbsp;</td>
+                                            <td class="auto-style9">
+                                                &nbsp;</td>
+                                            <td class="auto-style10">
+                                                &nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td class="auto-style11"></td>
-                                            <td class="auto-style12"></td>
+                                            <td class="auto-style11">Justificativa da Atividade</td>
+                                            <td class="auto-style12">Trajeto Ida e Volta</td>
                                             <td align="left" class="auto-style3" colspan="3">
-                                                <asp:RangeValidator ID="rvDataCoord" runat="server" ControlToValidate="txtDataCoord" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvCoord"></asp:RangeValidator>
+                                                <asp:Label ID="Label3" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
                                             <td class="auto-style13"></td>
                                             <td class="auto-style14"></td>
@@ -415,7 +453,27 @@
                                                 &nbsp;</td>
                                             <td class="auto-style15"></td>
                                         </tr>
+                                        <tr>
+                                            <td class="auto-style11">
+                                                <asp:TextBox ID="txtJustificativaCoord" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
+                                            </td>
+                                            <td class="auto-style12">
+                                                <asp:TextBox ID="txtIdaVoltaCoord" runat="server" data-required-coord="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
+                                            </td>
+                                            <td align="left" class="auto-style3" colspan="3">
+                                                <asp:TextBox ID="txtValorVTCoord" runat="server" CssClass="moeda" data-required-coord="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
+                                            </td>
+                                            <td class="auto-style13">&nbsp;</td>
+                                            <td class="auto-style14">&nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
+                                            <td class="auto-style15">&nbsp;</td>
+                                        </tr>
                                     </table>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
                                     <asp:Label ID="lblMsgCoord" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdCoordenacao" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
@@ -481,20 +539,19 @@
                         <strong>Horas Tutoria: EAD</strong><br />
                         <table class="auto-style2">
                             <tr>
-                                <td align="center">
+                                <td align="center" style="text-align: left">
                                     <table class="auto-style2">
                                         <tr>
                                             <td>Unidade</td>
                                             <td>Área de Prestação de Serviço</td>
                                             <td>Data</td>
-                                            <td>Entrada - Saída</td>
+                                            <td class="auto-style22">Entrada - Saída</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>
-                                                <asp:Label ID="Label4" runat="server" Text="Valor VT"></asp:Label>
-                                                &nbsp;(Apenas para os Encontros Presenciais)</td>
-                                            <td>Trajeto Ida e Volta</td>
+                                                &nbsp;</td>
+                                            <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
@@ -516,36 +573,53 @@
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtDataEAD" runat="server" CssClass="data" data-required-ead="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
+                                                <asp:RangeValidator ID="rvDataEAD" runat="server" ControlToValidate="txtDataEAD" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvEAD"></asp:RangeValidator>
                                             </td>
                                             <td colspan="2">
                                                 <uc2:EntradaSaida ID="EntradaSaidaEAD" runat="server" />
                                             </td>
                                             <td>
-                                                &nbsp;</td>
-                                            <td>&nbsp;</td>
-                                            <td style="margin-left: 40px">
-                                                <asp:TextBox ID="txtValorVTEAD" runat="server" CssClass="moeda" data-required-ead="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
-                                            </td>
-                                            <td>
-                                                <asp:TextBox ID="txtIdaVoltaEAD" runat="server" data-required-ead="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
-                                            </td>
-                                            <td>
                                                 <asp:Button ID="btnSalvarEAD" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvEAD" />
                                             </td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">
+                                                &nbsp;</td>
+                                            <td>
+                                                &nbsp;</td>
+                                            <td>
+                                                &nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td class="auto-style3"></td>
-                                            <td class="auto-style3"></td>
+                                            <td class="auto-style3">Trajeto Ida e Volta</td>
+                                            <td class="auto-style3">
+                                                <asp:Label ID="Label4" runat="server" Text="Valor VT"></asp:Label>
+                                                &nbsp;(Apenas para os Encontros Presenciais)</td>
                                             <td align="left" class="auto-style3" colspan="3">
-                                                <asp:RangeValidator ID="rvDataEAD" runat="server" ControlToValidate="txtDataEAD" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvEAD"></asp:RangeValidator>
-                                            </td>
+                                                &nbsp;</td>
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
                                                 &nbsp;</td>
                                             <td class="auto-style3"></td>
                                         </tr>
+                                        <tr>
+                                            <td class="auto-style3">
+                                                <asp:TextBox ID="txtIdaVoltaEAD" runat="server" data-required-ead="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
+                                            </td>
+                                            <td class="auto-style3">
+                                                <asp:TextBox ID="txtValorVTEAD" runat="server" CssClass="moeda" data-required-ead="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
+                                            </td>
+                                            <td align="left" class="auto-style3" colspan="3">&nbsp;</td>
+                                            <td class="auto-style3">&nbsp;</td>
+                                            <td class="auto-style3">&nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
+                                            <td class="auto-style3">&nbsp;</td>
+                                        </tr>
                                     </table>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
                                     <asp:Label ID="lblMsgEAD" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
                                     <asp:GridView ID="grdEAD" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">

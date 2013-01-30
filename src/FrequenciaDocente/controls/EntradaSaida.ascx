@@ -1,7 +1,14 @@
 ﻿<%@ Control Language="VB" AutoEventWireup="false" CodeFile="EntradaSaida.ascx.vb" Inherits="FrequenciaDocente_controls_EntradaSaida" %>
-<asp:DropDownList ID="ddlDeAte" runat="server">
-    <asp:ListItem Value="08:00;12:00">08:00 - 12:00</asp:ListItem>
-    <asp:ListItem Value="13:00;17:00">13:00 - 17:00</asp:ListItem>
-    <asp:ListItem Value="18:00;22:00">18:00 - 22:00</asp:ListItem>
+<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
+    <asp:ListItem Value="1">Manhã</asp:ListItem>
+    <asp:ListItem Value="2">Tarde</asp:ListItem>
+    <asp:ListItem Value="3">Noite</asp:ListItem>
+</asp:DropDownList>
+&nbsp;-
+<asp:DropDownList ID="ddlDe" runat="server">
+</asp:DropDownList>
+
+&nbsp;as
+<asp:DropDownList ID="ddlAte" runat="server">
 </asp:DropDownList>
 
