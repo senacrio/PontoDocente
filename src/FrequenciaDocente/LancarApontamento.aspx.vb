@@ -256,6 +256,7 @@ Partial Class FrequenciaDocente_LancarApontamento
             LoadGridAtividadesAcademicas()
             LimparCampos()
             grdAtividadesAcademicas.SelectedIndex = -1
+            LoadHoras()
         Catch ex As Exception
 
         End Try
@@ -617,6 +618,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         LoadGridCoordenacao()
         LimparCamposCoord()
         grdCoordenacao.SelectedIndex = -1
+        LoadHoras()
     End Sub
 
     Private Sub LoadGridCoordenacao()
@@ -706,6 +708,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         LoadGridEAD()
         LimparCamposEAD()
         grdEAD.SelectedIndex = -1
+        LoadHoras()
     End Sub
 
     Protected Sub grdEAD_SelectedIndexChanged(sender As Object, e As EventArgs) Handles grdEAD.SelectedIndexChanged

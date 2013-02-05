@@ -135,7 +135,7 @@
     <form id="form1" runat="server">
         <div>
 
-            <br />
+            <strong>Total de horas</strong><br />
             <asp:GridView ID="grdHoras" runat="server" ShowHeader="False">
             </asp:GridView>
 
@@ -278,8 +278,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td>
-                                                <asp:Button ID="btnSalvarAtv" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvAcd" />
-                                            </td>
+                                                &nbsp;</td>
                                             <td style="margin-left: 40px">
                                                 &nbsp;</td>
                                             <td>
@@ -310,7 +309,9 @@
                                             <td align="left" colspan="3">
                                                 <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda" data-required-atv="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
                                             </td>
-                                            <td class="auto-style19">&nbsp;</td>
+                                            <td class="auto-style19">
+                                                <asp:Button ID="btnSalvarAtv" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvAcd" />
+                                            </td>
                                             <td>&nbsp;</td>
                                             <td align="left" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td>&nbsp;</td>
@@ -432,8 +433,7 @@
                                                 </asp:DropDownList>
                                             </td>
                                             <td class="auto-style8">
-                                                <asp:Button ID="btnSalvarCoord" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvCoord" />
-                                            </td>
+                                                &nbsp;</td>
                                             <td style="margin-left: 40px" class="auto-style4">
                                                 &nbsp;</td>
                                             <td class="auto-style9">
@@ -463,7 +463,9 @@
                                             <td align="left" class="auto-style3" colspan="3">
                                                 <asp:TextBox ID="txtValorVTCoord" runat="server" CssClass="moeda" data-required-coord="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
                                             </td>
-                                            <td class="auto-style13">&nbsp;</td>
+                                            <td class="auto-style13">
+                                                <asp:Button ID="btnSalvarCoord" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvCoord" />
+                                            </td>
                                             <td class="auto-style14">&nbsp;</td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td class="auto-style15">&nbsp;</td>
@@ -579,8 +581,7 @@
                                                 <uc2:EntradaSaida ID="EntradaSaidaEAD" runat="server" />
                                             </td>
                                             <td>
-                                                <asp:Button ID="btnSalvarEAD" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvEAD" />
-                                            </td>
+                                                &nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td style="margin-left: 40px">
                                                 &nbsp;</td>
@@ -609,7 +610,9 @@
                                             <td class="auto-style3">
                                                 <asp:TextBox ID="txtValorVTEAD" runat="server" CssClass="moeda" data-required-ead="true" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
                                             </td>
-                                            <td align="left" class="auto-style3" colspan="3">&nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="3">
+                                                <asp:Button ID="btnSalvarEAD" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small; height: 20px;" Text="Salvar" ValidationGroup="salvarAtvEAD" />
+                                            </td>
                                             <td class="auto-style3">&nbsp;</td>
                                             <td class="auto-style3">&nbsp;</td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>

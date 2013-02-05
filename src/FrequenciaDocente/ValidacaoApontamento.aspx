@@ -113,6 +113,7 @@
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("qtdHoras") %>'></asp:Label>
+                                                    &nbsp;<asp:CheckBox ID="chkValidaHora" runat="server" Checked='<%# Eval("validacaohora") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Valor VT Total">
@@ -121,6 +122,7 @@
                                                 </EditItemTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("valorTotal") %>'></asp:Label>
+                                                    &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" Checked='<%# Eval("validacao") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Unidade Execução">
@@ -140,22 +142,38 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Centro de Custo"></asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Autorização">
+                                            <asp:TemplateField HeaderText="Autorização" Visible="False">
                                                 <ItemTemplate>
-                                                    <asp:CheckBox ID="chkValidacao" runat="server" IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' />
+                                                    <asp:CheckBox ID="chkValidacao" runat="server" IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' Visible="False" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <tr>
                                                         <td colspan="100%">
-                                                            <div id='div<%# Eval("id") %>' style="display: none; position: relative; left: 15px; OVERFLOW: auto; WIDTH: 97%">
+                                                            <div id='div<%# Eval("id") %>' style=" position: relative; left: 15px; OVERFLOW: auto; WIDTH: 97%">
                                                                 <asp:GridView ID="grdDetalhes" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" DataKeyNames="id" EnableModelValidation="True" Font-Names="Verdana" Font-Size="X-Small" Width="100%">
                                                                     <Columns>
                                                                         <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                                                         <asp:BoundField DataField="Saida" HeaderText="Saída" />
-                                                                        <asp:BoundField DataField="horas" HeaderText="Total Horas" />
-                                                                        <asp:BoundField DataField="ValorVT" HeaderText="Valor VT" />
+                                                                        <asp:TemplateField HeaderText="Total Horas">
+                                                                            <EditItemTemplate>
+                                                                                <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("horas") %>'></asp:TextBox>
+                                                                            </EditItemTemplate>
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="Label2" runat="server" Text='<%# Bind("horas") %>'></asp:Label>
+                                                                                &nbsp;<asp:CheckBox ID="chkValidaHora" runat="server" />
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
+                                                                        <asp:TemplateField HeaderText="Valor VT">
+                                                                            <EditItemTemplate>
+                                                                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("ValorVT") %>'></asp:TextBox>
+                                                                            </EditItemTemplate>
+                                                                            <ItemTemplate>
+                                                                                <asp:Label ID="Label1" runat="server" Text='<%# Bind("ValorVT") %>'></asp:Label>
+                                                                                &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" />
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
                                                                         <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
                                                                         <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto" />
                                                                         <asp:TemplateField>

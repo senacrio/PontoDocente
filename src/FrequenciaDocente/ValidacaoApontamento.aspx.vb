@@ -70,8 +70,9 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         For Each row As GridViewRow In grdValidacao.Rows
             If (row.RowType = DataControlRowType.DataRow) Then
 
-                Dim chkValidacao = DirectCast(row.FindControl("chkValidacao"), CheckBox)
-                If (chkValidacao.Checked) Then
+                Dim chkValidacao = DirectCast(row.FindControl("chkValidaVT"), CheckBox)
+                Dim chkValidacaoHora = DirectCast(row.FindControl("chkValidaHora"), CheckBox)
+                If (chkValidacao.Checked) Or (chkValidacaoHora.Checked) Then
                     Dim matricula = chkValidacao.Attributes("Matricula").ToString()
                     Dim idUnidade = chkValidacao.Attributes("IdUnidade").ToString()
                     Dim categoria = chkValidacao.Attributes("IdCategoria").ToString()
@@ -114,27 +115,31 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                              Select a
 
                     For Each atividade In listaAA
-                        atividade.Validacao = True
+                        atividade.Validacao = chkValidacao.Checked
+                        atividade.ValidacaoHora = chkValidacaoHora.Checked
                         atividade.DataHoraValidacao = DateTime.Now
                         atividade.UsuarioValidacao = Session("c_Matricula")
                         db.SubmitChanges()
                     Next
 
                     For Each atividade In listaVT
-                        atividade.Validacao = True
+                        atividade.Validacao = chkValidacao.Checked
+                        atividade.ValidacaoHora = chkValidacaoHora.Checked
                         atividade.DataHoraValidacao = DateTime.Now
                         db.SubmitChanges()
                     Next
 
                     For Each atividade In listaCoord
-                        atividade.Validacao = True
+                        atividade.Validacao = chkValidacao.Checked
+                        atividade.ValidacaoHora = chkValidacaoHora.Checked
                         atividade.DataHoraValidacao = DateTime.Now
                         atividade.UsuarioValidacao = Session("c_Matricula")
                         db.SubmitChanges()
                     Next
 
                     For Each atividade In listaEAD
-                        atividade.Validacao = True
+                        atividade.Validacao = chkValidacao.Checked
+                        atividade.ValidacaoHora = chkValidacaoHora.Checked
                         atividade.DataHoraValidacao = DateTime.Now
                         atividade.UsuarioValidacao = Session("c_Matricula")
                         db.SubmitChanges()
@@ -189,6 +194,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                       Where a.Id.Equals(id) _
                       Select a).FirstOrDefault()
             atv.Validacao = True
+            atv.ValidacaoHora = True
             atv.DataHoraValidacao = DateTime.Now
             atv.UsuarioValidacao = Session("c_Matricula")
         ElseIf tipo.Equals("Coordenação") Then
@@ -202,7 +208,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
             Dim ae = (From a In db.AgendaExecutadaVTs _
                     Where a.Id.Equals(id) _
                     Select a).FirstOrDefault()
-
+            ae.ValidacaoHora = True
             ae.Validacao = True
             ae.DataHoraValidacao = DateTime.Now
         ElseIf tipo.Equals("EAD") Then
@@ -210,6 +216,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                       Where c.Id.Equals(id) _
                       Select c).FirstOrDefault()
             ead.Validacao = True
+            ead.ValidacaoHora = True
             ead.DataHoraValidacao = DateTime.Now
             ead.UsuarioValidacao = Session("c_Matricula")
         ElseIf tipo.Equals("Lancamento VT") Then
@@ -217,6 +224,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                       Where c.Id.Equals(id) _
                       Select c).FirstOrDefault()
             vt.Validacao = True
+
             vt.DataHoraValidacao = DateTime.Now
             vt.UsuarioValidacao = Session("c_Matricula")
         End If
