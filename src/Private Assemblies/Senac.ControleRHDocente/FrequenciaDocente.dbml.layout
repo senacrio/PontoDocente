@@ -56,56 +56,56 @@
         <elementListCompartment Id="549b2427-2429-4fa7-8f2f-695bd49166ec" absoluteBounds="6.765, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 4.13544840494792); (6.25 : 4.13544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.13544840494792); (6.25 : 4.13544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/AgendaExecutada/AgendaExecutada_RegistroVT" />
       <nodes>
         <classShapeMoniker Id="677cf146-686a-4054-b19d-bce98c1f71e0" />
         <classShapeMoniker Id="ffa8d86b-54ed-4c03-b31e-4a7854e349ae" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="677cf146-686a-4054-b19d-bce98c1f71e0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada1" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="677cf146-686a-4054-b19d-bce98c1f71e0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 18.9150211588542); (1.75 : 28.1738598632813); (3.5 : 28.1738598632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 18.9150211588542); (1.75 : 28.1738598632813); (3.5 : 28.1738598632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutadaVT" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="f5dc9224-d5f2-49c0-8b3c-b124af4b3547" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 14.6642569986979); (3.5 : 14.6642569986979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 14.6642569986979); (3.5 : 14.6642569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AtividadeAcademica" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="03884287-52be-4608-9fc5-d224437f5584" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 17.5200105794271); (3.5 : 17.5200105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 17.5200105794271); (3.5 : 17.5200105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_Coordenacao" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="4fc594a7-201c-41b7-a2f0-76d239e9285f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 8.69310628255208); (1.93229291666667 : 8.69310628255208 : JumpStart); (2.09895958333333 : 8.69310628255208 : JumpEnd); (2.33073229166667 : 8.69310628255208 : JumpStart); (2.49739895833333 : 8.69310628255208 : JumpEnd); (3.5 : 8.69310628255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 8.69310628255208); (1.93229291666667 : 8.69310628255208 : JumpStart); (2.09895958333333 : 8.69310628255208 : JumpEnd); (2.33073229166667 : 8.69310628255208 : JumpStart); (2.49739895833333 : 8.69310628255208 : JumpEnd); (3.5 : 8.69310628255208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_LancamentoEAD" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="25b173bd-60da-4ddb-8811-b5461cda4ed8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 18.9150211588542); (2.2812525 : 23.0392569986979); (3.5 : 23.0392569986979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.2812525 : 18.9150211588542); (2.2812525 : 23.0392569986979); (3.5 : 23.0392569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_LancamentoVT" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />

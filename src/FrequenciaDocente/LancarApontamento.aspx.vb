@@ -277,6 +277,14 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         End If
 
+        If (Not txtValorVT.Text.Equals(String.Empty) And String.IsNullOrEmpty(txtIdaVolta.Text)) Then
+            lblMsgAA.Text = "Entre com o trajeto de ida e volta."
+            lblMsgAA.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentAtividadeAcademica = Nothing
+            Return
+        End If
+
         If (ExisteLancamento(atividadeAcademica.Id, atividadeAcademica.Matricula, atividadeAcademica.Entrada, atividadeAcademica.Saida, atividadeAcademica.Data)) Then
             lblMsgAA.Text = "Já existe um lançamento nesse horário para esse dia."
             lblMsgAA.ForeColor = Drawing.Color.Red
@@ -308,6 +316,15 @@ Partial Class FrequenciaDocente_LancarApontamento
         Else
 
         End If
+
+        If (Not txtValorVTEAD.Text.Equals(String.Empty) And String.IsNullOrEmpty(txtIdaVoltaEAD.Text)) Then
+            lblMsgEAD.Text = "Entre com o trajeto de ida e volta."
+            lblMsgEAD.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentEAD = Nothing
+            Return
+        End If
+
         If (ExisteLancamento(lancamentoEAD.Id, lancamentoEAD.Matricula, lancamentoEAD.Entrada, lancamentoEAD.Saida, lancamentoEAD.Data)) Then
             lblMsgEAD.Text = "Já existe um lançamento nesse horário para esse dia."
             lblMsgEAD.ForeColor = Drawing.Color.Red
@@ -490,7 +507,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         txtDataCoord.Text = ""
         ' txtEntradaCoord.Text = ""
         'txtUnidadeCoord.Text = ""
-        txtJustificativaCoord.Text = ""
+        'txtJustificativaCoord.Text = ""
         ' txtSaidaCoord.Text = ""
         txtIdaVoltaCoord.Text = ""
         txtValorVTCoord.Text = ""
@@ -607,7 +624,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         EntradaSaidaCoord.SelectedValueDe = Me.CurrentCoordenacao.Entrada
         EntradaSaidaCoord.SelectedValueAte = Me.CurrentCoordenacao.Saida
         ddlUnidadeCoord.SelectedValue = Me.CurrentCoordenacao.IdUnidade
-        txtJustificativaCoord.Text = Me.CurrentCoordenacao.Justificativas
+        '  txtJustificativaCoord.Text = Me.CurrentCoordenacao.Justificativas
         txtIdaVoltaCoord.Text = Me.CurrentCoordenacao.TrajetoIdaVolta
         txtValorVTCoord.Text = Me.CurrentCoordenacao.ValorVT
 
@@ -652,6 +669,14 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         End If
 
+        If (Not txtValorVTCoord.Text.Equals(String.Empty) And String.IsNullOrEmpty(txtIdaVoltaCoord.Text)) Then
+            lblMsgCoord.Text = "Entre com o trajeto de ida e volta."
+            lblMsgCoord.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentCoordenacao = Nothing
+            Return
+        End If
+
         If (ExisteLancamento(coordenacao.Id, coordenacao.Matricula, coordenacao.Entrada, coordenacao.Saida, coordenacao.Data)) Then
             lblMsgCoord.Text = "Já existe um lançamento nesse horário para esse dia."
             lblMsgCoord.ForeColor = Drawing.Color.Red
@@ -684,7 +709,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentCoordenacao.Entrada = EntradaSaidaCoord.SelectedValueDe
         Me.CurrentCoordenacao.IdParametro = Me.parametroAtivo.Id
         Me.CurrentCoordenacao.IdUnidade = ddlUnidadeCoord.SelectedValue
-        Me.CurrentCoordenacao.Justificativas = txtJustificativaCoord.Text
+        '  Me.CurrentCoordenacao.Justificativas = txtJustificativaCoord.Text
         Me.CurrentCoordenacao.Saida = EntradaSaidaCoord.SelectedValueAte
         Me.CurrentCoordenacao.TrajetoIdaVolta = txtIdaVoltaCoord.Text
         Me.CurrentCoordenacao.Validacao = False

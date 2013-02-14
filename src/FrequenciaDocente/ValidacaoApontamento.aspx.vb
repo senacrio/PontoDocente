@@ -17,6 +17,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         End If
 
         If (Not Page.IsPostBack) Then
+            LoadComboValidacao()
             LoadGridValidacao()
         End If
     End Sub
@@ -26,7 +27,8 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         Dim lotacaoInterino = GetInterino()
 
         Dim listaValidacao = From v In db.vwValidacaos _
-                             Where v.idparametro.Equals(Me.parametroAtivo.Id.ToString()) ' _
+                             Where v.idparametro.Equals(Me.parametroAtivo.Id.ToString()) _
+                             And v.tipo.Equals(ddlValidacao.SelectedValue)
         'And v.IdUnidade.Equals(Context.Session("c_Cod_Lotac")) _
         '  Or v.IdUnidade.Equals(lotacaoInterino)
 
@@ -157,6 +159,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
             End If
         Next
         LoadGridValidacao()
+        LoadComboValidacao()
     End Sub
 
     Protected Sub grdValidacao_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles grdValidacao.RowDataBound
@@ -204,7 +207,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
             coord.Validacao = True
             coord.DataHoraValidacao = DateTime.Now
             coord.UsuarioValidacao = Session("c_Matricula")
-        ElseIf tipo.Equals("Agenda Executada VT") Then
+        ElseIf tipo.Equals("Agenda Executada") Then
             Dim ae = (From a In db.AgendaExecutadaVTs _
                     Where a.Id.Equals(id) _
                     Select a).FirstOrDefault()
@@ -232,6 +235,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         db.SubmitChanges()
 
         LoadGridValidacao()
+        LoadComboValidacao()
     End Sub
 
     Private Function GetInterino() As String
@@ -248,4 +252,67 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
     End Function
 
+    Private Sub LoadComboValidacao()
+        Dim db As New FrequenciaDocenteDataContext(conn)
+
+        Dim lista = db.GetComboValidacao(Convert.ToInt32(Session("c_Matricula"))).ToList()
+
+        ddlValidacao.DataSource = lista
+        ddlValidacao.DataTextField = "texto"
+        ddlValidacao.DataValueField = "tipo"
+        ddlValidacao.DataBind()
+    End Sub
+
+    Protected Sub ddlValidacao_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlValidacao.SelectedIndexChanged
+        LoadGridValidacao()
+    End Sub
+
+    Protected Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs)
+        Dim check As CheckBox = DirectCast(sender, CheckBox)
+
+            For Each row As GridViewRow In grdValidacao.Rows
+                If (row.RowType = DataControlRowType.DataRow) Then
+
+                    Dim chkValidacao = DirectCast(row.FindControl("chkValidaHora"), CheckBox)
+                    chkValidacao.Checked = check.Checked
+
+                End If
+            Next
+
+
+    End Sub
+
+    Protected Sub chkValorTotal_CheckedChanged(sender As Object, e As EventArgs)
+        Dim check As CheckBox = DirectCast(sender, CheckBox)
+
+        For Each row As GridViewRow In grdValidacao.Rows
+            If (row.RowType = DataControlRowType.DataRow) Then
+
+                Dim chkValidacao = DirectCast(row.FindControl("chkValidaVT"), CheckBox)
+                chkValidacao.Checked = check.Checked
+
+            End If
+        Next
+
+    End Sub
+
+    Protected Sub chkValidaHora_CheckedChanged(sender As Object, e As EventArgs)
+        Dim check As CheckBox = DirectCast(sender, CheckBox)
+
+        Dim validacao = DirectCast(grdValidacao.HeaderRow.FindControl("chkValorTotal"), CheckBox)
+
+        If (validacao.Checked) Then
+            validacao.Checked = False
+        End If
+    End Sub
+
+    Protected Sub chkValidaHora_CheckedChanged1(sender As Object, e As EventArgs)
+        Dim check As CheckBox = DirectCast(sender, CheckBox)
+
+        Dim validacao = DirectCast(grdValidacao.HeaderRow.FindControl("chkHorasTotal"), CheckBox)
+
+        If (validacao.Checked) Then
+            validacao.Checked = False
+        End If
+    End Sub
 End Class

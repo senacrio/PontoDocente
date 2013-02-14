@@ -25,12 +25,13 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If (Not Page.IsPostBack) Then
             CarregarHoras()
+            ddlAte.SelectedIndex = ddlAte.Items.Count - 1
         End If
     End Sub
 
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
         CarregarHoras()
-
+        ddlAte.SelectedIndex = ddlAte.Items.Count - 1
 
     End Sub
 

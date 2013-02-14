@@ -1,0 +1,5 @@
+D:\senac\Email\DocenteEmails\DocenteEmails\bin\Debug\DocenteEmails.exe.config
+D:\senac\Email\DocenteEmails\DocenteEmails\bin\Debug\DocenteEmails.exe
+D:\senac\Email\DocenteEmails\DocenteEmails\bin\Debug\DocenteEmails.pdb
+D:\senac\Email\DocenteEmails\DocenteEmails\obj\Debug\DocenteEmails.exe
+D:\senac\Email\DocenteEmails\DocenteEmails\obj\Debug\DocenteEmails.pdb

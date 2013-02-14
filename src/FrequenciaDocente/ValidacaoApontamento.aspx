@@ -57,17 +57,21 @@
 
             <table class="auto-style1">
                 <tr>
-                    <td style="text-align: center"><strong>Autorização de Lançamentos</strong></td>
+                    <td style="text-align: center"><strong>Autorização de Lançamentos </strong></td>
                 </tr>
             </table>
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
+            <br />
+            Selecione o tipo:
+            <asp:DropDownList ID="ddlValidacao" runat="server" AutoPostBack="True">
+            </asp:DropDownList>
             <asp:Panel ID="pnl" runat="server">
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
                         <table class="auto-style1">
                             <tr>
-                                <td align="center">
+                                <td align="center" style="text-align: left">
                                     <asp:GridView ID="grdValidacao" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="IdUnidade,Matricula,Categoria" EnableModelValidation="True" ForeColor="#333333" GridLines="None">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
@@ -111,18 +115,25 @@
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("qtdHoras") %>'></asp:TextBox>
                                                 </EditItemTemplate>
+                                                <HeaderTemplate>
+                                                    Qtde Horas<asp:CheckBox ID="chkHorasTotal" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox1_CheckedChanged" />
+                                                </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("qtdHoras") %>'></asp:Label>
-                                                    &nbsp;<asp:CheckBox ID="chkValidaHora" runat="server" Checked='<%# Eval("validacaohora") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' />
+                                                    &nbsp;<asp:CheckBox ID="chkValidaHora" runat="server" Checked='<%# Eval("validacaohora") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' AutoPostBack="True" OnCheckedChanged="chkValidaHora_CheckedChanged1" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Valor VT Total">
                                                 <EditItemTemplate>
                                                     <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("valorTotal") %>'></asp:TextBox>
                                                 </EditItemTemplate>
+                                                <HeaderTemplate>
+                                                    Valor VT
+                                                    <asp:CheckBox ID="chkValorTotal" runat="server" AutoPostBack="True" OnCheckedChanged="chkValorTotal_CheckedChanged" />
+                                                </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("valorTotal") %>'></asp:Label>
-                                                    &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" Checked='<%# Eval("validacao") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' />
+                                                    &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" Checked='<%# Eval("validacao") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' AutoPostBack="True" OnCheckedChanged="chkValidaHora_CheckedChanged" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Unidade Execução">
