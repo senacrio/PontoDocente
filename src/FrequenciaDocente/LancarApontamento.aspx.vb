@@ -383,7 +383,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentEAD.Entrada = EntradaSaidaEAD.SelectedValueDe
         Me.CurrentEAD.IdParametro = Me.parametroAtivo.Id
         Me.CurrentEAD.IdUnidade = ddlUnidadeEAD.SelectedValue
-
+        Me.CurrentEAD.CentroCusto = GetCentroCusto(ddlAreaEAD.SelectedValue)
         Me.CurrentEAD.Saida = EntradaSaidaEAD.SelectedValueAte
         Me.CurrentEAD.TrajetoIdaVolta = txtIdaVoltaEAD.Text
         Me.CurrentEAD.Validacao = False
@@ -409,6 +409,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentVT.Entrada = EntradaSaidaVT.SelectedValueDe
         Me.CurrentVT.IdParametro = Me.parametroAtivo.Id
         Me.CurrentVT.IdUnidade = txtUnidadeVT.Text
+        Me.CurrentVT.IdUnidade = txtUnidadeVT.Text
         Me.CurrentVT.Justificativas = txtJustificativaVT.Text
         Me.CurrentVT.Saida = EntradaSaidaVT.SelectedValueAte
         Me.CurrentVT.TrajetoIdaVolta = txtIdaVoltaVT.Text
@@ -432,6 +433,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentAtividadeAcademica.Data = DateTime.ParseExact(txtData.Text, "dd/MM/yyyy", Nothing)
         Me.CurrentAtividadeAcademica.DataHoraRegistro = Date.Now
         Me.CurrentAtividadeAcademica.Entrada = EntradaSaidaAA.SelectedValueDe
+        Me.CurrentAtividadeAcademica.CentroCusto = GetCentroCusto(ddlArea.SelectedValue)
         Me.CurrentAtividadeAcademica.IdParametro = Me.parametroAtivo.Id
         Me.CurrentAtividadeAcademica.IdUnidade = ddlUnidadeAA.SelectedValue
         Me.CurrentAtividadeAcademica.Justificativas = txtJustificativa.Text
@@ -490,7 +492,7 @@ Partial Class FrequenciaDocente_LancarApontamento
     End Sub
 
     Private Sub LimparCampos()
-        ddlArea.SelectedIndex = 0
+        ddlArea.Limpar()
         ddlCategoria.SelectedIndex = 0
         txtData.Text = ""
         'txtEntrada.Text = ""
@@ -502,7 +504,7 @@ Partial Class FrequenciaDocente_LancarApontamento
     End Sub
 
     Private Sub LimparCamposCoord()
-        ddlAreaCoord.SelectedIndex = 0
+        ddlAreaCoord.Limpar()
         ddlCategoriaCoord.SelectedIndex = 0
         txtDataCoord.Text = ""
         ' txtEntradaCoord.Text = ""
@@ -514,7 +516,7 @@ Partial Class FrequenciaDocente_LancarApontamento
     End Sub
 
     Private Sub LimparCamposEAD()
-        ddlAreaEAD.SelectedIndex = 0
+        ddlAreaEAD.Limpar()
         'ddlCategoriaEAD.SelectedIndex = 0
         txtDataEAD.Text = ""
         'txtEntradaEAD.Text = ""
@@ -709,6 +711,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentCoordenacao.Entrada = EntradaSaidaCoord.SelectedValueDe
         Me.CurrentCoordenacao.IdParametro = Me.parametroAtivo.Id
         Me.CurrentCoordenacao.IdUnidade = ddlUnidadeCoord.SelectedValue
+        Me.CurrentCoordenacao.CentroCusto = GetCentroCusto(ddlAreaCoord.SelectedValue)
         '  Me.CurrentCoordenacao.Justificativas = txtJustificativaCoord.Text
         Me.CurrentCoordenacao.Saida = EntradaSaidaCoord.SelectedValueAte
         Me.CurrentCoordenacao.TrajetoIdaVolta = txtIdaVoltaCoord.Text
@@ -754,4 +757,15 @@ Partial Class FrequenciaDocente_LancarApontamento
         LoadVT()
         LoadCamposVT()
     End Sub
+
+    Private Function GetCentroCusto(p1 As String) As String
+        Dim db As New FrequenciaDocenteDataContext(conn)
+
+        Dim area = (From cc In db.AreaDocentes _
+                 Where cc.Id.Equals(p1) _
+                 Select cc).FirstOrDefault()
+
+        Return area.IdCentroCustoDefault
+    End Function
+
 End Class

@@ -36,6 +36,18 @@ namespace Senac.ControleRHDocente
     partial void InsertRegistroVT(RegistroVT instance);
     partial void UpdateRegistroVT(RegistroVT instance);
     partial void DeleteRegistroVT(RegistroVT instance);
+    partial void InsertLancamentoVT(LancamentoVT instance);
+    partial void UpdateLancamentoVT(LancamentoVT instance);
+    partial void DeleteLancamentoVT(LancamentoVT instance);
+    partial void InsertParametro(Parametro instance);
+    partial void UpdateParametro(Parametro instance);
+    partial void DeleteParametro(Parametro instance);
+    partial void InsertAreaDocente(AreaDocente instance);
+    partial void UpdateAreaDocente(AreaDocente instance);
+    partial void DeleteAreaDocente(AreaDocente instance);
+    partial void InsertCentroCustoDocente(CentroCustoDocente instance);
+    partial void UpdateCentroCustoDocente(CentroCustoDocente instance);
+    partial void DeleteCentroCustoDocente(CentroCustoDocente instance);
     partial void InsertAgendaExecutadaVT(AgendaExecutadaVT instance);
     partial void UpdateAgendaExecutadaVT(AgendaExecutadaVT instance);
     partial void DeleteAgendaExecutadaVT(AgendaExecutadaVT instance);
@@ -48,12 +60,6 @@ namespace Senac.ControleRHDocente
     partial void InsertLancamentoEAD(LancamentoEAD instance);
     partial void UpdateLancamentoEAD(LancamentoEAD instance);
     partial void DeleteLancamentoEAD(LancamentoEAD instance);
-    partial void InsertLancamentoVT(LancamentoVT instance);
-    partial void UpdateLancamentoVT(LancamentoVT instance);
-    partial void DeleteLancamentoVT(LancamentoVT instance);
-    partial void InsertParametro(Parametro instance);
-    partial void UpdateParametro(Parametro instance);
-    partial void DeleteParametro(Parametro instance);
     #endregion
 		
 		public FrequenciaDocenteDataContext() : 
@@ -99,38 +105,6 @@ namespace Senac.ControleRHDocente
 			get
 			{
 				return this.GetTable<RegistroVT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<AgendaExecutadaVT> AgendaExecutadaVTs
-		{
-			get
-			{
-				return this.GetTable<AgendaExecutadaVT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<AtividadeAcademica> AtividadeAcademicas
-		{
-			get
-			{
-				return this.GetTable<AtividadeAcademica>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Coordenacao> Coordenacaos
-		{
-			get
-			{
-				return this.GetTable<Coordenacao>();
-			}
-		}
-		
-		public System.Data.Linq.Table<LancamentoEAD> LancamentoEADs
-		{
-			get
-			{
-				return this.GetTable<LancamentoEAD>();
 			}
 		}
 		
@@ -187,6 +161,54 @@ namespace Senac.ControleRHDocente
 			get
 			{
 				return this.GetTable<vwUnidadePontoDocente>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AreaDocente> AreaDocentes
+		{
+			get
+			{
+				return this.GetTable<AreaDocente>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CentroCustoDocente> CentroCustoDocentes
+		{
+			get
+			{
+				return this.GetTable<CentroCustoDocente>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AgendaExecutadaVT> AgendaExecutadaVTs
+		{
+			get
+			{
+				return this.GetTable<AgendaExecutadaVT>();
+			}
+		}
+		
+		public System.Data.Linq.Table<AtividadeAcademica> AtividadeAcademicas
+		{
+			get
+			{
+				return this.GetTable<AtividadeAcademica>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Coordenacao> Coordenacaos
+		{
+			get
+			{
+				return this.GetTable<Coordenacao>();
+			}
+		}
+		
+		public System.Data.Linq.Table<LancamentoEAD> LancamentoEADs
+		{
+			get
+			{
+				return this.GetTable<LancamentoEAD>();
 			}
 		}
 		
@@ -915,2026 +937,6 @@ namespace Senac.ControleRHDocente
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AgendaExecutadaVT")]
-	public partial class AgendaExecutadaVT : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Id;
-		
-		private string _Unidade;
-		
-		private string _Data;
-		
-		private string _HoraInicial;
-		
-		private string _HoraFinal;
-		
-		private string _Disciplina;
-		
-		private string _Turma;
-		
-		private string _SalarioHora;
-		
-		private string _Matricula;
-		
-		private string _Status;
-		
-		private string _Categoria;
-		
-		private string _UsuarioRegistro;
-		
-		private System.Nullable<System.DateTime> _DataHoraRegistro;
-		
-		private string _IdParametro;
-		
-		private string _ArquivoDownload;
-		
-		private string _IdaVolta;
-		
-		private System.Nullable<decimal> _ValorVT;
-		
-		private System.Nullable<System.DateTime> _DataHoraVT;
-		
-		private System.Nullable<bool> _Validacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraValidacao;
-		
-		private System.Nullable<bool> _ValidacaoHora;
-		
-		private EntityRef<Parametro> _Parametro;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void OnUnidadeChanging(string value);
-    partial void OnUnidadeChanged();
-    partial void OnDataChanging(string value);
-    partial void OnDataChanged();
-    partial void OnHoraInicialChanging(string value);
-    partial void OnHoraInicialChanged();
-    partial void OnHoraFinalChanging(string value);
-    partial void OnHoraFinalChanged();
-    partial void OnDisciplinaChanging(string value);
-    partial void OnDisciplinaChanged();
-    partial void OnTurmaChanging(string value);
-    partial void OnTurmaChanged();
-    partial void OnSalarioHoraChanging(string value);
-    partial void OnSalarioHoraChanged();
-    partial void OnMatriculaChanging(string value);
-    partial void OnMatriculaChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
-    partial void OnCategoriaChanging(string value);
-    partial void OnCategoriaChanged();
-    partial void OnUsuarioRegistroChanging(string value);
-    partial void OnUsuarioRegistroChanged();
-    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraRegistroChanged();
-    partial void OnIdParametroChanging(string value);
-    partial void OnIdParametroChanged();
-    partial void OnArquivoDownloadChanging(string value);
-    partial void OnArquivoDownloadChanged();
-    partial void OnIdaVoltaChanging(string value);
-    partial void OnIdaVoltaChanged();
-    partial void OnValorVTChanging(System.Nullable<decimal> value);
-    partial void OnValorVTChanged();
-    partial void OnDataHoraVTChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraVTChanged();
-    partial void OnValidacaoChanging(System.Nullable<bool> value);
-    partial void OnValidacaoChanged();
-    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraValidacaoChanged();
-    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
-    partial void OnValidacaoHoraChanged();
-    #endregion
-		
-		public AgendaExecutadaVT()
-		{
-			this._Parametro = default(EntityRef<Parametro>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unidade", DbType="VarChar(6)")]
-		public string Unidade
-		{
-			get
-			{
-				return this._Unidade;
-			}
-			set
-			{
-				if ((this._Unidade != value))
-				{
-					this.OnUnidadeChanging(value);
-					this.SendPropertyChanging();
-					this._Unidade = value;
-					this.SendPropertyChanged("Unidade");
-					this.OnUnidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarChar(8)")]
-		public string Data
-		{
-			get
-			{
-				return this._Data;
-			}
-			set
-			{
-				if ((this._Data != value))
-				{
-					this.OnDataChanging(value);
-					this.SendPropertyChanging();
-					this._Data = value;
-					this.SendPropertyChanged("Data");
-					this.OnDataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraInicial", DbType="VarChar(5)")]
-		public string HoraInicial
-		{
-			get
-			{
-				return this._HoraInicial;
-			}
-			set
-			{
-				if ((this._HoraInicial != value))
-				{
-					this.OnHoraInicialChanging(value);
-					this.SendPropertyChanging();
-					this._HoraInicial = value;
-					this.SendPropertyChanged("HoraInicial");
-					this.OnHoraInicialChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraFinal", DbType="VarChar(5)")]
-		public string HoraFinal
-		{
-			get
-			{
-				return this._HoraFinal;
-			}
-			set
-			{
-				if ((this._HoraFinal != value))
-				{
-					this.OnHoraFinalChanging(value);
-					this.SendPropertyChanging();
-					this._HoraFinal = value;
-					this.SendPropertyChanged("HoraFinal");
-					this.OnHoraFinalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disciplina", DbType="VarChar(20)")]
-		public string Disciplina
-		{
-			get
-			{
-				return this._Disciplina;
-			}
-			set
-			{
-				if ((this._Disciplina != value))
-				{
-					this.OnDisciplinaChanging(value);
-					this.SendPropertyChanging();
-					this._Disciplina = value;
-					this.SendPropertyChanged("Disciplina");
-					this.OnDisciplinaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Turma", DbType="VarChar(20)")]
-		public string Turma
-		{
-			get
-			{
-				return this._Turma;
-			}
-			set
-			{
-				if ((this._Turma != value))
-				{
-					this.OnTurmaChanging(value);
-					this.SendPropertyChanging();
-					this._Turma = value;
-					this.SendPropertyChanged("Turma");
-					this.OnTurmaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalarioHora", DbType="VarChar(20)")]
-		public string SalarioHora
-		{
-			get
-			{
-				return this._SalarioHora;
-			}
-			set
-			{
-				if ((this._SalarioHora != value))
-				{
-					this.OnSalarioHoraChanging(value);
-					this.SendPropertyChanging();
-					this._SalarioHora = value;
-					this.SendPropertyChanged("SalarioHora");
-					this.OnSalarioHoraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(10)")]
-		public string Matricula
-		{
-			get
-			{
-				return this._Matricula;
-			}
-			set
-			{
-				if ((this._Matricula != value))
-				{
-					this.OnMatriculaChanging(value);
-					this.SendPropertyChanging();
-					this._Matricula = value;
-					this.SendPropertyChanged("Matricula");
-					this.OnMatriculaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(20)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(5)")]
-		public string Categoria
-		{
-			get
-			{
-				return this._Categoria;
-			}
-			set
-			{
-				if ((this._Categoria != value))
-				{
-					this.OnCategoriaChanging(value);
-					this.SendPropertyChanging();
-					this._Categoria = value;
-					this.SendPropertyChanged("Categoria");
-					this.OnCategoriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioRegistro", DbType="VarChar(50)")]
-		public string UsuarioRegistro
-		{
-			get
-			{
-				return this._UsuarioRegistro;
-			}
-			set
-			{
-				if ((this._UsuarioRegistro != value))
-				{
-					this.OnUsuarioRegistroChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioRegistro = value;
-					this.SendPropertyChanged("UsuarioRegistro");
-					this.OnUsuarioRegistroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraRegistro
-		{
-			get
-			{
-				return this._DataHoraRegistro;
-			}
-			set
-			{
-				if ((this._DataHoraRegistro != value))
-				{
-					this.OnDataHoraRegistroChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraRegistro = value;
-					this.SendPropertyChanged("DataHoraRegistro");
-					this.OnDataHoraRegistroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
-		public string IdParametro
-		{
-			get
-			{
-				return this._IdParametro;
-			}
-			set
-			{
-				if ((this._IdParametro != value))
-				{
-					if (this._Parametro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdParametroChanging(value);
-					this.SendPropertyChanging();
-					this._IdParametro = value;
-					this.SendPropertyChanged("IdParametro");
-					this.OnIdParametroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArquivoDownload", DbType="VarChar(500)")]
-		public string ArquivoDownload
-		{
-			get
-			{
-				return this._ArquivoDownload;
-			}
-			set
-			{
-				if ((this._ArquivoDownload != value))
-				{
-					this.OnArquivoDownloadChanging(value);
-					this.SendPropertyChanging();
-					this._ArquivoDownload = value;
-					this.SendPropertyChanged("ArquivoDownload");
-					this.OnArquivoDownloadChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdaVolta", DbType="VarChar(500)")]
-		public string IdaVolta
-		{
-			get
-			{
-				return this._IdaVolta;
-			}
-			set
-			{
-				if ((this._IdaVolta != value))
-				{
-					this.OnIdaVoltaChanging(value);
-					this.SendPropertyChanging();
-					this._IdaVolta = value;
-					this.SendPropertyChanged("IdaVolta");
-					this.OnIdaVoltaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> ValorVT
-		{
-			get
-			{
-				return this._ValorVT;
-			}
-			set
-			{
-				if ((this._ValorVT != value))
-				{
-					this.OnValorVTChanging(value);
-					this.SendPropertyChanging();
-					this._ValorVT = value;
-					this.SendPropertyChanged("ValorVT");
-					this.OnValorVTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraVT", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraVT
-		{
-			get
-			{
-				return this._DataHoraVT;
-			}
-			set
-			{
-				if ((this._DataHoraVT != value))
-				{
-					this.OnDataHoraVTChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraVT = value;
-					this.SendPropertyChanged("DataHoraVT");
-					this.OnDataHoraVTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
-		public System.Nullable<bool> Validacao
-		{
-			get
-			{
-				return this._Validacao;
-			}
-			set
-			{
-				if ((this._Validacao != value))
-				{
-					this.OnValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._Validacao = value;
-					this.SendPropertyChanged("Validacao");
-					this.OnValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraValidacao
-		{
-			get
-			{
-				return this._DataHoraValidacao;
-			}
-			set
-			{
-				if ((this._DataHoraValidacao != value))
-				{
-					this.OnDataHoraValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraValidacao = value;
-					this.SendPropertyChanged("DataHoraValidacao");
-					this.OnDataHoraValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
-		public System.Nullable<bool> ValidacaoHora
-		{
-			get
-			{
-				return this._ValidacaoHora;
-			}
-			set
-			{
-				if ((this._ValidacaoHora != value))
-				{
-					this.OnValidacaoHoraChanging(value);
-					this.SendPropertyChanging();
-					this._ValidacaoHora = value;
-					this.SendPropertyChanged("ValidacaoHora");
-					this.OnValidacaoHoraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AgendaExecutadaVT", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
-		public Parametro Parametro
-		{
-			get
-			{
-				return this._Parametro.Entity;
-			}
-			set
-			{
-				Parametro previousValue = this._Parametro.Entity;
-				if (((previousValue != value) 
-							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parametro.Entity = null;
-						previousValue.AgendaExecutadaVTs.Remove(this);
-					}
-					this._Parametro.Entity = value;
-					if ((value != null))
-					{
-						value.AgendaExecutadaVTs.Add(this);
-						this._IdParametro = value.Id;
-					}
-					else
-					{
-						this._IdParametro = default(string);
-					}
-					this.SendPropertyChanged("Parametro");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AtividadeAcademica")]
-	public partial class AtividadeAcademica : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Id;
-		
-		private string _IdUnidade;
-		
-		private string _Matricula;
-		
-		private string _Area;
-		
-		private System.DateTime _Data;
-		
-		private string _Entrada;
-		
-		private string _Saida;
-		
-		private string _Categoria;
-		
-		private string _Justificativas;
-		
-		private System.Nullable<decimal> _ValorVT;
-		
-		private string _TrajetoIdaVolta;
-		
-		private System.Nullable<bool> _Validacao;
-		
-		private string _UsuarioValidacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraValidacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraRegistro;
-		
-		private string _IdParametro;
-		
-		private System.Nullable<bool> _ValidacaoHora;
-		
-		private EntityRef<Parametro> _Parametro;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void OnIdUnidadeChanging(string value);
-    partial void OnIdUnidadeChanged();
-    partial void OnMatriculaChanging(string value);
-    partial void OnMatriculaChanged();
-    partial void OnAreaChanging(string value);
-    partial void OnAreaChanged();
-    partial void OnDataChanging(System.DateTime value);
-    partial void OnDataChanged();
-    partial void OnEntradaChanging(string value);
-    partial void OnEntradaChanged();
-    partial void OnSaidaChanging(string value);
-    partial void OnSaidaChanged();
-    partial void OnCategoriaChanging(string value);
-    partial void OnCategoriaChanged();
-    partial void OnJustificativasChanging(string value);
-    partial void OnJustificativasChanged();
-    partial void OnValorVTChanging(System.Nullable<decimal> value);
-    partial void OnValorVTChanged();
-    partial void OnTrajetoIdaVoltaChanging(string value);
-    partial void OnTrajetoIdaVoltaChanged();
-    partial void OnValidacaoChanging(System.Nullable<bool> value);
-    partial void OnValidacaoChanged();
-    partial void OnUsuarioValidacaoChanging(string value);
-    partial void OnUsuarioValidacaoChanged();
-    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraValidacaoChanged();
-    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraRegistroChanged();
-    partial void OnIdParametroChanging(string value);
-    partial void OnIdParametroChanged();
-    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
-    partial void OnValidacaoHoraChanged();
-    #endregion
-		
-		public AtividadeAcademica()
-		{
-			this._Parametro = default(EntityRef<Parametro>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string IdUnidade
-		{
-			get
-			{
-				return this._IdUnidade;
-			}
-			set
-			{
-				if ((this._IdUnidade != value))
-				{
-					this.OnIdUnidadeChanging(value);
-					this.SendPropertyChanging();
-					this._IdUnidade = value;
-					this.SendPropertyChanged("IdUnidade");
-					this.OnIdUnidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
-		public string Matricula
-		{
-			get
-			{
-				return this._Matricula;
-			}
-			set
-			{
-				if ((this._Matricula != value))
-				{
-					this.OnMatriculaChanging(value);
-					this.SendPropertyChanging();
-					this._Matricula = value;
-					this.SendPropertyChanged("Matricula");
-					this.OnMatriculaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Area
-		{
-			get
-			{
-				return this._Area;
-			}
-			set
-			{
-				if ((this._Area != value))
-				{
-					this.OnAreaChanging(value);
-					this.SendPropertyChanging();
-					this._Area = value;
-					this.SendPropertyChanged("Area");
-					this.OnAreaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime NOT NULL")]
-		public System.DateTime Data
-		{
-			get
-			{
-				return this._Data;
-			}
-			set
-			{
-				if ((this._Data != value))
-				{
-					this.OnDataChanging(value);
-					this.SendPropertyChanging();
-					this._Data = value;
-					this.SendPropertyChanged("Data");
-					this.OnDataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Entrada
-		{
-			get
-			{
-				return this._Entrada;
-			}
-			set
-			{
-				if ((this._Entrada != value))
-				{
-					this.OnEntradaChanging(value);
-					this.SendPropertyChanging();
-					this._Entrada = value;
-					this.SendPropertyChanged("Entrada");
-					this.OnEntradaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Saida
-		{
-			get
-			{
-				return this._Saida;
-			}
-			set
-			{
-				if ((this._Saida != value))
-				{
-					this.OnSaidaChanging(value);
-					this.SendPropertyChanging();
-					this._Saida = value;
-					this.SendPropertyChanged("Saida");
-					this.OnSaidaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string Categoria
-		{
-			get
-			{
-				return this._Categoria;
-			}
-			set
-			{
-				if ((this._Categoria != value))
-				{
-					this.OnCategoriaChanging(value);
-					this.SendPropertyChanging();
-					this._Categoria = value;
-					this.SendPropertyChanged("Categoria");
-					this.OnCategoriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Justificativas", DbType="VarChar(500)")]
-		public string Justificativas
-		{
-			get
-			{
-				return this._Justificativas;
-			}
-			set
-			{
-				if ((this._Justificativas != value))
-				{
-					this.OnJustificativasChanging(value);
-					this.SendPropertyChanging();
-					this._Justificativas = value;
-					this.SendPropertyChanged("Justificativas");
-					this.OnJustificativasChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> ValorVT
-		{
-			get
-			{
-				return this._ValorVT;
-			}
-			set
-			{
-				if ((this._ValorVT != value))
-				{
-					this.OnValorVTChanging(value);
-					this.SendPropertyChanging();
-					this._ValorVT = value;
-					this.SendPropertyChanged("ValorVT");
-					this.OnValorVTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
-		public string TrajetoIdaVolta
-		{
-			get
-			{
-				return this._TrajetoIdaVolta;
-			}
-			set
-			{
-				if ((this._TrajetoIdaVolta != value))
-				{
-					this.OnTrajetoIdaVoltaChanging(value);
-					this.SendPropertyChanging();
-					this._TrajetoIdaVolta = value;
-					this.SendPropertyChanged("TrajetoIdaVolta");
-					this.OnTrajetoIdaVoltaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
-		public System.Nullable<bool> Validacao
-		{
-			get
-			{
-				return this._Validacao;
-			}
-			set
-			{
-				if ((this._Validacao != value))
-				{
-					this.OnValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._Validacao = value;
-					this.SendPropertyChanged("Validacao");
-					this.OnValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
-		public string UsuarioValidacao
-		{
-			get
-			{
-				return this._UsuarioValidacao;
-			}
-			set
-			{
-				if ((this._UsuarioValidacao != value))
-				{
-					this.OnUsuarioValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioValidacao = value;
-					this.SendPropertyChanged("UsuarioValidacao");
-					this.OnUsuarioValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraValidacao
-		{
-			get
-			{
-				return this._DataHoraValidacao;
-			}
-			set
-			{
-				if ((this._DataHoraValidacao != value))
-				{
-					this.OnDataHoraValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraValidacao = value;
-					this.SendPropertyChanged("DataHoraValidacao");
-					this.OnDataHoraValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraRegistro
-		{
-			get
-			{
-				return this._DataHoraRegistro;
-			}
-			set
-			{
-				if ((this._DataHoraRegistro != value))
-				{
-					this.OnDataHoraRegistroChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraRegistro = value;
-					this.SendPropertyChanged("DataHoraRegistro");
-					this.OnDataHoraRegistroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
-		public string IdParametro
-		{
-			get
-			{
-				return this._IdParametro;
-			}
-			set
-			{
-				if ((this._IdParametro != value))
-				{
-					if (this._Parametro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdParametroChanging(value);
-					this.SendPropertyChanging();
-					this._IdParametro = value;
-					this.SendPropertyChanged("IdParametro");
-					this.OnIdParametroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
-		public System.Nullable<bool> ValidacaoHora
-		{
-			get
-			{
-				return this._ValidacaoHora;
-			}
-			set
-			{
-				if ((this._ValidacaoHora != value))
-				{
-					this.OnValidacaoHoraChanging(value);
-					this.SendPropertyChanging();
-					this._ValidacaoHora = value;
-					this.SendPropertyChanged("ValidacaoHora");
-					this.OnValidacaoHoraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AtividadeAcademica", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
-		public Parametro Parametro
-		{
-			get
-			{
-				return this._Parametro.Entity;
-			}
-			set
-			{
-				Parametro previousValue = this._Parametro.Entity;
-				if (((previousValue != value) 
-							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parametro.Entity = null;
-						previousValue.AtividadeAcademicas.Remove(this);
-					}
-					this._Parametro.Entity = value;
-					if ((value != null))
-					{
-						value.AtividadeAcademicas.Add(this);
-						this._IdParametro = value.Id;
-					}
-					else
-					{
-						this._IdParametro = default(string);
-					}
-					this.SendPropertyChanged("Parametro");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Coordenacao")]
-	public partial class Coordenacao : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Id;
-		
-		private string _Matricula;
-		
-		private string _IdUnidade;
-		
-		private string _Area;
-		
-		private System.DateTime _Data;
-		
-		private string _Entrada;
-		
-		private string _Saida;
-		
-		private string _Categoria;
-		
-		private string _Justificativas;
-		
-		private System.Nullable<decimal> _ValorVT;
-		
-		private string _TrajetoIdaVolta;
-		
-		private System.Nullable<bool> _Validacao;
-		
-		private string _UsuarioValidacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraValidacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraRegistro;
-		
-		private string _IdParametro;
-		
-		private System.Nullable<bool> _ValidacaoHora;
-		
-		private EntityRef<Parametro> _Parametro;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void OnMatriculaChanging(string value);
-    partial void OnMatriculaChanged();
-    partial void OnIdUnidadeChanging(string value);
-    partial void OnIdUnidadeChanged();
-    partial void OnAreaChanging(string value);
-    partial void OnAreaChanged();
-    partial void OnDataChanging(System.DateTime value);
-    partial void OnDataChanged();
-    partial void OnEntradaChanging(string value);
-    partial void OnEntradaChanged();
-    partial void OnSaidaChanging(string value);
-    partial void OnSaidaChanged();
-    partial void OnCategoriaChanging(string value);
-    partial void OnCategoriaChanged();
-    partial void OnJustificativasChanging(string value);
-    partial void OnJustificativasChanged();
-    partial void OnValorVTChanging(System.Nullable<decimal> value);
-    partial void OnValorVTChanged();
-    partial void OnTrajetoIdaVoltaChanging(string value);
-    partial void OnTrajetoIdaVoltaChanged();
-    partial void OnValidacaoChanging(System.Nullable<bool> value);
-    partial void OnValidacaoChanged();
-    partial void OnUsuarioValidacaoChanging(string value);
-    partial void OnUsuarioValidacaoChanged();
-    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraValidacaoChanged();
-    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraRegistroChanged();
-    partial void OnIdParametroChanging(string value);
-    partial void OnIdParametroChanged();
-    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
-    partial void OnValidacaoHoraChanged();
-    #endregion
-		
-		public Coordenacao()
-		{
-			this._Parametro = default(EntityRef<Parametro>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
-		public string Matricula
-		{
-			get
-			{
-				return this._Matricula;
-			}
-			set
-			{
-				if ((this._Matricula != value))
-				{
-					this.OnMatriculaChanging(value);
-					this.SendPropertyChanging();
-					this._Matricula = value;
-					this.SendPropertyChanged("Matricula");
-					this.OnMatriculaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string IdUnidade
-		{
-			get
-			{
-				return this._IdUnidade;
-			}
-			set
-			{
-				if ((this._IdUnidade != value))
-				{
-					this.OnIdUnidadeChanging(value);
-					this.SendPropertyChanging();
-					this._IdUnidade = value;
-					this.SendPropertyChanged("IdUnidade");
-					this.OnIdUnidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Area
-		{
-			get
-			{
-				return this._Area;
-			}
-			set
-			{
-				if ((this._Area != value))
-				{
-					this.OnAreaChanging(value);
-					this.SendPropertyChanging();
-					this._Area = value;
-					this.SendPropertyChanged("Area");
-					this.OnAreaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime NOT NULL")]
-		public System.DateTime Data
-		{
-			get
-			{
-				return this._Data;
-			}
-			set
-			{
-				if ((this._Data != value))
-				{
-					this.OnDataChanging(value);
-					this.SendPropertyChanging();
-					this._Data = value;
-					this.SendPropertyChanged("Data");
-					this.OnDataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Entrada
-		{
-			get
-			{
-				return this._Entrada;
-			}
-			set
-			{
-				if ((this._Entrada != value))
-				{
-					this.OnEntradaChanging(value);
-					this.SendPropertyChanging();
-					this._Entrada = value;
-					this.SendPropertyChanged("Entrada");
-					this.OnEntradaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
-		public string Saida
-		{
-			get
-			{
-				return this._Saida;
-			}
-			set
-			{
-				if ((this._Saida != value))
-				{
-					this.OnSaidaChanging(value);
-					this.SendPropertyChanging();
-					this._Saida = value;
-					this.SendPropertyChanged("Saida");
-					this.OnSaidaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string Categoria
-		{
-			get
-			{
-				return this._Categoria;
-			}
-			set
-			{
-				if ((this._Categoria != value))
-				{
-					this.OnCategoriaChanging(value);
-					this.SendPropertyChanging();
-					this._Categoria = value;
-					this.SendPropertyChanged("Categoria");
-					this.OnCategoriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Justificativas", DbType="VarChar(500)")]
-		public string Justificativas
-		{
-			get
-			{
-				return this._Justificativas;
-			}
-			set
-			{
-				if ((this._Justificativas != value))
-				{
-					this.OnJustificativasChanging(value);
-					this.SendPropertyChanging();
-					this._Justificativas = value;
-					this.SendPropertyChanged("Justificativas");
-					this.OnJustificativasChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> ValorVT
-		{
-			get
-			{
-				return this._ValorVT;
-			}
-			set
-			{
-				if ((this._ValorVT != value))
-				{
-					this.OnValorVTChanging(value);
-					this.SendPropertyChanging();
-					this._ValorVT = value;
-					this.SendPropertyChanged("ValorVT");
-					this.OnValorVTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
-		public string TrajetoIdaVolta
-		{
-			get
-			{
-				return this._TrajetoIdaVolta;
-			}
-			set
-			{
-				if ((this._TrajetoIdaVolta != value))
-				{
-					this.OnTrajetoIdaVoltaChanging(value);
-					this.SendPropertyChanging();
-					this._TrajetoIdaVolta = value;
-					this.SendPropertyChanged("TrajetoIdaVolta");
-					this.OnTrajetoIdaVoltaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
-		public System.Nullable<bool> Validacao
-		{
-			get
-			{
-				return this._Validacao;
-			}
-			set
-			{
-				if ((this._Validacao != value))
-				{
-					this.OnValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._Validacao = value;
-					this.SendPropertyChanged("Validacao");
-					this.OnValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
-		public string UsuarioValidacao
-		{
-			get
-			{
-				return this._UsuarioValidacao;
-			}
-			set
-			{
-				if ((this._UsuarioValidacao != value))
-				{
-					this.OnUsuarioValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioValidacao = value;
-					this.SendPropertyChanged("UsuarioValidacao");
-					this.OnUsuarioValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraValidacao
-		{
-			get
-			{
-				return this._DataHoraValidacao;
-			}
-			set
-			{
-				if ((this._DataHoraValidacao != value))
-				{
-					this.OnDataHoraValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraValidacao = value;
-					this.SendPropertyChanged("DataHoraValidacao");
-					this.OnDataHoraValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraRegistro
-		{
-			get
-			{
-				return this._DataHoraRegistro;
-			}
-			set
-			{
-				if ((this._DataHoraRegistro != value))
-				{
-					this.OnDataHoraRegistroChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraRegistro = value;
-					this.SendPropertyChanged("DataHoraRegistro");
-					this.OnDataHoraRegistroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
-		public string IdParametro
-		{
-			get
-			{
-				return this._IdParametro;
-			}
-			set
-			{
-				if ((this._IdParametro != value))
-				{
-					if (this._Parametro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdParametroChanging(value);
-					this.SendPropertyChanging();
-					this._IdParametro = value;
-					this.SendPropertyChanged("IdParametro");
-					this.OnIdParametroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
-		public System.Nullable<bool> ValidacaoHora
-		{
-			get
-			{
-				return this._ValidacaoHora;
-			}
-			set
-			{
-				if ((this._ValidacaoHora != value))
-				{
-					this.OnValidacaoHoraChanging(value);
-					this.SendPropertyChanging();
-					this._ValidacaoHora = value;
-					this.SendPropertyChanged("ValidacaoHora");
-					this.OnValidacaoHoraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_Coordenacao", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
-		public Parametro Parametro
-		{
-			get
-			{
-				return this._Parametro.Entity;
-			}
-			set
-			{
-				Parametro previousValue = this._Parametro.Entity;
-				if (((previousValue != value) 
-							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parametro.Entity = null;
-						previousValue.Coordenacaos.Remove(this);
-					}
-					this._Parametro.Entity = value;
-					if ((value != null))
-					{
-						value.Coordenacaos.Add(this);
-						this._IdParametro = value.Id;
-					}
-					else
-					{
-						this._IdParametro = default(string);
-					}
-					this.SendPropertyChanged("Parametro");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LancamentoEAD")]
-	public partial class LancamentoEAD : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Id;
-		
-		private string _IdUnidade;
-		
-		private string _Matricula;
-		
-		private string _Area;
-		
-		private System.Nullable<System.DateTime> _Data;
-		
-		private string _Entrada;
-		
-		private string _Saida;
-		
-		private string _Categoria;
-		
-		private string _TrajetoIdaVolta;
-		
-		private System.Nullable<decimal> _ValorVT;
-		
-		private System.Nullable<bool> _Validacao;
-		
-		private string _UsuarioValidacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraValidacao;
-		
-		private System.Nullable<System.DateTime> _DataHoraRegistro;
-		
-		private string _IdParametro;
-		
-		private System.Nullable<bool> _ValidacaoHora;
-		
-		private EntityRef<Parametro> _Parametro;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void OnIdUnidadeChanging(string value);
-    partial void OnIdUnidadeChanged();
-    partial void OnMatriculaChanging(string value);
-    partial void OnMatriculaChanged();
-    partial void OnAreaChanging(string value);
-    partial void OnAreaChanged();
-    partial void OnDataChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataChanged();
-    partial void OnEntradaChanging(string value);
-    partial void OnEntradaChanged();
-    partial void OnSaidaChanging(string value);
-    partial void OnSaidaChanged();
-    partial void OnCategoriaChanging(string value);
-    partial void OnCategoriaChanged();
-    partial void OnTrajetoIdaVoltaChanging(string value);
-    partial void OnTrajetoIdaVoltaChanged();
-    partial void OnValorVTChanging(System.Nullable<decimal> value);
-    partial void OnValorVTChanged();
-    partial void OnValidacaoChanging(System.Nullable<bool> value);
-    partial void OnValidacaoChanged();
-    partial void OnUsuarioValidacaoChanging(string value);
-    partial void OnUsuarioValidacaoChanged();
-    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraValidacaoChanged();
-    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
-    partial void OnDataHoraRegistroChanged();
-    partial void OnIdParametroChanging(string value);
-    partial void OnIdParametroChanged();
-    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
-    partial void OnValidacaoHoraChanged();
-    #endregion
-		
-		public LancamentoEAD()
-		{
-			this._Parametro = default(EntityRef<Parametro>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20)")]
-		public string IdUnidade
-		{
-			get
-			{
-				return this._IdUnidade;
-			}
-			set
-			{
-				if ((this._IdUnidade != value))
-				{
-					this.OnIdUnidadeChanging(value);
-					this.SendPropertyChanging();
-					this._IdUnidade = value;
-					this.SendPropertyChanged("IdUnidade");
-					this.OnIdUnidadeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
-		public string Matricula
-		{
-			get
-			{
-				return this._Matricula;
-			}
-			set
-			{
-				if ((this._Matricula != value))
-				{
-					this.OnMatriculaChanging(value);
-					this.SendPropertyChanging();
-					this._Matricula = value;
-					this.SendPropertyChanged("Matricula");
-					this.OnMatriculaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50)")]
-		public string Area
-		{
-			get
-			{
-				return this._Area;
-			}
-			set
-			{
-				if ((this._Area != value))
-				{
-					this.OnAreaChanging(value);
-					this.SendPropertyChanging();
-					this._Area = value;
-					this.SendPropertyChanged("Area");
-					this.OnAreaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime")]
-		public System.Nullable<System.DateTime> Data
-		{
-			get
-			{
-				return this._Data;
-			}
-			set
-			{
-				if ((this._Data != value))
-				{
-					this.OnDataChanging(value);
-					this.SendPropertyChanging();
-					this._Data = value;
-					this.SendPropertyChanged("Data");
-					this.OnDataChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5)")]
-		public string Entrada
-		{
-			get
-			{
-				return this._Entrada;
-			}
-			set
-			{
-				if ((this._Entrada != value))
-				{
-					this.OnEntradaChanging(value);
-					this.SendPropertyChanging();
-					this._Entrada = value;
-					this.SendPropertyChanged("Entrada");
-					this.OnEntradaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5)")]
-		public string Saida
-		{
-			get
-			{
-				return this._Saida;
-			}
-			set
-			{
-				if ((this._Saida != value))
-				{
-					this.OnSaidaChanging(value);
-					this.SendPropertyChanging();
-					this._Saida = value;
-					this.SendPropertyChanged("Saida");
-					this.OnSaidaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20)")]
-		public string Categoria
-		{
-			get
-			{
-				return this._Categoria;
-			}
-			set
-			{
-				if ((this._Categoria != value))
-				{
-					this.OnCategoriaChanging(value);
-					this.SendPropertyChanging();
-					this._Categoria = value;
-					this.SendPropertyChanged("Categoria");
-					this.OnCategoriaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
-		public string TrajetoIdaVolta
-		{
-			get
-			{
-				return this._TrajetoIdaVolta;
-			}
-			set
-			{
-				if ((this._TrajetoIdaVolta != value))
-				{
-					this.OnTrajetoIdaVoltaChanging(value);
-					this.SendPropertyChanging();
-					this._TrajetoIdaVolta = value;
-					this.SendPropertyChanged("TrajetoIdaVolta");
-					this.OnTrajetoIdaVoltaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> ValorVT
-		{
-			get
-			{
-				return this._ValorVT;
-			}
-			set
-			{
-				if ((this._ValorVT != value))
-				{
-					this.OnValorVTChanging(value);
-					this.SendPropertyChanging();
-					this._ValorVT = value;
-					this.SendPropertyChanged("ValorVT");
-					this.OnValorVTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
-		public System.Nullable<bool> Validacao
-		{
-			get
-			{
-				return this._Validacao;
-			}
-			set
-			{
-				if ((this._Validacao != value))
-				{
-					this.OnValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._Validacao = value;
-					this.SendPropertyChanged("Validacao");
-					this.OnValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
-		public string UsuarioValidacao
-		{
-			get
-			{
-				return this._UsuarioValidacao;
-			}
-			set
-			{
-				if ((this._UsuarioValidacao != value))
-				{
-					this.OnUsuarioValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioValidacao = value;
-					this.SendPropertyChanged("UsuarioValidacao");
-					this.OnUsuarioValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraValidacao
-		{
-			get
-			{
-				return this._DataHoraValidacao;
-			}
-			set
-			{
-				if ((this._DataHoraValidacao != value))
-				{
-					this.OnDataHoraValidacaoChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraValidacao = value;
-					this.SendPropertyChanged("DataHoraValidacao");
-					this.OnDataHoraValidacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
-		public System.Nullable<System.DateTime> DataHoraRegistro
-		{
-			get
-			{
-				return this._DataHoraRegistro;
-			}
-			set
-			{
-				if ((this._DataHoraRegistro != value))
-				{
-					this.OnDataHoraRegistroChanging(value);
-					this.SendPropertyChanging();
-					this._DataHoraRegistro = value;
-					this.SendPropertyChanged("DataHoraRegistro");
-					this.OnDataHoraRegistroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
-		public string IdParametro
-		{
-			get
-			{
-				return this._IdParametro;
-			}
-			set
-			{
-				if ((this._IdParametro != value))
-				{
-					if (this._Parametro.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdParametroChanging(value);
-					this.SendPropertyChanging();
-					this._IdParametro = value;
-					this.SendPropertyChanged("IdParametro");
-					this.OnIdParametroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
-		public System.Nullable<bool> ValidacaoHora
-		{
-			get
-			{
-				return this._ValidacaoHora;
-			}
-			set
-			{
-				if ((this._ValidacaoHora != value))
-				{
-					this.OnValidacaoHoraChanging(value);
-					this.SendPropertyChanging();
-					this._ValidacaoHora = value;
-					this.SendPropertyChanged("ValidacaoHora");
-					this.OnValidacaoHoraChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_LancamentoEAD", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
-		public Parametro Parametro
-		{
-			get
-			{
-				return this._Parametro.Entity;
-			}
-			set
-			{
-				Parametro previousValue = this._Parametro.Entity;
-				if (((previousValue != value) 
-							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Parametro.Entity = null;
-						previousValue.LancamentoEADs.Remove(this);
-					}
-					this._Parametro.Entity = value;
-					if ((value != null))
-					{
-						value.LancamentoEADs.Add(this);
-						this._IdParametro = value.Id;
-					}
-					else
-					{
-						this._IdParametro = default(string);
-					}
-					this.SendPropertyChanged("Parametro");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LancamentoVT")]
 	public partial class LancamentoVT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3476,6 +1478,8 @@ namespace Senac.ControleRHDocente
 		
 		private EntitySet<AgendaExecutada> _AgendaExecutadas1;
 		
+		private EntitySet<LancamentoVT> _LancamentoVTs;
+		
 		private EntitySet<AgendaExecutadaVT> _AgendaExecutadaVTs;
 		
 		private EntitySet<AtividadeAcademica> _AtividadeAcademicas;
@@ -3483,8 +1487,6 @@ namespace Senac.ControleRHDocente
 		private EntitySet<Coordenacao> _Coordenacaos;
 		
 		private EntitySet<LancamentoEAD> _LancamentoEADs;
-		
-		private EntitySet<LancamentoVT> _LancamentoVTs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3540,11 +1542,11 @@ namespace Senac.ControleRHDocente
 		{
 			this._AgendaExecutadas = new EntitySet<AgendaExecutada>(new Action<AgendaExecutada>(this.attach_AgendaExecutadas), new Action<AgendaExecutada>(this.detach_AgendaExecutadas));
 			this._AgendaExecutadas1 = new EntitySet<AgendaExecutada>(new Action<AgendaExecutada>(this.attach_AgendaExecutadas1), new Action<AgendaExecutada>(this.detach_AgendaExecutadas1));
+			this._LancamentoVTs = new EntitySet<LancamentoVT>(new Action<LancamentoVT>(this.attach_LancamentoVTs), new Action<LancamentoVT>(this.detach_LancamentoVTs));
 			this._AgendaExecutadaVTs = new EntitySet<AgendaExecutadaVT>(new Action<AgendaExecutadaVT>(this.attach_AgendaExecutadaVTs), new Action<AgendaExecutadaVT>(this.detach_AgendaExecutadaVTs));
 			this._AtividadeAcademicas = new EntitySet<AtividadeAcademica>(new Action<AtividadeAcademica>(this.attach_AtividadeAcademicas), new Action<AtividadeAcademica>(this.detach_AtividadeAcademicas));
 			this._Coordenacaos = new EntitySet<Coordenacao>(new Action<Coordenacao>(this.attach_Coordenacaos), new Action<Coordenacao>(this.detach_Coordenacaos));
 			this._LancamentoEADs = new EntitySet<LancamentoEAD>(new Action<LancamentoEAD>(this.attach_LancamentoEADs), new Action<LancamentoEAD>(this.detach_LancamentoEADs));
-			this._LancamentoVTs = new EntitySet<LancamentoVT>(new Action<LancamentoVT>(this.attach_LancamentoVTs), new Action<LancamentoVT>(this.detach_LancamentoVTs));
 			OnCreated();
 		}
 		
@@ -4014,6 +2016,19 @@ namespace Senac.ControleRHDocente
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_LancamentoVT", Storage="_LancamentoVTs", ThisKey="Id", OtherKey="IdParametro")]
+		public EntitySet<LancamentoVT> LancamentoVTs
+		{
+			get
+			{
+				return this._LancamentoVTs;
+			}
+			set
+			{
+				this._LancamentoVTs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AgendaExecutadaVT", Storage="_AgendaExecutadaVTs", ThisKey="Id", OtherKey="IdParametro")]
 		public EntitySet<AgendaExecutadaVT> AgendaExecutadaVTs
 		{
@@ -4066,19 +2081,6 @@ namespace Senac.ControleRHDocente
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_LancamentoVT", Storage="_LancamentoVTs", ThisKey="Id", OtherKey="IdParametro")]
-		public EntitySet<LancamentoVT> LancamentoVTs
-		{
-			get
-			{
-				return this._LancamentoVTs;
-			}
-			set
-			{
-				this._LancamentoVTs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -4121,6 +2123,18 @@ namespace Senac.ControleRHDocente
 		{
 			this.SendPropertyChanging();
 			entity.Parametro1 = null;
+		}
+		
+		private void attach_LancamentoVTs(LancamentoVT entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parametro = this;
+		}
+		
+		private void detach_LancamentoVTs(LancamentoVT entity)
+		{
+			this.SendPropertyChanging();
+			entity.Parametro = null;
 		}
 		
 		private void attach_AgendaExecutadaVTs(AgendaExecutadaVT entity)
@@ -4166,18 +2180,6 @@ namespace Senac.ControleRHDocente
 		}
 		
 		private void detach_LancamentoEADs(LancamentoEAD entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parametro = null;
-		}
-		
-		private void attach_LancamentoVTs(LancamentoVT entity)
-		{
-			this.SendPropertyChanging();
-			entity.Parametro = this;
-		}
-		
-		private void detach_LancamentoVTs(LancamentoVT entity)
 		{
 			this.SendPropertyChanging();
 			entity.Parametro = null;
@@ -4891,6 +2893,2318 @@ namespace Senac.ControleRHDocente
 				{
 					this._Unidade = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AreaDocente")]
+	public partial class AreaDocente : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _Nome;
+		
+		private string _IdCentroCustoDefault;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnIdCentroCustoDefaultChanging(string value);
+    partial void OnIdCentroCustoDefaultChanged();
+    #endregion
+		
+		public AreaDocente()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this.OnNomeChanging(value);
+					this.SendPropertyChanging();
+					this._Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdCentroCustoDefault", DbType="VarChar(50)")]
+		public string IdCentroCustoDefault
+		{
+			get
+			{
+				return this._IdCentroCustoDefault;
+			}
+			set
+			{
+				if ((this._IdCentroCustoDefault != value))
+				{
+					this.OnIdCentroCustoDefaultChanging(value);
+					this.SendPropertyChanging();
+					this._IdCentroCustoDefault = value;
+					this.SendPropertyChanged("IdCentroCustoDefault");
+					this.OnIdCentroCustoDefaultChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CentroCustoDocente")]
+	public partial class CentroCustoDocente : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _CentroCusto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnCentroCustoChanging(string value);
+    partial void OnCentroCustoChanged();
+    #endregion
+		
+		public CentroCustoDocente()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CentroCusto", DbType="VarChar(50)")]
+		public string CentroCusto
+		{
+			get
+			{
+				return this._CentroCusto;
+			}
+			set
+			{
+				if ((this._CentroCusto != value))
+				{
+					this.OnCentroCustoChanging(value);
+					this.SendPropertyChanging();
+					this._CentroCusto = value;
+					this.SendPropertyChanged("CentroCusto");
+					this.OnCentroCustoChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AgendaExecutadaVT")]
+	public partial class AgendaExecutadaVT : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _Unidade;
+		
+		private string _Data;
+		
+		private string _HoraInicial;
+		
+		private string _HoraFinal;
+		
+		private string _Disciplina;
+		
+		private string _Turma;
+		
+		private string _SalarioHora;
+		
+		private string _Matricula;
+		
+		private string _Status;
+		
+		private string _Categoria;
+		
+		private string _UsuarioRegistro;
+		
+		private System.Nullable<System.DateTime> _DataHoraRegistro;
+		
+		private string _IdParametro;
+		
+		private string _ArquivoDownload;
+		
+		private string _IdaVolta;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private System.Nullable<System.DateTime> _DataHoraVT;
+		
+		private System.Nullable<bool> _Validacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraValidacao;
+		
+		private System.Nullable<bool> _ValidacaoHora;
+		
+		private string _CentroCusto;
+		
+		private EntityRef<Parametro> _Parametro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnUnidadeChanging(string value);
+    partial void OnUnidadeChanged();
+    partial void OnDataChanging(string value);
+    partial void OnDataChanged();
+    partial void OnHoraInicialChanging(string value);
+    partial void OnHoraInicialChanged();
+    partial void OnHoraFinalChanging(string value);
+    partial void OnHoraFinalChanged();
+    partial void OnDisciplinaChanging(string value);
+    partial void OnDisciplinaChanged();
+    partial void OnTurmaChanging(string value);
+    partial void OnTurmaChanged();
+    partial void OnSalarioHoraChanging(string value);
+    partial void OnSalarioHoraChanged();
+    partial void OnMatriculaChanging(string value);
+    partial void OnMatriculaChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnCategoriaChanging(string value);
+    partial void OnCategoriaChanged();
+    partial void OnUsuarioRegistroChanging(string value);
+    partial void OnUsuarioRegistroChanged();
+    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraRegistroChanged();
+    partial void OnIdParametroChanging(string value);
+    partial void OnIdParametroChanged();
+    partial void OnArquivoDownloadChanging(string value);
+    partial void OnArquivoDownloadChanged();
+    partial void OnIdaVoltaChanging(string value);
+    partial void OnIdaVoltaChanged();
+    partial void OnValorVTChanging(System.Nullable<decimal> value);
+    partial void OnValorVTChanged();
+    partial void OnDataHoraVTChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraVTChanged();
+    partial void OnValidacaoChanging(System.Nullable<bool> value);
+    partial void OnValidacaoChanged();
+    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraValidacaoChanged();
+    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
+    partial void OnValidacaoHoraChanged();
+    partial void OnCentroCustoChanging(string value);
+    partial void OnCentroCustoChanged();
+    #endregion
+		
+		public AgendaExecutadaVT()
+		{
+			this._Parametro = default(EntityRef<Parametro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Unidade", DbType="VarChar(6)")]
+		public string Unidade
+		{
+			get
+			{
+				return this._Unidade;
+			}
+			set
+			{
+				if ((this._Unidade != value))
+				{
+					this.OnUnidadeChanging(value);
+					this.SendPropertyChanging();
+					this._Unidade = value;
+					this.SendPropertyChanged("Unidade");
+					this.OnUnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="VarChar(8)")]
+		public string Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraInicial", DbType="VarChar(5)")]
+		public string HoraInicial
+		{
+			get
+			{
+				return this._HoraInicial;
+			}
+			set
+			{
+				if ((this._HoraInicial != value))
+				{
+					this.OnHoraInicialChanging(value);
+					this.SendPropertyChanging();
+					this._HoraInicial = value;
+					this.SendPropertyChanged("HoraInicial");
+					this.OnHoraInicialChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HoraFinal", DbType="VarChar(5)")]
+		public string HoraFinal
+		{
+			get
+			{
+				return this._HoraFinal;
+			}
+			set
+			{
+				if ((this._HoraFinal != value))
+				{
+					this.OnHoraFinalChanging(value);
+					this.SendPropertyChanging();
+					this._HoraFinal = value;
+					this.SendPropertyChanged("HoraFinal");
+					this.OnHoraFinalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Disciplina", DbType="VarChar(20)")]
+		public string Disciplina
+		{
+			get
+			{
+				return this._Disciplina;
+			}
+			set
+			{
+				if ((this._Disciplina != value))
+				{
+					this.OnDisciplinaChanging(value);
+					this.SendPropertyChanging();
+					this._Disciplina = value;
+					this.SendPropertyChanged("Disciplina");
+					this.OnDisciplinaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Turma", DbType="VarChar(20)")]
+		public string Turma
+		{
+			get
+			{
+				return this._Turma;
+			}
+			set
+			{
+				if ((this._Turma != value))
+				{
+					this.OnTurmaChanging(value);
+					this.SendPropertyChanging();
+					this._Turma = value;
+					this.SendPropertyChanged("Turma");
+					this.OnTurmaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalarioHora", DbType="VarChar(20)")]
+		public string SalarioHora
+		{
+			get
+			{
+				return this._SalarioHora;
+			}
+			set
+			{
+				if ((this._SalarioHora != value))
+				{
+					this.OnSalarioHoraChanging(value);
+					this.SendPropertyChanging();
+					this._SalarioHora = value;
+					this.SendPropertyChanged("SalarioHora");
+					this.OnSalarioHoraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(10)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this.OnMatriculaChanging(value);
+					this.SendPropertyChanging();
+					this._Matricula = value;
+					this.SendPropertyChanged("Matricula");
+					this.OnMatriculaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(20)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(5)")]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this.OnCategoriaChanging(value);
+					this.SendPropertyChanging();
+					this._Categoria = value;
+					this.SendPropertyChanged("Categoria");
+					this.OnCategoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioRegistro", DbType="VarChar(50)")]
+		public string UsuarioRegistro
+		{
+			get
+			{
+				return this._UsuarioRegistro;
+			}
+			set
+			{
+				if ((this._UsuarioRegistro != value))
+				{
+					this.OnUsuarioRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioRegistro = value;
+					this.SendPropertyChanged("UsuarioRegistro");
+					this.OnUsuarioRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraRegistro
+		{
+			get
+			{
+				return this._DataHoraRegistro;
+			}
+			set
+			{
+				if ((this._DataHoraRegistro != value))
+				{
+					this.OnDataHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraRegistro = value;
+					this.SendPropertyChanged("DataHoraRegistro");
+					this.OnDataHoraRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
+		public string IdParametro
+		{
+			get
+			{
+				return this._IdParametro;
+			}
+			set
+			{
+				if ((this._IdParametro != value))
+				{
+					if (this._Parametro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdParametroChanging(value);
+					this.SendPropertyChanging();
+					this._IdParametro = value;
+					this.SendPropertyChanged("IdParametro");
+					this.OnIdParametroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ArquivoDownload", DbType="VarChar(500)")]
+		public string ArquivoDownload
+		{
+			get
+			{
+				return this._ArquivoDownload;
+			}
+			set
+			{
+				if ((this._ArquivoDownload != value))
+				{
+					this.OnArquivoDownloadChanging(value);
+					this.SendPropertyChanging();
+					this._ArquivoDownload = value;
+					this.SendPropertyChanged("ArquivoDownload");
+					this.OnArquivoDownloadChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdaVolta", DbType="VarChar(500)")]
+		public string IdaVolta
+		{
+			get
+			{
+				return this._IdaVolta;
+			}
+			set
+			{
+				if ((this._IdaVolta != value))
+				{
+					this.OnIdaVoltaChanging(value);
+					this.SendPropertyChanging();
+					this._IdaVolta = value;
+					this.SendPropertyChanged("IdaVolta");
+					this.OnIdaVoltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this.OnValorVTChanging(value);
+					this.SendPropertyChanging();
+					this._ValorVT = value;
+					this.SendPropertyChanged("ValorVT");
+					this.OnValorVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraVT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraVT
+		{
+			get
+			{
+				return this._DataHoraVT;
+			}
+			set
+			{
+				if ((this._DataHoraVT != value))
+				{
+					this.OnDataHoraVTChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraVT = value;
+					this.SendPropertyChanged("DataHoraVT");
+					this.OnDataHoraVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
+		public System.Nullable<bool> Validacao
+		{
+			get
+			{
+				return this._Validacao;
+			}
+			set
+			{
+				if ((this._Validacao != value))
+				{
+					this.OnValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Validacao = value;
+					this.SendPropertyChanged("Validacao");
+					this.OnValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraValidacao
+		{
+			get
+			{
+				return this._DataHoraValidacao;
+			}
+			set
+			{
+				if ((this._DataHoraValidacao != value))
+				{
+					this.OnDataHoraValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraValidacao = value;
+					this.SendPropertyChanged("DataHoraValidacao");
+					this.OnDataHoraValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
+		public System.Nullable<bool> ValidacaoHora
+		{
+			get
+			{
+				return this._ValidacaoHora;
+			}
+			set
+			{
+				if ((this._ValidacaoHora != value))
+				{
+					this.OnValidacaoHoraChanging(value);
+					this.SendPropertyChanging();
+					this._ValidacaoHora = value;
+					this.SendPropertyChanged("ValidacaoHora");
+					this.OnValidacaoHoraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CentroCusto", DbType="VarChar(50)")]
+		public string CentroCusto
+		{
+			get
+			{
+				return this._CentroCusto;
+			}
+			set
+			{
+				if ((this._CentroCusto != value))
+				{
+					this.OnCentroCustoChanging(value);
+					this.SendPropertyChanging();
+					this._CentroCusto = value;
+					this.SendPropertyChanged("CentroCusto");
+					this.OnCentroCustoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AgendaExecutadaVT", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
+		public Parametro Parametro
+		{
+			get
+			{
+				return this._Parametro.Entity;
+			}
+			set
+			{
+				Parametro previousValue = this._Parametro.Entity;
+				if (((previousValue != value) 
+							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parametro.Entity = null;
+						previousValue.AgendaExecutadaVTs.Remove(this);
+					}
+					this._Parametro.Entity = value;
+					if ((value != null))
+					{
+						value.AgendaExecutadaVTs.Add(this);
+						this._IdParametro = value.Id;
+					}
+					else
+					{
+						this._IdParametro = default(string);
+					}
+					this.SendPropertyChanged("Parametro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AtividadeAcademica")]
+	public partial class AtividadeAcademica : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _IdUnidade;
+		
+		private string _Matricula;
+		
+		private string _Area;
+		
+		private System.DateTime _Data;
+		
+		private string _Entrada;
+		
+		private string _Saida;
+		
+		private string _Categoria;
+		
+		private string _Justificativas;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private string _TrajetoIdaVolta;
+		
+		private System.Nullable<bool> _Validacao;
+		
+		private string _UsuarioValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraRegistro;
+		
+		private string _IdParametro;
+		
+		private System.Nullable<bool> _ValidacaoHora;
+		
+		private string _CentroCusto;
+		
+		private EntityRef<Parametro> _Parametro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnIdUnidadeChanging(string value);
+    partial void OnIdUnidadeChanged();
+    partial void OnMatriculaChanging(string value);
+    partial void OnMatriculaChanged();
+    partial void OnAreaChanging(string value);
+    partial void OnAreaChanged();
+    partial void OnDataChanging(System.DateTime value);
+    partial void OnDataChanged();
+    partial void OnEntradaChanging(string value);
+    partial void OnEntradaChanged();
+    partial void OnSaidaChanging(string value);
+    partial void OnSaidaChanged();
+    partial void OnCategoriaChanging(string value);
+    partial void OnCategoriaChanged();
+    partial void OnJustificativasChanging(string value);
+    partial void OnJustificativasChanged();
+    partial void OnValorVTChanging(System.Nullable<decimal> value);
+    partial void OnValorVTChanged();
+    partial void OnTrajetoIdaVoltaChanging(string value);
+    partial void OnTrajetoIdaVoltaChanged();
+    partial void OnValidacaoChanging(System.Nullable<bool> value);
+    partial void OnValidacaoChanged();
+    partial void OnUsuarioValidacaoChanging(string value);
+    partial void OnUsuarioValidacaoChanged();
+    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraValidacaoChanged();
+    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraRegistroChanged();
+    partial void OnIdParametroChanging(string value);
+    partial void OnIdParametroChanged();
+    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
+    partial void OnValidacaoHoraChanged();
+    partial void OnCentroCustoChanging(string value);
+    partial void OnCentroCustoChanged();
+    #endregion
+		
+		public AtividadeAcademica()
+		{
+			this._Parametro = default(EntityRef<Parametro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string IdUnidade
+		{
+			get
+			{
+				return this._IdUnidade;
+			}
+			set
+			{
+				if ((this._IdUnidade != value))
+				{
+					this.OnIdUnidadeChanging(value);
+					this.SendPropertyChanging();
+					this._IdUnidade = value;
+					this.SendPropertyChanged("IdUnidade");
+					this.OnIdUnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this.OnMatriculaChanging(value);
+					this.SendPropertyChanging();
+					this._Matricula = value;
+					this.SendPropertyChanged("Matricula");
+					this.OnMatriculaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Area
+		{
+			get
+			{
+				return this._Area;
+			}
+			set
+			{
+				if ((this._Area != value))
+				{
+					this.OnAreaChanging(value);
+					this.SendPropertyChanging();
+					this._Area = value;
+					this.SendPropertyChanged("Area");
+					this.OnAreaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime NOT NULL")]
+		public System.DateTime Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Entrada
+		{
+			get
+			{
+				return this._Entrada;
+			}
+			set
+			{
+				if ((this._Entrada != value))
+				{
+					this.OnEntradaChanging(value);
+					this.SendPropertyChanging();
+					this._Entrada = value;
+					this.SendPropertyChanged("Entrada");
+					this.OnEntradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Saida
+		{
+			get
+			{
+				return this._Saida;
+			}
+			set
+			{
+				if ((this._Saida != value))
+				{
+					this.OnSaidaChanging(value);
+					this.SendPropertyChanging();
+					this._Saida = value;
+					this.SendPropertyChanged("Saida");
+					this.OnSaidaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this.OnCategoriaChanging(value);
+					this.SendPropertyChanging();
+					this._Categoria = value;
+					this.SendPropertyChanged("Categoria");
+					this.OnCategoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Justificativas", DbType="VarChar(500)")]
+		public string Justificativas
+		{
+			get
+			{
+				return this._Justificativas;
+			}
+			set
+			{
+				if ((this._Justificativas != value))
+				{
+					this.OnJustificativasChanging(value);
+					this.SendPropertyChanging();
+					this._Justificativas = value;
+					this.SendPropertyChanged("Justificativas");
+					this.OnJustificativasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this.OnValorVTChanging(value);
+					this.SendPropertyChanging();
+					this._ValorVT = value;
+					this.SendPropertyChanged("ValorVT");
+					this.OnValorVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
+		public string TrajetoIdaVolta
+		{
+			get
+			{
+				return this._TrajetoIdaVolta;
+			}
+			set
+			{
+				if ((this._TrajetoIdaVolta != value))
+				{
+					this.OnTrajetoIdaVoltaChanging(value);
+					this.SendPropertyChanging();
+					this._TrajetoIdaVolta = value;
+					this.SendPropertyChanged("TrajetoIdaVolta");
+					this.OnTrajetoIdaVoltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
+		public System.Nullable<bool> Validacao
+		{
+			get
+			{
+				return this._Validacao;
+			}
+			set
+			{
+				if ((this._Validacao != value))
+				{
+					this.OnValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Validacao = value;
+					this.SendPropertyChanged("Validacao");
+					this.OnValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
+		public string UsuarioValidacao
+		{
+			get
+			{
+				return this._UsuarioValidacao;
+			}
+			set
+			{
+				if ((this._UsuarioValidacao != value))
+				{
+					this.OnUsuarioValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioValidacao = value;
+					this.SendPropertyChanged("UsuarioValidacao");
+					this.OnUsuarioValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraValidacao
+		{
+			get
+			{
+				return this._DataHoraValidacao;
+			}
+			set
+			{
+				if ((this._DataHoraValidacao != value))
+				{
+					this.OnDataHoraValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraValidacao = value;
+					this.SendPropertyChanged("DataHoraValidacao");
+					this.OnDataHoraValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraRegistro
+		{
+			get
+			{
+				return this._DataHoraRegistro;
+			}
+			set
+			{
+				if ((this._DataHoraRegistro != value))
+				{
+					this.OnDataHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraRegistro = value;
+					this.SendPropertyChanged("DataHoraRegistro");
+					this.OnDataHoraRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
+		public string IdParametro
+		{
+			get
+			{
+				return this._IdParametro;
+			}
+			set
+			{
+				if ((this._IdParametro != value))
+				{
+					if (this._Parametro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdParametroChanging(value);
+					this.SendPropertyChanging();
+					this._IdParametro = value;
+					this.SendPropertyChanged("IdParametro");
+					this.OnIdParametroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
+		public System.Nullable<bool> ValidacaoHora
+		{
+			get
+			{
+				return this._ValidacaoHora;
+			}
+			set
+			{
+				if ((this._ValidacaoHora != value))
+				{
+					this.OnValidacaoHoraChanging(value);
+					this.SendPropertyChanging();
+					this._ValidacaoHora = value;
+					this.SendPropertyChanged("ValidacaoHora");
+					this.OnValidacaoHoraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CentroCusto", DbType="VarChar(50)")]
+		public string CentroCusto
+		{
+			get
+			{
+				return this._CentroCusto;
+			}
+			set
+			{
+				if ((this._CentroCusto != value))
+				{
+					this.OnCentroCustoChanging(value);
+					this.SendPropertyChanging();
+					this._CentroCusto = value;
+					this.SendPropertyChanged("CentroCusto");
+					this.OnCentroCustoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_AtividadeAcademica", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
+		public Parametro Parametro
+		{
+			get
+			{
+				return this._Parametro.Entity;
+			}
+			set
+			{
+				Parametro previousValue = this._Parametro.Entity;
+				if (((previousValue != value) 
+							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parametro.Entity = null;
+						previousValue.AtividadeAcademicas.Remove(this);
+					}
+					this._Parametro.Entity = value;
+					if ((value != null))
+					{
+						value.AtividadeAcademicas.Add(this);
+						this._IdParametro = value.Id;
+					}
+					else
+					{
+						this._IdParametro = default(string);
+					}
+					this.SendPropertyChanged("Parametro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Coordenacao")]
+	public partial class Coordenacao : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _Matricula;
+		
+		private string _IdUnidade;
+		
+		private string _Area;
+		
+		private System.DateTime _Data;
+		
+		private string _Entrada;
+		
+		private string _Saida;
+		
+		private string _Categoria;
+		
+		private string _Justificativas;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private string _TrajetoIdaVolta;
+		
+		private System.Nullable<bool> _Validacao;
+		
+		private string _UsuarioValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraRegistro;
+		
+		private string _IdParametro;
+		
+		private System.Nullable<bool> _ValidacaoHora;
+		
+		private string _CentroCusto;
+		
+		private EntityRef<Parametro> _Parametro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnMatriculaChanging(string value);
+    partial void OnMatriculaChanged();
+    partial void OnIdUnidadeChanging(string value);
+    partial void OnIdUnidadeChanged();
+    partial void OnAreaChanging(string value);
+    partial void OnAreaChanged();
+    partial void OnDataChanging(System.DateTime value);
+    partial void OnDataChanged();
+    partial void OnEntradaChanging(string value);
+    partial void OnEntradaChanged();
+    partial void OnSaidaChanging(string value);
+    partial void OnSaidaChanged();
+    partial void OnCategoriaChanging(string value);
+    partial void OnCategoriaChanged();
+    partial void OnJustificativasChanging(string value);
+    partial void OnJustificativasChanged();
+    partial void OnValorVTChanging(System.Nullable<decimal> value);
+    partial void OnValorVTChanged();
+    partial void OnTrajetoIdaVoltaChanging(string value);
+    partial void OnTrajetoIdaVoltaChanged();
+    partial void OnValidacaoChanging(System.Nullable<bool> value);
+    partial void OnValidacaoChanged();
+    partial void OnUsuarioValidacaoChanging(string value);
+    partial void OnUsuarioValidacaoChanged();
+    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraValidacaoChanged();
+    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraRegistroChanged();
+    partial void OnIdParametroChanging(string value);
+    partial void OnIdParametroChanged();
+    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
+    partial void OnValidacaoHoraChanged();
+    partial void OnCentroCustoChanging(string value);
+    partial void OnCentroCustoChanged();
+    #endregion
+		
+		public Coordenacao()
+		{
+			this._Parametro = default(EntityRef<Parametro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this.OnMatriculaChanging(value);
+					this.SendPropertyChanging();
+					this._Matricula = value;
+					this.SendPropertyChanged("Matricula");
+					this.OnMatriculaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string IdUnidade
+		{
+			get
+			{
+				return this._IdUnidade;
+			}
+			set
+			{
+				if ((this._IdUnidade != value))
+				{
+					this.OnIdUnidadeChanging(value);
+					this.SendPropertyChanging();
+					this._IdUnidade = value;
+					this.SendPropertyChanged("IdUnidade");
+					this.OnIdUnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Area
+		{
+			get
+			{
+				return this._Area;
+			}
+			set
+			{
+				if ((this._Area != value))
+				{
+					this.OnAreaChanging(value);
+					this.SendPropertyChanging();
+					this._Area = value;
+					this.SendPropertyChanged("Area");
+					this.OnAreaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime NOT NULL")]
+		public System.DateTime Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Entrada
+		{
+			get
+			{
+				return this._Entrada;
+			}
+			set
+			{
+				if ((this._Entrada != value))
+				{
+					this.OnEntradaChanging(value);
+					this.SendPropertyChanging();
+					this._Entrada = value;
+					this.SendPropertyChanged("Entrada");
+					this.OnEntradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5) NOT NULL", CanBeNull=false)]
+		public string Saida
+		{
+			get
+			{
+				return this._Saida;
+			}
+			set
+			{
+				if ((this._Saida != value))
+				{
+					this.OnSaidaChanging(value);
+					this.SendPropertyChanging();
+					this._Saida = value;
+					this.SendPropertyChanged("Saida");
+					this.OnSaidaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this.OnCategoriaChanging(value);
+					this.SendPropertyChanging();
+					this._Categoria = value;
+					this.SendPropertyChanged("Categoria");
+					this.OnCategoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Justificativas", DbType="VarChar(500)")]
+		public string Justificativas
+		{
+			get
+			{
+				return this._Justificativas;
+			}
+			set
+			{
+				if ((this._Justificativas != value))
+				{
+					this.OnJustificativasChanging(value);
+					this.SendPropertyChanging();
+					this._Justificativas = value;
+					this.SendPropertyChanged("Justificativas");
+					this.OnJustificativasChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this.OnValorVTChanging(value);
+					this.SendPropertyChanging();
+					this._ValorVT = value;
+					this.SendPropertyChanged("ValorVT");
+					this.OnValorVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
+		public string TrajetoIdaVolta
+		{
+			get
+			{
+				return this._TrajetoIdaVolta;
+			}
+			set
+			{
+				if ((this._TrajetoIdaVolta != value))
+				{
+					this.OnTrajetoIdaVoltaChanging(value);
+					this.SendPropertyChanging();
+					this._TrajetoIdaVolta = value;
+					this.SendPropertyChanged("TrajetoIdaVolta");
+					this.OnTrajetoIdaVoltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
+		public System.Nullable<bool> Validacao
+		{
+			get
+			{
+				return this._Validacao;
+			}
+			set
+			{
+				if ((this._Validacao != value))
+				{
+					this.OnValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Validacao = value;
+					this.SendPropertyChanged("Validacao");
+					this.OnValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
+		public string UsuarioValidacao
+		{
+			get
+			{
+				return this._UsuarioValidacao;
+			}
+			set
+			{
+				if ((this._UsuarioValidacao != value))
+				{
+					this.OnUsuarioValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioValidacao = value;
+					this.SendPropertyChanged("UsuarioValidacao");
+					this.OnUsuarioValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraValidacao
+		{
+			get
+			{
+				return this._DataHoraValidacao;
+			}
+			set
+			{
+				if ((this._DataHoraValidacao != value))
+				{
+					this.OnDataHoraValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraValidacao = value;
+					this.SendPropertyChanged("DataHoraValidacao");
+					this.OnDataHoraValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraRegistro
+		{
+			get
+			{
+				return this._DataHoraRegistro;
+			}
+			set
+			{
+				if ((this._DataHoraRegistro != value))
+				{
+					this.OnDataHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraRegistro = value;
+					this.SendPropertyChanged("DataHoraRegistro");
+					this.OnDataHoraRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
+		public string IdParametro
+		{
+			get
+			{
+				return this._IdParametro;
+			}
+			set
+			{
+				if ((this._IdParametro != value))
+				{
+					if (this._Parametro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdParametroChanging(value);
+					this.SendPropertyChanging();
+					this._IdParametro = value;
+					this.SendPropertyChanged("IdParametro");
+					this.OnIdParametroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
+		public System.Nullable<bool> ValidacaoHora
+		{
+			get
+			{
+				return this._ValidacaoHora;
+			}
+			set
+			{
+				if ((this._ValidacaoHora != value))
+				{
+					this.OnValidacaoHoraChanging(value);
+					this.SendPropertyChanging();
+					this._ValidacaoHora = value;
+					this.SendPropertyChanged("ValidacaoHora");
+					this.OnValidacaoHoraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CentroCusto", DbType="VarChar(50)")]
+		public string CentroCusto
+		{
+			get
+			{
+				return this._CentroCusto;
+			}
+			set
+			{
+				if ((this._CentroCusto != value))
+				{
+					this.OnCentroCustoChanging(value);
+					this.SendPropertyChanging();
+					this._CentroCusto = value;
+					this.SendPropertyChanged("CentroCusto");
+					this.OnCentroCustoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_Coordenacao", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
+		public Parametro Parametro
+		{
+			get
+			{
+				return this._Parametro.Entity;
+			}
+			set
+			{
+				Parametro previousValue = this._Parametro.Entity;
+				if (((previousValue != value) 
+							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parametro.Entity = null;
+						previousValue.Coordenacaos.Remove(this);
+					}
+					this._Parametro.Entity = value;
+					if ((value != null))
+					{
+						value.Coordenacaos.Add(this);
+						this._IdParametro = value.Id;
+					}
+					else
+					{
+						this._IdParametro = default(string);
+					}
+					this.SendPropertyChanged("Parametro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LancamentoEAD")]
+	public partial class LancamentoEAD : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Id;
+		
+		private string _IdUnidade;
+		
+		private string _Matricula;
+		
+		private string _Area;
+		
+		private System.Nullable<System.DateTime> _Data;
+		
+		private string _Entrada;
+		
+		private string _Saida;
+		
+		private string _Categoria;
+		
+		private string _TrajetoIdaVolta;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private System.Nullable<bool> _Validacao;
+		
+		private string _UsuarioValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraValidacao;
+		
+		private System.Nullable<System.DateTime> _DataHoraRegistro;
+		
+		private string _IdParametro;
+		
+		private System.Nullable<bool> _ValidacaoHora;
+		
+		private string _CentroCusto;
+		
+		private EntityRef<Parametro> _Parametro;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(string value);
+    partial void OnIdChanged();
+    partial void OnIdUnidadeChanging(string value);
+    partial void OnIdUnidadeChanged();
+    partial void OnMatriculaChanging(string value);
+    partial void OnMatriculaChanged();
+    partial void OnAreaChanging(string value);
+    partial void OnAreaChanged();
+    partial void OnDataChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataChanged();
+    partial void OnEntradaChanging(string value);
+    partial void OnEntradaChanged();
+    partial void OnSaidaChanging(string value);
+    partial void OnSaidaChanged();
+    partial void OnCategoriaChanging(string value);
+    partial void OnCategoriaChanged();
+    partial void OnTrajetoIdaVoltaChanging(string value);
+    partial void OnTrajetoIdaVoltaChanged();
+    partial void OnValorVTChanging(System.Nullable<decimal> value);
+    partial void OnValorVTChanged();
+    partial void OnValidacaoChanging(System.Nullable<bool> value);
+    partial void OnValidacaoChanged();
+    partial void OnUsuarioValidacaoChanging(string value);
+    partial void OnUsuarioValidacaoChanged();
+    partial void OnDataHoraValidacaoChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraValidacaoChanged();
+    partial void OnDataHoraRegistroChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataHoraRegistroChanged();
+    partial void OnIdParametroChanging(string value);
+    partial void OnIdParametroChanged();
+    partial void OnValidacaoHoraChanging(System.Nullable<bool> value);
+    partial void OnValidacaoHoraChanged();
+    partial void OnCentroCustoChanging(string value);
+    partial void OnCentroCustoChanged();
+    #endregion
+		
+		public LancamentoEAD()
+		{
+			this._Parametro = default(EntityRef<Parametro>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20)")]
+		public string IdUnidade
+		{
+			get
+			{
+				return this._IdUnidade;
+			}
+			set
+			{
+				if ((this._IdUnidade != value))
+				{
+					this.OnIdUnidadeChanging(value);
+					this.SendPropertyChanging();
+					this._IdUnidade = value;
+					this.SendPropertyChanged("IdUnidade");
+					this.OnIdUnidadeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this.OnMatriculaChanging(value);
+					this.SendPropertyChanging();
+					this._Matricula = value;
+					this.SendPropertyChanged("Matricula");
+					this.OnMatriculaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50)")]
+		public string Area
+		{
+			get
+			{
+				return this._Area;
+			}
+			set
+			{
+				if ((this._Area != value))
+				{
+					this.OnAreaChanging(value);
+					this.SendPropertyChanging();
+					this._Area = value;
+					this.SendPropertyChanged("Area");
+					this.OnAreaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5)")]
+		public string Entrada
+		{
+			get
+			{
+				return this._Entrada;
+			}
+			set
+			{
+				if ((this._Entrada != value))
+				{
+					this.OnEntradaChanging(value);
+					this.SendPropertyChanging();
+					this._Entrada = value;
+					this.SendPropertyChanged("Entrada");
+					this.OnEntradaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5)")]
+		public string Saida
+		{
+			get
+			{
+				return this._Saida;
+			}
+			set
+			{
+				if ((this._Saida != value))
+				{
+					this.OnSaidaChanging(value);
+					this.SendPropertyChanging();
+					this._Saida = value;
+					this.SendPropertyChanged("Saida");
+					this.OnSaidaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20)")]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this.OnCategoriaChanging(value);
+					this.SendPropertyChanging();
+					this._Categoria = value;
+					this.SendPropertyChanged("Categoria");
+					this.OnCategoriaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
+		public string TrajetoIdaVolta
+		{
+			get
+			{
+				return this._TrajetoIdaVolta;
+			}
+			set
+			{
+				if ((this._TrajetoIdaVolta != value))
+				{
+					this.OnTrajetoIdaVoltaChanging(value);
+					this.SendPropertyChanging();
+					this._TrajetoIdaVolta = value;
+					this.SendPropertyChanged("TrajetoIdaVolta");
+					this.OnTrajetoIdaVoltaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this.OnValorVTChanging(value);
+					this.SendPropertyChanging();
+					this._ValorVT = value;
+					this.SendPropertyChanged("ValorVT");
+					this.OnValorVTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
+		public System.Nullable<bool> Validacao
+		{
+			get
+			{
+				return this._Validacao;
+			}
+			set
+			{
+				if ((this._Validacao != value))
+				{
+					this.OnValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Validacao = value;
+					this.SendPropertyChanged("Validacao");
+					this.OnValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioValidacao", DbType="VarChar(50)")]
+		public string UsuarioValidacao
+		{
+			get
+			{
+				return this._UsuarioValidacao;
+			}
+			set
+			{
+				if ((this._UsuarioValidacao != value))
+				{
+					this.OnUsuarioValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioValidacao = value;
+					this.SendPropertyChanged("UsuarioValidacao");
+					this.OnUsuarioValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraValidacao", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraValidacao
+		{
+			get
+			{
+				return this._DataHoraValidacao;
+			}
+			set
+			{
+				if ((this._DataHoraValidacao != value))
+				{
+					this.OnDataHoraValidacaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraValidacao = value;
+					this.SendPropertyChanged("DataHoraValidacao");
+					this.OnDataHoraValidacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataHoraRegistro", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DataHoraRegistro
+		{
+			get
+			{
+				return this._DataHoraRegistro;
+			}
+			set
+			{
+				if ((this._DataHoraRegistro != value))
+				{
+					this.OnDataHoraRegistroChanging(value);
+					this.SendPropertyChanging();
+					this._DataHoraRegistro = value;
+					this.SendPropertyChanged("DataHoraRegistro");
+					this.OnDataHoraRegistroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
+		public string IdParametro
+		{
+			get
+			{
+				return this._IdParametro;
+			}
+			set
+			{
+				if ((this._IdParametro != value))
+				{
+					if (this._Parametro.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdParametroChanging(value);
+					this.SendPropertyChanging();
+					this._IdParametro = value;
+					this.SendPropertyChanged("IdParametro");
+					this.OnIdParametroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
+		public System.Nullable<bool> ValidacaoHora
+		{
+			get
+			{
+				return this._ValidacaoHora;
+			}
+			set
+			{
+				if ((this._ValidacaoHora != value))
+				{
+					this.OnValidacaoHoraChanging(value);
+					this.SendPropertyChanging();
+					this._ValidacaoHora = value;
+					this.SendPropertyChanged("ValidacaoHora");
+					this.OnValidacaoHoraChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CentroCusto", DbType="VarChar(50)")]
+		public string CentroCusto
+		{
+			get
+			{
+				return this._CentroCusto;
+			}
+			set
+			{
+				if ((this._CentroCusto != value))
+				{
+					this.OnCentroCustoChanging(value);
+					this.SendPropertyChanging();
+					this._CentroCusto = value;
+					this.SendPropertyChanged("CentroCusto");
+					this.OnCentroCustoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Parametro_LancamentoEAD", Storage="_Parametro", ThisKey="IdParametro", OtherKey="Id", IsForeignKey=true)]
+		public Parametro Parametro
+		{
+			get
+			{
+				return this._Parametro.Entity;
+			}
+			set
+			{
+				Parametro previousValue = this._Parametro.Entity;
+				if (((previousValue != value) 
+							|| (this._Parametro.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Parametro.Entity = null;
+						previousValue.LancamentoEADs.Remove(this);
+					}
+					this._Parametro.Entity = value;
+					if ((value != null))
+					{
+						value.LancamentoEADs.Add(this);
+						this._IdParametro = value.Id;
+					}
+					else
+					{
+						this._IdParametro = default(string);
+					}
+					this.SendPropertyChanged("Parametro");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

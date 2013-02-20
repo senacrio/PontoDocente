@@ -3,6 +3,8 @@
 <%@ Register src="controls/ddlUnidade.ascx" tagname="ddlUnidade" tagprefix="uc1" %>
 <%@ Register src="controls/EntradaSaida.ascx" tagname="EntradaSaida" tagprefix="uc2" %>
 
+<%@ Register src="controls/ddlArea.ascx" tagname="ddlArea" tagprefix="uc3" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -250,17 +252,7 @@
                                                 <uc1:ddlUnidade ID="ddlUnidadeAA" runat="server" />
                                             </td>
                                             <td class="auto-style16">
-                                                <asp:DropDownList ID="ddlArea" runat="server">
-                                                    <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
-                                                    <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
-                                                    <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
-                                                    <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
-                                                    <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
-                                                    <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <uc3:ddlArea ID="ddlArea" runat="server" />
                                             </td>
                                             <td class="auto-style18">
                                                 <asp:TextBox ID="txtData" runat="server" CssClass="data" data-required-atv="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
@@ -406,17 +398,7 @@
                                                 <uc1:ddlUnidade ID="ddlUnidadeCoord" runat="server" />
                                             </td>
                                             <td class="auto-style5">
-                                                <asp:DropDownList ID="ddlAreaCoord" runat="server">
-                                                    <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
-                                                    <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
-                                                    <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
-                                                    <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
-                                                    <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
-                                                    <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <uc3:ddlArea ID="ddlAreaCoord" runat="server" />
                                             </td>
                                             <td class="auto-style6">
                                                 <asp:TextBox ID="txtDataCoord" runat="server" CssClass="data" data-required-coord="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
@@ -562,17 +544,7 @@
                                                 <uc1:ddlUnidade ID="ddlUnidadeEAD" runat="server" />
                                             </td>
                                             <td>
-                                                <asp:DropDownList ID="ddlAreaEAD" runat="server">
-                                                    <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
-                                                    <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
-                                                    <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
-                                                    <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
-                                                    <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
-                                                    <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
-                                                    <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <uc3:ddlArea ID="ddlAreaEAD" runat="server" />
                                             </td>
                                             <td>
                                                 <asp:TextBox ID="txtDataEAD" runat="server" CssClass="data" data-required-ead="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
