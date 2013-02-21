@@ -268,7 +268,13 @@ Partial Class FrequenciaDocente_LancarApontamento
         Dim atividadeAcademica As AtividadeAcademica = GetAtividadeAcademica(db)
 
 
-
+        If (Not ValidaCategorias(ddlCategoria.SelectedValue)) Then
+            lblMsgAA.Text = "Categoria não é permitida para você."
+            lblMsgAA.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentAtividadeAcademica = Nothing
+            Return
+        End If
 
         If (atividadeAcademica.Id Is Nothing) Then
             Me.CurrentAtividadeAcademica.Id = Guid.NewGuid().ToString()
@@ -449,14 +455,18 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private Sub LoadGridAtividadesAcademicas()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
-        Me.listaAtividades = (From a In db.AtividadeAcademicas _
+        'Me.listaAtividades
+        Dim lista = (From a In db.AtividadeAcademicas _
+                              Join ar In db.AreaDocentes On a.Area Equals ar.Id _
                              Where a.Validacao = False _
                              And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                              And Not a.Validacao _
-                             Select a _
-                             Order By a.Data Descending).ToList()
+                             Select Id = a.Id, Justificativas = a.Justificativas, Data = a.Data, Entrada = a.Entrada, _
+                             Saida = a.Saida, NomeArea = ar.Nome, _
+                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade _
+                             Order By Data Descending)
 
-        grdAtividadesAcademicas.DataSource = Me.listaAtividades
+        grdAtividadesAcademicas.DataSource = lista
         grdAtividadesAcademicas.DataBind()
 
     End Sub
@@ -479,14 +489,17 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private Sub LoadGridEAD()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
-        Me.listaEad = (From a In db.LancamentoEADs _
+        Dim lista = (From a In db.LancamentoEADs _
+                                 Join ar In db.AreaDocentes On a.Area Equals ar.Id _
                              Where a.Validacao = False _
-                             And a.Matricula.Equals(Session("c_Matricula")) _
+                             And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                              And Not a.Validacao _
-                             Select a _
-                             Order By a.Data Descending).ToList()
+                             Select Id = a.Id, Data = a.Data, Entrada = a.Entrada, _
+                             Saida = a.Saida, NomeArea = ar.Nome, _
+                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade _
+                             Order By Data Descending)
 
-        grdEAD.DataSource = Me.listaEad
+        grdEAD.DataSource = lista
         grdEAD.DataBind()
 
     End Sub
@@ -643,14 +656,17 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private Sub LoadGridCoordenacao()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
-        Me.listaCoordenacao = (From a In db.Coordenacaos _
+        Dim lista = (From a In db.Coordenacaos _
+                                 Join ar In db.AreaDocentes On a.Area Equals ar.Id _
                              Where a.Validacao = False _
-                              And a.Matricula.Equals(Session("c_Matricula").ToString()) _
-                              And Not a.Validacao _
-                             Select a _
-                             Order By a.Data Descending).ToList()
+                             And a.Matricula.Equals(Session("c_Matricula").ToString()) _
+                             And Not a.Validacao _
+                             Select Id = a.Id, Justificativas = a.Justificativas, Data = a.Data, Entrada = a.Entrada, _
+                             Saida = a.Saida, NomeArea = ar.Nome, _
+                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade _
+                             Order By Data Descending)
 
-        grdCoordenacao.DataSource = Me.listaCoordenacao
+        grdCoordenacao.DataSource = lista
         grdCoordenacao.DataBind()
 
     End Sub
@@ -660,6 +676,13 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim coordenacao As Coordenacao = GetCoordenacao(db)
 
+        If (Not ValidaCategorias(ddlCategoriaCoord.SelectedValue)) Then
+            lblMsgCoord.Text = "Categoria não é permitida para você."
+            lblMsgCoord.ForeColor = Drawing.Color.Red
+            db.Dispose()
+            Me.CurrentCoordenacao = Nothing
+            Return
+        End If
 
 
         If (coordenacao.Id Is Nothing) Then
@@ -766,6 +789,32 @@ Partial Class FrequenciaDocente_LancarApontamento
                  Select cc).FirstOrDefault()
 
         Return area.IdCentroCustoDefault
+    End Function
+
+    Public Function ValidaCategorias(idCategoria As String) As Boolean
+        Dim db As New FrequenciaDocenteDataContext(conn)
+
+        Dim categoria = (From c In db.CategoriaDocentes _
+                        Where c.Matricula.Equals(Session("c_Matricula")) _
+                        Select c).FirstOrDefault()
+
+        If (categoria Is Nothing) Then
+            Return False
+        End If
+
+        Select Case (idCategoria)
+            Case 1
+                Return Not categoria.Fictec.Equals(Decimal.Zero)
+            Case 2
+                Return Not categoria.Grad.Equals(Decimal.Zero)
+            Case 3
+                Return Not categoria.POS.Equals(Decimal.Zero)
+            Case 4
+                Return Not categoria.EAD.Equals(Decimal.Zero)
+        End Select
+
+        Return False
+
     End Function
 
 End Class

@@ -39,14 +39,14 @@
         <classShapeMoniker Id="ffa8d86b-54ed-4c03-b31e-4a7854e349ae" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 13.875); (1.75 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="677cf146-686a-4054-b19d-bce98c1f71e0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.2812525 : 13.875); (2.2812525 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada1" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
@@ -60,12 +60,6 @@
         <classShapeMoniker Id="dfa65c60-1387-4e64-8050-d03a02a5490a" />
       </nodes>
     </associationConnector>
-    <classShape Id="ea750dcc-4cd0-4026-b559-cae279e26923" absoluteBounds="6.375, 6.75, 2, 4.4631168619791666">
-      <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwApontamento" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3633c37c-3a85-43d4-b73b-01353207781a" absoluteBounds="6.39, 7.21, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="6642ea7c-223e-4f2b-8a2a-62027f9621c4" absoluteBounds="9.375, 0.75, 2, 3.1170068359375005">
       <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwValidacao" />
       <nestedChildShapes>
@@ -120,33 +114,45 @@
         <elementListCompartment Id="b5f0335a-4283-4258-bb43-71a873b22abe" absoluteBounds="3.515, 7.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.48437375 : 18.9150211588542); (1.48437375 : 33.7700105794271); (3.5 : 33.7700105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.48437375 : 18.9150211588542); (1.48437375 : 33.7700105794271); (3.5 : 33.7700105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutadaVT" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="0943364f-37a9-44c0-b68d-6bbf10533ac4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 15.1979077148438); (3.5 : 15.1979077148438)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 15.1979077148438); (3.5 : 15.1979077148438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AtividadeAcademica" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="f6326921-7d69-45c0-bcef-e1f747c25f2d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.882813125 : 18.9150211588542); (1.882813125 : 28.3854077148438); (3.5 : 28.3854077148438)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.882813125 : 18.9150211588542); (1.882813125 : 28.3854077148438); (3.5 : 28.3854077148438)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_Coordenacao" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="dd441ab1-1885-4457-80f7-a008208402fe" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 9.53925699869792); (1.66666666666667 : 9.53925699869792 : JumpStart); (1.83333333333333 : 9.53925699869792 : JumpEnd); (2.19791916666667 : 9.53925699869792 : JumpStart); (2.36458583333333 : 9.53925699869792 : JumpEnd); (3.5 : 9.53925699869792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 9.53925699869792); (1.93229291666667 : 9.53925699869792 : JumpStart); (2.09895958333333 : 9.53925699869792 : JumpEnd); (2.33073229166667 : 9.53925699869792 : JumpStart); (2.49739895833333 : 9.53925699869792 : JumpEnd); (3.5 : 9.53925699869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_LancamentoEAD" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="acc9b642-ba92-48b5-8165-d8917dca7c4a" />
       </nodes>
     </associationConnector>
+    <classShape Id="a6fda10b-d670-4ef3-823e-caa062aa7e1d" absoluteBounds="4.375, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/CategoriaDocente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b923418-d86f-4150-b472-0a379e67cee9" absoluteBounds="4.39, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d7204c85-3b17-49f4-b742-cadd5c3bd4f9" absoluteBounds="6.875, 7.75, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwApontamento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdc286b2-ac31-418e-86d0-9c2e73371d4e" absoluteBounds="6.89, 8.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

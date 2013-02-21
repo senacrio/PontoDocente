@@ -192,6 +192,7 @@
                                                                                 <asp:Button ID="btnValidar" runat="server" CommandArgument='<%# Eval("id") %>' Tipo='<%# Eval("tipo") %>' OnClientClick="return confirm('Deseja validar esse apontamento?')" Text="Validar" OnClick="btnValidar_Click" />
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
+                                                                        <asp:BoundField DataField="CentroCusto" HeaderText="Centro de Custo" />
                                                                     </Columns>
                                                                 </asp:GridView>
                                                                 <hr />

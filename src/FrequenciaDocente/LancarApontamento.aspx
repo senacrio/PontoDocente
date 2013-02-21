@@ -325,24 +325,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
-                                            <asp:TemplateField HeaderText="Area">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Area") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlArea" runat="server" Enabled="False" SelectedValue='<%# Eval("Area") %>'>
-                                                        <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
-                                                        <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
-                                                        <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
-                                                        <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
-                                                        <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
-                                                        <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="NomeArea" HeaderText="Area" />
                                             <asp:BoundField DataField="Data" DataFormatString="{0:MMMM d, yyyy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                             <asp:BoundField DataField="Saida" HeaderText="Saída" />
@@ -470,24 +453,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
-                                            <asp:TemplateField HeaderText="Area">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Area") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlArea1" runat="server" Enabled="False" SelectedValue='<%# Eval("Area") %>'>
-                                                        <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
-                                                        <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
-                                                        <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
-                                                        <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
-                                                        <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
-                                                        <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="NomeArea" HeaderText="Area" />
                                             <asp:BoundField DataField="Data" DataFormatString="{0:MMMM d, yyyy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                             <asp:BoundField DataField="Saida" HeaderText="Saída" />
@@ -608,24 +574,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
-                                            <asp:TemplateField HeaderText="Area">
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Area") %>'></asp:TextBox>
-                                                </EditItemTemplate>
-                                                <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlArea2" runat="server" Enabled="False" SelectedValue='<%# Eval("Area") %>'>
-                                                        <asp:ListItem Value="AJRAA01">Beleza e Bem Estar - Instrutor - AJRAA01</asp:ListItem>
-                                                        <asp:ListItem Value="P1CAAC12">Beleza e Bem Estar - Instrutor - P1CAAC12</asp:ListItem>
-                                                        <asp:ListItem Value="P1CAAC22">Beleza e Bem Estar - Instrutor - P1CAAC22</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA27">Ensino e Sustentabilidade - Instrutor - AJRAAA27</asp:ListItem>
-                                                        <asp:ListItem Value="P2AJHC12">Gastronomia - Instrutor - P2AJHC12</asp:ListItem>
-                                                        <asp:ListItem Value="P2AJHC33">Gastronomia - Instrutor - P2AJHC33</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA01">Responsabilidade Social Corporativa - AJRAAA01</asp:ListItem>
-                                                        <asp:ListItem Value="AJRAAA27">Responsabilidade Social Corporativa - AJRAAA27</asp:ListItem>
-                                                        <asp:ListItem Value="P1A4R161">Saúde - Instrutor - P1A4R161</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="NomeArea" HeaderText="Area" />
                                             <asp:BoundField DataField="Data" DataFormatString="{0:MMMM d, yyyy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                             <asp:BoundField DataField="Saida" HeaderText="Saída" />
