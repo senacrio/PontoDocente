@@ -243,6 +243,20 @@ namespace Senac.ControleRHDocente
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matricula);
 			return ((ISingleResult<GetComboValidacaoResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetHorasDocenteValidas")]
+		public ISingleResult<GetHorasDocenteValidasResult> GetHorasDocenteValidas([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matricula)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matricula);
+			return ((ISingleResult<GetHorasDocenteValidasResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetTotalHoras")]
+		public ISingleResult<GetTotalHorasResult> GetTotalHoras([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matricula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> valida)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), matricula, valida);
+			return ((ISingleResult<GetTotalHorasResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AgendaExecutada")]
@@ -5065,6 +5079,8 @@ namespace Senac.ControleRHDocente
 		
 		private System.Nullable<System.DateTime> _Data;
 		
+		private string _entradasaida;
+		
 		private string _Entrada;
 		
 		private string _Saida;
@@ -5175,6 +5191,22 @@ namespace Senac.ControleRHDocente
 				if ((this._Data != value))
 				{
 					this._Data = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_entradasaida", DbType="VarChar(13)")]
+		public string entradasaida
+		{
+			get
+			{
+				return this._entradasaida;
+			}
+			set
+			{
+				if ((this._entradasaida != value))
+				{
+					this._entradasaida = value;
 				}
 			}
 		}
@@ -5817,6 +5849,76 @@ namespace Senac.ControleRHDocente
 				if ((this._texto != value))
 				{
 					this._texto = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetHorasDocenteValidasResult
+	{
+		
+		private string _tipo;
+		
+		private string _horas;
+		
+		public GetHorasDocenteValidasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(19) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_horas", DbType="VarChar(MAX)")]
+		public string horas
+		{
+			get
+			{
+				return this._horas;
+			}
+			set
+			{
+				if ((this._horas != value))
+				{
+					this._horas = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetTotalHorasResult
+	{
+		
+		private string _horas;
+		
+		public GetTotalHorasResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_horas", DbType="VarChar(MAX)")]
+		public string horas
+		{
+			get
+			{
+				return this._horas;
+			}
+			set
+			{
+				if ((this._horas != value))
+				{
+					this._horas = value;
 				}
 			}
 		}

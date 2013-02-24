@@ -39,14 +39,14 @@
         <classShapeMoniker Id="ffa8d86b-54ed-4c03-b31e-4a7854e349ae" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="677cf146-686a-4054-b19d-bce98c1f71e0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada1" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
@@ -135,7 +135,7 @@
         <classShapeMoniker Id="dd441ab1-1885-4457-80f7-a008208402fe" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 9.53925699869792); (1.93229291666667 : 9.53925699869792 : JumpStart); (2.09895958333333 : 9.53925699869792 : JumpEnd); (2.33073229166667 : 9.53925699869792 : JumpStart); (2.49739895833333 : 9.53925699869792 : JumpEnd); (3.5 : 9.53925699869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 9.53925699869792); (1.93229291666667 : 9.53925699869792 : JumpStart); (2.09895958333333 : 9.53925699869792 : JumpEnd); (3.5 : 9.53925699869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_LancamentoEAD" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
@@ -148,10 +148,10 @@
         <elementListCompartment Id="8b923418-d86f-4150-b472-0a379e67cee9" absoluteBounds="4.39, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d7204c85-3b17-49f4-b742-cadd5c3bd4f9" absoluteBounds="6.875, 7.75, 2, 4.6554182942708326">
+    <classShape Id="7114cf72-fbcc-49b0-b565-dce7ba6e92ab" absoluteBounds="7.375, 9.125, 2, 4.8477197265625">
       <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwApontamento" />
       <nestedChildShapes>
-        <elementListCompartment Id="fdc286b2-ac31-418e-86d0-9c2e73371d4e" absoluteBounds="6.89, 8.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="668ccf7c-d166-406c-a3d9-7316428b2ebe" absoluteBounds="7.39, 9.585, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

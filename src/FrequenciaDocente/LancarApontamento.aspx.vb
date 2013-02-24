@@ -151,6 +151,12 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         grdHoras.DataSource = db.GetHorasDocente(Convert.ToInt32(Session("c_Matricula")))
         grdHoras.DataBind()
+
+        lblTotalInseridas.Text = db.GetTotalHoras(Convert.ToInt32(Session("c_Matricula")), 0).FirstOrDefault().horas
+        lblTotalInseridasValidada.Text = db.GetTotalHoras(Convert.ToInt32(Session("c_Matricula")), 1).FirstOrDefault().horas
+
+        grdHorasValidas.DataSource = db.GetHorasDocenteValidas(Convert.ToInt32(Session("c_Matricula")))
+        grdHorasValidas.DataBind()
     End Sub
 
     Private Function GetParametroAtivo() As Parametro
@@ -212,6 +218,8 @@ Partial Class FrequenciaDocente_LancarApontamento
                        Select aevt).FirstOrDefault()
         agendaVT.IdaVolta = valorIdaVolta
         agendaVT.ValorVT = Convert.ToDecimal(valorVT)
+        agendaVT.ValidacaoHora = False
+        agendaVT.Validacao = False
 
         db.SubmitChanges()
 
@@ -393,7 +401,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentEAD.Saida = EntradaSaidaEAD.SelectedValueAte
         Me.CurrentEAD.TrajetoIdaVolta = txtIdaVoltaEAD.Text
         Me.CurrentEAD.Validacao = False
-        Me.CurrentEAD.ValorVT = Convert.ToDecimal(txtValorVTEAD.Text)
+        Me.CurrentEAD.ValidacaoHora = False
+        Me.CurrentEAD.ValorVT = If(String.IsNullOrEmpty(txtValorVTEAD.Text), Decimal.Zero, Convert.ToDecimal(txtValorVTEAD.Text))
 
 
         Return Me.CurrentEAD
@@ -420,7 +429,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentVT.Saida = EntradaSaidaVT.SelectedValueAte
         Me.CurrentVT.TrajetoIdaVolta = txtIdaVoltaVT.Text
         Me.CurrentVT.Validacao = False
-        Me.CurrentVT.ValorVT = Convert.ToDecimal(txtValorVTVT.Text)
+        Me.CurrentVT.ValorVT = If(String.IsNullOrEmpty(txtValorVTVT.Text), Decimal.Zero, Convert.ToDecimal(txtValorVTVT.Text))
 
 
         Return Me.CurrentVT
@@ -446,7 +455,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentAtividadeAcademica.Saida = EntradaSaidaAA.SelectedValueAte
         Me.CurrentAtividadeAcademica.TrajetoIdaVolta = txtIdaVolta.Text
         Me.CurrentAtividadeAcademica.Validacao = False
-        Me.CurrentAtividadeAcademica.ValorVT = Convert.ToDecimal(txtValorVT.Text)
+        Me.CurrentAtividadeAcademica.ValidacaoHora = False
+        Me.CurrentAtividadeAcademica.ValorVT = If(String.IsNullOrEmpty(txtValorVT.Text), Decimal.Zero, Convert.ToDecimal(txtValorVT.Text))
 
 
         Return Me.CurrentAtividadeAcademica
@@ -739,7 +749,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         Me.CurrentCoordenacao.Saida = EntradaSaidaCoord.SelectedValueAte
         Me.CurrentCoordenacao.TrajetoIdaVolta = txtIdaVoltaCoord.Text
         Me.CurrentCoordenacao.Validacao = False
-        Me.CurrentCoordenacao.ValorVT = Convert.ToDecimal(txtValorVTCoord.Text)
+        Me.CurrentCoordenacao.ValidacaoHora = False
+        Me.CurrentCoordenacao.ValorVT = If(String.IsNullOrEmpty(txtValorVTCoord.Text), Decimal.Zero, Convert.ToDecimal(txtValorVTCoord.Text))
 
 
         Return Me.CurrentCoordenacao

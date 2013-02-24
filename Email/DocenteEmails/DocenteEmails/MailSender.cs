@@ -23,7 +23,7 @@ namespace DocenteEmails
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
 
-            NetworkCredential cred = new NetworkCredential("tiagonascimento.m@gmail.com", "");
+            NetworkCredential cred = new NetworkCredential("tiagonascimento.m@gmail.com", "P4ss4r01234");
             client.Credentials = cred;
 
             // inclui as credenciais

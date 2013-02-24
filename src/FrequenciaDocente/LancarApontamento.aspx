@@ -131,15 +131,42 @@
         {
             width: 200px;
         }
+        .auto-style23
+        {
+            width: 250px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
 
-            <strong>Total de horas inseridas</strong><br />
+            <table class="auto-style2">
+                <tr>
+                    <td class="auto-style23">
+
+            <strong>Total de horas inseridas: </strong>
+                        <asp:Label ID="lblTotalInseridas" runat="server"></asp:Label>
+                    </td>
+                    <td>
+
+            <strong>Total de horas validadas:
+                        <asp:Label ID="lblTotalInseridasValidada" runat="server"></asp:Label>
+                        </strong></td>
+                </tr>
+                <tr>
+                    <td valign="top" class="auto-style23">
             <asp:GridView ID="grdHoras" runat="server" ShowHeader="False">
             </asp:GridView>
+
+                    </td>
+                    <td valign="top">
+            <asp:GridView ID="grdHorasValidas" runat="server" ShowHeader="False">
+            </asp:GridView>
+
+                    </td>
+                </tr>
+            </table>
 
             <br />
             <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -303,15 +330,14 @@
                                                 <asp:TextBox ID="txtIdaVolta" runat="server" data-required-atv="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
                                             <td class="auto-style19">
-                                                <asp:Button ID="btnSalvarAtv" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvAcd" />
-                                            </td>
+                                                &nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td align="left" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                     </table>
                                     <br />
-                                    <br />
+                                    <asp:Button ID="btnSalvarAtv" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvAcd" />
                                     <br />
                                     <br />
                                     <asp:Label ID="lblMsgAA" runat="server" EnableViewState="False"></asp:Label>
@@ -326,7 +352,7 @@
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
                                             <asp:BoundField DataField="NomeArea" HeaderText="Area" />
-                                            <asp:BoundField DataField="Data" DataFormatString="{0:MMMM d, yyyy}" HeaderText="Data" />
+                                            <asp:BoundField DataField="Data" DataFormatString="{0:dd/MM/yy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                             <asp:BoundField DataField="Saida" HeaderText="Saída" />
                                             <asp:TemplateField HeaderText="Categoria">
@@ -339,9 +365,9 @@
                                                     </asp:DropDownList>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
                                             <asp:BoundField DataField="ValorVT" HeaderText="Valor VT" />
                                             <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto Ida / Volta" />
+                                            <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF" />
                                         <EmptyDataTemplate>
@@ -430,16 +456,14 @@
                                                 <asp:TextBox ID="txtIdaVoltaCoord" runat="server" data-required-coord="true" Height="50px" TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
                                             <td class="auto-style13">
-                                                <asp:Button ID="btnSalvarCoord" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvCoord" />
-                                            </td>
+                                                &nbsp;</td>
                                             <td class="auto-style14">&nbsp;</td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td class="auto-style15">&nbsp;</td>
                                         </tr>
                                     </table>
                                     <br />
-                                    <br />
-                                    <br />
+                                    <asp:Button ID="btnSalvarCoord" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="salvarAtvCoord" />
                                     <br />
                                     <br />
                                     <asp:Label ID="lblMsgCoord" runat="server" EnableViewState="False"></asp:Label>
@@ -454,7 +478,7 @@
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
                                             <asp:BoundField DataField="NomeArea" HeaderText="Area" />
-                                            <asp:BoundField DataField="Data" DataFormatString="{0:MMMM d, yyyy}" HeaderText="Data" />
+                                            <asp:BoundField DataField="Data" DataFormatString="{0:dd/MM/yy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                             <asp:BoundField DataField="Saida" HeaderText="Saída" />
                                             <asp:TemplateField HeaderText="Categoria">
@@ -467,9 +491,9 @@
                                                     </asp:DropDownList>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
                                             <asp:BoundField DataField="ValorVT" HeaderText="Valor VT" />
                                             <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto Ida / Volta" />
+                                            <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF" />
                                         <EmptyDataTemplate>
@@ -551,8 +575,7 @@
                                                 <asp:TextBox ID="txtIdaVoltaEAD" runat="server" data-required-ead="true" Height="50px" TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
                                             <td align="left" class="auto-style3" colspan="3">
-                                                <asp:Button ID="btnSalvarEAD" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small; height: 20px;" Text="Salvar" ValidationGroup="salvarAtvEAD" />
-                                            </td>
+                                                &nbsp;</td>
                                             <td class="auto-style3">&nbsp;</td>
                                             <td class="auto-style3">&nbsp;</td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
@@ -560,7 +583,7 @@
                                         </tr>
                                     </table>
                                     <br />
-                                    <br />
+                                    <asp:Button ID="btnSalvarEAD" runat="server" CommandArgument="salvar" CommandName="Select" Style="font-family: Verdana; font-size: x-small; height: 20px;" Text="Salvar" ValidationGroup="salvarAtvEAD" />
                                     <br />
                                     <br />
                                     <asp:Label ID="lblMsgEAD" runat="server" EnableViewState="False"></asp:Label>
@@ -575,7 +598,7 @@
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
                                             <asp:BoundField DataField="NomeArea" HeaderText="Area" />
-                                            <asp:BoundField DataField="Data" DataFormatString="{0:MMMM d, yyyy}" HeaderText="Data" />
+                                            <asp:BoundField DataField="Data" DataFormatString="{0:dd/MM/yy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
                                             <asp:BoundField DataField="Saida" HeaderText="Saída" />
                                             <asp:TemplateField HeaderText="Categoria">

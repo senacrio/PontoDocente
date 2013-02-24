@@ -72,92 +72,74 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         For Each row As GridViewRow In grdValidacao.Rows
             If (row.RowType = DataControlRowType.DataRow) Then
 
-                Dim chkValidacao = DirectCast(row.FindControl("chkValidaVT"), CheckBox)
-                Dim chkValidacaoHora = DirectCast(row.FindControl("chkValidaHora"), CheckBox)
-                If (chkValidacao.Checked) Or (chkValidacaoHora.Checked) Then
-                    Dim matricula = chkValidacao.Attributes("Matricula").ToString()
-                    Dim idUnidade = chkValidacao.Attributes("IdUnidade").ToString()
-                    Dim categoria = chkValidacao.Attributes("IdCategoria").ToString()
-                    Dim tipo = chkValidacao.Attributes("Tipo").ToString()
 
-                    Dim listaAA = From a In db.AtividadeAcademicas _
-                                Where _
-                                a.IdUnidade.Equals(idUnidade) And _
-                                a.Matricula.Equals(matricula) And _
-                                a.Categoria.Equals(categoria) _
-                                Select a
+                Dim grdDetalhes As GridView = CType(row.FindControl("grdDetalhes"), GridView)
 
-                    Dim listaVT = From a In db.AgendaExecutadaVTs _
-                               Where _
-                               a.Unidade.Equals(idUnidade) And _
-                               a.Matricula.Equals(matricula) And _
-                               a.Categoria.Equals(categoria) And _
-                               a.ValorVT.HasValue _
-                               Select a
+                If (Not grdDetalhes Is Nothing) Then
+                    For Each rowDetalhe As GridViewRow In grdDetalhes.Rows
+                        If (rowDetalhe.RowType = DataControlRowType.DataRow) Then
+                            Dim chkValidacao = DirectCast(rowDetalhe.FindControl("chkValidaVT"), CheckBox)
+                            Dim chkValidacaoHora = DirectCast(rowDetalhe.FindControl("chkValidaHora"), CheckBox)
 
-                    Dim listaCoord = From a In db.Coordenacaos _
-                               Where _
-                               a.IdUnidade.Equals(idUnidade) And _
-                               a.Matricula.Equals(matricula) And _
-                               a.Categoria.Equals(categoria) _
-                               Select a
+                            Dim idApontamento = chkValidacaoHora.Attributes("idApontamento").ToString()
 
-                    Dim listaEAD = From a In db.LancamentoEADs _
-                              Where _
-                              a.IdUnidade.Equals(idUnidade) And _
-                              a.Matricula.Equals(matricula) And _
-                              a.Categoria.Equals(categoria) _
-                              Select a
 
-                    Dim listaLancamentoVT = From a In db.LancamentoVTs _
-                             Where _
-                             a.IdUnidade.Equals(idUnidade) And _
-                             a.Matricula.Equals(matricula) And _
-                             a.Categoria.Equals(categoria) _
-                             Select a
+                            Dim atividadeAcademica = (From a In db.AtividadeAcademicas _
+                                       Where a.Id.Equals(idApontamento) _
+                                                    Select a).FirstOrDefault()
 
-                    For Each atividade In listaAA
-                        atividade.Validacao = chkValidacao.Checked
-                        atividade.ValidacaoHora = chkValidacaoHora.Checked
-                        atividade.DataHoraValidacao = DateTime.Now
-                        atividade.UsuarioValidacao = Session("c_Matricula")
-                        db.SubmitChanges()
+                            Dim agendaExecutada = (From a In db.AgendaExecutadaVTs _
+                                       Where a.Id.Equals(idApontamento) _
+                                       Select a).FirstOrDefault()
+
+                            Dim coordenacao = (From a In db.Coordenacaos _
+                                       Where a.Id.Equals(idApontamento) _
+                                       Select a).FirstOrDefault()
+
+                            Dim ead = (From a In db.LancamentoEADs _
+                                      Where a.Id.Equals(idApontamento) _
+                                      Select a).FirstOrDefault()
+
+                            Dim lancamentoVT = (From a In db.LancamentoVTs _
+                                     Where a.Id.Equals(idApontamento) _
+                                     Select a).FirstOrDefault()
+
+                            If (Not atividadeAcademica Is Nothing) Then
+                                atividadeAcademica.ValidacaoHora = chkValidacaoHora.Checked
+                                atividadeAcademica.Validacao = chkValidacao.Checked
+                                atividadeAcademica.DataHoraValidacao = DateTime.Now
+                            End If
+
+                            If (Not agendaExecutada Is Nothing) Then
+                                agendaExecutada.ValidacaoHora = chkValidacaoHora.Checked
+                                agendaExecutada.Validacao = chkValidacao.Checked
+                                agendaExecutada.DataHoraValidacao = DateTime.Now
+                            End If
+
+                            If (Not coordenacao Is Nothing) Then
+                                coordenacao.ValidacaoHora = chkValidacaoHora.Checked
+                                coordenacao.Validacao = chkValidacao.Checked
+                                coordenacao.DataHoraValidacao = DateTime.Now
+                            End If
+
+                            If (Not ead Is Nothing) Then
+                                ead.ValidacaoHora = chkValidacaoHora.Checked
+                                ead.Validacao = chkValidacao.Checked
+                                ead.DataHoraValidacao = DateTime.Now
+                            End If
+
+                            If (Not lancamentoVT Is Nothing) Then
+                                lancamentoVT.Validacao = chkValidacao.Checked
+                            End If
+
+                            db.SubmitChanges()
+                        End If
+
                     Next
-
-                    For Each atividade In listaVT
-                        atividade.Validacao = chkValidacao.Checked
-                        atividade.ValidacaoHora = chkValidacaoHora.Checked
-                        atividade.DataHoraValidacao = DateTime.Now
-                        db.SubmitChanges()
-                    Next
-
-                    For Each atividade In listaCoord
-                        atividade.Validacao = chkValidacao.Checked
-                        atividade.ValidacaoHora = chkValidacaoHora.Checked
-                        atividade.DataHoraValidacao = DateTime.Now
-                        atividade.UsuarioValidacao = Session("c_Matricula")
-                        db.SubmitChanges()
-                    Next
-
-                    For Each atividade In listaEAD
-                        atividade.Validacao = chkValidacao.Checked
-                        atividade.ValidacaoHora = chkValidacaoHora.Checked
-                        atividade.DataHoraValidacao = DateTime.Now
-                        atividade.UsuarioValidacao = Session("c_Matricula")
-                        db.SubmitChanges()
-                    Next
-
-                    For Each atividade In listaLancamentoVT
-                        atividade.Validacao = True
-                        atividade.DataHoraValidacao = DateTime.Now
-                        atividade.UsuarioValidacao = Session("c_Matricula")
-                        db.SubmitChanges()
-                    Next
-
                 End If
-
             End If
         Next
+
         LoadGridValidacao()
         LoadComboValidacao()
     End Sub
@@ -176,7 +158,8 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                            Where a.Matricula.Equals(matricula) And _
                            a.IdUnidade.Equals(idUnidade) And _
                            a.Categoria.Equals(categoria) _
-                           Select a
+                           Select a _
+                           Order By a.Data
 
             grdDetalhes.DataSource = detalhes
             grdDetalhes.DataBind()
@@ -270,14 +253,14 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
     Protected Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs)
         Dim check As CheckBox = DirectCast(sender, CheckBox)
 
-            For Each row As GridViewRow In grdValidacao.Rows
-                If (row.RowType = DataControlRowType.DataRow) Then
+        For Each row As GridViewRow In grdValidacao.Rows
+            If (row.RowType = DataControlRowType.DataRow) Then
 
-                    Dim chkValidacao = DirectCast(row.FindControl("chkValidaHora"), CheckBox)
-                    chkValidacao.Checked = check.Checked
+                Dim chkValidacao = DirectCast(row.FindControl("chkValidaHora"), CheckBox)
+                chkValidacao.Checked = check.Checked
 
-                End If
-            Next
+            End If
+        Next
 
 
     End Sub
@@ -314,5 +297,21 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         If (validacao.Checked) Then
             validacao.Checked = False
         End If
+    End Sub
+
+    Protected Sub grdDetalhes_RowDataBound(sender As Object, e As GridViewRowEventArgs)
+        Dim grdDetalhe = CType(sender, GridView)
+
+        If (e.Row.RowType = DataControlRowType.DataRow) Then
+
+            If (ddlValidacao.SelectedValue.Equals("Agenda Executada")) Then
+                e.Row.FindControl("chkValidaHora").Visible = False
+                grdDetalhe.Columns(4).Visible = False
+            End If
+        End If
+
+
+
+
     End Sub
 End Class

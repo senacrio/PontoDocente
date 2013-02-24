@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ValidacaoApontamento.aspx.vb" Inherits="FrequenciaDocente_ValidacaoApontamento" %>
 
+<%@ Register src="controls/ddlCentroCusto.ascx" tagname="ddlCentroCusto" tagprefix="uc1" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -77,9 +79,7 @@
                                         <Columns>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
-                                                    <a href="javascript:expandcollapse('div<%# Eval("id")%>', 'one');">
-                                                        <img id='imgdiv<%# Eval("id")%>' width="9px" border="0" src="plus.gif" />
-                                                    </a>
+                                                    <a href="javascript:expandcollapse('div<%# Eval("id")%>', 'one');">&nbsp;</a>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Matrícula">
@@ -116,11 +116,11 @@
                                                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("qtdHoras") %>'></asp:TextBox>
                                                 </EditItemTemplate>
                                                 <HeaderTemplate>
-                                                    Qtde Horas<asp:CheckBox ID="chkHorasTotal" runat="server" AutoPostBack="True" OnCheckedChanged="CheckBox1_CheckedChanged" />
+                                                    Qtde Horas
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("qtdHoras") %>'></asp:Label>
-                                                    &nbsp;<asp:CheckBox ID="chkValidaHora" runat="server" Checked='<%# Eval("validacaohora") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' AutoPostBack="True" OnCheckedChanged="chkValidaHora_CheckedChanged1" />
+                                                    &nbsp;
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Valor VT Total">
@@ -129,11 +129,10 @@
                                                 </EditItemTemplate>
                                                 <HeaderTemplate>
                                                     Valor VT
-                                                    <asp:CheckBox ID="chkValorTotal" runat="server" AutoPostBack="True" OnCheckedChanged="chkValorTotal_CheckedChanged" />
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <asp:Label ID="Label5" runat="server" Text='<%# Bind("valorTotal") %>'></asp:Label>
-                                                    &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" Checked='<%# Eval("validacao") %>'  IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' AutoPostBack="True" OnCheckedChanged="chkValidaHora_CheckedChanged" />
+                                                    &nbsp;
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Unidade Execução">
@@ -152,7 +151,6 @@
                                                     <asp:Label ID="Label7" runat="server" Text='<%# Bind("Unidade") %>'></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Centro de Custo"></asp:TemplateField>
                                             <asp:TemplateField HeaderText="Autorização" Visible="False">
                                                 <ItemTemplate>
                                                     <asp:CheckBox ID="chkValidacao" runat="server" IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' Visible="False" />
@@ -160,20 +158,41 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
+
                                                     <tr>
                                                         <td colspan="100%">
-                                                            <div id='div<%# Eval("id") %>' style=" position: relative; left: 15px; OVERFLOW: auto; WIDTH: 97%">
-                                                                <asp:GridView ID="grdDetalhes" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" DataKeyNames="id" EnableModelValidation="True" Font-Names="Verdana" Font-Size="X-Small" Width="100%">
+                                                            <div id='div<%# Eval("id") %>' style="position: relative; left: 15px; OVERFLOW: auto; WIDTH: 97%">
+                                                              <%--  <table>
+                                                                    <tr>
+                                                                        <td>
+
+                                                                            <asp:Label ID="LabelNome" runat="server" Text='<%# Bind("funcionario") %>' Font-Bold="True"></asp:Label>
+                                                                        </td>
+                                                                         <td>
+
+                                                                            Total de horas: <asp:Label ID="Label3" runat="server" Text='<%# Bind("qtdHoras")%>' Font-Bold="True"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+
+                                                                            <asp:Label ID="Label8" runat="server" Text='<%# Bind("valorTotal") %>' Font-Bold="True"></asp:Label>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                </table>--%>
+
+                                                                <br />
+                                                               
+                                                                <asp:GridView ID="grdDetalhes" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" DataKeyNames="id" EnableModelValidation="True" Font-Names="Verdana" Font-Size="X-Small" Width="100%" OnRowDataBound="grdDetalhes_RowDataBound">
                                                                     <Columns>
-                                                                        <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
-                                                                        <asp:BoundField DataField="Saida" HeaderText="Saída" />
+                                                                        <asp:BoundField DataField="Data" DataFormatString="{0: dd/MM/yy}" HeaderText="Data" />
+                                                                        <asp:BoundField DataField="entradasaida" HeaderText="Entrada - Saída" />
                                                                         <asp:TemplateField HeaderText="Total Horas">
                                                                             <EditItemTemplate>
                                                                                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("horas") %>'></asp:TextBox>
                                                                             </EditItemTemplate>
                                                                             <ItemTemplate>
                                                                                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("horas") %>'></asp:Label>
-                                                                                &nbsp;<asp:CheckBox ID="chkValidaHora" runat="server" />
+                                                                                &nbsp;<asp:CheckBox ID="chkValidaHora" idApontamento='<%# Eval("Id")%>' runat="server" Checked='<%# Eval("ValidacaoHora") %>' />
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
                                                                         <asp:TemplateField HeaderText="Valor VT">
@@ -182,17 +201,19 @@
                                                                             </EditItemTemplate>
                                                                             <ItemTemplate>
                                                                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("ValorVT") %>'></asp:Label>
-                                                                                &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" />
+                                                                                &nbsp;<asp:CheckBox ID="chkValidaVT" runat="server" Checked='<%# Eval("Validacao") %>' />
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
                                                                         <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
                                                                         <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto" />
-                                                                        <asp:TemplateField>
+                                                                        <asp:TemplateField HeaderText="Centro de Custo">
+                                                                            <EditItemTemplate>
+                                                                                <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("CentroCusto") %>'></asp:TextBox>
+                                                                            </EditItemTemplate>
                                                                             <ItemTemplate>
-                                                                                <asp:Button ID="btnValidar" runat="server" CommandArgument='<%# Eval("id") %>' Tipo='<%# Eval("tipo") %>' OnClientClick="return confirm('Deseja validar esse apontamento?')" Text="Validar" OnClick="btnValidar_Click" />
+                                                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("CentroCusto") %>'></asp:Label>
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
-                                                                        <asp:BoundField DataField="CentroCusto" HeaderText="Centro de Custo" />
                                                                     </Columns>
                                                                 </asp:GridView>
                                                                 <hr />
