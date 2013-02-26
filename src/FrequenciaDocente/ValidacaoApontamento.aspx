@@ -161,7 +161,7 @@
 
                                                     <tr>
                                                         <td colspan="100%">
-                                                            <div id='div<%# Eval("id") %>' style="position: relative; left: 15px; OVERFLOW: auto; WIDTH: 97%">
+                                                            <div id='div<%# Eval("id") %>' style="position: relative; left: 15px; OVERFLOW: auto; WIDTH: 97%; top: 0px;">
                                                               <%--  <table>
                                                                     <tr>
                                                                         <td>
@@ -211,7 +211,8 @@
                                                                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("CentroCusto") %>'></asp:TextBox>
                                                                             </EditItemTemplate>
                                                                             <ItemTemplate>
-                                                                                <asp:Label ID="Label3" runat="server" Text='<%# Bind("CentroCusto") %>'></asp:Label>
+                                                                                <asp:DropDownList ID="ddlCentroCusto" runat="server" DataTextField="CentroCusto" DataValueField="Id">
+                                                                                </asp:DropDownList>
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
                                                                     </Columns>

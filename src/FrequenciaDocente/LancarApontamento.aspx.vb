@@ -176,7 +176,7 @@ Partial Class FrequenciaDocente_LancarApontamento
         ' r.Matricula.Equals("00014134") _
 
         Dim listaVT = From r In db.AgendaExecutadaVTs _
-                      Where r.Matricula.Equals(Session("c_Matricula").ToString().PadLeft(8, "0")) _
+                      Where r.Matricula.Equals(Session("c_Matricula")) _
                       And r.IdParametro = Me.parametroAtivo.Id _
                       And Not r.Validacao _
                       Select r

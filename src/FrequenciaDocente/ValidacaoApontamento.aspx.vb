@@ -80,7 +80,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                         If (rowDetalhe.RowType = DataControlRowType.DataRow) Then
                             Dim chkValidacao = DirectCast(rowDetalhe.FindControl("chkValidaVT"), CheckBox)
                             Dim chkValidacaoHora = DirectCast(rowDetalhe.FindControl("chkValidaHora"), CheckBox)
-
+                            Dim ddlCentroCusto = CType(rowDetalhe.FindControl("ddlCentroCusto"), DropDownList)
                             Dim idApontamento = chkValidacaoHora.Attributes("idApontamento").ToString()
 
 
@@ -108,24 +108,28 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
                                 atividadeAcademica.ValidacaoHora = chkValidacaoHora.Checked
                                 atividadeAcademica.Validacao = chkValidacao.Checked
                                 atividadeAcademica.DataHoraValidacao = DateTime.Now
+                                atividadeAcademica.CentroCusto = ddlCentroCusto.SelectedValue
                             End If
 
                             If (Not agendaExecutada Is Nothing) Then
                                 agendaExecutada.ValidacaoHora = chkValidacaoHora.Checked
                                 agendaExecutada.Validacao = chkValidacao.Checked
                                 agendaExecutada.DataHoraValidacao = DateTime.Now
+                                agendaExecutada.CentroCusto = ddlCentroCusto.SelectedValue
                             End If
 
                             If (Not coordenacao Is Nothing) Then
                                 coordenacao.ValidacaoHora = chkValidacaoHora.Checked
                                 coordenacao.Validacao = chkValidacao.Checked
                                 coordenacao.DataHoraValidacao = DateTime.Now
+                                coordenacao.CentroCusto = ddlCentroCusto.SelectedValue
                             End If
 
                             If (Not ead Is Nothing) Then
                                 ead.ValidacaoHora = chkValidacaoHora.Checked
                                 ead.Validacao = chkValidacao.Checked
                                 ead.DataHoraValidacao = DateTime.Now
+                                ead.CentroCusto = ddlCentroCusto.SelectedValue
                             End If
 
                             If (Not lancamentoVT Is Nothing) Then
@@ -303,11 +307,27 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         Dim grdDetalhe = CType(sender, GridView)
 
         If (e.Row.RowType = DataControlRowType.DataRow) Then
-
+            Dim db As New FrequenciaDocenteDataContext(conn)
             If (ddlValidacao.SelectedValue.Equals("Agenda Executada")) Then
                 e.Row.FindControl("chkValidaHora").Visible = False
                 grdDetalhe.Columns(4).Visible = False
             End If
+
+            Dim ddlCentroCusto = CType(e.Row.FindControl("ddlCentroCusto"), DropDownList)
+
+            If (Session("_centroCusto") Is Nothing) Then
+                Session("_centroCusto") = From u In db.CentroCustoDocentes _
+                                       Select u _
+                                       Order By u.CentroCusto
+            End If
+
+            ddlCentroCusto.DataSource = Session("_centroCusto")
+            ddlCentroCusto.DataValueField = "Id"
+            ddlCentroCusto.DataTextField = "CentroCusto"
+            ddlCentroCusto.DataBind()
+
+            ddlCentroCusto.SelectedValue = CType(e.Row.DataItem, vwApontamento).CentroCusto
+            db.Dispose()
         End If
 
 
