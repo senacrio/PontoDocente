@@ -44,7 +44,7 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
 
 
 
-            Dim data As DateTime = Convert.ToDateTime("2001-01-01 08:00")
+            Dim data As DateTime = Convert.ToDateTime("2001-01-01 06:00")
             Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 12:00")
 
             While data <= dataFim
@@ -71,7 +71,7 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
 
 
             Dim data As DateTime = Convert.ToDateTime("2001-01-01 18:00")
-            Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 22:00")
+            Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 23:59")
 
             While data <= dataFim
                 ddlDe.Items.Add(data.ToString("HH:mm"))

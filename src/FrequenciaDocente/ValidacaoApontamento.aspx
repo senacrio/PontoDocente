@@ -78,9 +78,6 @@
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:TemplateField>
-                                                <ItemTemplate>
-                                                    <a href="javascript:expandcollapse('div<%# Eval("id")%>', 'one');">&nbsp;</a>
-                                                </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Matrícula">
                                                 <EditItemTemplate>
@@ -211,7 +208,7 @@
                                                                                 <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("CentroCusto") %>'></asp:TextBox>
                                                                             </EditItemTemplate>
                                                                             <ItemTemplate>
-                                                                                <asp:DropDownList ID="ddlCentroCusto" runat="server" DataTextField="CentroCusto" DataValueField="Id">
+                                                                                <asp:DropDownList ID="ddlCentroCusto" runat="server" DataTextField="Id" DataValueField="Id">
                                                                                 </asp:DropDownList>
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
