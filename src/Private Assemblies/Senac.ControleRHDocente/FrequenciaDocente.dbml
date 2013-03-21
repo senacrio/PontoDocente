@@ -264,6 +264,46 @@
       <Column Name="CentroCusto" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.vwAtividadeAcademicaExport" Member="vwAtividadeAcademicaExports">
+    <Type Name="vwAtividadeAcademicaExport">
+      <Column Name="arquivo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Id" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdUnidade" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Matricula" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Entrada" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="Saida" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="entradaInt" Type="System.Decimal" DbType="Decimal(9,0)" CanBeNull="true" />
+      <Column Name="saidaInt" Type="System.Decimal" DbType="Decimal(9,0)" CanBeNull="true" />
+      <Column Name="horasInt" Type="System.Decimal" DbType="Decimal(10,0)" CanBeNull="true" />
+      <Column Name="horas" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Categoria" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Justificativas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ValorVT" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TrajetoIdaVolta" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="IdParametro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(19) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidacaoHora" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Validacao" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CentroCusto" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwCoordenacaoExport" Member="vwCoordenacaoExports">
+    <Type Name="vwCoordenacaoExport">
+      <Column Name="Expr1" Type="System.String" DbType="VarChar(90)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwFetransporExport" Member="vwFetransporExports">
+    <Type Name="vwFetransporExport">
+      <Column Name="arq" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwRateioExport" Member="vwRateioExports">
+    <Type Name="vwRateioExport">
+      <Column Name="Expr1" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.GetHorasDocente" Method="GetHorasDocente">
     <Parameter Name="matricula" Type="System.Int32" DbType="Int" />
     <ElementType Name="GetHorasDocenteResult">

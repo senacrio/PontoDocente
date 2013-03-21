@@ -180,7 +180,11 @@ Partial Class FrequenciaDocente_LancarApontamento
                       And r.IdParametro = Me.parametroAtivo.Id _
                       And Not r.Validacao _
                       Select r
-        If listaVT Is Nothing Or listaVT.Count = 0 Then
+
+        Dim listaVTAgenda = From r In db.AgendaExecutadaVTs _
+                    Where r.IdParametro = Me.parametroAtivo.Id _
+                                        Select r
+        If listaVTAgenda Is Nothing Or listaVTAgenda.Count = 0 Then
             Menu1.Enabled = False
         Else
             Menu1.Enabled = True

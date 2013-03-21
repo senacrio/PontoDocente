@@ -58,14 +58,15 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
 
 
 
-            Dim data As DateTime = Convert.ToDateTime("2001-01-01 13:00")
-            Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 17:00")
-
+            Dim data As DateTime = Convert.ToDateTime("2001-01-01 12:15")
+            Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 17:45")
+            ddlDe.Items.Add("12:01")
             While data <= dataFim
                 ddlDe.Items.Add(data.ToString("HH:mm"))
                 ddlAte.Items.Add(data.ToString("HH:mm"))
                 data = data.AddMinutes(15)
             End While
+            ddlAte.Items.Add("17:59")
         ElseIf (DropDownList1.SelectedValue.Equals("3")) Then
 
 

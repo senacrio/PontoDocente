@@ -223,6 +223,38 @@ namespace Senac.ControleRHDocente
 			}
 		}
 		
+		public System.Data.Linq.Table<vwAtividadeAcademicaExport> vwAtividadeAcademicaExports
+		{
+			get
+			{
+				return this.GetTable<vwAtividadeAcademicaExport>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vwCoordenacaoExport> vwCoordenacaoExports
+		{
+			get
+			{
+				return this.GetTable<vwCoordenacaoExport>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vwFetransporExport> vwFetransporExports
+		{
+			get
+			{
+				return this.GetTable<vwFetransporExport>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vwRateioExport> vwRateioExports
+		{
+			get
+			{
+				return this.GetTable<vwRateioExport>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetHorasDocente")]
 		public ISingleResult<GetHorasDocenteResult> GetHorasDocente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matricula)
 		{
@@ -5447,6 +5479,474 @@ namespace Senac.ControleRHDocente
 				if ((this._CentroCusto != value))
 				{
 					this._CentroCusto = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwAtividadeAcademicaExport")]
+	public partial class vwAtividadeAcademicaExport
+	{
+		
+		private string _arquivo;
+		
+		private string _Id;
+		
+		private string _IdUnidade;
+		
+		private string _Matricula;
+		
+		private string _Area;
+		
+		private System.Nullable<System.DateTime> _Data;
+		
+		private string _Entrada;
+		
+		private string _Saida;
+		
+		private System.Nullable<decimal> _entradaInt;
+		
+		private System.Nullable<decimal> _saidaInt;
+		
+		private System.Nullable<decimal> _horasInt;
+		
+		private string _horas;
+		
+		private string _Categoria;
+		
+		private string _Justificativas;
+		
+		private System.Nullable<decimal> _ValorVT;
+		
+		private string _TrajetoIdaVolta;
+		
+		private string _IdParametro;
+		
+		private string _tipo;
+		
+		private System.Nullable<bool> _ValidacaoHora;
+		
+		private System.Nullable<bool> _Validacao;
+		
+		private string _CentroCusto;
+		
+		public vwAtividadeAcademicaExport()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_arquivo", DbType="VarChar(8000)")]
+		public string arquivo
+		{
+			get
+			{
+				return this._arquivo;
+			}
+			set
+			{
+				if ((this._arquivo != value))
+				{
+					this._arquivo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this._Id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdUnidade", DbType="VarChar(20)")]
+		public string IdUnidade
+		{
+			get
+			{
+				return this._IdUnidade;
+			}
+			set
+			{
+				if ((this._IdUnidade != value))
+				{
+					this._IdUnidade = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Matricula", DbType="VarChar(20)")]
+		public string Matricula
+		{
+			get
+			{
+				return this._Matricula;
+			}
+			set
+			{
+				if ((this._Matricula != value))
+				{
+					this._Matricula = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Area", DbType="VarChar(50)")]
+		public string Area
+		{
+			get
+			{
+				return this._Area;
+			}
+			set
+			{
+				if ((this._Area != value))
+				{
+					this._Area = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this._Data = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Entrada", DbType="VarChar(5)")]
+		public string Entrada
+		{
+			get
+			{
+				return this._Entrada;
+			}
+			set
+			{
+				if ((this._Entrada != value))
+				{
+					this._Entrada = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Saida", DbType="VarChar(5)")]
+		public string Saida
+		{
+			get
+			{
+				return this._Saida;
+			}
+			set
+			{
+				if ((this._Saida != value))
+				{
+					this._Saida = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_entradaInt", DbType="Decimal(9,0)")]
+		public System.Nullable<decimal> entradaInt
+		{
+			get
+			{
+				return this._entradaInt;
+			}
+			set
+			{
+				if ((this._entradaInt != value))
+				{
+					this._entradaInt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_saidaInt", DbType="Decimal(9,0)")]
+		public System.Nullable<decimal> saidaInt
+		{
+			get
+			{
+				return this._saidaInt;
+			}
+			set
+			{
+				if ((this._saidaInt != value))
+				{
+					this._saidaInt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_horasInt", DbType="Decimal(10,0)")]
+		public System.Nullable<decimal> horasInt
+		{
+			get
+			{
+				return this._horasInt;
+			}
+			set
+			{
+				if ((this._horasInt != value))
+				{
+					this._horasInt = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_horas", DbType="VarChar(MAX)")]
+		public string horas
+		{
+			get
+			{
+				return this._horas;
+			}
+			set
+			{
+				if ((this._horas != value))
+				{
+					this._horas = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Categoria", DbType="VarChar(20)")]
+		public string Categoria
+		{
+			get
+			{
+				return this._Categoria;
+			}
+			set
+			{
+				if ((this._Categoria != value))
+				{
+					this._Categoria = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Justificativas", DbType="VarChar(500)")]
+		public string Justificativas
+		{
+			get
+			{
+				return this._Justificativas;
+			}
+			set
+			{
+				if ((this._Justificativas != value))
+				{
+					this._Justificativas = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValorVT", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> ValorVT
+		{
+			get
+			{
+				return this._ValorVT;
+			}
+			set
+			{
+				if ((this._ValorVT != value))
+				{
+					this._ValorVT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TrajetoIdaVolta", DbType="VarChar(500)")]
+		public string TrajetoIdaVolta
+		{
+			get
+			{
+				return this._TrajetoIdaVolta;
+			}
+			set
+			{
+				if ((this._TrajetoIdaVolta != value))
+				{
+					this._TrajetoIdaVolta = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdParametro", DbType="VarChar(50)")]
+		public string IdParametro
+		{
+			get
+			{
+				return this._IdParametro;
+			}
+			set
+			{
+				if ((this._IdParametro != value))
+				{
+					this._IdParametro = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tipo", DbType="VarChar(19) NOT NULL", CanBeNull=false)]
+		public string tipo
+		{
+			get
+			{
+				return this._tipo;
+			}
+			set
+			{
+				if ((this._tipo != value))
+				{
+					this._tipo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ValidacaoHora", DbType="Bit")]
+		public System.Nullable<bool> ValidacaoHora
+		{
+			get
+			{
+				return this._ValidacaoHora;
+			}
+			set
+			{
+				if ((this._ValidacaoHora != value))
+				{
+					this._ValidacaoHora = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Validacao", DbType="Bit")]
+		public System.Nullable<bool> Validacao
+		{
+			get
+			{
+				return this._Validacao;
+			}
+			set
+			{
+				if ((this._Validacao != value))
+				{
+					this._Validacao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CentroCusto", DbType="VarChar(50)")]
+		public string CentroCusto
+		{
+			get
+			{
+				return this._CentroCusto;
+			}
+			set
+			{
+				if ((this._CentroCusto != value))
+				{
+					this._CentroCusto = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwCoordenacaoExport")]
+	public partial class vwCoordenacaoExport
+	{
+		
+		private string _Expr1;
+		
+		public vwCoordenacaoExport()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Expr1", DbType="VarChar(90)")]
+		public string Expr1
+		{
+			get
+			{
+				return this._Expr1;
+			}
+			set
+			{
+				if ((this._Expr1 != value))
+				{
+					this._Expr1 = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwFetransporExport")]
+	public partial class vwFetransporExport
+	{
+		
+		private string _arq;
+		
+		public vwFetransporExport()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_arq", DbType="VarChar(8000)")]
+		public string arq
+		{
+			get
+			{
+				return this._arq;
+			}
+			set
+			{
+				if ((this._arq != value))
+				{
+					this._arq = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwRateioExport")]
+	public partial class vwRateioExport
+	{
+		
+		private string _Expr1;
+		
+		public vwRateioExport()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Expr1", DbType="VarChar(8000)")]
+		public string Expr1
+		{
+			get
+			{
+				return this._Expr1;
+			}
+			set
+			{
+				if ((this._Expr1 != value))
+				{
+					this._Expr1 = value;
 				}
 			}
 		}

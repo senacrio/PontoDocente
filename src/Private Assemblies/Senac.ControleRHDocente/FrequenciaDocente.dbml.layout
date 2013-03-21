@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.625, 36.5" name="FrequenciaDocente">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.625, 36.5" name="FrequenciaDocente">
   <DataContextMoniker Name="/FrequenciaDocenteDataContext" />
   <nestedChildShapes>
     <classShape Id="677cf146-686a-4054-b19d-bce98c1f71e0" absoluteBounds="3.5, 2.25, 2, 3.6939111328124992">
@@ -39,14 +39,14 @@
         <classShapeMoniker Id="ffa8d86b-54ed-4c03-b31e-4a7854e349ae" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.01562625 : 13.875); (2.01562625 : 4.09695556640625); (3.5 : 4.09695556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
         <classShapeMoniker Id="677cf146-686a-4054-b19d-bce98c1f71e0" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(2.414065625 : 13.875); (2.414065625 : 5.05168584960937); (3.5 : 5.05168584960937)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_AgendaExecutada1" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
@@ -135,7 +135,7 @@
         <classShapeMoniker Id="dd441ab1-1885-4457-80f7-a008208402fe" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 9.53925699869792); (1.93229291666667 : 9.53925699869792 : JumpStart); (2.09895958333333 : 9.53925699869792 : JumpEnd); (3.5 : 9.53925699869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.2187475 : 13.875); (1.2187475 : 9.53925699869792); (1.93229291666667 : 9.53925699869792 : JumpStart); (2.09895958333333 : 9.53925699869792 : JumpEnd); (2.33073229166667 : 9.53925699869792 : JumpStart); (2.49739895833333 : 9.53925699869792 : JumpEnd); (3.5 : 9.53925699869792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/FrequenciaDocenteDataContext/Parametro/Parametro_LancamentoEAD" />
       <nodes>
         <classShapeMoniker Id="e64ef449-3dd9-4f41-b84d-2067cfedfa93" />
@@ -152,6 +152,30 @@
       <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwApontamento" />
       <nestedChildShapes>
         <elementListCompartment Id="668ccf7c-d166-406c-a3d9-7316428b2ebe" absoluteBounds="7.39, 9.585, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="14646a5a-eaf2-4b32-bd51-27dabdf1c25f" absoluteBounds="12.375, 0.75, 2, 4.8477197265624987">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwAtividadeAcademicaExport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a8f3de3-035e-4b00-94e9-afc06e33f079" absoluteBounds="12.39, 1.21, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d564fb58-41f7-454e-b969-971874797b1a" absoluteBounds="12.375, 6.75, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwCoordenacaoExport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27c65d9b-0b71-43ad-b9d4-7a4ca5131a25" absoluteBounds="12.39, 7.21, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8cf5b29b-9bf4-42e8-9c50-10f3aa8e07f1" absoluteBounds="12.375, 8.75, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwFetransporExport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5396b667-5090-48a8-b47e-7cf590ff1db0" absoluteBounds="12.39, 9.21, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="250f1318-0def-4fa9-9cae-14e561482a55" absoluteBounds="12.375, 10.75, 2, 1.0016910807291666">
+      <DataClassMoniker Name="/FrequenciaDocenteDataContext/vwRateioExport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf147f7b-9cc6-414f-bd23-a2b6c1f8b6e2" absoluteBounds="12.39, 11.21, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
