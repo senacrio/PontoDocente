@@ -304,6 +304,11 @@
       <Column Name="Expr1" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.vwVtDS" Member="vwVtDs">
+    <Type Name="vwVtD">
+      <Column Name="arquivo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.GetHorasDocente" Method="GetHorasDocente">
     <Parameter Name="matricula" Type="System.Int32" DbType="Int" />
     <ElementType Name="GetHorasDocenteResult">

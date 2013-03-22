@@ -255,6 +255,14 @@ namespace Senac.ControleRHDocente
 			}
 		}
 		
+		public System.Data.Linq.Table<vwVtD> vwVtDs
+		{
+			get
+			{
+				return this.GetTable<vwVtD>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetHorasDocente")]
 		public ISingleResult<GetHorasDocenteResult> GetHorasDocente([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> matricula)
 		{
@@ -5947,6 +5955,33 @@ namespace Senac.ControleRHDocente
 				if ((this._Expr1 != value))
 				{
 					this._Expr1 = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwVtDS")]
+	public partial class vwVtD
+	{
+		
+		private string _arquivo;
+		
+		public vwVtD()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_arquivo", DbType="VarChar(8000)")]
+		public string arquivo
+		{
+			get
+			{
+				return this._arquivo;
+			}
+			set
+			{
+				if ((this._arquivo != value))
+				{
+					this._arquivo = value;
 				}
 			}
 		}
