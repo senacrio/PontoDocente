@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="LancarApontamento.aspx.vb" Inherits="FrequenciaDocente_LancarApontamento" EnableEventValidation="false" %>
 
-<%@ Register src="controls/ddlUnidade.ascx" tagname="ddlUnidade" tagprefix="uc1" %>
-<%@ Register src="controls/EntradaSaida.ascx" tagname="EntradaSaida" tagprefix="uc2" %>
+<%@ Register Src="controls/ddlUnidade.ascx" TagName="ddlUnidade" TagPrefix="uc1" %>
+<%@ Register Src="controls/EntradaSaida.ascx" TagName="EntradaSaida" TagPrefix="uc2" %>
 
-<%@ Register src="controls/ddlArea.ascx" tagname="ddlArea" tagprefix="uc3" %>
+<%@ Register Src="controls/ddlArea.ascx" TagName="ddlArea" TagPrefix="uc3" %>
 
 <!DOCTYPE html>
 
@@ -17,6 +17,87 @@
     <script src="js/numeros.js"></script>
     <title></title>
     <style type="text/css">
+        .FormataAbaAtiva
+        {
+            background-color: #306897;
+        }
+
+        .FormataAbaAtiva
+        {
+            font-family: arial, verdana;
+            font-weight: bold;
+        }
+
+        .FormataAbaAtiva
+        {
+            font-size: 12px;
+        }
+
+        .FormataAbaAtiva
+        {
+            cursor: Pointer;
+        }
+
+        .FormataAbaAtiva
+        {
+            border: none;
+        }
+
+            .FormataAbaAtiva:link, visited, active
+            {
+                color: White;
+                text-decoration: none;
+            }
+
+            .FormataAbaAtiva:hover
+            {
+                color: Yellow;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+        .FormataAbaInativa
+        {
+            background-color: #83acd8;
+        }
+
+        .FormataAbaInativa
+        {
+            font-family: arial, verdana;
+        }
+
+        .FormataAbaInativa
+        {
+            font-size: 12px;
+        }
+
+        .FormataAbaInativa
+        {
+            cursor: Pointer;
+        }
+
+        .FormataAbaInativa
+        {
+            border: none;
+        }
+
+            .FormataAbaInativa:link, visited, active
+            {
+                color: #363399;
+                text-decoration: none;
+            }
+
+            .FormataAbaInativa:hover
+            {
+                color: Yellow;
+                text-decoration: none;
+            }
+
+        .IE8Fix
+        {
+            z-index: 1000;
+        }
+
         .auto-style1
         {
             width: 100%;
@@ -56,115 +137,133 @@
         {
             height: 23px;
         }
+
         .auto-style4
         {
-            width: 5%;
         }
+
         .auto-style6
-        {}
+        {
+        }
+
         .auto-style8
         {
             width: 15%;
         }
+
         .auto-style9
         {
             width: 16%;
         }
+
         .auto-style10
         {
             width: 3%;
         }
+
         .auto-style11
         {
             height: 23px;
             width: 5%;
         }
+
         .auto-style13
         {
             height: 23px;
             width: 8%;
         }
+
         .auto-style14
         {
             height: 23px;
             width: 15%;
         }
+
         .auto-style15
         {
             height: 23px;
             width: 3%;
         }
+
         .auto-style16
         {
             width: 320px;
         }
+
         .auto-style17
         {
-            width: 221px;
         }
+
         .auto-style18
         {
             width: 201px;
         }
+
         .auto-style19
         {
             width: 24px;
         }
+
         .auto-style20
         {
             width: 34%;
         }
+
         .auto-style21
         {
             width: 254px;
         }
+
         .auto-style22
         {
             width: 200px;
         }
+
         .auto-style23
         {
             width: 250px;
         }
-        .auto-style24
-        {
-            width: 19%;
-        }
-        .auto-style25
-        {
-            height: 23px;
-            width: 19%;
-        }
+
         .auto-style27
         {
             width: 345px;
         }
+
         .auto-style28
         {
             height: 23px;
             width: 345px;
         }
+
         .auto-style31
         {
             width: 225px;
         }
+
         .auto-style34
         {
             width: 286px;
         }
+
         .auto-style35
         {
             height: 23px;
             width: 286px;
         }
+
         .auto-style36
         {
             width: 20%;
         }
+
         .auto-style37
         {
             height: 23px;
             width: 20%;
+        }
+        .auto-style38
+        {
+            width: 277px;
         }
     </style>
 </head>
@@ -176,24 +275,24 @@
                 <tr>
                     <td class="auto-style23">
 
-            <strong>Total de horas inseridas: </strong>
+                        <strong>Total de horas inseridas: </strong>
                         <asp:Label ID="lblTotalInseridas" runat="server"></asp:Label>
                     </td>
                     <td>
 
-            <strong>Total de horas validadas:
+                        <strong>Total de horas validadas:
                         <asp:Label ID="lblTotalInseridasValidada" runat="server"></asp:Label>
                         </strong></td>
                 </tr>
                 <tr>
                     <td valign="top" class="auto-style23">
-            <asp:GridView ID="grdHoras" runat="server" ShowHeader="False">
-            </asp:GridView>
+                        <asp:GridView ID="grdHoras" runat="server" ShowHeader="False">
+                        </asp:GridView>
 
                     </td>
                     <td valign="top">
-            <asp:GridView ID="grdHorasValidas" runat="server" ShowHeader="False">
-            </asp:GridView>
+                        <asp:GridView ID="grdHorasValidas" runat="server" ShowHeader="False">
+                        </asp:GridView>
 
                     </td>
                 </tr>
@@ -202,21 +301,48 @@
             <br />
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px" PathSeparator="|">
-                <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
-                <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                <DynamicMenuStyle BackColor="#B5C7DE" />
-                <DynamicSelectedStyle BackColor="#507CD1" />
-                <Items>
-                    <asp:MenuItem Text="Disponível para Lançamentos de VT" Value="0"></asp:MenuItem>
-                    <asp:MenuItem Text="Atividades Acadêmicas" Value="1"></asp:MenuItem>
-                    <asp:MenuItem Text="Coordenação" Value="2"></asp:MenuItem>
-                    <asp:MenuItem Text="Tutoria EAD" Value="3"></asp:MenuItem>
-                </Items>
-                <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
-                <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-                <StaticSelectedStyle BackColor="#507CD1" />
-            </asp:Menu>
+                        <asp:Menu ID="menu1"
+                            runat="server"
+                            DynamicHorizontalOffset="2"
+                            Font-Bold="False"
+                            Font-Names="Arial"
+                            Font-Size="9pt"
+                            ForeColor="Black"
+                            Height="28px"
+                            MaximumDynamicDisplayLevels="5"
+                            Orientation="Horizontal"
+                            StaticSubMenuIndent="10px"
+                            Style="margin-left: 0px" Visible="False">
+
+                            <StaticMenuItemStyle HorizontalPadding="5px"
+                                VerticalPadding="2px" ForeColor="White" />
+                            <DynamicMenuStyle BackColor="#F2F4F7"
+                                BorderColor="Black"
+                                BorderStyle="Solid"
+                                ForeColor="Black"
+                                BorderWidth="1px"
+                                CssClass="IE8Fix" />
+                            <DynamicSelectedStyle BackColor="#1C5E55" ForeColor="Black" />
+                            <DynamicMenuItemStyle HorizontalPadding="5px"
+                                VerticalPadding="2px" />
+                            <DynamicHoverStyle BackColor="#FFCC33"
+                                BorderStyle="None"
+                                Font-Bold="False"
+                                ForeColor="Black" />
+                            <StaticHoverStyle BackColor="LightSteelBlue"
+                                BorderColor="Black"
+                                BorderStyle="Solid"
+                                BorderWidth="1px"
+                                ForeColor="Black"
+                                Font-Bold="True" />
+                            <Items>
+                                <asp:MenuItem Text="Disponível para Lançamentos de VT" Value="0"></asp:MenuItem>
+                                <asp:MenuItem Text="Atividades Acadêmicas" Value="1"></asp:MenuItem>
+                                <asp:MenuItem Text="Coordenação" Value="2"></asp:MenuItem>
+                                <asp:MenuItem Text="Tutoria EAD" Value="3"></asp:MenuItem>
+                            </Items>
+                        </asp:Menu>
+            <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
             <div id="divAba" class="aba">
                 <asp:MultiView ID="mvLancamento" runat="server" ActiveViewIndex="0">
                     <asp:View ID="vwHorasDocentes" runat="server">
@@ -293,20 +419,19 @@
                                 <td align="center" style="text-align: left">
                                     <table class="auto-style2">
                                         <tr>
-                                            <td class="auto-style17">Unidade</td>
+                                            <td class="auto-style38">Unidade</td>
                                             <td class="auto-style16">Área de Prestação de Serviço</td>
                                             <td class="auto-style18">Data</td>
-                                            <td>Entrada - Saída</td>
                                             <td>&nbsp;</td>
-                                            <td class="auto-style19">Categoria</td>
                                             <td>&nbsp;</td>
-                                            <td>
-                                                &nbsp;</td>
+                                            <td class="auto-style19">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td class="auto-style17">
+                                            <td class="auto-style38">
                                                 <uc1:ddlUnidade ID="ddlUnidadeAA" runat="server" />
                                             </td>
                                             <td class="auto-style16">
@@ -318,9 +443,31 @@
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtData" Display="None" ErrorMessage="Data Obrigatória" ValidationGroup="salvarAtvAcd"></asp:RequiredFieldValidator>
                                             </td>
                                             <td colspan="2">
+                                                &nbsp;</td>
+                                            <td class="auto-style19">
+                                                &nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style38">Entrada - Saída</td>
+                                            <td class="auto-style16">
+                                                &nbsp;</td>
+                                            <td class="auto-style18">Categoria</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td class="auto-style19">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style17" colspan="2">
                                                 <uc2:EntradaSaida ID="EntradaSaidaAA" runat="server" />
                                             </td>
-                                            <td class="auto-style19">
+                                            <td class="auto-style18">
                                                 <asp:DropDownList ID="ddlCategoria" runat="server">
                                                     <asp:ListItem Value="1">Fic/Tec</asp:ListItem>
                                                     <asp:ListItem Value="2">Graduação</asp:ListItem>
@@ -328,17 +475,16 @@
                                                     <asp:ListItem Value="4">EAD</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
-                                            <td>
-                                                &nbsp;</td>
-                                            <td style="margin-left: 40px">
-                                                &nbsp;</td>
-                                            <td>
-                                                &nbsp;</td>
-                                            <td>
-                                                &nbsp;</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td class="auto-style19">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td class="auto-style17">Justificativa da Atividade</td>
+                                            <td class="auto-style38">
+                                                Justificativa da Atividade</td>
                                             <td class="auto-style16">
                                                 <asp:Label ID="Label2" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
@@ -346,14 +492,13 @@
                                                 Trajeto Ida e Volta</td>
                                             <td class="auto-style19">&nbsp;</td>
                                             <td>&nbsp;</td>
-                                            <td align="left" colspan="2" style="margin-left: 40px">
-                                                &nbsp;</td>
+                                            <td align="left" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
                                         <tr>
-                                            <td class="auto-style17">
+                                            <td class="auto-style38">
                                                 <asp:TextBox ID="txtJustificativa" runat="server" Height="39px" Text='<%# Bind("Justificativa") %>' TextMode="MultiLine" Width="198px"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtJustificativa" ErrorMessage="Justificativa Obrigatória" ValidationGroup="salvarAtvAcd" Display="None"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtJustificativa" Display="None" ErrorMessage="Justificativa Obrigatória" ValidationGroup="salvarAtvAcd"></asp:RequiredFieldValidator>
                                             </td>
                                             <td class="auto-style16">
                                                 <asp:TextBox ID="txtValorVT" runat="server" CssClass="moeda" Text='<%# Bind("ValorVT") %>' Width="60px"></asp:TextBox>
@@ -361,8 +506,7 @@
                                             <td align="left" colspan="3">
                                                 <asp:TextBox ID="txtIdaVolta" runat="server" data-required-atv="true" Height="50px" idagenda='<%# Eval("Id") %>' Text='<%# Eval("IdaVolta") %>' TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
-                                            <td class="auto-style19">
-                                                &nbsp;</td>
+                                            <td class="auto-style19">&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td align="left" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td>&nbsp;</td>
@@ -427,11 +571,10 @@
                                             <td class="auto-style36">Área de Prestação de Serviço</td>
                                             <td class="auto-style6">Data</td>
                                             <td class="auto-style21">&nbsp;</td>
-                                            <td class="auto-style20">Entrada - Saída</td>
-                                            <td class="auto-style6">Categoria</td>
+                                            <td class="auto-style20">&nbsp;</td>
+                                            <td class="auto-style6">&nbsp;</td>
                                             <td class="auto-style8">&nbsp;</td>
-                                            <td class="auto-style4">
-                                                &nbsp;</td>
+                                            <td class="auto-style4">&nbsp;</td>
                                             <td class="auto-style9">&nbsp;</td>
                                             <td class="auto-style10">&nbsp;</td>
                                         </tr>
@@ -448,6 +591,26 @@
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDataCoord" Display="None" ValidationGroup="salvarAtvCoord" ErrorMessage="Data Obrigatória"></asp:RequiredFieldValidator>
                                             </td>
                                             <td class="auto-style6" colspan="2">
+                                                &nbsp;</td>
+                                            <td class="auto-style6">
+                                                &nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
+                                            <td style="margin-left: 40px" class="auto-style4">&nbsp;</td>
+                                            <td class="auto-style9">&nbsp;</td>
+                                            <td class="auto-style10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style4" colspan="2">Entrada - Saída</td>
+                                            <td class="auto-style6">Categoria</td>
+                                            <td class="auto-style6" colspan="2">&nbsp;</td>
+                                            <td class="auto-style6">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
+                                            <td class="auto-style4" style="margin-left: 40px">&nbsp;</td>
+                                            <td class="auto-style9">&nbsp;</td>
+                                            <td class="auto-style10">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style4" colspan="2">
                                                 <uc2:EntradaSaida ID="EntradaSaidaCoord" runat="server" />
                                             </td>
                                             <td class="auto-style6">
@@ -458,27 +621,22 @@
                                                     <asp:ListItem Value="4">EAD</asp:ListItem>
                                                 </asp:DropDownList>
                                             </td>
-                                            <td class="auto-style8">
-                                                &nbsp;</td>
-                                            <td style="margin-left: 40px" class="auto-style4">
-                                                &nbsp;</td>
-                                            <td class="auto-style9">
-                                                &nbsp;</td>
-                                            <td class="auto-style10">
-                                                &nbsp;</td>
+                                            <td class="auto-style6" colspan="2">&nbsp;</td>
+                                            <td class="auto-style6">&nbsp;</td>
+                                            <td class="auto-style8">&nbsp;</td>
+                                            <td class="auto-style4" style="margin-left: 40px">&nbsp;</td>
+                                            <td class="auto-style9">&nbsp;</td>
+                                            <td class="auto-style10">&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style11">
                                                 <asp:Label ID="Label7" runat="server" Text="Valor VT"></asp:Label>
                                             </td>
-                                            <td class="auto-style37">
-                                                Trajeto Ida e Volta</td>
-                                            <td align="left" class="auto-style3" colspan="3">
-                                                &nbsp;</td>
+                                            <td class="auto-style37">Trajeto Ida e Volta</td>
+                                            <td align="left" class="auto-style3" colspan="3">&nbsp;</td>
                                             <td class="auto-style13"></td>
                                             <td class="auto-style14"></td>
-                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                &nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td class="auto-style15"></td>
                                         </tr>
                                         <tr>
@@ -488,10 +646,8 @@
                                             <td class="auto-style37">
                                                 <asp:TextBox ID="txtIdaVoltaCoord" runat="server" data-required-coord="true" Height="50px" TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
-                                            <td align="left" class="auto-style3" colspan="3">
-                                                &nbsp;</td>
-                                            <td class="auto-style13">
-                                                &nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="3">&nbsp;</td>
+                                            <td class="auto-style13">&nbsp;</td>
                                             <td class="auto-style14">&nbsp;</td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td class="auto-style15">&nbsp;</td>
@@ -555,13 +711,12 @@
                                         <tr>
                                             <td class="auto-style27">Unidade</td>
                                             <td class="auto-style34">Área de Prestação de Serviço</td>
-                                            <td class="auto-style31">Data</td>
-                                            <td class="auto-style22">Entrada - Saída</td>
+                                            <td class="auto-style31">&nbsp;</td>
+                                            <td class="auto-style22">&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
-                                            <td>
-                                                &nbsp;</td>
+                                            <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                             <td>&nbsp;</td>
                                         </tr>
@@ -573,48 +728,65 @@
                                                 <uc3:ddlArea ID="ddlAreaEAD" runat="server" />
                                             </td>
                                             <td class="auto-style31">
-                                                <asp:TextBox ID="txtDataEAD" runat="server" CssClass="data" data-required-ead="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
                                                 <br />
-                                                <asp:RangeValidator ID="rvDataEAD" runat="server" ControlToValidate="txtDataEAD" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvEAD"></asp:RangeValidator>
                                                 <br />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtDataEAD" Display="None" ErrorMessage="Data Obrigatória" ValidationGroup="salvarAtvEAD"></asp:RequiredFieldValidator>
                                             </td>
                                             <td colspan="2">
-                                                <uc2:EntradaSaida ID="EntradaSaidaEAD" runat="server" />
-                                            </td>
-                                            <td>
                                                 &nbsp;</td>
                                             <td>&nbsp;</td>
-                                            <td style="margin-left: 40px">
-                                                &nbsp;</td>
-                                            <td>
-                                                &nbsp;</td>
-                                            <td>
-                                                &nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style27">Data</td>
+                                            <td class="auto-style34">Entrada - Saída</td>
+                                            <td class="auto-style31">&nbsp;</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="auto-style27">
+                                                <asp:TextBox ID="txtDataEAD" runat="server" CssClass="data" data-required-ead="true" Text='<%# Bind("Data") %>' Width="97px"></asp:TextBox>
+                                                <br />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtDataEAD" Display="None" ErrorMessage="Data Obrigatória" ValidationGroup="salvarAtvEAD"></asp:RequiredFieldValidator>
+                                                <asp:RangeValidator ID="rvDataEAD" runat="server" ControlToValidate="txtDataEAD" Enabled="False" MaximumValue="20/02/2020" MinimumValue="01/01/2010" Type="Date" ValidationGroup="salvarAtvEAD"></asp:RangeValidator>
+                                            </td>
+                                            <td class="auto-style34">
+                                                <uc2:EntradaSaida ID="EntradaSaidaEAD" runat="server" />
+                                            </td>
+                                            <td class="auto-style31">&nbsp;</td>
+                                            <td colspan="2">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td style="margin-left: 40px">&nbsp;</td>
+                                            <td>&nbsp;</td>
+                                            <td>&nbsp;</td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style28">
                                                 <asp:Label ID="Label6" runat="server" Text="Valor VT"></asp:Label>
                                                 &nbsp;(Apenas para os Encontros Presenciais)</td>
-                                            <td class="auto-style35">
-                                                Trajeto Ida e Volta</td>
-                                            <td align="left" class="auto-style3" colspan="3">
-                                                &nbsp;</td>
+                                            <td class="auto-style35">Trajeto Ida e Volta</td>
+                                            <td align="left" class="auto-style3" colspan="3">&nbsp;</td>
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
-                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                &nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td class="auto-style3"></td>
                                         </tr>
                                         <tr>
                                             <td class="auto-style28">
-                                                <asp:TextBox ID="txtValorVTEAD" runat="server" CssClass="moeda"  Width="60px"></asp:TextBox>
+                                                <asp:TextBox ID="txtValorVTEAD" runat="server" CssClass="moeda" Width="60px"></asp:TextBox>
                                             </td>
                                             <td class="auto-style35">
                                                 <asp:TextBox ID="txtIdaVoltaEAD" runat="server" data-required-ead="true" Height="50px" TextMode="MultiLine" Width="210px"></asp:TextBox>
                                             </td>
-                                            <td align="left" class="auto-style3" colspan="3">
-                                                &nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="3">&nbsp;</td>
                                             <td class="auto-style3">&nbsp;</td>
                                             <td class="auto-style3">&nbsp;</td>
                                             <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
@@ -750,8 +922,7 @@
                                             </td>
                                             <td class="auto-style3"></td>
                                             <td class="auto-style3"></td>
-                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">
-                                                &nbsp;</td>
+                                            <td align="left" class="auto-style3" colspan="2" style="margin-left: 40px">&nbsp;</td>
                                             <td class="auto-style3"></td>
                                         </tr>
                                     </table>

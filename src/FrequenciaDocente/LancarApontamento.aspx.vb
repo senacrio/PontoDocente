@@ -18,6 +18,101 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private _listaVT As List(Of LancamentoVT)
     Private _currentVT As LancamentoVT
 
+    Public Sub MontaGuias(ByVal GuiaSelecionada As Integer, ByVal Inicio As Integer)
+
+        Dim i As Integer
+        Dim EhPrimeiraMontagem As Boolean = False
+
+        Dim ImagemGuiaEsquerda As Image = New Image()
+        Dim NovoBotao As LinkButton = New LinkButton()
+        Dim ImagemGuiaDireita As Image = New Image()
+
+        PlaceHolder1.Controls.Clear()
+
+
+        For Each item As MenuItem In menu1.Items
+
+
+            i = item.Value.ToString()
+            If GuiaSelecionada = -2007 Then
+                GuiaSelecionada = i
+                'MontaMenu(GuiaSelecionada)
+                EhPrimeiraMontagem = True
+            End If
+            ImagemGuiaEsquerda = New Image()
+            ImagemGuiaEsquerda.ID = "ImgEsq" & i
+            ImagemGuiaEsquerda.TabIndex = i
+            If GuiaSelecionada = i Then
+                If i = 1 Then
+                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaAtiva1Inicio.jpg"
+                Else
+                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaAtiva2Inicio.jpg"
+                End If
+            Else
+                If i = 1 Then
+                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaInativa1Inicio.jpg"
+                Else
+                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaInativa2Inicio.jpg"
+                End If
+            End If
+            ImagemGuiaEsquerda.BorderStyle = BorderStyle.None
+            ImagemGuiaEsquerda.ImageAlign = ImageAlign.AbsBottom
+            ImagemGuiaEsquerda.EnableViewState = True
+            ImagemGuiaEsquerda.Visible = True
+
+            ImagemGuiaDireita = New Image()
+            ImagemGuiaDireita.ID = "ImgDir" & i
+            ImagemGuiaDireita.TabIndex = i
+            If GuiaSelecionada = i Then
+                ImagemGuiaDireita.ImageUrl = "~/Imagens/AbaAtiva3Fim.jpg"
+            Else
+                ImagemGuiaDireita.ImageUrl = "~/Imagens/AbaInativa3Fim.jpg"
+            End If
+            ImagemGuiaDireita.BorderStyle = BorderStyle.None
+            ImagemGuiaDireita.ImageAlign = ImageAlign.AbsBottom
+            ImagemGuiaDireita.EnableViewState = True
+            ImagemGuiaDireita.Visible = True
+
+            NovoBotao = New LinkButton()
+            AddHandler NovoBotao.Click, AddressOf NovoBotao_Click
+            NovoBotao.ID = "Aba" & i
+            NovoBotao.Text = item.Text
+            NovoBotao.Height = 19
+            NovoBotao.TabIndex = i
+            NovoBotao.EnableViewState = True
+            NovoBotao.Visible = True
+            NovoBotao.EnableTheming = False
+            NovoBotao.ToolTip = item.Text
+            If GuiaSelecionada = i Then
+                NovoBotao.CssClass = "FormataAbaAtiva"
+                If Not EhPrimeiraMontagem Or Inicio = 0 Then
+
+                End If
+            Else
+                NovoBotao.CssClass = "FormataAbaInativa"
+            End If
+
+            PlaceHolder1.Controls.Add(ImagemGuiaEsquerda)
+            PlaceHolder1.Controls.Add(NovoBotao)
+            PlaceHolder1.Controls.Add(ImagemGuiaDireita)
+
+        Next
+
+        ImagemGuiaEsquerda.Dispose()
+        ImagemGuiaDireita.Dispose()
+
+
+
+    End Sub
+
+    Protected Sub NovoBotao_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+        Dim Botao As LinkButton = sender
+        MontaGuias(Botao.TabIndex, 1)
+
+        mvLancamento.ActiveViewIndex = Botao.TabIndex
+        'MontaMenu(Botao.TabIndex)
+    End Sub
+
     Public Function ExisteLancamento(id As String, matricula As String, entrada As String, saida As String, data As DateTime) As Boolean
         Dim db = New FrequenciaDocenteDataContext(conn)
 
@@ -90,7 +185,7 @@ Partial Class FrequenciaDocente_LancarApontamento
             pnl.Enabled = False
         Else
 
-            Menu1.Items(mvLancamento.ActiveViewIndex).Selected = True
+            menu1.Items(mvLancamento.ActiveViewIndex).Selected = True
             '    lblDataVT.Text = Me.parametroAtivo.
             If Not (Page.IsPostBack) Then
                 LoadGridVT()
@@ -98,7 +193,9 @@ Partial Class FrequenciaDocente_LancarApontamento
                 LoadGridCoordenacao()
                 LoadGridEAD()
                 LoadGridLancamentoVT()
-
+                MontaGuias(-2007, 0)
+            Else
+                MontaGuias(-2007, 1)
             End If
 
         End If
@@ -185,9 +282,9 @@ Partial Class FrequenciaDocente_LancarApontamento
                     Where r.IdParametro = Me.parametroAtivo.Id _
                                         Select r
         If listaVTAgenda Is Nothing Or listaVTAgenda.Count = 0 Then
-            Menu1.Enabled = False
+            menu1.Enabled = False
         Else
-            Menu1.Enabled = True
+            menu1.Enabled = True
             grdVT.DataSource = listaVT
             grdVT.DataBind()
         End If
@@ -765,8 +862,8 @@ Partial Class FrequenciaDocente_LancarApontamento
         LoadCamposCoord()
     End Sub
 
-    Protected Sub Menu1_MenuItemClick(sender As Object, e As MenuEventArgs) Handles Menu1.MenuItemClick
-        mvLancamento.ActiveViewIndex = Menu1.SelectedValue
+    Protected Sub Menu1_MenuItemClick(sender As Object, e As MenuEventArgs) Handles menu1.MenuItemClick
+        mvLancamento.ActiveViewIndex = menu1.SelectedValue
     End Sub
 
     Protected Sub btnSalvarEAD_Click(sender As Object, e As EventArgs) Handles btnSalvarEAD.Click
