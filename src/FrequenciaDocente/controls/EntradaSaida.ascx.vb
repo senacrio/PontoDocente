@@ -25,13 +25,13 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If (Not Page.IsPostBack) Then
             CarregarHoras()
-            ddlAte.SelectedIndex = ddlAte.Items.Count - 1
+            '  ddlAte.SelectedIndex = ddlAte.Items.Count - 1
         End If
     End Sub
 
     Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles DropDownList1.SelectedIndexChanged
         CarregarHoras()
-        ddlAte.SelectedIndex = ddlAte.Items.Count - 1
+        'ddlAte.SelectedIndex = ddlAte.Items.Count - 1
 
     End Sub
 
@@ -54,6 +54,8 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
                 data = data.AddMinutes(15)
             End While
 
+            ddlDe.SelectedValue = "09:00"
+            ddlAte.SelectedValue = "12:00"
         ElseIf (DropDownList1.SelectedValue.Equals("2")) Then
 
 
@@ -67,6 +69,11 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
                 data = data.AddMinutes(15)
             End While
             ddlAte.Items.Add("17:59")
+
+
+            ddlDe.SelectedValue = "13:00"
+            ddlAte.SelectedValue = "17:59"
+
         ElseIf (DropDownList1.SelectedValue.Equals("3")) Then
 
 
@@ -79,6 +86,9 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
                 ddlAte.Items.Add(data.ToString("HH:mm"))
                 data = data.AddMinutes(15)
             End While
+
+            ddlDe.SelectedValue = "18:00"
+            ddlAte.SelectedValue = "22:00"
 
         End If
 

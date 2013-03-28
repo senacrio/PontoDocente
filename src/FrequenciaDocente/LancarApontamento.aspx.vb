@@ -318,7 +318,14 @@ Partial Class FrequenciaDocente_LancarApontamento
                        Where aevt.Id.Equals(id) _
                        Select aevt).FirstOrDefault()
         agendaVT.IdaVolta = valorIdaVolta
-        agendaVT.ValorVT = Convert.ToDecimal(valorVT)
+
+        If (valorVT.Equals("")) Then
+            agendaVT.ValorVT = Decimal.Zero
+        Else
+            agendaVT.ValorVT = Convert.ToDecimal(valorVT)
+        End If
+
+
         agendaVT.ValidacaoHora = False
         agendaVT.Validacao = False
 
@@ -569,12 +576,15 @@ Partial Class FrequenciaDocente_LancarApontamento
         'Me.listaAtividades
         Dim lista = (From a In db.AtividadeAcademicas _
                               Join ar In db.AreaDocentes On a.Area Equals ar.Id _
+                              Join un In db.vwUnidadePontoDocentes On a.IdUnidade Equals un.IdUnidade _
                              Where a.Validacao = False _
                              And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                              And Not a.Validacao _
+                             And a.IdParametro.Equals(Me.parametroAtivo.Id) _
                              Select Id = a.Id, Justificativas = a.Justificativas, Data = a.Data, Entrada = a.Entrada, _
                              Saida = a.Saida, NomeArea = ar.Nome, _
-                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade _
+                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade, _
+                             UnidadeNome = un.Unidade _
                              Order By Data Descending)
 
         grdAtividadesAcademicas.DataSource = lista
@@ -602,12 +612,15 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim lista = (From a In db.LancamentoEADs _
                                  Join ar In db.AreaDocentes On a.Area Equals ar.Id _
+                                 Join un In db.vwUnidadePontoDocentes On a.IdUnidade Equals un.IdUnidade _
                              Where a.Validacao = False _
                              And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                              And Not a.Validacao _
+                             And a.IdParametro.Equals(Me.parametroAtivo.Id) _
                              Select Id = a.Id, Data = a.Data, Entrada = a.Entrada, _
                              Saida = a.Saida, NomeArea = ar.Nome, _
-                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade _
+                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade, _
+                             UnidadeNome = un.Unidade _
                              Order By Data Descending)
 
         grdEAD.DataSource = lista
@@ -769,12 +782,15 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim lista = (From a In db.Coordenacaos _
                                  Join ar In db.AreaDocentes On a.Area Equals ar.Id _
+                                 Join un In db.vwUnidadePontoDocentes On a.IdUnidade Equals un.IdUnidade _
                              Where a.Validacao = False _
                              And a.Matricula.Equals(Session("c_Matricula").ToString()) _
                              And Not a.Validacao _
+                             And a.IdParametro.Equals(Me.parametroAtivo.Id) _
                              Select Id = a.Id, Justificativas = a.Justificativas, Data = a.Data, Entrada = a.Entrada, _
                              Saida = a.Saida, NomeArea = ar.Nome, _
-                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade _
+                             ValorVT = a.ValorVT, TrajetoIdaVolta = a.TrajetoIdaVolta, Categoria = a.Categoria, IdUnidade = a.IdUnidade, _
+                             UnidadeNome = un.Unidade _
                              Order By Data Descending)
 
         grdCoordenacao.DataSource = lista
@@ -929,4 +945,13 @@ Partial Class FrequenciaDocente_LancarApontamento
 
     End Function
 
+    Protected Sub btnSalvarTudo_Click(sender As Object, e As EventArgs) Handles btnSalvarTudo.Click, btnSalvarTudo0.Click
+        For i As Integer = 0 To grdVT.Rows.Count - 1
+            grdVT.SelectedIndex = i
+            grdVT_SelectedIndexChanged(grdVT, New EventArgs())
+        Next
+
+        lblMsg.Text = "Registro salvo com sucesso."
+        lblMsg.ForeColor = Drawing.Color.Green
+    End Sub
 End Class

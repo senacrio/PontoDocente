@@ -157,11 +157,13 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
             Dim matricula = chkValidacao.Attributes("Matricula").ToString()
             Dim idUnidade = chkValidacao.Attributes("IdUnidade").ToString()
             Dim categoria = chkValidacao.Attributes("IdCategoria").ToString()
+            Dim idapontamento = chkValidacao.Attributes("IdParametro").ToString()
 
             Dim detalhes = From a In db.vwApontamentos _
                            Where a.Matricula.Equals(matricula) And _
                            a.IdUnidade.Equals(idUnidade) And _
                            a.Categoria.Equals(categoria) _
+                           And a.IdParametro.Equals(idapontamento) _
                            Select a _
                            Order By a.Data
 

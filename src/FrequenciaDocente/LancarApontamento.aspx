@@ -358,6 +358,15 @@
                                 <td align="center">
                                     <asp:Label ID="lblMsg" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
+                                    <table class="auto-style2">
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td align="right">
+                                                <asp:Button ID="btnSalvarTudo" runat="server" Text="Salvar" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br />
                                     <asp:GridView ID="grdVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Style="font-size: small">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
@@ -392,7 +401,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField>
                                                 <ItemTemplate>
-                                                    <asp:Button ID="btnSalvar" runat="server" CommandArgument="salvar" CommandName="Select" OnClick="Button1_Click" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="agendaExecutada" />
+                                                    <asp:Button ID="btnSalvar" runat="server" CommandArgument="salvar" Visible="false" CommandName="Select" OnClick="Button1_Click" Style="font-family: Verdana; font-size: x-small;" Text="Salvar" ValidationGroup="agendaExecutada" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -406,6 +415,15 @@
                                         <RowStyle BackColor="#EFF3FB" />
                                         <SelectedRowStyle Font-Bold="True" ForeColor="#333333" />
                                     </asp:GridView>
+                                    <br />
+                                    <table class="auto-style2">
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td align="right">
+                                                <asp:Button ID="btnSalvarTudo0" runat="server" Text="Salvar" />
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </td>
                             </tr>
                         </table>
@@ -527,7 +545,7 @@
                                                     <asp:ImageButton ID="ImageButton1" runat="server" CommandName="select" ImageUrl="~/Icones/editar.jpg" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
+                                            <asp:BoundField DataField="UnidadeNome" HeaderText="Unidade" />
                                             <asp:BoundField DataField="NomeArea" HeaderText="Area" />
                                             <asp:BoundField DataField="Data" DataFormatString="{0:dd/MM/yy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
@@ -668,7 +686,7 @@
                                                     <asp:ImageButton ID="ImageButton2" runat="server" CommandName="select" ImageUrl="~/Icones/editar.jpg" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
+                                            <asp:BoundField DataField="UnidadeNome" HeaderText="Unidade" />
                                             <asp:BoundField DataField="NomeArea" HeaderText="Area" />
                                             <asp:BoundField DataField="Data" DataFormatString="{0:dd/MM/yy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />
@@ -808,7 +826,7 @@
                                                     <asp:ImageButton ID="ImageButton3" runat="server" CommandName="select" ImageUrl="~/Icones/editar.jpg" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="IdUnidade" HeaderText="Unidade" />
+                                            <asp:BoundField DataField="UnidadeNome" HeaderText="Unidade" />
                                             <asp:BoundField DataField="NomeArea" HeaderText="Area" />
                                             <asp:BoundField DataField="Data" DataFormatString="{0:dd/MM/yy}" HeaderText="Data" />
                                             <asp:BoundField DataField="Entrada" HeaderText="Entrada" />

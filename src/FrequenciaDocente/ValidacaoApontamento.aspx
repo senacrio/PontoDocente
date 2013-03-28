@@ -150,7 +150,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Autorização" Visible="False">
                                                 <ItemTemplate>
-                                                    <asp:CheckBox ID="chkValidacao" runat="server" IdCategoria='<%# Eval("Categoria") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' Visible="False" />
+                                                    <asp:CheckBox ID="chkValidacao" runat="server" IdCategoria='<%# Eval("Categoria") %>' IdParametro='<%# Eval("idparametro") %>' IdUnidade='<%# Eval("IdUnidade") %>' Matricula='<%# Eval("matricula") %>' Tipo='<%# Eval("Tipo") %>' Visible="False" />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField>
