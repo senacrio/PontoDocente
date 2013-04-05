@@ -367,7 +367,7 @@
                                         </tr>
                                     </table>
                                     <br />
-                                    <asp:GridView ID="grdVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" Style="font-size: small">
+                                    <asp:GridView ID="grdVT" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="Vertical" Style="font-size: small">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:BoundField DataField="Unidade" HeaderText="Unidade" />
@@ -537,7 +537,7 @@
                                     <br />
                                     <asp:Label ID="lblMsgAA" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
-                                    <asp:GridView ID="grdAtividadesAcademicas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
+                                    <asp:GridView ID="grdAtividadesAcademicas" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="Vertical" ShowFooter="True" Width="900px">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:TemplateField>
@@ -678,7 +678,7 @@
                                     <br />
                                     <asp:Label ID="lblMsgCoord" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
-                                    <asp:GridView ID="grdCoordenacao" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
+                                    <asp:GridView ID="grdCoordenacao" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="Vertical" ShowFooter="True" Width="900px">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:TemplateField>
@@ -818,7 +818,7 @@
                                     <br />
                                     <asp:Label ID="lblMsgEAD" runat="server" EnableViewState="False"></asp:Label>
                                     <br />
-                                    <asp:GridView ID="grdEAD" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="None" ShowFooter="True">
+                                    <asp:GridView ID="grdEAD" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" EnableModelValidation="True" ForeColor="#333333" GridLines="Vertical" ShowFooter="True" Width="900px">
                                         <AlternatingRowStyle BackColor="White" />
                                         <Columns>
                                             <asp:TemplateField>
