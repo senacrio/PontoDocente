@@ -136,6 +136,7 @@
               </DbSource>
             </MainSource>
             <Mappings>
+              <Mapping SourceColumn="Matricula" DataSetColumn="Matricula" />
               <Mapping SourceColumn="nome" DataSetColumn="nome" />
               <Mapping SourceColumn="Nome1" DataSetColumn="Nome1" />
               <Mapping SourceColumn="Unidade" DataSetColumn="Unidade" />
@@ -519,6 +520,13 @@
         <xs:element name="ForaLimiteVT" msprop:Generator_UserTableName="ForaLimiteVT" msprop:Generator_RowDeletedName="ForaLimiteVTRowDeleted" msprop:Generator_TableClassName="ForaLimiteVTDataTable" msprop:Generator_RowChangedName="ForaLimiteVTRowChanged" msprop:Generator_RowClassName="ForaLimiteVTRow" msprop:Generator_RowChangingName="ForaLimiteVTRowChanging" msprop:Generator_RowEvArgName="ForaLimiteVTRowChangeEvent" msprop:Generator_RowEvHandlerName="ForaLimiteVTRowChangeEventHandler" msprop:Generator_TablePropName="ForaLimiteVT" msprop:Generator_TableVarName="tableForaLimiteVT" msprop:Generator_RowDeletingName="ForaLimiteVTRowDeleting">
           <xs:complexType>
             <xs:sequence>
+              <xs:element name="Matricula" msprop:Generator_UserColumnName="Matricula" msprop:Generator_ColumnPropNameInRow="Matricula" msprop:Generator_ColumnVarNameInTable="columnMatricula" msprop:Generator_ColumnPropNameInTable="MatriculaColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="nome" msdata:ReadOnly="true" msprop:Generator_UserColumnName="nome" msprop:Generator_ColumnPropNameInRow="nome" msprop:Generator_ColumnVarNameInTable="columnnome" msprop:Generator_ColumnPropNameInTable="nomeColumn" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
