@@ -170,7 +170,8 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
     <ReportItems>
       <Table Name="table2">
         <ZIndex>1</ZIndex>
-        <Top>6cm</Top>
+        <Top>4.25cm</Top>
+        <Width>25.60979cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -180,6 +181,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox37">
                       <rd:DefaultName>textbox37</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -187,7 +189,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Fields!atividade.Value</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -196,6 +198,8 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox38">
                       <rd:DefaultName>textbox38</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -203,7 +207,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Sum(Fields!horasInt.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -212,6 +216,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox39">
                       <rd:DefaultName>textbox39</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -226,7 +231,17 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
               <Height>0.63492cm</Height>
             </TableRow>
           </TableRows>
+          <Grouping Name="table2_Details_Group">
+            <GroupExpressions>
+              <GroupExpression>=Fields!atividade.Value</GroupExpression>
+            </GroupExpressions>
+          </Grouping>
         </Details>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
         <Header>
           <TableRows>
             <TableRow>
@@ -236,6 +251,8 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox34">
                       <rd:DefaultName>textbox34</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -243,7 +260,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>8</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>Resumo das Horas</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -252,6 +269,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox35">
                       <rd:DefaultName>textbox35</rd:DefaultName>
                       <Style>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -286,7 +304,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>10.17989cm</Width>
+            <Width>5.25cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>10.17989cm</Width>
@@ -305,6 +323,9 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox40">
                       <rd:DefaultName>textbox40</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Center</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -312,7 +333,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>5</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>TOTAL de horas</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -321,6 +342,9 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox41">
                       <rd:DefaultName>textbox41</rd:DefaultName>
                       <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Left</TextAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -328,7 +352,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Sum(Fields!horasInt.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1168,7 +1192,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         </Footer>
       </Table>
     </ReportItems>
-    <Height>8.75cm</Height>
+    <Height>9.1746cm</Height>
   </Body>
   <Language>en-US</Language>
   <PageFooter>
