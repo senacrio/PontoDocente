@@ -38,7 +38,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
 
                     If (Not String.IsNullOrEmpty(linha)) Then
                         LoadAgendaExecutada(ae, aeVT, linha)
-                        ValidaAgendaExecutada(linha.Split(";")(1))
+                        'ValidaAgendaExecutada(linha.Split(";")(1))
                         Me.listaAgendaExecutada.Add(ae)
                         Me.listaAgendaExecutadaVT.Add(aeVT)
                     End If
@@ -74,42 +74,55 @@ Partial Class FrequenciaDocente_AgendaExecutada
     End Sub
 
     Private Sub LoadAgendaExecutada(ae As AgendaExecutada, aeVT As AgendaExecutadaVT, linha As String)
-        'ae.Unidade = linha.Substring(0, 3)
-        'ae.Data = linha.Substring(3, 8)
-        'ae.HoraInicial = linha.Substring(11, 5)
-        'ae.HoraFinal = linha.Substring(19, 5)
-        'ae.Disciplina = linha.Substring(27, 8)
-        'ae.Turma = linha.Substring(35, 7)
-        'ae.SalarioHora = linha.Substring(42, 11)
-        'ae.Matricula = linha.Substring(53, 10)
-        'ae.Status = linha.Substring(63, 9)
-        'ae.Categoria = linha.Substring(72, 1)
 
-        ae.Unidade = linha.Split(";")(10)
-        ae.Data = Convert.ToDateTime(linha.Split(";")(1)).ToString("ddMMyyyy")
-        ae.HoraInicial = linha.Split(";")(2).Substring(0, 5)
-        ae.HoraFinal = linha.Split(";")(2).Substring(8, 5)
-        ae.Disciplina = linha.Split(";")(4)
-        ae.Turma = linha.Split(";")(5)
-        ae.SalarioHora = linha.Split(";")(6)
-        ae.Matricula = linha.Split(";")(7)
-        ae.Status = linha.Split(";")(8)
-        ae.Categoria = linha.Split(";")(0)
+        ae.Unidade = linha.Substring(0, 3)
+        ae.Data = linha.Substring(3, 8)
+        ae.HoraInicial = linha.Substring(11, 5)
+        ae.HoraFinal = linha.Substring(19, 5)
+        ae.Disciplina = linha.Substring(27, 8)
+        ae.Turma = linha.Substring(35, 7)
+        ae.SalarioHora = linha.Substring(42, 11)
+        ae.Matricula = linha.Substring(53, 10)
+        ae.Status = linha.Substring(63, 9)
+        ae.Categoria = linha.Substring(72, 1)
+
+        'ae.Unidade = linha.Split(";")(10)
+        'ae.Data = Convert.ToDateTime(linha.Split(";")(1)).ToString("ddMMyyyy")
+        'ae.HoraInicial = linha.Split(";")(2).Substring(0, 5)
+        'ae.HoraFinal = linha.Split(";")(2).Substring(8, 5)
+        'ae.Disciplina = linha.Split(";")(4)
+        'ae.Turma = linha.Split(";")(5)
+        'ae.SalarioHora = linha.Split(";")(6)
+        'ae.Matricula = linha.Split(";")(7)
+        'ae.Status = linha.Split(";")(8)
+        'ae.Categoria = linha.Split(";")(0)
         ae.IdParametro = Me.parametroAtivo.Id
         ae.ArquivoDownload = "ArquivoAgendaExecutada/" & parametroAtivo.Ano.ToString() + "_" + parametroAtivo.Mes.ToString() + "_" + parametroAtivo.Versao.ToString() + "-" + guidArquivo + ".TXT"
 
+        'aeVT.Id = ae.Id
+        'aeVT.DataHoraRegistro = ae.DataHoraRegistro
+        'aeVT.Unidade = linha.Split(";")(10)
+        'aeVT.Data = Convert.ToDateTime(linha.Split(";")(1)).ToString("ddMMyyyy")
+        'aeVT.HoraInicial = linha.Split(";")(2).Substring(0, 5)
+        'aeVT.HoraFinal = linha.Split(";")(2).Substring(8, 5)
+        'aeVT.Disciplina = linha.Split(";")(4)
+        'aeVT.Turma = linha.Split(";")(5)
+        'aeVT.SalarioHora = linha.Split(";")(6)
+        'aeVT.Matricula = linha.Split(";")(7)
+        'aeVT.Status = linha.Split(";")(8)
+        'aeVT.Categoria = linha.Split(";")(0)
         aeVT.Id = ae.Id
-        aeVT.DataHoraRegistro = ae.DataHoraRegistro
-        aeVT.Unidade = linha.Split(";")(10)
-        aeVT.Data = Convert.ToDateTime(linha.Split(";")(1)).ToString("ddMMyyyy")
-        aeVT.HoraInicial = linha.Split(";")(2).Substring(0, 5)
-        aeVT.HoraFinal = linha.Split(";")(2).Substring(8, 5)
-        aeVT.Disciplina = linha.Split(";")(4)
-        aeVT.Turma = linha.Split(";")(5)
-        aeVT.SalarioHora = linha.Split(";")(6)
-        aeVT.Matricula = linha.Split(";")(7)
-        aeVT.Status = linha.Split(";")(8)
-        aeVT.Categoria = linha.Split(";")(0)
+        aeVT.Unidade = linha.Substring(0, 3)
+        aeVT.Data = linha.Substring(3, 8)
+        aeVT.HoraInicial = linha.Substring(11, 5)
+        aeVT.HoraFinal = linha.Substring(19, 5)
+        aeVT.Disciplina = linha.Substring(27, 8)
+        aeVT.Turma = linha.Substring(35, 7)
+        aeVT.SalarioHora = linha.Substring(42, 11)
+        aeVT.Matricula = linha.Substring(53, 10)
+        aeVT.Status = linha.Substring(63, 9)
+        aeVT.Categoria = linha.Substring(72, 1)
+
         aeVT.IdParametro = Me.parametroAtivo.Id
         aeVT.ArquivoDownload = "ArquivoAgendaExecutada/" & parametroAtivo.Ano.ToString() + "_" + parametroAtivo.Mes.ToString() + "_" + parametroAtivo.Versao.ToString() + "-" + guidArquivo + ".TXT"
         aeVT.Validacao = False
