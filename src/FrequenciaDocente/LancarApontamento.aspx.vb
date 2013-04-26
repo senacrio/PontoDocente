@@ -177,7 +177,7 @@ Partial Class FrequenciaDocente_LancarApontamento
 
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Session("c_Matricula") = "14134"
+        Session("c_Matricula") = "14428"
 
         Me.parametroAtivo = GetParametroAtivo()
 
