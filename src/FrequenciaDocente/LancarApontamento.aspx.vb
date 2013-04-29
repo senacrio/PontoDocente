@@ -285,7 +285,7 @@ Partial Class FrequenciaDocente_LancarApontamento
             menu1.Enabled = False
         Else
             menu1.Enabled = True
-            grdVT.DataSource = listaVT
+            grdVT.DataSource = listaVT.OrderBy(Function(v) v.Data)
             grdVT.DataBind()
         End If
 

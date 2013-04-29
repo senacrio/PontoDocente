@@ -1,0 +1,11 @@
+Foram criados os usuários como solicitado.
+ 
+usuario.instrutor1
+usuario.instrutor2
+usuario.instrutor3
+usuario.instrtutor4
+ 
+usuario.validador1
+usuario.validador2
+ 
+Senha para os usuários – senac@123
