@@ -82,7 +82,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
         ae.Disciplina = linha.Substring(27, 8)
         ae.Turma = linha.Substring(35, 7)
         ae.SalarioHora = linha.Substring(42, 11)
-        ae.Matricula = linha.Substring(53, 10)
+        ae.Matricula = linha.Substring(53, 10).TrimStart("0")
         ae.Status = linha.Substring(63, 9)
         ae.Categoria = linha.Substring(72, 1)
 
@@ -119,7 +119,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
         aeVT.Disciplina = linha.Substring(27, 8)
         aeVT.Turma = linha.Substring(35, 7)
         aeVT.SalarioHora = linha.Substring(42, 11)
-        aeVT.Matricula = linha.Substring(53, 10)
+        aeVT.Matricula = linha.Substring(53, 10).TrimStart("0")
         aeVT.Status = linha.Substring(63, 9)
         aeVT.Categoria = linha.Substring(72, 1)
 

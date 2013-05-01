@@ -177,12 +177,14 @@ Partial Class FrequenciaDocente_LancarApontamento
 
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Session("c_Matricula") = "14428"
+        ' Session("c_Matricula") = "14428"
 
         Me.parametroAtivo = GetParametroAtivo()
 
         If (Me.parametroAtivo Is Nothing) Then
+            mvLancamento.Visible = False
             pnl.Enabled = False
+            lblMsgErro.Text = "NÃO EXISTE CRONOGRAMA CADASTRADO PARA LANÇAMENTOS."
         Else
 
             menu1.Items(mvLancamento.ActiveViewIndex).Selected = True
@@ -198,49 +200,50 @@ Partial Class FrequenciaDocente_LancarApontamento
                 MontaGuias(-2007, 1)
             End If
 
+
+            LoadHoras()
+            'rvValorVT.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
+
+
+            'rvValorVTCoord.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
+
+
+
+            'rvValorVTEAD.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
+
+
+            'rvValorVTVT.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
+            'lblValorCorte.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
+
+
+            Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
+            Dim dataFinalAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_ATE, "yy-MM-dd", Nothing)
+
+            Dim dataInicioCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_DE, "yy-MM-dd", Nothing)
+            Dim dataFinalCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_ATE, "yy-MM-dd", Nothing)
+
+
+            rvData.ErrorMessage = "A data deve estar entre: " + dataInicioAtv.ToString("dd/MM/yyyy") + " e " + dataFinalAtv.ToString("dd/MM/yyyy")
+            rvData.MinimumValue = dataInicioAtv.ToString("dd-MM-yyyy")
+            rvData.MaximumValue = dataFinalAtv.ToString("dd-MM-yyyy")
+            rvData.ControlToValidate = "txtData"
+
+            rvDataCoord.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
+            rvDataCoord.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
+            rvDataCoord.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
+            rvDataCoord.ControlToValidate = "txtDataCoord"
+
+            rvDataEAD.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
+            rvDataEAD.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
+            rvDataEAD.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
+            rvDataEAD.ControlToValidate = "txtDataEAD"
+
+            rvDataVT.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
+            rvDataVT.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
+            rvDataVT.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
+            rvDataVT.ControlToValidate = "txtDataVT"
+
         End If
-        LoadHoras()
-        'rvValorVT.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
-
-
-        'rvValorVTCoord.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
-
-
-
-        'rvValorVTEAD.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
-
-
-        'rvValorVTVT.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
-        'lblValorCorte.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
-
-
-        Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
-        Dim dataFinalAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_ATE, "yy-MM-dd", Nothing)
-
-        Dim dataInicioCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_DE, "yy-MM-dd", Nothing)
-        Dim dataFinalCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_ATE, "yy-MM-dd", Nothing)
-
-
-        rvData.ErrorMessage = "A data deve estar entre: " + dataInicioAtv.ToString("dd/MM/yyyy") + " e " + dataFinalAtv.ToString("dd/MM/yyyy")
-        rvData.MinimumValue = dataInicioAtv.ToString("dd-MM-yyyy")
-        rvData.MaximumValue = dataFinalAtv.ToString("dd-MM-yyyy")
-        rvData.ControlToValidate = "txtData"
-
-        rvDataCoord.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
-        rvDataCoord.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
-        rvDataCoord.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
-        rvDataCoord.ControlToValidate = "txtDataCoord"
-
-        rvDataEAD.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
-        rvDataEAD.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
-        rvDataEAD.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
-        rvDataEAD.ControlToValidate = "txtDataEAD"
-
-        rvDataVT.ErrorMessage = "A data deve estar entre: " + dataInicioCoord.ToString("dd/MM/yyyy") + " e " + dataFinalCoord.ToString("dd/MM/yyyy")
-        rvDataVT.MinimumValue = dataInicioCoord.ToString("dd-MM-yyyy")
-        rvDataVT.MaximumValue = dataFinalCoord.ToString("dd-MM-yyyy")
-        rvDataVT.ControlToValidate = "txtDataVT"
-
     End Sub
 
     Private Sub LoadHoras()
@@ -273,10 +276,12 @@ Partial Class FrequenciaDocente_LancarApontamento
         ' r.Matricula.Equals("00014134") _
 
         Dim listaVT = From r In db.AgendaExecutadaVTs _
+                      Join un In db.vwUnidadePontoDocentes On r.Unidade Equals un.IdUnidade _
                       Where r.Matricula.Equals(Session("c_Matricula")) _
                       And r.IdParametro = Me.parametroAtivo.Id _
                       And Not r.Validacao _
-                      Select r
+                      Select Id = r.Id, Data = r.Data, IdaVolta = r.IdaVolta, Unidade = un.Unidade, HoraInicial = r.HoraInicial, _
+                      HoraFinal = r.HoraFinal, Categoria = r.Categoria.Replace("1", "Fic/Tec").Replace("2", "Graduação").Replace("3", ""), ValorVT = r.ValorVT
 
         Dim listaVTAgenda = From r In db.AgendaExecutadaVTs _
                     Where r.IdParametro = Me.parametroAtivo.Id _

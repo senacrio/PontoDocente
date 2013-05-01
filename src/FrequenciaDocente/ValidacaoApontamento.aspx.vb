@@ -14,11 +14,13 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
         If (Me.parametroAtivo Is Nothing) Then
             pnl.Enabled = False
-        End If
+            lblMsgErro.Text = "NÃO EXISTE CRONOGRAMA CADASTRADO PARA LANÇAMENTOS."
+        Else
 
-        If (Not Page.IsPostBack) Then
-            LoadComboValidacao()
-            LoadGridValidacao()
+            If (Not Page.IsPostBack) Then
+                LoadComboValidacao()
+                LoadGridValidacao()
+            End If
         End If
     End Sub
 

@@ -298,6 +298,14 @@
                 </tr>
             </table>
 
+            <table class="auto-style2">
+                <tr>
+                    <td style="text-align: center">
+                        <asp:Label ID="lblMsgErro" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+
             <br />
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>

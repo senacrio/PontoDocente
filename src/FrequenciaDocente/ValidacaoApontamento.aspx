@@ -59,7 +59,11 @@
 
             <table class="auto-style1">
                 <tr>
-                    <td style="text-align: center"><strong>Autorização de Lançamentos </strong></td>
+                    <td style="text-align: center"><strong>Autorização de Lançamentos 
+                        <br />
+                        <br />
+                        <asp:Label ID="lblMsgErro" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
+                        </strong></td>
                 </tr>
             </table>
             <asp:ScriptManager ID="ScriptManager1" runat="server">
