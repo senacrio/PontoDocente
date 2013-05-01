@@ -190,6 +190,7 @@ Partial Class FrequenciaDocente_LancarApontamento
             menu1.Items(mvLancamento.ActiveViewIndex).Selected = True
             '    lblDataVT.Text = Me.parametroAtivo.
             If Not (Page.IsPostBack) Then
+                LoadCategorias()
                 LoadGridVT()
                 LoadGridAtividadesAcademicas()
                 LoadGridCoordenacao()
@@ -389,13 +390,6 @@ Partial Class FrequenciaDocente_LancarApontamento
         Dim atividadeAcademica As AtividadeAcademica = GetAtividadeAcademica(db)
 
 
-        If (Not ValidaCategorias(ddlCategoria.SelectedValue)) Then
-            lblMsgAA.Text = "Categoria não é permitida para você."
-            lblMsgAA.ForeColor = Drawing.Color.Red
-            db.Dispose()
-            Me.CurrentAtividadeAcademica = Nothing
-            Return
-        End If
 
         If (atividadeAcademica.Id Is Nothing) Then
             Me.CurrentAtividadeAcademica.Id = Guid.NewGuid().ToString()
@@ -808,13 +802,6 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Dim coordenacao As Coordenacao = GetCoordenacao(db)
 
-        If (Not ValidaCategorias(ddlCategoriaCoord.SelectedValue)) Then
-            lblMsgCoord.Text = "Categoria não é permitida para você."
-            lblMsgCoord.ForeColor = Drawing.Color.Red
-            db.Dispose()
-            Me.CurrentCoordenacao = Nothing
-            Return
-        End If
 
 
         If (coordenacao.Id Is Nothing) Then
@@ -924,31 +911,30 @@ Partial Class FrequenciaDocente_LancarApontamento
         Return area.IdCentroCustoDefault
     End Function
 
-    Public Function ValidaCategorias(idCategoria As String) As Boolean
+    Public Sub LoadCategorias()
         Dim db As New FrequenciaDocenteDataContext(conn)
 
         Dim categoria = (From c In db.CategoriaDocentes _
                         Where c.Matricula.Equals(Session("c_Matricula")) _
                         Select c).FirstOrDefault()
 
-        If (categoria Is Nothing) Then
-            Return False
+        If (categoria.Fictec.Equals(Decimal.Zero)) Then
+            ddlCategoria.Items.Add(New ListItem("1", "Fic/Tec"))
         End If
 
-        Select Case (idCategoria)
-            Case 1
-                Return Not categoria.Fictec.Equals(Decimal.Zero)
-            Case 2
-                Return Not categoria.Grad.Equals(Decimal.Zero)
-            Case 3
-                Return Not categoria.POS.Equals(Decimal.Zero)
-            Case 4
-                Return Not categoria.EAD.Equals(Decimal.Zero)
-        End Select
+        If (categoria.Grad.Equals(Decimal.Zero)) Then
+            ddlCategoria.Items.Add(New ListItem("2", "Graduação"))
+        End If
 
-        Return False
+        If (categoria.POS.Equals(Decimal.Zero)) Then
+            ddlCategoria.Items.Add(New ListItem("3", "Pós-Graduação"))
+        End If
 
-    End Function
+        If (categoria.EAD.Equals(Decimal.Zero)) Then
+            ddlCategoria.Items.Add(New ListItem("4", "EAD"))
+        End If
+
+    End Sub
 
     Protected Sub btnSalvarTudo_Click(sender As Object, e As EventArgs) Handles btnSalvarTudo.Click, btnSalvarTudo0.Click
         For i As Integer = 0 To grdVT.Rows.Count - 1
