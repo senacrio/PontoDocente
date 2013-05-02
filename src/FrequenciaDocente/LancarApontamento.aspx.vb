@@ -919,19 +919,23 @@ Partial Class FrequenciaDocente_LancarApontamento
                         Select c).FirstOrDefault()
 
         If (categoria.Fictec.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("1", "Fic/Tec"))
+            ddlCategoria.Items.Add(New ListItem("Fic/Tec", "1"))
+            ddlCategoriaCoord.Items.Add(New ListItem("Fic/Tec", "1"))
         End If
 
         If (categoria.Grad.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("2", "Graduação"))
+            ddlCategoria.Items.Add(New ListItem("Graduação", "2"))
+            ddlCategoriaCoord.Items.Add(New ListItem("Graduação", "2"))
         End If
 
         If (categoria.POS.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("3", "Pós-Graduação"))
+            ddlCategoria.Items.Add(New ListItem("Pós-Graduação", "3"))
+            ddlCategoriaCoord.Items.Add(New ListItem("Pós-Graduação", "3"))
         End If
 
         If (categoria.EAD.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("4", "EAD"))
+            ddlCategoria.Items.Add(New ListItem("EAD", "4"))
+            ddlCategoriaCoord.Items.Add(New ListItem("EAD", "4"))
         End If
 
     End Sub
