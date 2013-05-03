@@ -27,9 +27,11 @@ Partial Class FrequenciaDocente_CronogramaFechamentoList
     Private Sub LoadGrid()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
+        Dim ultimoDia = New DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))
+
         Dim parametros = From p In db.Parametros _
                          Where p.Ativo _
-                         And Convert.ToDateTime(p.Ano.ToString() + "-" + p.Mes.ToString() + "-01") >= Convert.ToDateTime(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-01") _
+                         And Convert.ToDateTime(p.Ano.ToString() + "-" + p.Mes.ToString() + "-01") >= Convert.ToDateTime(DateTime.Now.Year.ToString() + "-" + DateTime.Now.Month.ToString() + "-" + ultimoDia.Day.ToString()) _
                           Order By p.Ano Descending _
                           Order By p.Mes Descending _
                           Order By p.Versao Descending
