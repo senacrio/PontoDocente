@@ -12,3 +12,6 @@
 <asp:DropDownList ID="ddlAte" runat="server">
 </asp:DropDownList>
 
+<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="ddlDe" ControlToValidate="ddlAte" ErrorMessage="Hora Inválida" Operator="GreaterThan" Type="Integer"></asp:CompareValidator>
+
+

@@ -6,19 +6,19 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
 
     Public Property SelectedValueDe() As String
         Get
-            Return ddlDe.SelectedValue
+            Return ddlDe.SelectedItem.Text
         End Get
         Set(ByVal value As String)
-            ddlDe.SelectedValue = value
+            ddlDe.SelectedItem.Text = value
         End Set
     End Property
 
     Public Property SelectedValueAte() As String
         Get
-            Return ddlAte.SelectedValue
+            Return ddlAte.SelectedItem.Text
         End Get
         Set(ByVal value As String)
-            ddlAte.SelectedValue = value
+            ddlAte.SelectedItem.Text = value
         End Set
     End Property
 
@@ -40,22 +40,27 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
         ddlDe.Items.Clear()
         ddlAte.Items.Clear()
 
+
+
         If (DropDownList1.SelectedValue.Equals("1")) Then
 
 
 
             Dim data As DateTime = Convert.ToDateTime("2001-01-01 06:00")
             Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 12:00")
+            Dim i As Int16 = 0
 
             While data <= dataFim
 
-                ddlDe.Items.Add(data.ToString("HH:mm"))
-                ddlAte.Items.Add(data.ToString("HH:mm"))
+                ddlDe.Items.Add(New ListItem(data.ToString("HH:mm"), i))
+                ddlAte.Items.Add(New ListItem(data.ToString("HH:mm"), i))
                 data = data.AddMinutes(15)
+
+                i = i + 1
             End While
 
-            ddlDe.SelectedValue = "09:00"
-            ddlAte.SelectedValue = "12:00"
+            ddlDe.SelectedValue = "12"
+            ddlAte.SelectedValue = "24"
         ElseIf (DropDownList1.SelectedValue.Equals("2")) Then
 
 
@@ -63,16 +68,19 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
             Dim data As DateTime = Convert.ToDateTime("2001-01-01 12:15")
             Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 17:45")
             ddlDe.Items.Add("12:01")
+            Dim i As Int16 = 0
             While data <= dataFim
-                ddlDe.Items.Add(data.ToString("HH:mm"))
-                ddlAte.Items.Add(data.ToString("HH:mm"))
+
+                ddlDe.Items.Add(New ListItem(data.ToString("HH:mm"), i))
+                ddlAte.Items.Add(New ListItem(data.ToString("HH:mm"), i))
                 data = data.AddMinutes(15)
+                i = i + 1
             End While
             ddlAte.Items.Add("17:59")
 
 
-            ddlDe.SelectedValue = "13:00"
-            ddlAte.SelectedValue = "17:59"
+            ddlDe.SelectedValue = "3"
+            ddlAte.SelectedItem.Text = "17:59"
 
         ElseIf (DropDownList1.SelectedValue.Equals("3")) Then
 
@@ -81,14 +89,17 @@ Partial Class FrequenciaDocente_controls_EntradaSaida
             Dim data As DateTime = Convert.ToDateTime("2001-01-01 18:00")
             Dim dataFim As DateTime = Convert.ToDateTime("2001-01-01 23:59")
 
+            Dim i As Int16 = 0
             While data <= dataFim
-                ddlDe.Items.Add(data.ToString("HH:mm"))
-                ddlAte.Items.Add(data.ToString("HH:mm"))
+
+                ddlDe.Items.Add(New ListItem(data.ToString("HH:mm"), i))
+                ddlAte.Items.Add(New ListItem(data.ToString("HH:mm"), i))
                 data = data.AddMinutes(15)
+                i = i + 1
             End While
 
-            ddlDe.SelectedValue = "18:00"
-            ddlAte.SelectedValue = "22:00"
+            ddlDe.SelectedItem.Text = "18:00"
+            ddlAte.SelectedItem.Text = "22:00"
 
         End If
 

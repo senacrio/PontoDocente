@@ -3,18 +3,24 @@ Imports System.Linq
 
 Partial Class FrequenciaDocente_ValidacaoApontamento
     Inherits System.Web.UI.Page
-    'Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
 
-    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
+    'Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
 
     Dim parametroAtivo As Parametro
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.parametroAtivo = GetParametroAtivo()
         ' Context.Session("c_Cod_Lotac") = "61"
 
-        If (Me.parametroAtivo Is Nothing) Then
+        Dim dataInicioVal = DateTime.ParseExact(Me.parametroAtivo.PAA_DE, "yy-MM-dd", Nothing)
+        Dim dataFimVal = DateTime.ParseExact(Me.parametroAtivo.PAA_ATE, "yy-MM-dd", Nothing)
+
+        If (Me.parametroAtivo Is Nothing Or Not (DateTime.Now.Date >= dataInicioVal And DateTime.Now.Date <= dataFimVal)) Then
+            divValidacao.Visible = False
             pnl.Enabled = False
-            lblMsgErro.Text = "NÃO EXISTE CRONOGRAMA CADASTRADO PARA LANÇAMENTOS."
+            lblMsgErro.ForeColor = Drawing.Color.Red
+            lblMsgErro.Text = "NÃO EXISTE MOVIMENTO PARA SER VALIDADO."
+
         Else
 
             If (Not Page.IsPostBack) Then
@@ -28,9 +34,14 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         Dim db As New FrequenciaDocenteDataContext(conn)
         Dim lotacaoInterino = GetInterino()
 
+        Dim area = Session("c_Ccusto").ToString().Substring(0, 3)
+
         Dim listaValidacao = From v In db.vwValidacaos _
                              Where v.idparametro.Equals(Me.parametroAtivo.Id.ToString()) _
-                             And v.tipo.Equals(ddlValidacao.SelectedValue)
+                             And v.tipo.Equals(ddlValidacao.SelectedValue) _
+                             And v.IdUnidade.Equals(area) _
+                             Order By v.funcionario Ascending
+        'And v.|
         'And v.IdUnidade.Equals(Context.Session("c_Cod_Lotac")) _
         '  Or v.IdUnidade.Equals(lotacaoInterino)
 
@@ -146,8 +157,13 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
             End If
         Next
 
-        LoadGridValidacao()
+
         LoadComboValidacao()
+        LoadGridValidacao()
+
+        lblMsgErro.ForeColor = Drawing.Color.Green
+        lblMsgErro.Text = "Registro(s) validados com sucesso."
+
     End Sub
 
     Protected Sub grdValidacao_RowDataBound(sender As Object, e As GridViewRowEventArgs) Handles grdValidacao.RowDataBound
@@ -155,6 +171,7 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
         If (e.Row.RowType = DataControlRowType.DataRow) Then
             Dim chkValidacao = DirectCast(e.Row.FindControl("chkValidacao"), CheckBox)
             Dim grdDetalhes = DirectCast(e.Row.FindControl("grdDetalhes"), GridView)
+            Dim area = Session("c_Ccusto").ToString().Substring(0, 3)
 
             Dim matricula = chkValidacao.Attributes("Matricula").ToString()
             Dim idUnidade = chkValidacao.Attributes("IdUnidade").ToString()
@@ -163,9 +180,11 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
             Dim detalhes = From a In db.vwApontamentos _
                            Where a.Matricula.Equals(matricula) And _
-                           a.IdUnidade.Equals(idUnidade) And _
+                           a.Area.Equals(idUnidade) And _
                            a.Categoria.Equals(categoria) _
                            And a.IdParametro.Equals(idapontamento) _
+                           And a.tipo.Equals(ddlValidacao.SelectedValue) _
+                           And a.Area.Equals(area) _
                            Select a _
                            Order By a.Data
 
@@ -245,12 +264,24 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
     Private Sub LoadComboValidacao()
         Dim db As New FrequenciaDocenteDataContext(conn)
+        Dim area = Session("c_Ccusto").ToString().Substring(0, 3)
 
-        Dim lista = db.GetComboValidacao(Convert.ToInt32(Session("c_Matricula"))).ToList()
+        Dim lista = (From v In db.vwValidacaos _
+                             Where v.idparametro.Equals(Me.parametroAtivo.Id.ToString()) _
+                             And v.IdUnidade.Equals(area) _
+                             Group v By Key = v.tipo Into Group _
+                             Select Id = Key, Texto = Key + " ( " + Group.Count().ToString() + " )").ToList()
+
+
+        'ddlValidacao.Items.Clear()
+        'ddlValidacao.Items.Add(New ListItem("Agenda Executada", "Agenda Executada"))
+        'ddlValidacao.Items.Add(New ListItem("Atividade Acadêmica", "Atividade Acadêmica"))
+        'ddlValidacao.Items.Add(New ListItem("Coordenação", "Coordenação"))
+        'ddlValidacao.Items.Add(New ListItem("EAD", "EAD"))
 
         ddlValidacao.DataSource = lista
-        ddlValidacao.DataTextField = "texto"
-        ddlValidacao.DataValueField = "tipo"
+        ddlValidacao.DataTextField = "Texto"
+        ddlValidacao.DataValueField = "Id"
         ddlValidacao.DataBind()
     End Sub
 
@@ -309,26 +340,44 @@ Partial Class FrequenciaDocente_ValidacaoApontamento
 
     Protected Sub grdDetalhes_RowDataBound(sender As Object, e As GridViewRowEventArgs)
         Dim grdDetalhe = CType(sender, GridView)
-
+        Dim area = Session("c_Ccusto").ToString().Substring(0, 3)
+        Dim ddlCentroCusto = CType(e.Row.FindControl("ddlCentroCusto"), DropDownList)
         If (e.Row.RowType = DataControlRowType.DataRow) Then
             Dim db As New FrequenciaDocenteDataContext(conn)
             If (ddlValidacao.SelectedValue.Equals("Agenda Executada")) Then
                 e.Row.FindControl("chkValidaHora").Visible = False
-                grdDetalhe.Columns(4).Visible = False
+                grdDetalhe.Columns(5).Visible = False
+                ddlCentroCusto.Enabled = False
             End If
 
-            Dim ddlCentroCusto = CType(e.Row.FindControl("ddlCentroCusto"), DropDownList)
+            Dim lblUnidade As Label = DirectCast(e.Row.FindControl("lblUnidade"), Label)
+            Dim unidade = db.vwUnidadePontoDocentes.FirstOrDefault(Function(u) u.IdUnidade.Equals(lblUnidade.ToolTip))
+
+
+            lblUnidade.Text = unidade.Unidade
+
+
 
             If (Session("_centroCusto") Is Nothing) Then
                 Session("_centroCusto") = From u In db.CentroCustoDocentes _
                                        Select u _
+                                       Where u.Id.StartsWith(area) _
                                        Order By u.CentroCusto
             End If
-
+            ddlCentroCusto.Items.Clear()
             ddlCentroCusto.DataSource = Session("_centroCusto")
             ddlCentroCusto.DataValueField = "Id"
-            ddlCentroCusto.DataTextField = "CentroCusto"
+            ddlCentroCusto.DataTextField = "Id"
             ddlCentroCusto.DataBind()
+
+            Dim centroCustos = (From cc In db.CentroCustoDocentes _
+                         Where cc.Id.StartsWith("-") _
+                                 Select cc).ToList()
+
+            For Each item In centroCustos
+                ddlCentroCusto.Items.Add(New ListItem(item.Id.Replace("-", ""), item.Id.Replace("-", "")))
+            Next
+
 
             ddlCentroCusto.SelectedValue = CType(e.Row.DataItem, vwApontamento).CentroCusto
             db.Dispose()

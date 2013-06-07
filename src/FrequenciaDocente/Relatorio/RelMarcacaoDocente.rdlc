@@ -315,7 +315,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
       <Table Name="table2">
         <ZIndex>1</ZIndex>
         <Top>6.25cm</Top>
-        <Width>25.60979cm</Width>
+        <Width>24.75cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -448,13 +448,13 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>5.25cm</Width>
+            <Width>5.07375cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>10.17989cm</Width>
+            <Width>9.83813cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>10.17989cm</Width>
+            <Width>9.83813cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>1.90476cm</Height>
@@ -524,7 +524,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
       </Table>
       <Table Name="table1">
         <Top>4cm</Top>
-        <Width>29.75cm</Width>
+        <Width>24.57936cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -722,6 +722,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <Language>pt-BR</Language>
                       </Style>
                       <CanGrow>true</CanGrow>
                       <Value />
@@ -1030,6 +1031,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <Language>pt-BR</Language>
                       </Style>
                       <ZIndex>20</ZIndex>
                       <CanGrow>true</CanGrow>
@@ -1044,34 +1046,34 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>3.5cm</Width>
+            <Width>2.25cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>1.75cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>2.25cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3cm</Width>
+            <Width>2.5cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3.02646cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>3.02646cm</Width>
           </TableColumn>
           <TableColumn>
             <Width>3cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3cm</Width>
+            <Width>3.02646cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3cm</Width>
+            <Width>2cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>3cm</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>3cm</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>3cm</Width>
-          </TableColumn>
-          <TableColumn>
-            <Width>3cm</Width>
+            <Width>1.75cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>1.90476cm</Height>
@@ -1324,6 +1326,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
+                        <Language>pt-BR</Language>
                       </Style>
                       <ZIndex>10</ZIndex>
                       <CanGrow>true</CanGrow>
@@ -1340,7 +1343,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
     </ReportItems>
     <Height>9.1746cm</Height>
   </Body>
-  <Language>en-US</Language>
+  <Language>pt-BR</Language>
   <PageFooter>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>

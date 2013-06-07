@@ -16,8 +16,8 @@ public partial class FrequenciaDocente_Relatorio_RelatorioMarcacaoDocente : Syst
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Session["c_Matricula"] = "14134";
-        Session["c_Nome"] = "Fulano de tal";
+        //Session["c_Matricula"] = "14134";
+        //Session["c_Nome"] = "Fulano de tal";
         var parametros = new ReportParameter[1];
         var parametroNome = new ReportParameter("nome",Session["c_Nome"].ToString());
         parametros[0] = parametroNome;

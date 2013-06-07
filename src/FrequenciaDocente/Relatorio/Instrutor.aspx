@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RelatorioMarcacaoDocente.aspx.cs" Inherits="FrequenciaDocente_Relatorio_RelatorioMarcacaoDocente" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Instrutor.aspx.vb" Inherits="FrequenciaDocente_Relatorio_Instrutor" %>
 
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,8 +11,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
+    
         <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" 
-            Font-Size="8pt" Height="400px" Width="842px" SizeToReportContent="True">
+            Font-Size="8pt" Height="400px" Width="822px">
             <LocalReport ReportPath="FrequenciaDocente\Relatorio\RelMarcacaoDocente.rdlc">
                 <DataSources>
                     <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" 
@@ -25,10 +25,11 @@
             OldValuesParameterFormatString="original_{0}" SelectMethod="GetData" 
             TypeName="dsRelatorioDocenteTableAdapters.RelatorioMarcacaoDocenteTableAdapter">
             <SelectParameters>
-                <asp:QueryStringParameter Name="matricula" QueryStringField="mat" 
-                    Type="Int32" />
+                <asp:SessionParameter ConvertEmptyStringToNull="False" DefaultValue="" 
+                    Name="matricula" SessionField="c_Matricula" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
+    
     </div>
     </form>
 </body>

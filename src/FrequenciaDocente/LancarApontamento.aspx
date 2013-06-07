@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <script src="js/jquery1.8.3.js"></script>
 
     <script src="js/jquery.maskMoney.js"></script>
@@ -518,6 +518,11 @@
                                             <asp:BoundField DataField="ValorVT" HeaderText="Valor VT" />
                                             <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto Ida / Volta" />
                                             <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImageButton5" runat="server" AlternateText='<%# Bind("Id") %>' ImageUrl="~/Icones/grid_cancelar.gif" OnClientClick="return confirm('Deseja exlcuir o lançamento?');" OnClick="ImageButton5_Click" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF" />
                                         <EmptyDataTemplate>
@@ -653,6 +658,11 @@
                                             <asp:BoundField DataField="ValorVT" HeaderText="Valor VT" />
                                             <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto Ida / Volta" />
                                             <asp:BoundField DataField="Justificativas" HeaderText="Justificativas" />
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImageButton5" runat="server" AlternateText='<%# Bind("Id") %>' ImageUrl="~/Icones/grid_cancelar.gif" OnClick="ImageButton5_Click1" OnClientClick="return confirm('Deseja exlcuir o lançamento?');" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF" />
                                         <EmptyDataTemplate>
@@ -791,6 +801,11 @@
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="ValorVT" HeaderText="Valor VT" />
                                             <asp:BoundField DataField="TrajetoIdaVolta" HeaderText="Trajeto Ida / Volta" />
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:ImageButton ID="ImageButton5" runat="server" AlternateText='<%# Bind("Id") %>' ImageUrl="~/Icones/grid_cancelar.gif" OnClick="ImageButton5_Click2" OnClientClick="return confirm('Deseja exlcuir o lançamento?');" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         </Columns>
                                         <EditRowStyle BackColor="#2461BF" />
                                         <EmptyDataTemplate>

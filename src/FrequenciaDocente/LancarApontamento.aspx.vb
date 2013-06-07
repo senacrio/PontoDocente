@@ -5,8 +5,8 @@ Imports System.Collections.Generic
 
 Partial Class FrequenciaDocente_LancarApontamento
     Inherits System.Web.UI.Page
-    'Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
-    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
+    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    'Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
     Dim btnSalvarI As Button
     Dim parametroAtivo As Parametro
 
@@ -32,69 +32,70 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         For Each item As MenuItem In menu1.Items
 
-
-            i = item.Value.ToString()
-            If GuiaSelecionada = -2007 Then
-                GuiaSelecionada = i
-                'MontaMenu(GuiaSelecionada)
-                EhPrimeiraMontagem = True
-            End If
-            ImagemGuiaEsquerda = New Image()
-            ImagemGuiaEsquerda.ID = "ImgEsq" & i
-            ImagemGuiaEsquerda.TabIndex = i
-            If GuiaSelecionada = i Then
-                If i = 1 Then
-                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaAtiva1Inicio.jpg"
+            If (item.Enabled) Then
+                i = item.Value.ToString()
+                If GuiaSelecionada = -2007 Then
+                    GuiaSelecionada = i
+                    'MontaMenu(GuiaSelecionada)
+                    EhPrimeiraMontagem = True
+                End If
+                ImagemGuiaEsquerda = New Image()
+                ImagemGuiaEsquerda.ID = "ImgEsq" & i
+                ImagemGuiaEsquerda.TabIndex = i
+                If GuiaSelecionada = i Then
+                    If i = 1 Then
+                        ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaAtiva1Inicio.jpg"
+                    Else
+                        ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaAtiva2Inicio.jpg"
+                    End If
                 Else
-                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaAtiva2Inicio.jpg"
+                    If i = 1 Then
+                        ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaInativa1Inicio.jpg"
+                    Else
+                        ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaInativa2Inicio.jpg"
+                    End If
                 End If
-            Else
-                If i = 1 Then
-                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaInativa1Inicio.jpg"
+                ImagemGuiaEsquerda.BorderStyle = BorderStyle.None
+                ImagemGuiaEsquerda.ImageAlign = ImageAlign.AbsBottom
+                ImagemGuiaEsquerda.EnableViewState = True
+                ImagemGuiaEsquerda.Visible = True
+
+                ImagemGuiaDireita = New Image()
+                ImagemGuiaDireita.ID = "ImgDir" & i
+                ImagemGuiaDireita.TabIndex = i
+                If GuiaSelecionada = i Then
+                    ImagemGuiaDireita.ImageUrl = "~/Imagens/AbaAtiva3Fim.jpg"
                 Else
-                    ImagemGuiaEsquerda.ImageUrl = "~/Imagens/AbaInativa2Inicio.jpg"
+                    ImagemGuiaDireita.ImageUrl = "~/Imagens/AbaInativa3Fim.jpg"
                 End If
-            End If
-            ImagemGuiaEsquerda.BorderStyle = BorderStyle.None
-            ImagemGuiaEsquerda.ImageAlign = ImageAlign.AbsBottom
-            ImagemGuiaEsquerda.EnableViewState = True
-            ImagemGuiaEsquerda.Visible = True
+                ImagemGuiaDireita.BorderStyle = BorderStyle.None
+                ImagemGuiaDireita.ImageAlign = ImageAlign.AbsBottom
+                ImagemGuiaDireita.EnableViewState = True
+                ImagemGuiaDireita.Visible = True
 
-            ImagemGuiaDireita = New Image()
-            ImagemGuiaDireita.ID = "ImgDir" & i
-            ImagemGuiaDireita.TabIndex = i
-            If GuiaSelecionada = i Then
-                ImagemGuiaDireita.ImageUrl = "~/Imagens/AbaAtiva3Fim.jpg"
-            Else
-                ImagemGuiaDireita.ImageUrl = "~/Imagens/AbaInativa3Fim.jpg"
-            End If
-            ImagemGuiaDireita.BorderStyle = BorderStyle.None
-            ImagemGuiaDireita.ImageAlign = ImageAlign.AbsBottom
-            ImagemGuiaDireita.EnableViewState = True
-            ImagemGuiaDireita.Visible = True
+                NovoBotao = New LinkButton()
+                AddHandler NovoBotao.Click, AddressOf NovoBotao_Click
+                NovoBotao.ID = "Aba" & i
+                NovoBotao.Text = item.Text
+                NovoBotao.Height = 19
+                NovoBotao.TabIndex = i
+                NovoBotao.EnableViewState = True
+                NovoBotao.Visible = True
+                NovoBotao.EnableTheming = False
+                NovoBotao.ToolTip = item.Text
+                If GuiaSelecionada = i Then
+                    NovoBotao.CssClass = "FormataAbaAtiva"
+                    If Not EhPrimeiraMontagem Or Inicio = 0 Then
 
-            NovoBotao = New LinkButton()
-            AddHandler NovoBotao.Click, AddressOf NovoBotao_Click
-            NovoBotao.ID = "Aba" & i
-            NovoBotao.Text = item.Text
-            NovoBotao.Height = 19
-            NovoBotao.TabIndex = i
-            NovoBotao.EnableViewState = True
-            NovoBotao.Visible = True
-            NovoBotao.EnableTheming = False
-            NovoBotao.ToolTip = item.Text
-            If GuiaSelecionada = i Then
-                NovoBotao.CssClass = "FormataAbaAtiva"
-                If Not EhPrimeiraMontagem Or Inicio = 0 Then
-
+                    End If
+                Else
+                    NovoBotao.CssClass = "FormataAbaInativa"
                 End If
-            Else
-                NovoBotao.CssClass = "FormataAbaInativa"
-            End If
 
-            PlaceHolder1.Controls.Add(ImagemGuiaEsquerda)
-            PlaceHolder1.Controls.Add(NovoBotao)
-            PlaceHolder1.Controls.Add(ImagemGuiaDireita)
+                PlaceHolder1.Controls.Add(ImagemGuiaEsquerda)
+                PlaceHolder1.Controls.Add(NovoBotao)
+                PlaceHolder1.Controls.Add(ImagemGuiaDireita)
+            End If
 
         Next
 
@@ -181,7 +182,15 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         Me.parametroAtivo = GetParametroAtivo()
 
-        If (Me.parametroAtivo Is Nothing) Then
+        Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
+        Dim dataFinalAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_ATE, "yy-MM-dd", Nothing)
+
+        Dim dataInicioCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_DE, "yy-MM-dd", Nothing)
+        Dim dataFinalCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_ATE, "yy-MM-dd", Nothing)
+
+
+
+        If (Me.parametroAtivo Is Nothing Or Not (DateTime.Now.Date >= dataInicioAtv And DateTime.Now.Date <= dataFinalAtv)) Then
             mvLancamento.Visible = False
             pnl.Enabled = False
             lblMsgErro.Text = "NÃO EXISTE CRONOGRAMA CADASTRADO PARA LANÇAMENTOS."
@@ -217,11 +226,6 @@ Partial Class FrequenciaDocente_LancarApontamento
             'lblValorCorte.Text = "O valor de corte do VT é de: R$ " + Me.parametroAtivo.VL_CT_VT
 
 
-            Dim dataInicioAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_DE, "yy-MM-dd", Nothing)
-            Dim dataFinalAtv = DateTime.ParseExact(Me.parametroAtivo.PAI_VT_ATE, "yy-MM-dd", Nothing)
-
-            Dim dataInicioCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_DE, "yy-MM-dd", Nothing)
-            Dim dataFinalCoord = DateTime.ParseExact(Me.parametroAtivo.PCO_ATE, "yy-MM-dd", Nothing)
 
 
             rvData.ErrorMessage = "A data deve estar entre: " + dataInicioAtv.ToString("dd/MM/yyyy") + " e " + dataFinalAtv.ToString("dd/MM/yyyy")
@@ -250,13 +254,13 @@ Partial Class FrequenciaDocente_LancarApontamento
     Private Sub LoadHoras()
         Dim db = New FrequenciaDocenteDataContext(conn)
 
-        grdHoras.DataSource = db.GetHorasDocente(Convert.ToInt32(Session("c_Matricula")))
+        '  grdHoras.DataSource = db.GetHorasDocente(Convert.ToInt32(Session("c_Matricula")))
         grdHoras.DataBind()
 
         lblTotalInseridas.Text = db.GetTotalHoras(Convert.ToInt32(Session("c_Matricula")), 0).FirstOrDefault().horas
         lblTotalInseridasValidada.Text = db.GetTotalHoras(Convert.ToInt32(Session("c_Matricula")), 1).FirstOrDefault().horas
 
-        grdHorasValidas.DataSource = db.GetHorasDocenteValidas(Convert.ToInt32(Session("c_Matricula")))
+        '  grdHorasValidas.DataSource = db.GetHorasDocenteValidas(Convert.ToInt32(Session("c_Matricula")))
         grdHorasValidas.DataBind()
     End Sub
 
@@ -291,7 +295,7 @@ Partial Class FrequenciaDocente_LancarApontamento
             menu1.Enabled = False
         Else
             menu1.Enabled = True
-            grdVT.DataSource = listaVT.OrderBy(Function(v) v.Data)
+            grdVT.DataSource = listaVT.OrderBy(Function(u) u.Unidade).OrderBy(Function(v) v.Data).OrderBy(Function(h) h.HoraInicial).OrderBy(Function(h) h.HoraFinal)
             grdVT.DataBind()
         End If
 
@@ -841,7 +845,6 @@ Partial Class FrequenciaDocente_LancarApontamento
             Me.CurrentCoordenacao = New Coordenacao()
         Else
             Me.CurrentCoordenacao = (From a In db.Coordenacaos Where a.Id.Equals(Me.CurrentCoordenacao.Id)).FirstOrDefault()
-
         End If
 
 
@@ -918,26 +921,60 @@ Partial Class FrequenciaDocente_LancarApontamento
                         Where c.Matricula.Equals(Session("c_Matricula")) _
                         Select c).FirstOrDefault()
 
-        If (categoria.Fictec.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("Fic/Tec", "1"))
-            ddlCategoriaCoord.Items.Add(New ListItem("Fic/Tec", "1"))
+        If (Not categoria Is Nothing) Then
+
+            If (Not categoria.Fictec.Equals(Decimal.Zero)) Then
+                ddlCategoria.Items.Add(New ListItem("Fic/Tec", "1"))
+                ddlCategoriaCoord.Items.Add(New ListItem("Fic/Tec", "1"))
+            End If
+
+            If (Not categoria.Grad.Equals(Decimal.Zero)) Then
+                ddlCategoria.Items.Add(New ListItem("Graduação", "2"))
+                ddlCategoriaCoord.Items.Add(New ListItem("Graduação", "2"))
+            End If
+
+            If (Not categoria.POS.Equals(Decimal.Zero)) Then
+                ddlCategoria.Items.Add(New ListItem("Pós-Graduação", "3"))
+                ddlCategoriaCoord.Items.Add(New ListItem("Pós-Graduação", "3"))
+            End If
+
+            If (Not categoria.EAD.Equals(Decimal.Zero)) Then
+                ddlCategoria.Items.Add(New ListItem("EAD", "4"))
+                ddlCategoriaCoord.Items.Add(New ListItem("EAD", "4"))
+            Else
+                menu1.Items(3).Enabled = False
+            End If
+
+        Else
+            mvLancamento.Visible = False
+            pnl.Enabled = False
+            lblMsgErro.Text = "NÃO EXISTE CATEGORIA CADASTRADA NO SISTEMA."
         End If
 
-        If (categoria.Grad.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("Graduação", "2"))
-            ddlCategoriaCoord.Items.Add(New ListItem("Graduação", "2"))
-        End If
+    End Sub
 
-        If (categoria.POS.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("Pós-Graduação", "3"))
-            ddlCategoriaCoord.Items.Add(New ListItem("Pós-Graduação", "3"))
-        End If
+    Private Sub ExcluirAtividadeAcademica(id As String)
+        Dim db As New FrequenciaDocenteDataContext(conn)
+        Dim atv = db.AtividadeAcademicas.FirstOrDefault(Function(a) a.Id.Equals(id))
+        db.AtividadeAcademicas.DeleteOnSubmit(atv)
+        db.SubmitChanges()
+        db.Dispose()
+    End Sub
 
-        If (categoria.EAD.Equals(Decimal.Zero)) Then
-            ddlCategoria.Items.Add(New ListItem("EAD", "4"))
-            ddlCategoriaCoord.Items.Add(New ListItem("EAD", "4"))
-        End If
+    Private Sub ExcluirEad(id As String)
+        Dim db As New FrequenciaDocenteDataContext(conn)
+        Dim ead = db.LancamentoEADs.FirstOrDefault(Function(e) e.Id.Equals(id))
+        db.LancamentoEADs.DeleteOnSubmit(ead)
+        db.SubmitChanges()
+        db.Dispose()
+    End Sub
 
+    Private Sub ExcluirCoordenacao(id As String)
+        Dim db As New FrequenciaDocenteDataContext(conn)
+        Dim coord = db.Coordenacaos.FirstOrDefault(Function(c) c.Id.Equals(id))
+        db.Coordenacaos.DeleteOnSubmit(coord)
+        db.SubmitChanges()
+        db.Dispose()
     End Sub
 
     Protected Sub btnSalvarTudo_Click(sender As Object, e As EventArgs) Handles btnSalvarTudo.Click, btnSalvarTudo0.Click
@@ -948,5 +985,24 @@ Partial Class FrequenciaDocente_LancarApontamento
 
         lblMsg.Text = "Registro salvo com sucesso."
         lblMsg.ForeColor = Drawing.Color.Green
+    End Sub
+
+    Protected Sub ImageButton5_Click(sender As Object, e As ImageClickEventArgs)
+        Dim btn As ImageButton = DirectCast(sender, ImageButton)
+
+        ExcluirAtividadeAcademica(btn.AlternateText)
+
+    End Sub
+
+    Protected Sub ImageButton5_Click1(sender As Object, e As ImageClickEventArgs)
+        Dim btn As ImageButton = DirectCast(sender, ImageButton)
+
+        ExcluirCoordenacao(btn.AlternateText)
+    End Sub
+
+    Protected Sub ImageButton5_Click2(sender As Object, e As ImageClickEventArgs)
+        Dim btn As ImageButton = DirectCast(sender, ImageButton)
+
+        ExcluirEad(btn.AlternateText)
     End Sub
 End Class

@@ -5,9 +5,9 @@ Imports System.Collections.Generic
 
 Partial Class FrequenciaDocente_AgendaExecutada
     Inherits System.Web.UI.Page
-    ' Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
+    Dim conn As String = "Data Source=banco01homologa;Initial Catalog=Senac;User ID=usrSenac;Password=TPMBSASKIWY"
 
-    Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
+    'Dim conn As String = "Data Source=localhost;Initial Catalog=Senac;User ID=sa;Password=senha"
     Dim listaAgendaExecutada As List(Of AgendaExecutada)
     Dim listaAgendaExecutadaVT As List(Of AgendaExecutadaVT)
     Dim parametroAtivo As Parametro
@@ -119,9 +119,14 @@ Partial Class FrequenciaDocente_AgendaExecutada
         aeVT.Disciplina = linha.Substring(27, 8)
         aeVT.Turma = linha.Substring(35, 7)
         aeVT.SalarioHora = linha.Substring(42, 11)
-        aeVT.Matricula = linha.Substring(53, 10).TrimStart("0")
+        aeVT.Matricula = linha.Substring(53, 10).TrimStart().TrimStart("0")
         aeVT.Status = linha.Substring(63, 9)
         aeVT.Categoria = linha.Substring(72, 1)
+
+        If linha.Length > 79 Then
+            aeVT.CentroCusto = linha.Substring(76, 8)
+        End If
+
 
         aeVT.IdParametro = Me.parametroAtivo.Id
         aeVT.ArquivoDownload = "ArquivoAgendaExecutada/" & parametroAtivo.Ano.ToString() + "_" + parametroAtivo.Mes.ToString() + "_" + parametroAtivo.Versao.ToString() + "-" + guidArquivo + ".TXT"
@@ -244,7 +249,7 @@ Partial Class FrequenciaDocente_AgendaExecutada
         If objFile.Exists Then
 
             Response.Clear()
-            
+
             Response.AddHeader("Content-Disposition", "attachment; filename=" & strPhysicalFilePath.Replace("ArquivoAgendaExecutada_", ""))
             Response.AddHeader("Content-Length", objFile.Length.ToString())
             Response.ContentType = "application/octet-stream"
