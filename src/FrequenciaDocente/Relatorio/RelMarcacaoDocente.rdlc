@@ -187,7 +187,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         <CanGrow>true</CanGrow>
         <Left>4cm</Left>
         <Height>0.63492cm</Height>
-        <Value>?????</Value>
+        <Value />
       </Textbox>
       <Textbox Name="textbox49">
         <rd:DefaultName>textbox49</rd:DefaultName>
@@ -222,7 +222,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         <CanGrow>true</CanGrow>
         <Left>4cm</Left>
         <Height>0.63492cm</Height>
-        <Value>?????</Value>
+        <Value />
       </Textbox>
       <Textbox Name="textbox47">
         <rd:DefaultName>textbox47</rd:DefaultName>
@@ -315,7 +315,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
       <Table Name="table2">
         <ZIndex>1</ZIndex>
         <Top>6.25cm</Top>
-        <Width>24.75cm</Width>
+        <Width>12.8949cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -351,15 +351,23 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!horasInt.Value)</Value>
+                      <Value>=Sum(Fields!horasInt.Value) / 60</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
                 <TableCell>
                   <ReportItems>
-                    <Textbox Name="textbox39">
-                      <rd:DefaultName>textbox39</rd:DefaultName>
+                    <Textbox Name="textbox51">
                       <Style>
+                        <BorderColor>
+                          <Top>Black</Top>
+                        </BorderColor>
+                        <BorderStyle>
+                          <Top>Solid</Top>
+                        </BorderStyle>
+                        <BorderWidth>
+                          <Top>1pt</Top>
+                        </BorderWidth>
                         <FontSize>8pt</FontSize>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -367,7 +375,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>=Sum(Fields!ValorVT.Value)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -385,6 +393,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
           <BorderStyle>
             <Default>Solid</Default>
           </BorderStyle>
+          <Language>pt-BR</Language>
         </Style>
         <Header>
           <TableRows>
@@ -430,6 +439,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                     <Textbox Name="textbox36">
                       <rd:DefaultName>textbox36</rd:DefaultName>
                       <Style>
+                        <FontWeight>700</FontWeight>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -437,7 +447,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value />
+                      <Value>Valor VT</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -448,13 +458,13 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         </Header>
         <TableColumns>
           <TableColumn>
-            <Width>5.07375cm</Width>
+            <Width>4.6449cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>9.83813cm</Width>
+            <Width>4.5cm</Width>
           </TableColumn>
           <TableColumn>
-            <Width>9.83813cm</Width>
+            <Width>3.75cm</Width>
           </TableColumn>
         </TableColumns>
         <Height>1.90476cm</Height>
@@ -524,7 +534,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
       </Table>
       <Table Name="table1">
         <Top>4cm</Top>
-        <Width>24.57936cm</Width>
+        <Width>24.57938cm</Width>
         <Details>
           <TableRows>
             <TableRow>
@@ -734,6 +744,9 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
             </TableRow>
           </TableRows>
         </Details>
+        <Style>
+          <Language>pt-BR</Language>
+        </Style>
         <Header>
           <TableRows>
             <TableRow>
@@ -1304,7 +1317,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>11</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!ValorVT.Value)</Value>
+                      <Value />
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1341,7 +1354,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         </Footer>
       </Table>
     </ReportItems>
-    <Height>9.1746cm</Height>
+    <Height>8.5cm</Height>
   </Body>
   <Language>pt-BR</Language>
   <PageFooter>
