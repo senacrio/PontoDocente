@@ -351,7 +351,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>1</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!horasInt.Value) / 60</Value>
+                      <Value>=(Int(Sum(Fields!horasInt.Value) \ 3600)).ToString() &amp; ":" &amp; lEft("0"&amp; ((Sum(Fields!horasInt.Value) Mod 3600) \ 60).ToString(),2)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -506,7 +506,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>4</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!horasInt.Value)</Value>
+                      <Value>=(Int(Sum(Fields!horasInt.Value) \ 3600)).ToString() &amp; ":" &amp; lEft("0"&amp; ((Sum(Fields!horasInt.Value) Mod 3600) \ 60).ToString(),2)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -615,7 +615,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>6</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!horasInt.Value</Value>
+                      <Value>=Right("0"&amp; (Int(Fields!horasInt.Value \ 3600)).ToString(),2) &amp; ":" &amp; lEft("0"&amp; ((Fields!horasInt.Value Mod 3600) \ 60).ToString(),2)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1360,6 +1360,34 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
   <PageFooter>
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
+      <Textbox Name="textbox39">
+        <Top>1.25cm</Top>
+        <Width>9cm</Width>
+        <Style>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>2.75cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=Parameters!nome.Value</Value>
+      </Textbox>
+      <Line Name="line1">
+        <Top>1cm</Top>
+        <Width>16.25cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <Left>1.75cm</Left>
+        <Height>0cm</Height>
+      </Line>
       <Textbox Name="textbox33">
         <rd:DefaultName>textbox33</rd:DefaultName>
         <Width>2.53968cm</Width>
@@ -1376,7 +1404,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
         <Value>=Globals!PageNumber</Value>
       </Textbox>
     </ReportItems>
-    <Height>0.88492cm</Height>
+    <Height>2.78968cm</Height>
     <PrintOnLastPage>true</PrintOnLastPage>
   </PageFooter>
   <TopMargin>1cm</TopMargin>

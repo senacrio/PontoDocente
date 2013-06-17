@@ -24,7 +24,9 @@
         </rsweb:ReportViewer>
         <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" 
             SelectMethod="GetData" 
-            TypeName="dsRelatorioDocenteTableAdapters.vwRealtorioNaoValidadosTableAdapter">
+            
+            TypeName="dsRelatorioDocenteTableAdapters.vwRealtorioNaoValidadosTableAdapter" 
+            OldValuesParameterFormatString="original_{0}">
         </asp:ObjectDataSource>
     </div>
     </form>

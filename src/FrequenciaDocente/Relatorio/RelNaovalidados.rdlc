@@ -584,7 +584,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>2</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Fields!horasInt.Value</Value>
+                      <Value>=Right("0"&amp; (Int(Fields!horasInt.Value \ 3600)).ToString(),2) &amp; ":" &amp; lEft("0"&amp; ((Fields!horasInt.Value Mod 3600) \ 60).ToString(),2)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1350,7 +1350,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
                       </Style>
                       <ZIndex>15</ZIndex>
                       <CanGrow>true</CanGrow>
-                      <Value>=Sum(Fields!horasInt.Value)</Value>
+                      <Value>=Right("0"&amp; (Int(Sum(Fields!horasInt.Value) \ 3600)).ToString(),2) &amp; ":" &amp; lEft("0"&amp; ((Sum(Fields!horasInt.Value) Mod 3600) \ 60).ToString(),2)</Value>
                     </Textbox>
                   </ReportItems>
                 </TableCell>
@@ -1418,7 +1418,7 @@ elMdAGDArgyKYMCuDIYAYMbBgzAYAYAYAYAYAoqZMBgyK4AYApgwHKZDCAMIAwAwB4mgjmTErGvTwVBH
     </ReportItems>
     <Height>10.18651cm</Height>
   </Body>
-  <Language>en-US</Language>
+  <Language>pt-BR</Language>
   <TopMargin>1cm</TopMargin>
   <PageHeight>29.7cm</PageHeight>
 </Report>
